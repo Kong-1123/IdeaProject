@@ -1,0 +1,13 @@
+{
+  "tabs": [
+   {
+      "name": "违规用户统计管理",
+      "eName":"relevant",
+      "detailUrl":"relevant/detail",
+      "searchUrl":"relevant/search",
+      "getValUrl":"relevant/findById?id=",
+      "getPage":"relevant/getPage",
+      "getRelieve":"relevant/findByRelieve"
+   }
+   ]
+ }

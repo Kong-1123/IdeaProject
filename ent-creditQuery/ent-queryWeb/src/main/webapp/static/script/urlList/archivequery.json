@@ -1,0 +1,14 @@
+{
+  "tabs": [
+   {
+      "name": "授权信息查看",
+      "eName":"archive",
+      "detailUrl":"archivequery/detail",
+      "searchUrl":"archivequery/search",
+      "getPage":"archivequery/getPage",
+      "getValUrl":"archivequery/findById?id=",
+      "findByArchiveId":"archive/findByArchiveId?archiveId=",
+      "getPictureFile":"archive/getPictureFile"
+   }
+   ]
+ }

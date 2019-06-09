@@ -1,0 +1,225 @@
+@charset "utf-8";
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{*+height:1%;}
+body{
+	background-color: #f3f3f3;
+	font-family: "Times New Roman", "Microsoft YaHei";
+}
+.noselect {
+
+	-webkit-touch-callout: none; /* iOS Safari */
+
+	-webkit-user-select: none; /* Chrome/Safari/Opera */
+
+	-khtml-user-select: none; /* Konqueror */
+
+	-moz-user-select: none; /* Firefox */
+
+	-ms-user-select: none; /* Internet Explorer/Edge */
+
+	user-select: none; /* Non-prefixed version, currently not supported by any browser */
+
+}
+/*表头*/
+#GZ{
+	display: none;
+}
+table.biao td.calTit{
+    background: #3075c7;
+}
+.calWeekTit{
+	font-size: 12px; 
+	height: 30px; 
+	text-align: center;
+}
+table.biao tr.calWeekTit{
+	border: 1px solid #999;
+    border-bottom: 2px solid #3075c7;
+}
+table.biao tr.calWeekTit td{
+	border: none;
+}
+.cal_next,.topDateFont {
+    color: #fff;
+}
+
+.calTit font{
+	color: #eee;
+}
+.calTit span{
+	margin-top: 0;
+}
+.ymNaviBtn {
+    margin-top: 6px;
+}
+#dateSelectionRili span{
+	font-size: 24px;
+	word-spacing: 5px;
+    letter-spacing: 5px;
+}
+#dateSelectionRili{
+	cursor: pointer;
+    color: white;
+    padding-bottom: 2px;
+    border-bottom: 1px solid white;
+}
+#dateSelectionRili span.chinaFont{
+	font-size: 20px;
+}
+.dateSelectWrap{
+	width: 300px;
+	margin: 0 auto;
+}
+#dateSelectionDiv{
+	width: 302px;
+    height: 200px;
+    top: 36px;
+	left: 258px;
+	border: 1px solid #3075c7;
+	border-top: 1px solid #ddd;
+    background: #fff;
+}
+#yearList {
+    width: 98%;
+    height: 40px;
+    line-height: 40px;
+    color: #3075c7;
+}
+#yearListContent .curr{
+	color: #4284D9;
+}
+#yearList div{
+	font-size: 24px;
+	height: 40px;
+    line-height: 40px;
+}
+#yearListContent .year {
+    width: auto;
+    margin-left: 5px;
+    margin-right: 10px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 24px;
+}
+#yearListPrev{
+	width: 16px;
+	height: 16px;
+    margin-right: 5px;
+    background:url(../images/leftArrow.png)no-repeat center center;
+}
+#yearListNext{
+	width: 16px;
+	height: 16px;
+    background:url(../images/rightArrow.png)no-repeat center center;
+}
+#monthList {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+#monthListContent .month{
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 24px;
+}
+#monthListContent span {
+    color: #333;
+}
+#monthListContent .curr{
+	width: 38px;
+	height: 38px;
+	line-height: 38px;
+	border: 1px solid #4284D9;
+}
+#monthListContent span:hover {
+	color: #fff;
+    background-color: #4284D9;
+}
+#monthListContent span:active {
+    background-color: #4284D9;
+}
+#dateSelectionBtn {
+    margin-top: 10px;
+    width: 170px;
+}
+#dateSelectionBtn div{
+	color: #333;
+	font-size: 18px;
+}
+#dateSelectionBtn div:hover{
+	color: #4284D9;
+}
+#dateSelectionOkBtn {
+    margin-left: 25px;
+}
+/*表头 END*/
+
+/*表格主体*/
+table.biao {
+    font-family: "Times New Roman", "Microsoft YaHei";
+}
+table.biao td{
+	border-color: #999;
+	background-color: #fff;
+}
+table.biao td.selday {
+	color: #fff;
+    background: #5C98D6;
+}
+/*表格主体 END*/ 
+
+/*设置工作日/假日框体*/
+#setworkday,#setholiday{
+	text-indent: 20px;
+    padding: 10px 0px;
+}
+#setworkday span,#setholiday span{
+	color: #3075c7;
+}
+#setworkday>.date, #setholiday>.date {
+    width: 77px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    background: #fff;
+    border: 1px solid #3075c7;
+}
+#setworkday>.date img, #setholiday>.date img {
+    top: -8px;
+    right: -5px;
+}
+
+/*设置工作日/假日框体 END*/
+
+/*按钮*/
+.buttonWrap{
+	text-align: center;
+}
+.dateBtn{
+	width: 96px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: normal;
+    background-color: #fff;
+    margin-right: 20px;
+}
+.btn-blue{
+	color: #3075c7;
+	border:1px solid #3075c7;
+}
+.btn-blue:hover{
+	color: #fff;
+	background-color:#3075c7;
+}
+.btn-white{
+	color: #666;
+	border:1px solid #666;
+}
+.btn-white:hover{
+	color: #3075c7;
+	border:1px solid #3075c7;
+}
+/*按钮 END*/

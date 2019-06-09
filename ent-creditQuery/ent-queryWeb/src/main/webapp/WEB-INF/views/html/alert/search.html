@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>预警信息管理查询页面</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/pageIncludeStyle.js"></script>
+</head>
+<body>
+	<div id="form-wrap">
+		<form id="query_form_id" action="alter/getPage">
+			<div class="modal-body">
+				<table class="grayTable">
+					<tr>
+						<th align="right" class="thStyle">用户ID:</th>
+						<td><input type="text" name="search_EQ_userName" /></td>
+						<th align="right" class="thStyle">用户状态:</th>
+						<td><select name="search_EQ_userStatus"></select></td>
+					</tr>
+					<tr>
+						<th align="right" class="thStyle">预警原因:</th>
+						<td><select name="search_EQ_aleratReason"></select></td>
+						<th align="right" class="thStyle">所属机构:</th>
+						<td><select name="search_EQ_orgCode" ></select></td>
+					</tr>
+					<tr>
+						<th align="right" class="thStyle">起始日期:</th>
+						<td><input type="text" name="search_GT_alertDate_DATE"
+							onfocus=" WdatePicker({dateFmt:'yyyy-MM-dd'})"
+							onkeydown="if(event.keyCode==13){event.keyCode=0;return false}" 
+							class="validate[dateRange[grp1]]"/></td>
+						<th align="right" class="thStyle">结束日期:</th>
+						<td><input type="text" name="search_LT_alertDate_DATE"
+							onfocus=" WdatePicker({dateFmt:'yyyy-MM-dd'})"
+							onkeydown="if(event.keyCode==13){event.keyCode=0;return false}" 
+							class="validate[dateRange[grp1]]"/></td>
+					</tr>
+					<tr>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" id="searchPage" class="btn-vip btn-blue"
+					value="查询" /> <input type="reset" id="resetPage"
+					class="btn-vip btn-white" value="清空" />
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+function init(json) {
+	var treeNodes = zTreeObj.getNodes();
+	orgCodeSetName(json.orgCode, treeNodes[0]);
+	setReadonly();
+};
+	$(function() {
+		// 字典数据回显
+		loadDic("common/getDeptCodeName","search_EQ_orgCode","deptCodeName");
+		loadDic("common/ceqDic", "search_EQ_aleratReason", "alertReason_ceq");
+		loadDic("common/ceqDic", "search_EQ_userStatus", "userStat_ceq");
+		// 绑定按钮事件		
+		bindPageBtnEvent();
+	});
+</script>
+</html>

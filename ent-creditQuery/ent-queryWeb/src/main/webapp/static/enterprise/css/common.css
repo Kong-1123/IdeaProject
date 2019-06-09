@@ -1,0 +1,294 @@
+textarea {
+	line-height: 180%;
+}
+a:visited {
+	color:#ffffff;
+	text-decoration: none;
+}
+a:link{color:#ffffff;	text-decoration: none;}
+a:hover{
+	color:#F08334;
+	text-decoration: underline;
+}
+read:link {color:#0B4C95;text-decoration: none;}
+	{visitedcolor:#000000;
+	text-decoration: none;}
+	{hovercolor:#F08334;
+	text-decoration: underline;
+}
+
+body {
+	border: none;
+	scrollbar-base-color:		#F8F8F8;
+	scrollbar-highlight-color:	#F8F8F8;
+	scrollbar-3dlight-color:	#D8D8D8;
+	scrollbar-darkshadow-color:	#D8D8D8;
+	scrollbar-shadow-color:		#F8F8F8;
+	scrollbar-face-color:		#F8F8F8;
+	scrollbar-track-color:		#F8F8F8;
+	scrollbar-arrow-color:		black;
+	margin:0;
+
+}
+
+/*------------------- 输入框的样式---------------*/
+.input-text {
+
+	height: 18px;
+	padding-top:4px;
+	padding-left:4px;
+
+}
+/* ----------- 按钮的样式--------------*/
+.input-button {
+	background: #ffffff;
+ 	color:000000;
+	height: 22px;
+	border: 1px solid #3FAAA9;
+	filter:progid:DXImageTransform.Microsoft.Gradient(gradienttype=0, startcolorstr=#A1E6DC, endcolorstr=#F1F4F9);
+
+	}
+	.input-button1 {
+	background: #efefef;
+	color:3A4F6C;
+	height: 18px;
+	border: 1px solid #cccccc;
+
+}
+.input-button2 {
+	background:#ffffff ;
+ 	color:#ffffff;
+	height: 18px;
+	border: 1px solid #CFCFD1;
+	filter:progid:DXImageTransform.Microsoft.Gradient(gradienttype=0, startcolorstr=#FFFFFF, endolorstr=#FFFFFF);
+
+	}
+
+/* ----------------- 当前位置的样式----------------*/
+#location{			
+		height:25px;
+		padding-left:6px;
+		padding-top:4px;
+		padding-bottom:4px; 
+		border-bottom:0 solid #97C7EB;	
+		border-top:0px solid #97C7EB; 
+		}
+
+/*-----操作按钮区域样式--------*/
+#operation{
+		 width:100% ;
+		 height:32;
+		 padding-right:45px;
+		 padding-top:10px;
+		 padding-bottom:6px ;		 
+		 border-top:1px dotted #C9CACA; 
+		 border-bottom:0px dotted #C9CACA;
+		 }
+/*-----弹出窗口样式--------*/
+#popbody{
+		 width:100% ;
+		 background:F8F8F8;
+		 padding-left:12;
+		 padding-top:4;
+		 padding-bottom:4 ;		 
+		
+		 }
+
+
+/*-----scrolldiv滚动div样式--------*/
+#scrolldiv{ 
+		background:#ffffff;
+		border-top:1 solid #DEDEDE;
+		border-bottom:1 solid #DEDEDE;
+		padding:12;
+		
+		}
+		
+#scrolldiv1{ 
+		background:#ffffff;
+		border:1 solid #DEDEDE;
+		
+		}
+
+#scrolldiv1 th{
+		height:25;
+		padding-left:2;
+		border-color:#f9a900;
+		background:#F1F1F1;
+		filter:progid:DXImageTransform.Microsoft.Gradient(gradienttype=0, startcolorstr=#FFFFFF, endcolorstr=#ECECEC);
+	
+		}
+#scrolldiv1 td {
+	height: 25px;
+	padding-left:2;
+}
+
+
+/*-----------分页样式---------*/
+#page{width:100% ;padding-top:20px;padding-bottom:20px; }
+/*--------------数据列表样式---------*/
+#list{align:center ;} 
+ 
+#list table{
+		align:center;
+		width:100%;	
+		background-color:White;
+		border-bottom:1px solid #cccccc;
+		border-top:1 solid #cccccc;
+		border-collapse:collapse;
+		}
+
+#list th{
+		height:25px;
+		border-color:#eeeeee;
+		background:#F1F1F1;
+		filter:progid:DXImageTransform.Microsoft.Gradient(gradienttype=0, startcolorstr=#DEEFF7, endcolorstr=#A1C3E5);
+		color:#000000;
+		border-bottom:1 solid #AAC6F7;
+		border-right:1 solid #eeeeee;
+		}
+#list td {
+	height: 25px;
+	border-color:#eeeeee;
+	border-bottom:1px solid #cccccc;
+	border-right:1 solid #eeeeee;
+}
+/*--------------数据列表样式2,适用于二位表格，复杂表格---------*/
+.tbcolor{background:#8FB8E1}
+.tbcolor th{filter:progid:DXImageTransform.Microsoft.Gradient(gradienttype=0, startcolorstr=#A5C6E7, endcolorstr=#DEEFF7);}
+.tbcolor1 th{filter:progid:DXImageTransform.Microsoft.Gradient(gradienttype=0, startcolorstr=#D1D3D6, endcolorstr=#FFFFFF);}
+.middle{ background:#E0E4EF}
+/*==================左边样式表================*/
+.left{background:FEEECD url(../images/left.gif) no-repeat fixed right bottom;border-top:0 solid #FEEECD;
+}
+
+.titletab {
+        width:170;
+       	filter:progid:DXImageTransform.Microsoft.Gradient(gradienttype=0, startcolorstr=#DEEFF7, endcolorstr=#A1C3E5);
+		
+        border:0;
+      
+		
+}
+.titletd-exp {  
+		color:#ffffff;
+		font:bold;
+        border:0;
+        height:28;
+        vertical-align:middle;
+        padding-left:21;
+		background:#F5C99C;
+  		background-repeat: repeat-y;
+		background-position: right center;
+		background-image: url(../images/leftbarbg.gif);
+		cursor:hand;
+}
+.titletd-col {
+	color:#ffffff;
+	font:bold;
+	   border:0;
+        height:28;
+        vertical-align:middle;
+        padding-left:21;
+      	background:#F5C99C;
+	 	background-repeat: repeat-y;
+		background-position: right center;
+        cursor:hand;
+		background-image: url(../images/leftbarbg.gif) ;
+     
+}
+.contenttd {
+        border:0;
+        height:100%;
+		align:center;
+		padding-top:8;
+		padding-bottom:8;
+}
+.contenttab {
+        width:97%;
+        border:0;
+        cursor:hand;
+		align:center;
+       }
+.contenttd-normal {
+	border:0;
+	vertical-align:middle;
+	height:22;
+	pading:1;
+	padding-left:21;
+	cursor:hand;
+	background-attachment: fixed;
+	background-image: url(../images/leftitembg.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+.contenttd-over {
+	border:0;
+	vertical-align:middle;
+	height:22;
+	padding-left:20;
+	border: 1 solid #CCCCCC;
+	cursor:hand;
+	background-color:#F1F1F1;
+	color:#000000;
+	background-attachment: fixed;
+	background-image: url(../images/leftitembg1.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+.contenttd-sele {
+	border:0;
+	vertical-align:middle;
+	height:22;
+	padding-left:20;
+	border: 1 solid #F0BD7F;
+	cursor:hand;
+	background-color:#FFF3CB;
+	color:#000000;
+	background-attachment: fixed;
+	background-image: url(../images/leftitembg1.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+		
+}
+/*=============顶部样式控制=============*/
+/*-----渐变背景--------*/
+
+#top {filter:progid:DXImageTransform.Microsoft.Gradient(gradienttype=1, startcolorstr=#ffffff, endcolorstr=#FF9610);
+	width:100%
+	}
+
+#menu{background:#EA6119;border-bottom:1 solid #cccccc;
+}
+#menu a{color:#ffffff}
+#menu td {color:F29A6C;
+
+}
+
+.top-pic{FILTER: alpha(opacity=0,finishopacity=80,style=1,startx=5,starty=0,finishx=250,finishy=100);}
+#top-alpha{background-color: ffffff; Filter: Alpha(Opacity=0, FinishOpacity=80, Style=1, StartX=40, StartY=0, FinishX=80, FinishY=0);}
+#top-alpha a{ color:#000000}
+
+
+/*==================系统字体全局控制===========================*/
+td,input,th,select,textarea {
+	font-size: 14px;
+}
+/*---控制系统个区域颜色块---*/
+#operation,#location,{background:F8F8F8; }
+.input-text,textarea{border: 1px solid #81B3C8;}
+
+/*------------表单块--------*/
+fieldset{
+	padding: 8px;
+	
+   	border:1px solid #80A2CA;
+}
+/* ----------------- 详细表单----------------*/
+.list1 td{
+        height:25px;
+		align:center;
+		background-color:White;
+		border-bottom:0px solid #cccccc;
+		border-top:1 solid #cccccc;
+		}

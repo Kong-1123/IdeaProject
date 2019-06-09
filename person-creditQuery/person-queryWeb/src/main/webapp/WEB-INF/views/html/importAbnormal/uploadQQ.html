@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>导入</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/business/archive/archiveIncludeStyle.js"></script>
+<link rel="stylesheet" href="../static/style/business/archive.css">
+<style>
+#form-wrap .formWrap li {
+	margin: 15px 30px !important;
+}
+
+.layui-layer-title {
+	height: 42px;
+	line-height: 42px;
+	border-bottom: 1px solid #eee;
+	/* background-color: #F8F8F8 !important; */
+}
+
+#fileSubmit {
+	display: none;
+}
+</style>
+</head>
+<body name="importCR">
+	<div id="form-wrap" class="layui-form">
+		<form id="create_form_id" action="">
+			<div class="modal-body selectmodal">
+				<!-- <ul class="formWrap clearfix">
+
+					<li><span class="formLabel">异常类型:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="type" id="type"
+									class="validate[required] layui-input"></select> 
+								<input name="type" class=""/>
+							</div>
+						</div>
+					</li>
+				</ul>-->
+				<!-- <div class="layui-upload-drag" id="test10">
+					<i class="layui-icon"></i>
+					<p>点击上传，或将文件拖拽到此处</p>
+				</div> -->
+				<div id="uploadBody" class="modal-body layui-upload">
+					<div class="layui-upload-list">
+						<table class="layui-table">
+							<thead>
+								<tr>
+									<th>文件名</th>
+									<th>大小</th>
+									<th>状态</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody id="demoList"></tbody>
+						</table>
+					</div>
+				</div>
+				<div id="uploadBtn" class="modal-footer">
+				<span class="formLabel"  style="color: #FD971F;">只允许上传TXT文件</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="button" class="layui_btn btn_reset clearfix" id="fileList"
+						value="选择文件" /> <input type="button" class="layui_btn btn_submit clearfix"
+						id="ListAction" value="开始上传"></input>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/business/archive/archiveIncludeScript.js"></script>
+
+<script type="text/javascript">
+
+//从字典中取值
+//var dicData = getDic("common/cpqDic","archiveType");
+//根据获取的后台参数动态生成需要上传的文件
+	var urlObj = parent.urlObj;
+	var id = parent.resultId;
+	$(function() {
+		// 调用上传文件控件
+		layui.use('upload', function () {
+	        // 多文件列表示例
+	        //var type="2";
+			var uploadUrl=urlObj.upload;
+			console.log(uploadUrl);
+	        var pName = getProjectName(location.href);
+	        var upload = layui.upload;
+	        var demoListView = $('#demoList')
+	            , uploadListIns = upload.render({
+	            elem: '#fileList'
+	            , url: uploadUrl
+	            , accept: 'file' //普通文件
+	      		, exts: 'txt'
+	            , multiple: true
+	            , auto: false
+	            , bindAction: '#ListAction'
+	            , choose: function (obj) {
+	                var files = obj.pushFile(); //将每次选择的文件追加到文件队列
+	                //读取本地文件
+	                obj.preview(function (index, file, result) {
+	                    var tr = $(['<tr id="upload-' + index + '">'
+	                        , '<td>' + file.name + '</td>'
+	                        , '<td>' + (file.size / 1014).toFixed(1) + 'kb</td>'
+	                        , '<td>等待上传</td>'
+	                        , '<td>'
+	                        //, '<button class="layui-btn layui-btn-mini demo-reload layui-hide">重传</button>'
+	                        , '<button class="layui-btn layui-btn-mini layui-btn-danger demo-delete">删除</button>'
+	                        , '</td>'
+	                        , '</tr>'].join(''));
+	                    //单个重传
+	                    tr.find('.demo-reload').on('click', function () {
+	                        obj.upload(index, file);
+	                    });
+
+	                    //删除
+	                    tr.find('.demo-delete').on('click', function () {
+	                        delete files[index]; //删除对应的文件
+	                        tr.remove();
+	                    });
+
+	                    demoListView.append(tr);
+	                });
+	            }
+	            , done: function (res, index, upload) {
+
+	                if (res.code == 0) { //上传成功
+	                    var tr = demoListView.find('tr#upload-' + index)
+	                        , tds = tr.children();
+	                    tds.eq(2).html('<span style="color: #5FB878;">上传成功</span>');
+	                    tds.eq(3).html(''); //清空操作
+	                    // delete this.files[index]; //删除文件队列已经上传成功的文件
+	                    layerAlert("文件上传成功！",function(){
+	                    	closeParentPage();
+	                    })
+	                    return;
+	                }else if(res.code == 2){
+	                	layerAlert(res.msg,function(){
+	                    })
+	                }
+	                this.error(index, upload);
+	            }
+	            , error: function (index, upload) {
+	                var tr = demoListView.find('tr#upload-' + index)
+	                    , tds = tr.children();
+	                tds.eq(2).html('<span style="color: #FF5722;">上传失败</span>');
+	                //tds.eq(3).find('.demo-reload').removeClass('layui-hide'); //显示重传
+	            }
+	        })
+        })
+        bindPageBtnEvent();
+	});
+
+
+</script>
+</html>

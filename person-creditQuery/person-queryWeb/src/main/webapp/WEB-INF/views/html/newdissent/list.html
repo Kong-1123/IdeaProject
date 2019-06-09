@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/listIncludeStyle.js"></script>
+<style>
+	html,body{
+		height:100%
+	}
+</style>
+</head>
+<script type="text/javascript"
+	src="../static/script/listIncludeScript.js"></script>
+<script type="text/javascript"
+	src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var Pname = getProjectName(location.href);
+		var loginUrl = Pname + "newdissent/tryLogin?" + Math.random();
+		$.get(loginUrl,function(result){
+			var obj = strToJson(result);
+			if (obj.code == "00000") {
+				window.location.href = "/creditplatformweb/";
+			} else {
+				if(obj.code=="00001"){
+					 layui.use(["table","form","layer"], function(){
+					var layer = layui.layer;
+						layerAlert("征信中心登陆失败，请查看!",function(){
+							$(".layui-tab .layui-this .layui-tab-close",parent.document).click();
+						})
+					}) 
+				}else{
+					$("#dissentIframe").load(function(){
+						var t = $(this);
+						$(this).contents().find("#frmright").css("height","100%");
+						console.log(t.contents().find("#frmright").length);
+						console.log(t.contents());
+						t.contents().find('.hmenuFunction').hide();
+					})
+					$("#dissentIframe").attr("src","/shcreditunion/dissentIndexAction.do");
+				}
+			}
+		})
+	})
+</script>
+<body>
+	<iframe frameborder="0" id="dissentIframe" width="100%" height="100%"></iframe>
+</body>
+</html>

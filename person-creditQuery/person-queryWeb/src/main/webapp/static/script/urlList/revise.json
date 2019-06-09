@@ -1,0 +1,21 @@
+{
+  "tabs": [
+   {
+      "name": "授权信息补录管理",
+      "eName":"revise",
+      "getValUrl":"resultInfo/findById?id=",
+      "previewPdf":"archive/previewArchiveFile4NotUploaded",
+      "archiveRevise":"archive/archiveRevise",
+      "relevanceRevise":"queryreq/relevanceRevise",
+      "archive":"archive/archiverevisenow?id=",
+      "checkedArchive":"queryreq/checkedArchive",
+      "getPage":"archive/getList",
+      "updUrl":"queryreq/revise",
+      "getArchivePage":"archive/archiverevisenow",
+      "getArchiveType":"archive/getArchiveType",
+      "reviseuploadfile":"archive/reviseuploadfile",
+      "revisesavePaper":"archive/revisesavePaper",
+      "revisecreate":"archive/revisecreate"
+   }
+   ]
+ }

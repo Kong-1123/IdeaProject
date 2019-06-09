@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>征信用户管理新增</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/pageIncludeStyle.js"></script>
+<link rel="stylesheet" href="">
+<style>
+	.crrTable{
+		width: 90%;
+	}
+	.crrTable th{
+		font-size: 18px;
+		height: 40px;
+		line-height: 40px;
+		color: #fff;
+		background-color: #697DAB;
+		text-align: center;
+	}
+	.crrTable td{
+		text-align: left;
+	}
+	.crrTable td p{
+		height: 30px;
+	}
+	.crrTable td p input{
+		width: 350px;
+		height: 28px;
+	    margin: 0 auto;
+	    display: block;
+	    box-shadow: none;
+	    text-indent: 10px;
+	}
+	.crrTable td p input:focus{
+		box-shadow: none;
+	}
+	.crrelationWarp p{
+		border-bottom: 1px solid #ccc;
+	}
+	.crrelationWarp ul{
+		height: 275px;
+		padding: 5px;
+		overflow: auto;
+	}
+	.crrelationWarp ul li:hover{
+		color: #fff;
+		background-color: #697DAB;
+	}
+	.crrelationWarp label{
+		display: inline-block;
+		width: 150px;
+		margin-left: 10px;
+	}
+	.crrelationWarp span{
+		display: inline-block;
+    	width: 140px;
+	}
+</style>
+</head>
+<body>
+	<div id="form-wrap">
+		<form id="create_form_id" action="ccUserCorrelation/createCorrelation">
+			<div class="modal-body selectmodal">
+				<table class="crrTable">
+					<tr>
+						<th class="thStyle">用户</th>
+						<th class="thStyle">征信用户</th>
+					</tr>
+					<tr>
+						<td class="thStyle">
+							<div class="userWarp crrelationWarp">
+								<p><input type="text" id="userFilter" value="" placeholder="请输入用户名称或机构名称"></p>
+								<ul></ul>
+							</div>
+						</td>
+						
+						<td class="thStyle">
+								<div class="creditUserWarp crrelationWarp">
+								<p><input type="text" id="creditUserFilter" value="" placeholder="请输入征信用户名称或机构名称"></p>
+								<ul></ul>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<input type="button" class="btn-vip btn-blue" id="submitPage"
+					value="关联" /> <input type="reset" class="btn-vip btn-white"
+					id="resetPage" value="清空"></input>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+	
+	$(function() {
+		  // 获取初始化数据
+		  $.ajaxSetup({  
+              async : false  
+          });
+		  var urlObj = parent.urlObj;
+          var userDataArr,creditUserDataArr;  
+          $.get(urlObj.getUsers, function(data, status) {
+          	userDataArr = strToJson(data);
+          });
+
+          $.get(urlObj.getCcUsers, function(data, status) {
+          	creditUserDataArr = strToJson(data);
+          });
+          // 初始化列表数据
+          var userRow = "",creditUserRow ="";
+          for (var i = userDataArr.length - 1; i >= 0; i--) {
+          	userRow += '<li class="userRow'+i+'"><input type="checkbox" id='+userDataArr[i].userName+'><label for='+userDataArr[i].userName+'>'+userDataArr[i].userName+'</label><span id='+userDataArr[i].orgId+'>'+userDataArr[i].orgId+'</span></li>';
+          }
+          for (var i = creditUserDataArr.length - 1; i >= 0; i--) {
+          	creditUserRow += '<li class="creditUserRow'+i+'"><input type="radio" name="creditUser" id='+creditUserDataArr[i].ccUser+'><label for='+creditUserDataArr[i].ccUser+'>'+creditUserDataArr[i].ccUser+'</label><span id='+creditUserDataArr[i].ccDept+'>'+creditUserDataArr[i].ccDept+'</span></li>';
+          }
+
+          $(".userWarp ul").append(userRow);
+          $(".creditUserWarp ul").append(creditUserRow);
+        // 模糊查询
+        function nameFilter(filter,warp){
+          	$("#"+filter).on("input propertychange",function(){
+		        var queryStr =$.trim($("#"+filter).val());
+		        if(queryStr === ''){
+		            $("."+warp+" ul li").show();
+		        }else{
+		            $("."+warp+" ul li").hide().find("label, span").filter(":contains('"+queryStr+"')").parent("li").show();
+		        }
+          	})
+        }
+        nameFilter("userFilter","userWarp");
+        nameFilter("creditUserFilter","creditUserWarp");
+
+        // 关联用户
+        function bindPageBtn(urlObj){
+			$("#submitPage").on("click",function(){
+				var obj = {
+					users:[],
+					creditUser:{}
+				};
+				$(".userWarp li input:checkbox:checked").each(function(){
+					var t = $(this);
+					obj.users.push({id:t.attr("id"),orgId:t.siblings("span").attr("id")})
+				})
+				var $radio = $(".creditUserWarp li input[name='creditUser']:checked");
+
+				obj.creditUser.ccuser =$radio.attr("id");
+				obj.creditUser.ccdept =$radio.siblings("span").attr("id");
+				if(obj.users.length > 0 && Object.keys(obj.creditUser).length > 0){
+					console.log(obj.users.length);
+					console.log(Object.keys(obj.creditUser).length);
+					var url = urlObj.correlation;
+					ajaxFuncForJson(url,function(result){
+		                submitMsg(result);
+	              	},function(result){
+	                  layerMsg("error:"+JSON.stringify(result));
+	              	},JSON.stringify(obj));
+				}else{
+					layerAlert("用户或征信用户未选中！");
+				}
+				
+			});
+		};
+		//loadDic("common/systemDic", "buttonGroup", "buttonGroup");
+		bindPageBtn(urlObj);
+
+	});
+</script>
+</html>

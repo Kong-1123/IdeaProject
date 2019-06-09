@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jee="http://www.springframework.org/schema/jee" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+     http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+     http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd 
+     http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd ">
+
+    <!-- 开启注解配置，实现自动注入 -->
+    <context:annotation-config />
+    <!-- 开启注解事务，实现自动配置 -->
+    <tx:annotation-driven />
+
+    <context:property-placeholder
+            ignore-unresolvable="true" location="classpath*:/*.properties" />
+    <!-- 配置数据源 <jee:jndi-lookup id="FireflyDataSource" jndi-name="jdbc/firefly"
+        /> -->
+    <!-- 数据源配置, 使用DBCP数据库连接池 -->
+    <!-- <bean id="dataSource" class="cn.com.dhcc.query.creditquerycommon.util.db.util.HandleDBConfig"
+        destroy-method="close"> -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          destroy-method="close">
+        <!-- Connection Info -->
+        <property name="driverClassName" value="${jdbc.driver}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <!-- Connection Pooling Info -->
+        <property name="maxActive" value="${dbcp.maxActive}" />
+        <property name="maxIdle" value="${dbcp.maxIdle}" />
+        <property name="defaultAutoCommit" value="false" />
+        <!-- 连接Idle一个小时后超时 -->
+        <!-- <property name="timeBetweenEvictionRunsMillis" value="3600000" /> -->
+        <!-- <property name="minEvictableIdleTimeMillis" value="3600000" /> -->
+
+        <!-- 连接120s后超时 -->
+        <property name="timeBetweenEvictionRunsMillis" value="120000" />
+        <property name="minEvictableIdleTimeMillis" value="120000" />
+        <!-- 这里建议配置为TRUE，防止取到的连接不可用 -->
+        <property name="testOnBorrow" value="true" />
+        <property name="testOnReturn" value="false" />
+
+        <property name="filters" value="stat" />
+
+    </bean>
+    <!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
+    <context:component-scan base-package="cn.com.*.*">
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller" />
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+    </context:component-scan>
+
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter" />
+        <property name="packagesToScan" value="cn.com.dhcc.*" />
+        <!-- <property name="packagesToScan"> <list> <value>cn.com.*.*</value>
+            <value>com.*.*</value> </list> </property> -->
+        <property name="jpaProperties">
+            <props>
+                <!-- 命名规则 My_NAME->MyName -->
+                <prop key="hibernate.ejb.naming_strategy">org.hibernate.cfg.ImprovedNamingStrategy</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="hibernateJpaVendorAdapter"
+          class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="databasePlatform">
+            <bean factory-method="getDialect"
+                  class="cn.com.dhcc.query.creditquerycommon.util.HibernateUtil">
+                <constructor-arg ref="dataSource" />
+            </bean>
+        </property>
+        <property name="showSql" value="false" />
+    </bean>
+
+    <!--factory-class 配置接收DAO的信息 -->
+    <jpa:repositories base-package="cn.com.dhcc.*"
+                      transaction-manager-ref="transactionManager"
+                      factory-class="cn.com.dhcc.creditquery.person.queryweb.util.jpa.CommonRepositoryFactoryBean"
+                      entity-manager-factory-ref="entityManagerFactory" />
+
+    <!-- Jpa 事务配置 -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <!-- 使用annotation定义事务 -->
+    <tx:annotation-driven transaction-manager="transactionManager"
+                          proxy-target-class="true" />
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="create*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="*Update" propagation="REQUIRED"/>
+            <tx:method name="*" propagation="REQUIRED" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- JSR303 Validator定义 -->
+    <bean id="validator"
+          class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+
+    <!-- Ehcache 配置 开始 -->
+    <bean id="cacheManager"
+          class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:shiro/ehcache.xml" />
+    </bean>
+
+    <bean id="cache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+        <property name="cacheManager" ref="cacheManager" />
+        <property name="cacheName" value="dictCache" />
+    </bean>
+    <!--Ehcache 配置 结束 -->
+
+    <!-- AOP配置 -->
+    <!-- 激活组件扫描功能,在包cn.ysh.studio.spring.aop及其子包下面自动扫描通过注解配置的组件 -->
+    <context:component-scan base-package="cn.com.dhcc.credit.platform.util" />
+    <context:component-scan
+            base-package="cn.com.dhcc.credit.creditplatform.jpa.repository" />
+    <!-- 激活自动代理功能 -->
+    <aop:aspectj-autoproxy proxy-target-class="true" />
+    <!-- AOP配置结束 -->
+
+
+    <bean id="springContextUtil" class="cn.com.dhcc.credit.platform.util.SpringContextUtil"></bean>
+    <!-- Reids 配置 开始 -->
+    <context:property-placeholder location="classpath:redis.properties" />
+    <bean  id="redisson" class="cn.com.dhcc.credit.platform.util.RedissonUtil"></bean>
+    <!-- session会话存储的实现类 -->
+    <bean id="redisShiroSessionDAO"
+          class="cn.com.dhcc.query.creditquerycommon.session.RedisSessionDAO">
+    </bean>
+
+    <!-- sessionManager -->
+    <!-- session管理器 -->
+    <bean id="sessionManager"
+          class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <!-- 设置全局会话超时时间，默认30分钟(1800000) -->
+        <property name="globalSessionTimeout" value="43200000" />
+        <!-- 是否在会话过期后会调用SessionDAO的delete方法删除会话 默认true -->
+        <property name="deleteInvalidSessions" value="true" />
+        <!-- 会话验证器调度时间 -->
+        <property name="sessionValidationInterval" value="43200000" />
+        <!-- session存储的实现 -->
+        <property name="sessionDAO" ref="redisShiroSessionDAO" />
+        <!-- sessionIdCookie的实现,用于重写覆盖容器默认的JSESSIONID -->
+        <property name="sessionIdCookie" ref="sharesession" />
+        <!-- 定时检查失效的session -->
+        <property name="sessionValidationSchedulerEnabled" value="true" />
+    </bean>
+
+    <!-- sessionIdCookie的实现,用于重写覆盖容器默认的JSESSIONID -->
+    <bean id="sharesession" class="org.apache.shiro.web.servlet.SimpleCookie">
+        <!-- cookie的name,对应的默认是 JSESSIONID -->
+        <constructor-arg name="name" value="SHAREJSESSIONID" />
+        <!-- jsessionId的path为 / 用于多个系统共享jsessionId -->
+        <property name="path" value="/" />
+        <property name="httpOnly" value="true" />
+    </bean>
+    <!--Reids 配置 结束 -->
+
+    <!-- Spring JDBC -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    <bean id="namedParameterJdbcTemplate"
+          class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg type="org.springframework.jdbc.core.JdbcOperations"
+                         ref="jdbcTemplate" />
+    </bean>
+
+</beans>

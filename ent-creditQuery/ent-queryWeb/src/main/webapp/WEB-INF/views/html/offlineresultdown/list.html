@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/listIncludeStyle.js"></script>
+</head>
+<script type="text/javascript" src="../static/script/listIncludeScript.js"></script>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+
+<script type="text/javascript">
+$(function() {
+	var Pname = getProjectName(location.href);
+	var loginUrl = Pname + "offlineresultdown/tryLogin?" + Math.random();
+	console.log(loginUrl);
+	$.get(loginUrl, function(result) {
+		var obj = strToJson(result);
+		if (obj.code == "00000") {
+			window.location.href = "/creditplatformweb/";
+		} else {
+			console.log(document.cookie);
+			if(obj.code=="00001"){
+					layui.use(["table","form","layer"], function(){
+		var layer = layui.layer;
+		layerAlert("征信中心登陆失败，请查看!",function(){
+			$(".layui-tab .layui-this .layui-tab-close",parent.document).click();
+		})
+})
+			}else{
+					window.location.href = "/shwebroot/OfflineResultDownloadAction.do";
+				}
+			}
+		});
+	})
+</script>
+</html>

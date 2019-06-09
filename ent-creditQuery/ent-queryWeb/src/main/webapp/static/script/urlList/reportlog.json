@@ -1,0 +1,13 @@
+{
+  "tabs": [
+   {
+      "name": "报告使用记录",
+      "eName":"reportlog",
+      "detailUrl":"reportlog/detail",
+      "searchUrl":"reportlog/search",
+      "getPage":"reportlog/getPage",
+      "getValUrl":"reportlog/findById",
+      "exportUrl":"reportlog/exportExcel"
+   }
+   ]
+ }

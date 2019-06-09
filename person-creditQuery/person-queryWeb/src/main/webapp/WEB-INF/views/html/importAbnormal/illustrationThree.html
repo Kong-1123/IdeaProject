@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>异常查询说明</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/pageIncludeStyle.js"></script>
+</head>
+<body>
+	<div id="form-wrap" class="layui-form" lay-filter="setVal">
+		<form id="update_form_id"  action="importThreeAbnormal/updateIllustration">
+			<div class="modal-body selectmodal">
+				<ul class="formWrap clearfix">
+					<li class="twoCols">
+						<span class="formLabel">异常查询说明:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="hidden" name="id" class="layui-input noReset" />
+								<textarea name="illustration" class="layui-textarea validate[required,maxSize[170]]" ></textarea>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="layui_btn btn_submit clearfix"><i class='DHCiconfont'>&#xe606;</i>提交</button>
+				<button type="button" id="resetPage" class="layui_btn btn_reset clearfix"><i class='DHCiconfont'>&#xe609;</i>清空</button>
+		    </div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+
+	var data = getParamObj(), id = data.id ;
+	//console.log(data);
+
+	layui.use([ "form", "layer" ], function() {
+		var form = layui.form, layer = layui.layer;
+		//form.render('select'); 
+		form.val("setVal", data);
+	})
+
+	$(function() {
+		//form.render('select'); 
+		//$("input[name=id]").val(id);
+		bindPageBtnEvent();
+	});
+</script>
+</html>

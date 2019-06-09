@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>查询页面</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/pageIncludeStyle.js"></script>
+</head>
+<body>
+	<div id="form-wrap">
+		<form id="query_form_id" action="queryReason/getPage">
+			<div class="modal-body">
+				<table class="grayTable">
+					<tr>
+						<th align="right" class="thStyle">查询原因:</th>
+						<td><select name="search_EQ_queryReason"></select></td>
+					</tr>
+					<tr>
+						<th align="right" class="thStyle">查询版式:</th>
+						<td><select name="search_EQ_queryFormat"></select></td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" id="searchPage" class="btn-vip btn-blue"
+					value="查询" /> <input type="reset" id="resetPage"
+					class="btn-vip btn-white" value="清空" />
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+$(function() {
+	loadDic("common/ceqDic", "search_EQ_queryFormat", "qryFormat_ceq");
+	loadDic("common/ceqDic", "search_EQ_queryReason", "qryReason_ceq");
+});
+</script>
+</html>
+

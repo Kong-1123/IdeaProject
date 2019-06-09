@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>分页列表</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/listIncludeStyle.js"></script>
+
+
+</head>
+<body name="queryReason">
+	<div class="main-list">
+		<div class="inquiry">
+			<form class="layui-form" action="">
+				<div class="list-top">
+					<div class="list-top_left">
+						<h5>筛选条件</h5>
+					</div>
+					<div class="list-top_right">
+						<ul>
+							<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon1.png"></a></li>
+							<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon2.png"></a></li>
+							<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon3.png"></a></li>
+						</ul>
+					</div>
+				</div>
+				<ul class="cons clearfix modal-body">
+					<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">查询版式：</label>
+			                <div class="layui-input-block">
+			                	<select  name="search_EQ_queryFormat" >
+			                	</select>
+      						</div>
+			              </div>
+            		</li>
+				</ul>
+				<div class="btnWrap">
+					<button type="button" class="cx_btn searchBtn">
+						<i class='DHCiconfont'>&#xe606;</i>查询
+					</button>
+					<button type="reset" class="qk_btn resetBtn">
+						<i class='DHCiconfont'>&#xe609;</i>清空
+					</button>
+				</div>
+			</form>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<!-- 表格部分 -->
+	<div class="list-m">
+		<div class="list-top">
+			<div class="list-top_left">
+				<h5
+					style="background: url(../static/images/table/sx_icon2.png) 17px no-repeat">查询原因配置</h5>
+			</div>
+			<div class="btnWrap">
+				<ul>
+					
+				</ul>
+			</div>
+		</div>
+		<div class="datail" style="padding: 0px; margin-bottom: 0px;">
+			<table id="grid-data" lay-filter="grid-data"></table>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript" src="../static/script/listIncludeScript.js"></script>
+<script type="text/javascript" src="../static/script/business/queryreason/queryReason.js"></script>
+
+<script type="text/html" id="delegationPolicy">
+	 <input type="checkbox" name="delegationPolicy" value="{{d.id}}" lay-skin="switch" lay-text="停用授权|启用授权" lay-filter="delegationPolicy" {{ d.delegationPolicy == 0 ?  "": 'checked' }}>
+</script>
+
+<script type="text/html" id="recheckPolicy">
+	 <input type="checkbox" name="recheckPolicy" value="{{d.id}}" lay-skin="switch" lay-text="停用审批|启用审批" lay-filter="recheckPolicy" {{ d.recheckPolicy == 0 ?  "":  'checked'}} >
+</script>
+
+<script type="text/javascript">
+	// 获取页面url配置文件列表对象
+	var listObj = getUrlList("../static/script/urlList/queryReason.json");
+	// 获取当前页面name
+	var pageName = $("body").attr("name");
+	// 获取当前页面url配置列表对象
+	var urlObj = returnOneUrlObj(pageName, listObj);
+	
+	//字典
+	var qryReasonDic = {
+	        url : "common/ceqDic",
+	        type : "qryReason_ceq"
+	    };
+	var qryFormatDic ={
+			url : "common/ceqDic",
+			type : "qryFormat_ceq"
+		};
+	
+	var gridDicData = gridShowDic([qryReasonDic,qryFormatDic]);
+	
+	
+	layui.use([ "table", "form", "layer" ], function(){
+		var table = layui.table,
+		form = layui.form,
+		layer = layui.layer;
+		
+		loadDic("common/ceqDic", "search_EQ_queryFormat", "qryFormat_ceq");
+		form.render('select'); 
+		
+		
+		var gridopt = {
+			urlObj : urlObj
+				,cols : [[{
+					checkbox: true},{
+			            field : 'queryReason',
+			            title : '查询原因',
+			            width : 100,
+			            templet: function(d){
+							// 表格中字典转换
+							return gridDicData[qryReasonDic.type][d.queryReason]+"";
+						}
+			        }, {
+			            field : 'queryFormat',
+			            title : '查询版式',
+			            width : 120,
+			            templet: function(d){
+							// 表格中字典转换
+							return gridDicData[qryFormatDic.type][d.queryFormat]+"";
+						}
+			        }, {
+			            field : 'operator',
+			            title : '操作人',
+			            width : 120,
+			            
+			        }, {
+			            field : 'updateTime',
+			            title : '操作时间',
+			            width : 150,
+			        }, {
+			            field : 'button',
+			            name : "delegationPolicy",
+			            title : '启/停用授权',
+			            width : 120,
+			            templet: '#delegationPolicy'
+			        }, {
+			            field : 'button',
+			            name : "recheckPolicy",
+			            title : '启/停用审批',
+			            width : 120,
+			            templet: '#recheckPolicy'
+			        }]]
+			}
+
+			var returnObj = gridInit(form,table,gridopt);
+			// 绑定页面点击事件（含初始化页签组件）
+			/* returnObj.searchData = $("form").serializeJSON(); */
+			bindBtnEvent(returnObj,urlObj);
+			
+		});
+</script>
+</html>

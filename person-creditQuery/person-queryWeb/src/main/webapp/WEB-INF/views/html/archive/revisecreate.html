@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>授权信息补录新增</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/business/archive/archiveIncludeStyle.js"></script>
+<link rel="stylesheet" href="../static/style/business/archive.css">
+<style>
+	#form-wrap .formWrap li{
+		margin: 15px 30px !important;
+	}
+	.layui-layer-title{
+		height: 42px;
+	    line-height: 42px;
+	   	border-bottom: 1px solid #eee;
+	    /* background-color: #F8F8F8 !important; */
+	}
+	#createFileIe9{
+		float: right;
+		display: none;
+	}
+	.fileUpload{
+		display: none;
+		color: #333;
+		border-color: #fff;
+		background-color: #fff;
+	}
+</style>
+</head>
+<body name="revise">
+	<div id="form-wrap" class="layui-form" lay-filter="setVal">
+
+			<div class="modal-body selectmodal">
+			<form id="create_form_id" action="archive/create">
+				<ul class="formWrap clearfix">
+					<li><span class="formLabel">客户姓名:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="clientName" id="clientName"
+									class="layui-input" placeholder="请输入" />
+							</div>
+						</div></li>
+					<li><span class="formLabel">证件类型:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="cretType" id="idType" class="layui-input"></select>
+
+							</div>
+						</div></li>
+					<li class="twoCols">
+						<span class="formLabel">证件号码:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="cretNo" id="cretNo" class="layui-input"
+									placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li class="emptyCols"></li>
+					<li><span class="formLabel">授权起始日期:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="startDate" id="startDate" 
+									class="validate[required,funcCall[checkStartDate],dateRange[grp1]] date layui-input" placeholder="请输入" />
+							</div>
+						</div></li>
+
+					<li><span class="formLabel">授权结束日期:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="expireDate" id="expireDate" 
+									class="validate[required,funcCall[checkExpireDate],dateRange[grp1]] date layui-input" placeholder="请输入" />
+							</div>
+						</div></li>
+					<!-- <li class="threeCols">
+						<span class="formLabel">备注:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<textarea name="remarks" class="validate[required,maxSize[256]] layui-textarea" placeholder="请输入"></textarea>
+							</div>
+						</div>
+					</li> -->
+				</ul>
+				<p class="record paperFile">纸质文件</p>
+				<div id = "paperFile" class="layui-upload" style="display: block;">
+
+					<ul class="formWrap clearfix">
+						<li><span class="formLabel">纸质文件编号:</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="paperfileid" id="paperNo" maxlength="90"
+										class="layui-input" placeholder="请输入" />
+								</div>
+							</div></li>
+						<li><span class="formLabel">纸质文件描述:</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="filedescribe" id="paperDesc" maxlength="450"
+										class="layui-input" placeholder="请输入" />
+								</div>
+							</div></li>
+					</ul>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="layui_btn btn_submit clearfix" id="submitPage"><i class='DHCiconfont'>&#xe617;</i>保存</button>
+					<!-- <button type="reset" class="layui_btn btn_reset clearfix" id="resetPage"><i class='DHCiconfont'>&#xe609;</i>清 空</button> -->
+				</div>
+			</form>
+				<div class="electric">
+					<p class="record">电子文件1
+						<span>仅支持JPG、PNG、GIF、TIF、BMP、PDF格式的文件,且小于2MB</span>
+					</p>
+					<div id="uploadBody" class="modal-body layui-upload" style="display: block;">
+						<div class="layui-upload-list">
+						    <table class="layui-table">
+							      <thead>
+							        <tr>
+								        <th>文件类型</th>
+								        <th>文件名</th>
+								        <th>操作</th>
+								    </tr>
+								  </thead>
+							      <tbody id="uploadCard">  
+						      </tbody>
+						    </table>
+						</div>
+					</div>
+					<p class="record">电子文件2
+						<span>仅支持JPG、PNG、GIF、TIF、BMP、PDF格式的文件,且小于2MB</span>
+					</p>
+					<div class="modal-body layui-upload" style="display: block;">
+						<div class="layui-upload-list">
+							 <button type="button" class="layui-btn layui-btn-normal" id="createFile">新增档案文件</button> 
+							 <button type="button" class="layui-btn layui-btn-normal" id="createFileIe9">新增档案文件</button> 
+							    <table class="layui-table">
+							      <thead>
+							        <tr>
+								        <th>文件类型</th>
+								        <th>文件名</th>
+								        <th>操作</th>
+								    </tr>
+								  </thead>
+							      <tbody id="uploadList">
+							      </tbody>
+							    </table>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/business/archive/archiveIncludeScript.js"></script>
+
+<script type="text/javascript">
+Array.prototype.remove = function(val) { 
+	var index = this.indexOf(val); 
+	if (index > -1) { 
+		this.splice(index, 1); 
+	} 
+};
+var uploadObj = {},urlObj = parent.urlObj;
+//从字典中取值
+var dicData = getDic("common/cpqDic","archiveType");
+//根据获取的后台参数动态生成需要上传的文件
+var jsonData = getAjaxData(urlObj.getArchiveType,null);
+//根据type判断并动态生成文件类型
+var number = parseInt(jsonData.Num);
+var types = jsonData.Type;
+function file_type(upload){
+	for(var i = 0;i<types.length;i++){
+		var type = types[i];
+		var trStr = '<tr>'+
+			'<td class="typeName" data-type="'+ type +'">'+dicData[type]+'</td>'+
+			'<td class="fileTypeName" width="300px"></td>'+
+			'<td>'+
+			'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-look">预览</button>'+
+			'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-select demo-select'+ i +'">选择文件</button><input id="file'+ i +'" class="fileUpload" type="file" name="file">'+
+			'</td>'+
+			'</tr>';
+		$("#uploadCard").append(trStr);
+		//身份证正反面、授权书上传
+		var filesObj ={};
+		uploadObj["uploadListIns"+i] = upload.render({
+		  elem: ".demo-select"+i
+		  ,url: urlObj.reviseuploadfile
+		  ,accept: 'file' //普通文件
+		  ,exts: 'pdf|png|jpg|gif|bmp|tif' 
+		  ,multiple: false
+		  ,auto: false //选择文件后不自动上传 
+		  ,before: function(obj){
+			  	var item = this.item;
+			  	var fileType = item.parents("tr").find(".typeName").attr("data-type");
+			  	this.data.fileType = fileType;
+			  	this.data.archiveId = resultId;
+			  	this.data.resultInfoId = authId;
+			  }
+			  ,choose: function(obj){
+		  		    var item = this.item;
+			        //读取本地文件
+			        var f,files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+					
+			        obj.preview(function(index, file, result){
+			        	var fileNameArr = [];
+				    	$(".fileName").each(function(){
+				    		var name = $(this).html();
+				    		fileNameArr.push(name);
+				    	})
+				    	$(".fileTypeName").each(function(){
+				    		var name = $(this).html();
+				    		fileNameArr.push(name);
+				    	})
+				    	if(fileNameArr.in_array(file.name)){
+				    		layerMsg("此文件已存在");
+				    		delete files[index]; //删除对应的文件
+				    		return false;
+				    	}
+				      	var thisTr = item.parents("tr");
+						var num = file.num = thisTr.index();
+						//file.fileType = thisTr.find(".typeName").val();
+				       	if(filesObj["btn-"+num]){
+				      		delete files[filesObj["btn-"+num]];
+				      	} 
+				      	filesObj["btn-"+num] = index;
+
+				        thisTr.find('td').eq(1).html('').text(file.name);
+				        
+				       // 预览
+				        thisTr.off('click').on('click', '.demo-look', function(){
+				        	view(file.name,result,null,file);
+				        });
+			        });
+				}
+		});   
+	}
+}
+$(".electric").on("change",".fileUpload",function(){
+	var t = $(this);
+	// 获取文件
+	var file_name = t.val();
+	// 把所以表单信息
+	// var fileType = t.parents("tr").find(".typeName").attr("data-type");
+	file_name = file_name.replace("C:\\fakepath\\","");
+	t.parents("tr").find(".fileTypeName").text(file_name);
+})
+//提交
+var resultId;
+function submitFun(submitUrl,data){
+	var uploadFile = function(data,resultId){
+		layer.load(2);
+		if(BrowserType() == "IE8" || BrowserType() == "IE9"){
+			var str = "";
+			$(".fileUpload").each(function(i,v){
+				str = str + v.value;
+			})
+			var paperData = {};
+			paperData.paperfileid = data.paperfileid;
+			paperData.filedescribe = data.filedescribe;
+			paperData.archiveid = resultId;
+			paperData.resultInfoId = parent.authId;
+			//只上传纸质档案
+			if(str == ""){
+				if(paperData.paperfileid){
+					submitSavePaper(urlObj.revisesavePaper,paperData);
+				}else{
+					layerMsg('请上传纸质档案或电子档案');
+					$(".modal-footer button").attr("disabled", false);
+					window.hasSubmit = false;
+				}
+			//只上传电子档案或电子纸质档案一起上传
+			}else{
+				var len = $(".fileUpload").length
+				var n = 0;
+				var fileUpload  = $(".fileUpload").filter(function(){
+					return Boolean($(this).val()) == true;
+				});
+				var size = fileUpload.length;
+				// $(".fileUpload").each(function(i,v){
+				for(var i = 0 ; i<=fileUpload.length;i++){
+					var t = fileUpload.eq(i);
+					// var t = $(this);
+					var fileType = t.parents("tr").find(".typeName").attr("data-type");
+					if(i == fileUpload.length && types.length){
+						fileType = fileUpload.eq(i-1).parents("tr").find(".typeName").attr("data-type");
+					}
+					var submitData = {
+						fileType:fileType,
+						archiveId:resultId
+					}
+					$.ajaxFileUpload({  //Jquery插件上传文件
+		                url: requestAddRandom(urlObj.reviseuploadfile),
+		                secureuri: false,//是否启用安全提交  默认为false
+		                fileElementId: "file"+i, //type="file"的id
+		                data:submitData,
+		                dataType: "text",  //返回值类型
+		                success: function (data){
+		                	n++;
+		                	if( n == size){
+								submitSavePaper(urlObj.revisesavePaper,paperData);
+								layer.closeAll('loading');
+		                	}else{
+		                		if( i == size - 1){
+			                		layer.closeAll('loading');
+						        	layerAlert("部分文件未上传成功，请稍后补充！",function(){
+										reloadParentPage();
+									});
+						        }
+		                	}
+	                	}
+		            });
+	            }
+		        // })
+			}
+	        
+		}else{
+			for(var k in uploadObj){
+				uploadObj[k].upload();
+			}
+	  		uploadListInsOther.upload();
+	  		var paperData = {};
+			paperData.paperfileid = data.paperfileid;
+			paperData.filedescribe = data.filedescribe;
+			paperData.archiveid = resultId;
+			paperData.resultInfoId = parent.authId;
+			if(paperData.paperfileid!=''){
+				submitSavePaper(urlObj.revisesavePaper,paperData);
+			}else{
+				layer.closeAll('loading');
+				layerAlert("操作成功",function(){
+					reloadParentPage();
+				})
+			}
+		}
+	};
+	var paperIsOk = $("#paperNo").val()!='';
+	var electricIsOk = false;
+	var fileNameArr=[];
+	$("#uploadCard tr").each(function(){
+		if(BrowserType() == "IE8" || BrowserType() == "IE9"){
+			var val = $(this).find(".fileUpload").val();
+			if(val != ""){
+				electricIsOk = true;
+				fileNameArr.push(val);
+			}else{
+				return false
+			}
+	    }else{
+	    	var txt = $(this).find(".fileTypeName").text();
+			if(txt != ""){
+				electricIsOk = true;
+				fileNameArr.push(txt);
+			}else{
+				return false
+			}
+	    }
+		
+	})
+	//纸质档案和电子档案可以二选一，但电子档案中身份证和授权书必须都填
+	if((paperIsOk)||(electricIsOk)){
+		if(fileNameArr.length == $("#uploadCard tr").length || paperIsOk){
+			if(fileNameArr.length != $("#uploadCard tr").length && fileNameArr.length !=0){
+				layerMsg('电子文件1需全部上传,请检查！');
+				$(".modal-footer button").attr("disabled", false);
+				window.hasSubmit = false;
+				return;
+			}
+			if(!checkFileRepeatOrNonSupport($(".fileUpload"))){
+				return;
+			}
+			data.isRevise = "0";
+			ajaxFunc(submitUrl, function(result){
+				if ('00000000' == result.code) {
+					resultId = result.msg;
+					uploadFile(data,resultId);
+				} else {
+					layerMsg(result.msg);
+					$(".modal-footer button").attr("disabled", false);
+					window.hasSubmit = false;
+				}
+			}, function(result) {
+				layerMsg(result.msg);
+			}, data);
+		}else{
+			layerMsg('电子文件1需全部上传,请检查！');
+			$(".modal-footer button").attr("disabled", false);
+			window.hasSubmit = false;
+		}
+	}else{
+		layerMsg('请上传纸质档案或电子档案');
+		$(".modal-footer button").attr("disabled", false);
+		window.hasSubmit = false;
+	}	
+}
+
+
+function submitSavePaper(url, data){
+	ajaxFunc(url, function(result){
+		if ('00000000' == result.code) {
+			layerAlert(result.msg,function(){
+			reloadParentPage();
+			});
+		} else {
+			layerMsg(result.msg);
+			$(".modal-footer button").attr("disabled", false);
+			window.hasSubmit = false;
+		}
+	}, function(result) {
+		layerMsg(result.msg);
+	}, data);
+}
+
+
+var reviseInfo = parent.reviseInfo;
+var authId = parent.authId;
+//上传文件
+layui.use(["table","form","layer","upload"], function(){
+	var table = layui.table,
+		form = layui.form,
+		layer = layui.layer,
+		upload = layui.upload;
+	
+	loadDic("common/cpqDic", "cretType", "idType");
+	//根据archiveType判断档案类型 1:电子档案，2：纸质档案,3:两者皆有
+	var archiveType = jsonData.archiveType;
+	if(archiveType == 1){
+		file_type(upload);
+		$(".paperFile").hide();
+		$("#paperFile").hide();
+	}else if(archiveType == 2){
+		$(".electric").hide();
+		$(".paperFile").show();
+		$("#paperFile").show();
+	}else if(archiveType == 3){
+		$(".electric").show();
+		file_type(upload);
+		$(".paperFile").show();
+		$("#paperFile").show();
+	}
+    form.render('select'); 
+    $('#clientName').val(reviseInfo.clientName);
+    $('#idType').val(reviseInfo.certType);
+    $('#cretNo').val(reviseInfo.certNo);
+    setReadonly(["clientName","cretType","cretNo"]);
+	form.val("setVal",reviseInfo);
+	form.render('select'); 
+	//纸质档案输入框为可输入的
+	$("#paperNo").removeClass("disabled").attr("disabled", false);
+	$("#paperDesc").removeClass("disabled").attr("disabled", false);
+	//授权日期可输入
+	$("#startDate").removeClass("disabled").attr("disabled", false);
+	$("#expireDate").removeClass("disabled").attr("disabled", false);
+if(BrowserType() == "IE8" || BrowserType() == "IE9"){
+    	var n1 = 0;
+    	var n2 = parseInt(number);
+
+    	$("#createFileIe9,.fileUpload").show();
+    	$(".demo-select,.demo-look,#createFile").hide();
+    	$("#createFileIe9").on('click',function(){
+    		if(n1<n2){
+    			addItem(n1+types.length+1);
+    			n1++;
+    		}else{
+    			layerMsg("其他类型的电子文件数量不能超过"+number+"条");
+    		}
+    	})
+    	$('#uploadList').on('click','.demo-delete',function(){
+			$(this).parents("tr").remove();
+			n1--;
+		});
+    }
+		
+	/*	uploadListIns1 = upload.render({
+		  elem: ".demo-select1"
+		  ,url: urlObj.reviseuploadfile
+		  ,accept: 'file' //普通文件
+		  ,exts: 'pdf|png|jpg|gif|bmp|tif' 
+		  ,multiple: false
+		  ,auto: false //选择文件后不自动上传
+		  ,before: function(obj){
+		  	var item = this.item;
+		  	var fileType = item.parents("tr").find(".typeName").attr("data-type");
+		  	this.data.fileType = fileType;
+		  	this.data.archiveId = resultId;
+		  	this.data.resultInfoId = authId;
+		  }
+		  ,choose: function(obj){
+	  		    var item = this.item;
+		        //读取本地文件
+		        var f,files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+				
+		        obj.preview(function(index, file, result){
+			      	var thisTr = item.parents("tr");
+					var num = file.num = thisTr.index();
+					//file.fileType = thisTr.find(".typeName").val();
+			       	if(filesObj["btn-"+num]){
+			      		delete files[filesObj["btn-"+num]];
+			      	} 
+			      	filesObj["btn-"+num] = index;
+
+			        thisTr.find('td').eq(1).html('').text(file.name);
+			        
+			       // 预览
+			        thisTr.off('click').on('click', '.demo-look', function(){
+			        	view(file.name,result,null,file);
+			        });
+		        });
+			}
+		});   
+		uploadListIns2 = upload.render({
+			  elem: ".demo-select2"
+			  ,url: urlObj.reviseuploadfile
+			  ,accept: 'file' //普通文件
+			  ,exts: 'pdf|png|jpg|gif|bmp|tif' 
+			  ,multiple: true
+			  ,auto: false //选择文件后不自动上传
+			  ,before: function(obj){
+			  	var item = this.item;
+			  	var fileType = item.parents("tr").find(".typeName").attr("data-type");
+			  	this.data.fileType = fileType;
+			  	this.data.archiveId = resultId;
+			  	this.data.resultInfoId = authId;
+			  }
+			  ,choose: function(obj){ 
+			  		  var item = this.item;
+				      //读取本地文件
+				      var f,files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+				      obj.preview(function(index, file, result){
+				      	var thisTr = item.parents("tr");
+				      
+						var num = file.num = thisTr.index();
+				      	if(filesObj["btn-"+num]){
+				      		delete files[filesObj["btn-"+num]];
+				      	}
+				      	filesObj["btn-"+num] = index;
+				      	console.log(files);
+				        thisTr.find('td').eq(1).html('').text(file.name);
+				         // 预览
+				        thisTr.off('click').on('click', '.demo-look', function(){
+				        	view(file.name,result,null,file);
+				        });
+				      });
+				    }
+				  });
+		uploadListIns3 = upload.render({
+			  elem: ".demo-select3"
+			  ,url: urlObj.reviseuploadfile
+			  ,accept: 'file' //普通文件
+			  ,exts: 'pdf|png|jpg|gif|bmp|tif' 
+			  ,multiple: true
+			  ,auto: false //选择文件后不自动上传
+			  ,before: function(obj){
+			  	var item = this.item;
+			  	var fileType = item.parents("tr").find(".typeName").attr("data-type");
+			  	this.data.fileType = fileType;
+			  	this.data.archiveId = resultId;
+			  	this.data.resultInfoId = authId;
+			  }
+			  ,choose: function(obj){ 
+			  		  var item = this.item;
+				      //读取本地文件
+				      var f,files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+				      obj.preview(function(index, file, result){
+				      	var thisTr = item.parents("tr");
+				      
+						var num = file.num = thisTr.index();
+				      	if(filesObj["btn-"+num]){
+				      		delete files[filesObj["btn-"+num]];
+				      	}
+				      	filesObj["btn-"+num] = index;
+				      	console.log(files);
+				        thisTr.find('td').eq(1).html('').text(file.name);
+				        
+				       // 预览
+				        thisTr.off('click').on('click', '.demo-look', function(){
+				        	view(file.name,result,null,file);
+				        });
+				      });
+				    }
+				  });*/
+		//如果上传文件时没有选择要上传的文件，则文件名那一栏为空
+		$("#uploadCard input").each(function(){ 
+			$(this).on('change',function(){
+				var val = $(this).val();
+		      	console.log(val);
+		      	if(val == ""){
+		      		$(this).parents("tr").find(".fileTypeName").text('');
+		      	}
+			})
+		})
+//档案文件2
+
+	var flag = true;
+	var uploadList = $('#uploadList');
+	uploadListInsOther = upload.render({
+	    elem: '#createFile'
+	    ,url: urlObj.reviseuploadfile
+	    ,accept: 'file' //普通文件
+		,exts: 'pdf|png|jpg|gif|bmp|tif'
+	    ,multiple: true
+	    ,auto: false
+	    ,before: function(obj){
+		  	var item = this.item;
+		  	var fileType = 200;
+		  	this.data.fileType = fileType;
+		  	this.data.archiveId = resultId;
+		  	this.data.resultInfoId = authId;
+		  }
+	    ,choose: function(obj){
+	    	var arrlength,arr = [];
+	    	if(flag){
+	    		var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+	    		arr = Object.keys(files);
+	    		arrlength = arr.length;
+	  	      //判断新增档案不能超过指定条数
+	    		if(arrlength == number){
+			    	flag = false;
+			    }
+	    	}else{
+		    	layerMsg("其他类型的电子文件数量不能超过"+number+"条");
+		    }
+		  
+	      //读取本地文件
+	      obj.preview(function(index, file, result){
+	    	 	var fileNameArr = [];
+		    	$(".fileName").each(function(){
+		    		var name = $(this).html();
+		    		fileNameArr.push(name);
+		    	})
+		    	$(".fileTypeName").each(function(){
+		    		var name = $(this).html();
+		    		fileNameArr.push(name);
+		    	})
+		    	if(fileNameArr.in_array(file.name)){
+		    		layerMsg("此文件已存在");
+		    		delete files[index]; //删除对应的文件
+		    		flag = true;
+		    		return false;
+		    	}
+		        var tr = $(['<tr id="upload-'+ index +'">'
+		          ,'<td class="typeName" data-type="200">'+dicData[200]+'</td>'
+		          ,'<td width="300px" class="fileName">'+ file.name +'</td>'
+		          ,'<td>'
+		            ,'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>'
+		            ,'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-view">预览</button>'
+		          ,'</td>'
+		        ,'</tr>'].join(''));
+	        
+	        //删除
+	        tr.find('.demo-delete').on('click', function(){
+	        	layerConfirm('确认此项操作？',
+	        	     function() {
+	        			flag = true;
+		  			  	arr.remove(index);
+		  			  	var txt = tr.find(".fileName").text();
+		  			  	fileNameArr.removeByValue(txt);
+		  	          	delete files[index]; //删除对应的文件
+		  	          	tr.remove();
+		  	          	uploadListInsOther.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+	        	});
+	          
+	        });
+	        if(arrlength <= number){
+		        uploadList.append(tr);	
+			}
+			 // 预览
+	        tr.on('click', '.demo-view', function(){
+	        	 view(file.name,result,null,file);
+	        });
+	      });
+	    }
+	  });
+})
+
+
+$(function() {
+	bindPageBtnEvent();
+});
+
+
+</script>
+</html>

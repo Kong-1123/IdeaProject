@@ -1,0 +1,23 @@
+{
+  "tabs": [
+   {
+      "name": "审批结果",
+      "eName":"reqresult",
+      "detailUrl":"reqresult/detail",
+      "searchUrl":"reqresult/search",
+      "getValUrl":"reqresult/findById",
+      "applyTaskUrl":"reqresult/applyTask",
+      "getPage":"reqresult/getPage",
+	  "getArchiveUrl":"archive/findById?id=",
+	  "canDownloadFile":"archive/canDownloadFile",
+	  "getArchiveValUrl":"archive/findById",
+	  "inquireUrl":"inquire/preValidate",
+	  "showReportUrl":"inquire/showCreditReport",
+      "localReportUrl":"inquire/showLocalCreditReport",
+      "applyReportUrl":"reqresult/applyReport",
+      "findByArchiveId":"archive/findByArchiveId?archiveId=",
+      "getPictureFile":"archive/getPictureFile" 
+      
+   }
+   ]
+ }

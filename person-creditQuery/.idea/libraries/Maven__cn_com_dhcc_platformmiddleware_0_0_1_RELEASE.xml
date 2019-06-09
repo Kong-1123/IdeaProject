@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: cn.com.dhcc:platformmiddleware:0.0.1-RELEASE">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/cn/com/dhcc/platformmiddleware/0.0.1-RELEASE/platformmiddleware-0.0.1-RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/cn/com/dhcc/platformmiddleware/0.0.1-RELEASE/platformmiddleware-0.0.1-RELEASE-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/cn/com/dhcc/platformmiddleware/0.0.1-RELEASE/platformmiddleware-0.0.1-RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>cn.com.dhcc</groupId>
+		<artifactId>ent-creditQuery</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>ent-queryStatistics</artifactId>
+	<packaging>pom</packaging>
+	<name>ent-queryStatistics</name>
+	<description>个人查询统计分析子工程，阐述包含的所有模块以及工程所依赖jar包。</description>
+	<properties>
+		<project.build.jdk>1.8</project.build.jdk>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<source>${project.build.jdk}</source>
+					<target>${project.build.jdk}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<modules>
+		<module>ent-queryStatistics-service</module>
+		<module>ent-queryStatistics-dao</module>
+	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>cn.com.dhcc</groupId>
+			<artifactId>ent-query-BO</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+	<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
+<dependency>
+    <groupId>org.springframework.data</groupId>
+    <artifactId>spring-data-jpa</artifactId>
+    <version>2.1.8.RELEASE</version>
+</dependency>
+	
+	</dependencies>
+
+</project>

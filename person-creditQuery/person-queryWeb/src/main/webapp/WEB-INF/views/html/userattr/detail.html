@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>个人用户属性管理详情</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/pageIncludeStyle.js"></script>
+</head>
+<body>
+	<div id="form-wrap" class="layui-form" lay-filter="setVal">
+		<form id="detail_form_id">
+			<div class="modal-body selectmodal">
+				<ul class="formWrap clearfix">
+					<li><span class="formLabel">用户名:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="userName" class="layui-input" />
+							</div>
+						</div></li>
+
+					<li><span class="formLabel">是否允许打印:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="printPermit" class="layui-input"
+									placeholder="请输入" />
+							</div>
+						</div></li>
+					<li><span class="formLabel">打印次数:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="printAmount" class="layui-input"
+									placeholder="请输入" />
+							</div>
+						</div></li>
+					<li><span class="formLabel">是否允许保存信用报告:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="savePermit" class="layui-input"
+									placeholder="请输入" />
+							</div>
+						</div></li>
+					<li><span class="formLabel">创建人:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="createUser" class="layui-input"
+									placeholder="请输入" />
+							</div>
+						</div></li>
+					<li><span class="formLabel">创建时间:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="createDate" class="layui-input"
+									placeholder="请输入" />
+							</div>
+						</div></li>
+					<li><span class="formLabel">修改时间:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="updateDate" class="layui-input"
+									placeholder="请输入" />
+							</div>
+						</div></li>
+					<li><span class="formLabel">关联个人征信用户:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="creditUser" class="layui-input"
+									placeholder="请输入" />
+							</div>
+						</div></li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="closePage"
+					class="layui_btn btn_submit clearfix">
+					<i class='DHCiconfont'>&#xe605;</i>关闭
+				</button>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+	var data = getParamObj();
+	var urlObj = returnOneUrlObj("peruserattr", parent.listObj);
+	var jsonData = getAjaxData(urlObj.getValUrl, data);
+	layui
+			.use(
+					[ 'form', 'layedit', 'laydate' ],
+					function() {
+						var form = layui.form, layer = layui.layer, layedit = layui.layedit, laydate = layui.laydate;
+						if (jsonData) {
+							var dicData = {
+								'0' : '是',
+								'1' : '否'
+							};
+							jsonData.printPermit = dicData[jsonData.printPermit];
+							jsonData.savePermit = dicData[jsonData.savePermit];
+							form.val("setVal", jsonData);
+						} else {
+							$("input[name=userName]").val(
+									parent.userData.userName);
+						}
+						//   jsonData.downloadPermit = dicData[jsonData.downloadPermit];
+
+						setReadonly();
+					})
+	$(function() {
+		bindPageBtnEvent();
+	});
+</script>
+</html>

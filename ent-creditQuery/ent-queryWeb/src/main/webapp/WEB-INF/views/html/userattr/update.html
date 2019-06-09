@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>企业用户属性管理修改</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/pageIncludeStyle.js"></script>
+<!-- <script type="text/javascript" src="../static/script/business/userattr/userattr.js"></script> -->
+</head>
+<body>
+	<div id="form-wrap" class="layui-form" lay-filter="setVal">
+		<form id="create_form_id" action="userattr/update">
+			<div class="modal-body selectmodal">
+				<ul class="formWrap clearfix">
+				<li><span class="formLabel">用户名:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="userName" id="userName"
+									class="noReset layui-input" />
+							</div>
+						</div>
+				</li>
+				
+				<li>
+						<span class="formLabel">是否允许打印:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="printPermit" class= "validate[required] layui-input" id="dep3" lay-filter="dep3"></select>
+					
+							</div>
+						</div>
+				</li>
+				<li>
+				        <span class="formLabel">打印次数:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="printAmount" id="printAmount"
+									class="validate[custom[onlyUInt],maxSize[10]] layui-input" />
+							</div>
+						</div>
+				</li> 
+				
+				 <li>
+						<span class="formLabel">是否允许保存信用报告:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="savePermit" class= "validate[required] layui-input" id="dep3"></select>
+					
+							</div>
+						</div>
+				</li> 
+				<li>
+						<span class="formLabel">关联企业征信用户:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="creditUser" class= "layui-input" id="creditUser" lay-filter="creditUser" lay-search></select>
+					
+							</div>
+						</div>
+				</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="layui_btn btn_submit clearfix" id="submitPage"><i class='DHCiconfont'>&#xe617;</i>提 交</button>
+				<button type="button" class="layui_btn btn_reset clearfix" id="resetPage"><i class='DHCiconfont'>&#xe609;</i>清 空</button>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript" src="../static/script/business/userattr/userattr.js"></script>
+<script type="text/javascript">
+// 通过url传的参数对象
+	var data = getParamObj();
+	var urlObj = returnOneUrlObj("enuserattr", parent.listObj);
+	if(!data.userName || data.userName== "undefined"){
+		data ={userName:parent.userData.userName};
+	}
+	var jsonData = getAjaxData(urlObj.getValUrl,data);
+	
+	layui.use(['form', 'layedit', 'laydate'], function(){
+	  var form = layui.form
+	  ,layer = layui.layer
+	  ,layedit = layui.layedit
+	  ,laydate = layui.laydate;
+	  
+	  loadDic("common/ceqDic", "amountLimit", "whether_ceq");
+		loadDic("common/ceqDic", "timeLimit", "whether_ceq");
+		loadDic("common/ceqDic", "printPermit", "whether_ceq");
+		loadDic("common/ceqDic", "savePermit", "whether_ceq");
+		loadDic("common/ceqDic", "downloadPermit", "whether_ceq");
+		loadDic("common/ceqDic", "bindPermit", "whether_ceq"); 
+		form.render("select");
+
+	  	form.val("setVal",jsonData);
+	    setReadonly(["userName"]);
+	    var arr = [{id:"dep3",name:"printAmount",validate:",custom[onlyGtZreo],maxSize[10]"}];
+	  
+	  	bindSelect(arr,jsonData);
+	})
+	var orgId = parent.userData.orgId;
+	//动态添加关联用户的option
+	var pName = getProjectName(location.href);
+	var resData = getAjaxData(pName+"creditUser/getccIdList");
+	if(resData.ccid == null || resData.ccid == ''){
+		$("#creditUser").prepend("<option value=''>无关联征信用户</option>");
+	}else{
+		$("#creditUser").prepend("<option value=''>请选择</option>");
+		for(var i=0;i<resData.ccid.length;i++){
+			var option = '<option>'+resData.ccid[i]+'</option>';
+			$("#creditUser").append(option);
+		}
+	}
+	$(function() {
+		bindPageBtnEvent();
+	});
+</script>
+</html>

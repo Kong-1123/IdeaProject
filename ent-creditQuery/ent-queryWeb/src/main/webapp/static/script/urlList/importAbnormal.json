@@ -1,0 +1,14 @@
+ {
+  "tabs": [
+   {"name": "重复查询异常导入管理",
+      "eName":"importAbnormal",
+      "creUrl":"importAbnormal/uploadPage",
+      "upload":"importAbnormal/uploadfile",
+      "getPage":"importAbnormal/getPage",
+      "exportUrl":"importAbnormal/exportExcel",
+      "getValUrl":"importAbnormal/findById",
+      "detailUrl":"importAbnormal/detailPage",
+      "illustrationPage":"importAbnormal/illustrationPage"
+  	}
+   ]
+ }

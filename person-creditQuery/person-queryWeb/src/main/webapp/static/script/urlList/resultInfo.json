@@ -1,0 +1,17 @@
+{
+  "tabs": [
+   {
+      "name": "辖内查询记录",
+      "eName":"resultInfo",
+      "detailUrl":"resultInfo/detail",
+      "searchUrl":"resultInfo/search",
+      "getValUrl":"resultInfo/findById",
+      "getPage":"resultInfo/getPage",
+      "exportUrl":"resultInfo/exportLoad",
+	  "canDownloadFile":"archive/canDownloadFile",
+      "findByArchiveId":"archive/findByArchiveId?archiveId=",
+      "getArchiveValUrl":"archive/findById",
+      "getPictureFile":"archive/getPictureFile"
+   }
+   ]
+ }

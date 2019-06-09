@@ -1,0 +1,303 @@
+BODY {
+	FONT-SIZE: 9pt; FONT-FAMILY: "宋体"; SCROLLBAR-FACE-COLOR: #ffffff; SCROLLBAR-3DLIGHT-COLOR: #a7a7a7; SCROLLBAR-ARROW-COLOR: #a7a7a7; SCROLLBAR-SHADOW-COLOR: #ffffff; SCROLLBAR-DARKSHADOW-COLOR: #a7a7a7; buttonface: #666666
+}
+.t12 {
+	FONT-SIZE: 12px
+}
+.t14 {
+	FONT-SIZE: 14px
+}
+.bac_y {
+	BACKGROUND-REPEAT: repeat-y
+}
+.bac_x {
+	BACKGROUND-REPEAT: repeat-x
+}
+.t12r {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 24px
+}
+.9p {
+	FONT-SIZE: 9pt
+}
+.bac_no {
+	BACKGROUND-REPEAT: no-repeat
+}
+.aa {
+	FONT-SIZE: 12px; LINE-HEIGHT: 33px
+}
+.line {
+	FONT-SIZE: 12px; BORDER-TOP: #999999 1px dotted; BORDER-RIGHT: #999999 1px dotted; BORDER-BOTTOM: #999999 1px dotted; BORDER-LEFT: #999999 1px dotted
+}
+.line1 {
+	BORDER-TOP: black 0px dotted; BORDER-RIGHT: black 0px dotted; BORDER-BOTTOM: #cccccc 1px dotted; BORDER-LEFT: black 0px dotted
+}
+.liner {
+	BORDER-TOP: black 0px dotted; BORDER-RIGHT: #ffffff 1px dotted; BORDER-BOTTOM: black 0px dotted; BORDER-LEFT: black 0px dotted
+}
+.bac_y {
+	BACKGROUND-REPEAT: repeat-y
+}
+.bac_x {
+	BACKGROUND-REPEAT: repeat-x
+}
+.t12 {
+	FONT-SIZE: 12px
+}
+.t14 {
+	FONT-SIZE: 14px
+}
+.d12 {
+	FONT-SIZE: 12px; LINE-HEIGHT: 19px
+}
+.t_bac1 {
+	BACKGROUND-COLOR: #cccc33
+}
+.article {
+	OVERFLOW: auto; SCROLLBAR-HIGHLIGHT-COLOR: #333333; BORDER-TOP: #000000 1px; HEIGHT: 270px; BORDER-RIGHT: #999999 1px; WIDTH: 550px; SCROLLBAR-TRACK-COLOR: #f5f5f5; SCROLLBAR-FACE-COLOR: #8c8e90; BORDER-BOTTOM: #000000 1px; FLOAT: none; SCROLLBAR-3DLIGHT-COLOR: #ffffff; PADDING-BOTTOM: 3px; TEXT-ALIGN: left; PADDING-TOP: 6px; SCROLLBAR-ARROW-COLOR: #000000; PADDING-LEFT: 6px; CLEAR: none; BORDER-LEFT: #000000 1px; LINE-HEIGHT: 12px; PADDING-RIGHT: 6px; SCROLLBAR-DARKSHADOW-COLOR: #8c8e90
+}
+.article1 {
+	OVERFLOW: auto; SCROLLBAR-HIGHLIGHT-COLOR: #333333; BORDER-TOP: #000000 1px; HEIGHT: 230px; BORDER-RIGHT: #999999 1px; WIDTH: 400px; SCROLLBAR-TRACK-COLOR: #f5f5f5; SCROLLBAR-FACE-COLOR: #8c8e90; BORDER-BOTTOM: #000000 1px; FLOAT: none; SCROLLBAR-3DLIGHT-COLOR: #ffffff; PADDING-BOTTOM: 3px; TEXT-ALIGN: left; PADDING-TOP: 6px; SCROLLBAR-ARROW-COLOR: #000000; PADDING-LEFT: 6px; CLEAR: none; BORDER-LEFT: #000000 1px; LINE-HEIGHT: 12px; PADDING-RIGHT: 6px; SCROLLBAR-DARKSHADOW-COLOR: #8c8e90
+}
+TD {
+	FONT-SIZE: 9pt; FONT-FAMILY: 宋体
+}
+.f9l15 {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 15pt
+}
+P {
+	FONT-SIZE: 12px; FONT-FAMILY: 宋体
+}
+INPUT {
+	FONT-SIZE: 12px; FONT-FAMILY: 宋体
+}
+SELECT {
+	FONT-SIZE: 12px; FONT-FAMILY: 宋体
+}
+DL {
+	FONT-SIZE: 12px; FONT-FAMILY: 宋体
+}
+LI {
+	FONT-SIZE: 12px; FONT-FAMILY: 宋体
+}
+.90V {
+	FONT-SIZE: 9pt; FONT-FAMILY: 宋体
+}
+.105V {
+	FONT-SIZE: 9pt; FONT-FAMILY: "宋体"
+}
+.liu105V {
+	FONT-SIZE: 10.5pt; FONT-FAMILY: 宋体; COLOR: #ffffff
+}
+.f12 {
+	FONT-SIZE: 12px; FONT-FAMILY: 宋体
+}
+.f14 {
+	FONT-SIZE: 14px; FONT-FAMILY: 宋体
+}
+.f16 {
+	FONT-SIZE: 16px; FONT-FAMILY: 宋体
+}
+.f22 {
+	FONT-SIZE: 22px; FONT-FAMILY: 宋体
+}
+.f16a {
+	FONT-SIZE: 16px
+}
+.f12h13 {
+	FONT-SIZE: 12px; FONT-FAMILY: 宋体; LINE-HEIGHT: 130%
+}
+.f12h14 {
+	FONT-SIZE: 12px; FONT-FAMILY: 宋体; LINE-HEIGHT: 140%
+}
+.f12h15 {
+	FONT-SIZE: 12px; FONT-FAMILY: 宋体; LINE-HEIGHT: 150%
+}
+.f16h11 {
+	FONT-SIZE: 16px; FONT-FAMILY: 宋体; LINE-HEIGHT: 110%
+}
+.f16h12 {
+	FONT-SIZE: 16px; FONT-FAMILY: 宋体; LINE-HEIGHT: 120%
+}
+.fins {
+	FONT-SIZE: 7px
+}
+.cbgc0 {
+	BACKGROUND-COLOR: #94b5f2
+}
+.cbgc1 {
+	BACKGROUND-COLOR: #cbeaf9
+}
+.cbgc2 {
+	BACKGROUND-COLOR: #ffff80
+}
+.bgc0 {
+	BACKGROUND-REPEAT: repeat-y
+}
+.bgcr {
+	BACKGROUND-COLOR: #ff0000
+}
+.bgcb {
+	BACKGROUND-COLOR: #0000ff
+}
+.bgck {
+	BACKGROUND-COLOR: #eeeeee
+}
+.bgcw {
+	BACKGROUND-COLOR: #ffffff
+}
+.bgcbk {
+	BACKGROUND-COLOR: #000000
+}
+.bg1 {
+	BACKGROUND-REPEAT: no-repeat
+}
+A:link {
+	TEXT-DECORATION: none; COLOR: #000000
+}
+A:visited {
+	TEXT-DECORATION: none; COLOR: #000000
+}
+A:active {
+	TEXT-DECORATION: none; COLOR: #000000
+}
+A:hover {
+	TEXT-DECORATION: underline; COLOR: #0066cc
+}
+A.1top:link {
+	TEXT-DECORATION: blink; COLOR: #001498
+}
+A.1top:active {
+	TEXT-DECORATION: none; COLOR: #ff0000
+}
+A.1top:visited {
+	TEXT-DECORATION: none; COLOR: #001498
+}
+A.1top:hover {
+	TEXT-DECORATION: none; COLOR: #ffffff
+}
+A.lleft:visited {
+	TEXT-DECORATION: none; COLOR: #333333
+}
+A.lleft:link {
+	TEXT-DECORATION: none; COLOR: #333333
+}
+A.lleft:active {
+	TEXT-DECORATION: none; COLOR: #0066ff
+}
+A.lleft:hover {
+	TEXT-DECORATION: underline; COLOR: #ff0000
+}
+A.aw:link {
+	TEXT-DECORATION: underline; COLOR: #ccffff
+}
+A.aw:visited {
+	TEXT-DECORATION: none; COLOR: #ccffcc
+}
+A.aw:active {
+	TEXT-DECORATION: underline
+}
+A.aw:hover {
+	TEXT-DECORATION: underline; COLOR: #ff0000
+}
+A.ab:link {
+	TEXT-DECORATION: none; COLOR: #0000ff
+}
+A.ab:visited {
+	TEXT-DECORATION: none; COLOR: #0000ff
+}
+A.ab:active {
+	TEXT-DECORATION: none
+}
+A.ab:hover {
+	TEXT-DECORATION: underline; COLOR: #ff0000
+}
+A.abk:link {
+	TEXT-DECORATION: none; COLOR: #000000
+}
+A.abk:visited {
+	TEXT-DECORATION: none; COLOR: #000000
+}
+A.abk:active {
+	TEXT-DECORATION: none
+}
+A.abk:hover {
+	TEXT-DECORATION: underline; COLOR: #ff0000
+}
+A.abkul:link {
+	TEXT-DECORATION: underline; COLOR: #000000
+}
+A.abkul:visited {
+	TEXT-DECORATION: underline; COLOR: #000000
+}
+A.abkul:active {
+	TEXT-DECORATION: none
+}
+A.abkul:hover {
+	TEXT-DECORATION: underline; COLOR: #ff0000
+}
+A.abk1:link {
+	TEXT-DECORATION: underline; COLOR: #000000
+}
+A.abk1:visited {
+	TEXT-DECORATION: underline; COLOR: #000000
+}
+A.abk1:active {
+	TEXT-DECORATION: none
+}
+A.abk1:hover {
+	TEXT-DECORATION: underline; COLOR: #000000
+}
+A.abk2:link {
+	TEXT-DECORATION: underline; FONT-WEIGHT: bold; COLOR: #cc0000
+}
+A.abk2:visited {
+	TEXT-DECORATION: underline; FONT-WEIGHT: bold; COLOR: #cc0000
+}
+A.abk2:active {
+	TEXT-DECORATION: none; FONT-WEIGHT: bold
+}
+A.abk2:hover {
+	TEXT-DECORATION: underline; FONT-WEIGHT: bold; COLOR: #cc0000
+}
+A.ar:link {
+	TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: #3366cc
+}
+A.ar:visited {
+	TEXT-DECORATION: none; FONT-WEIGHT: bold; COLOR: #3366cc
+}
+A.ar:active {
+	TEXT-DECORATION: none; FONT-WEIGHT: bold
+}
+A.ar:hover {
+	TEXT-DECORATION: underline; FONT-WEIGHT: bold; COLOR: #3366cc
+}
+A.c:hover {
+	TEXT-DECORATION: underline; COLOR: #ff0000
+}
+A.c:link {
+	TEXT-DECORATION: none; COLOR: #666666
+}
+A.c:active {
+	TEXT-DECORATION: none; COLOR: #ff0000
+}
+A.c:visited {
+	TEXT-DECORATION: none; COLOR: #666666
+}
+.text {
+	FONT-SIZE: 12px; LINE-HEIGHT: 18px
+}
+.text_15 {
+	FONT-SIZE: 15px; LINE-HEIGHT: 21px
+}
+.read {
+	FONT-SIZE: 14px; LINE-HEIGHT: 19px
+}
+.bac_c {
+	BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: center 50%
+}
+.shadow_a {
+	FONT-SIZE: 12px; COLOR: #ffffff; FILTER: dropshadow(color=#000000,offx=1,offy=1)
+}
+.heiti {
+	FONT-SIZE: 14px; FONT-FAMILY: "黑体"
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>企业违规用户统计管理</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/listIncludeStyle.js"></script>
+</head>
+<body name="relevant">
+	<div class="main-list">
+		<div class="inquiry">
+			<form class="layui-form" action="relevant/findByRelieve">
+				<div class="list-top">
+					<div class="list-top_left">
+						<h5
+							style="background: url(../static/images/table/sx_icon1.png) 17px no-repeat">筛选条件</h5>
+					</div>
+					<div class="list-top_right">
+						<ul>
+							<li><a href="javascript:void(0);"><img
+									src="../static/images/table/btn_icon1.png"></a></li>
+							<li><a href="javascript:void(0);"><img
+									src="../static/images/table/btn_icon2.png"></a></li>
+							<li><a href="javascript:void(0);"><img
+									src="../static/images/table/btn_icon3.png"></a></li>
+						</ul>
+					</div>
+				</div>
+				<ul class="cons modal-body clearfix">
+					<li>
+						<div class="layui-form-item">
+							<label class="layui-form-label">起始日期:</label>
+							<div class="layui-input-block">
+								<input type="text" id="startDate" class="layui-input date"
+									name="search_GTE_startDate_DATE" placeholder=" 请选择日期 ">
+							</div>
+					</li>
+
+					<li>
+						<div class="layui-form-item">
+							<label class="layui-form-label">结束日期:</label>
+							<div class="layui-input-block">
+								<input type="text" id="endDate" class="layui-input date"
+									name="search_GTE_alertDate_DATE" placeholder=" 请选择日期 ">
+							</div>
+						</div>
+					</li>
+
+					<li>
+						<div class="layui-form-item">
+							<label class="layui-form-label">机构范围:</label>
+							<div class="layui-input-block">
+								<select name="search_IN_deptCode">
+								</select>
+							</div>
+						</div>
+					</li>
+
+
+				</ul>
+				<div class="btnWrap">
+					<button type="button" class="cx_btn relevantBtn">
+						<i class="DHCiconfont"></i>查询
+					</button>
+					<button type="reset" class="qk_btn resetBtn">
+						<i class="DHCiconfont"></i>清空
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!--表格部分-->
+	<div class="list-m">
+		<div class="list-top">
+			<div class="list-top_left">
+				<h5
+					style="background: url(../static/images/table/sx_icon2.png) 17px no-repeat">违规用户统计报表</h5>
+			</div>
+
+		</div>
+		<div class="datail" style="padding: 0px; margin-bottom: 0px;"></div>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/listIncludeScript.js"></script>
+<script type="text/javascript"
+	src="../static/script/business/relevant/relevant.js"></script>
+
+<script type="text/javascript">
+	var searchData = null;
+	var listObj = getUrlList("../static/script/urlList/relevant.json");
+	// 获取当前页面name
+	var pageName = $("body").attr("name");
+	// 获取当前页面url配置列表对象
+	var urlObj = returnOneUrlObj(pageName, listObj);
+	// 字典
+	var orgRange = {
+		url : "common/ceqDic",
+		type : "orgRange_ceq"
+	};
+
+	layui.use([ "table", "form", "layer" ], function() {
+		var table = layui.table, form = layui.form, layer = layui.layer;
+		loadDic(orgRange.url, "search_IN_deptCode", orgRange.type);
+		form.render('select');
+
+		bindBtnEvent(urlObj);
+		bindCustomBtnEvent(urlObj);
+	});
+
+</script>
+</html>
+

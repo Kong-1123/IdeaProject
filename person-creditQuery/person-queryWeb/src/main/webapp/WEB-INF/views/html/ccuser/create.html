@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>基本概况段新增</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/pageIncludeStyle.js"></script>
+</head>
+<body>
+	<div id="form-wrap" class="layui-form">
+		<form id="create_form_id" action="ccUser/create">
+			<div class="modal-body selectmodal">
+				<ul class="formWrap clearfix">
+					<li><span class="formLabel">征信用户名称：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="ccId" id="id" class="validate[required,maxSize[32],custom[onlyLetterSymbol] layui-input" 
+									placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">征信用户账号：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="ccuser"  class="validate[required,maxSize[30],custom[credituser]] layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					
+					<li >
+						<span class="formLabel">征信机构：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+							<input type="text" name="ccdept"  class="validate[required,maxSize[14]] layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">征信用户密码：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="password" name="passwd" class="validate[maxSize[20],minSize[8],required] layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+				
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="layui_btn btn_submit clearfix" id="testBtn"><i class='DHCiconfont'>&#xe617;</i>认证</button>
+				<button type="submit" class="layui_btn btn_submit clearfix" id="submitPage"><i class='DHCiconfont'>&#xe617;</i>提 交</button>
+				<button type="reset" class="layui_btn btn_reset clearfix" id="resetPage"><i class='DHCiconfont'>&#xe609;</i>清 空</button>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript" src="../static/script/business/ccuser/ccuser.js"></script>
+<script type="text/javascript">
+	$(function() {
+		bindPageBtnEvent();
+		bindCustomBtnEvent(parent.urlObj);
+		
+	});
+	
+	function submitFun(submitUrl,data){
+		ajaxFunc(submitUrl, function(result) {
+			submitMsg(result);
+		}, function(result) {
+			layerMsg("请求出错！");
+		}, data, false);
+	}
+	
+	function submitMsg(result) {
+	    if (result.code == "00000000") {
+	        layerAlert(result.msg, function () {
+	     	    reloadParentPage();
+	        });
+	    } else {
+	    	layerAlert(result.msg, function () {});
+	        $(".disabled").attr("disabled", true);
+	        return;
+	    }
+	}
+	
+</script>
+</html>
+
+ 
+ 

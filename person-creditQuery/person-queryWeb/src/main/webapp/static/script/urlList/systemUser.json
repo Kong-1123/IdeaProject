@@ -1,0 +1,36 @@
+{
+  "tabs": [
+   {
+      "name": "个人用户属性管理",
+      "eName":"userattr",
+      "searchUrl":"systemUser/search",
+      "getUsers":"systemUser/getPage",
+      "findUrl":"userattr/findByUserName?userName=",
+      "getValUrl":"userattr/findById?id=",
+      "creUrl":"userattr/createPageTrue",
+      "updUrl":"userattr/updatePage"
+   },
+   {
+      "name": "IP地址信息",
+      "eName":"IP",
+      "list":"ipAndMac/ipList",
+      "creUrl":"ipAndMac/addIP",
+      "getPage":"ipAndMac/getIpPage?userName=",
+      "updUrl":"ipAndMac/updateIp",
+      "ipNum":"ipAndMac/getAddIpNum?userName=",
+      "getIpValue":"ipAndMac/findIpByUserName?userName=",
+      "addIpByUsername":"ipAndMac/addIpByUsername"
+   },
+   {
+      "name": "MAC地址信息",
+      "eName":"MAC",
+      "list":"ipAndMac/macList",
+      "creUrl":"ipAndMac/addMac",
+      "getPage":"ipAndMac/getMacPage?userName=",
+      "updUrl":"ipAndMac/updateMac",
+      "macNum":"ipAndMac/getAddMacNum?userName=",
+      "getMacValue":"ipAndMac/findMacByUserName?userName=",
+      "addMacByUsername":"ipAndMac/addMacByUsername"
+   }
+   ]
+ }

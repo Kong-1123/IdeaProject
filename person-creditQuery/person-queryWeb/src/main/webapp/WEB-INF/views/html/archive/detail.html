@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/business/archive/archiveIncludeStyle.js"></script>
+<link rel="stylesheet" href="../static/style/business/archive.css">
+<style>
+	#form-wrap .formWrap li{
+		margin: 15px 30px !important;
+	}
+</style>
+</head>
+<body>
+	<div id="form-wrap" class="layui-form" lay-filter="setVal">
+		<form id="detail_form_id" action="archive/detail" >
+			<div class="modal-body selectmodal">
+				<ul class="formWrap clearfix">
+					<li>
+						<span class="formLabel">客户姓名:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="clientName" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">证件类型:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select  name="cretType" class="layui-input" >
+								</select>
+							</div>
+						</div>
+					</li>
+					<li class="twoCols">
+						<span class="formLabel">证件号码:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="cretNo" class="layui-input" >
+								</select>
+							</div>
+						</div>
+					</li>
+					<li class="emptyCols"></li>
+					<li>
+						<span class="formLabel">授权状态:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="status" class="layui-input" >
+								</select>
+							</div>
+						</div>
+					</li>
+					<li><span class="formLabel">授权类型：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="archiveType" class="layui-input">
+								</select>
+							</div>
+						</div></li>
+			
+					<li>
+					    <span class="formLabel">资料数:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="quantity" class="layui-input"
+									/>
+							</div>
+						</div>
+					</li>
+					<li>
+					    <span class="formLabel">授权起始日期:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="startDate" class="layui-input"
+									/>
+							</div>
+						</div>
+					</li>
+					<li>
+					    <span class="formLabel">授权到期日期:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="expireDate" class="layui-input"
+									/>
+							</div>
+						</div>
+					</li>
+					<li>
+					    <span class="formLabel">创建人:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="creator" class="layui-input"
+									/>
+							</div>
+						</div>
+					</li>
+					<li>
+					    <span class="formLabel">所属机构:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="ownorg" class="layui-input"
+									/>
+							</div>
+						</div>
+					</li>
+					<li>
+					    <span class="formLabel">创建时间:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="creatTime" class="layui-input"
+									/>
+							</div>
+						</div>
+					</li>
+					<li>
+					    <span class="formLabel">操作用户:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="operator" class="layui-input"
+									/>
+							</div>
+						</div>
+					</li>
+					<li>
+					    <span class="formLabel">操作机构:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="operorg" class="layui-input"
+									/>
+							</div>
+						</div>
+					</li>
+					<li>
+					    <span class="formLabel">操作时间:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="operTime" class="layui-input"
+									/>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<p class="record paperFile">纸质文件</p>
+				<div id="paperFile" class="layui-upload" style="display: block;">	
+						<ul class="formWrap clearfix">
+							<li>
+								<span class="formLabel">纸质文件编号:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" name="paperfileid" id="paperNo"
+											class="layui-input"
+											placeholder="请输入" />
+									</div>
+								</div>
+							</li>
+							<li>
+								<span class="formLabel">纸质文件描述:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" name="filedescribe" id="paperDesc"
+											class="layui-input"
+											placeholder="请输入" />
+									</div>
+								</div>
+							</li>
+						</ul>
+				</div>
+				<p class="record electric">电子文件</p>
+				<div id="uploadBody" class="modal-body layui-upload" style="display: block;">
+					<div class="layui-upload-list">
+						  <div class="layui-upload-list">
+						    <table class="layui-table">
+						      <thead>
+						        <tr>
+							        <th>文件类型</th>
+							        <th>文件名</th>
+							        <th>操作</th>
+							    </tr>
+							  </thead>
+						      <tbody id="uploadCard">
+							    
+						      </tbody>
+						    </table>
+						  </div>  
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class="modal-footer">
+				<button type="button" id="closePage" class="layui_btn btn_submit clearfix" ><i class='DHCiconfont'>&#xe605;</i>关闭</button>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/business/archive/archiveIncludeScript.js"></script>
+<script type="text/javascript">
+//预览方法
+/*function view(name,id){
+	 //获取预览流路径
+	 var result =urlObj.getPictureFile + "?id=" + id
+     var opt;
+	 if(name.indexOf("pdf")<0){
+		 var img ="<img style='max-height:100%;' id='imgLook' src='"+ result +"'/>";
+		 opt = {
+	     		  type: 1,
+	     		  title: "图片预览",
+	     		  maxmin: true,
+	     		  area: ['800px','500px'],
+	     		  skin: 'layui-layer-preview', //没有背景色
+	     		  shadeClose: true,
+	     		  content: img
+	     		}
+	 }else{
+		 opt = {
+	     		  type: 2,
+	     		  title: "文件预览",
+	     		  maxmin: true,
+	     		  area: ['800px','500px'],
+	     		  skin: 'layui-layer-preview', //没有背景色
+	     		  shadeClose: true,
+	     		  content: result
+	     		} 
+	 }
+   	 parent.layer.open(opt);  
+}*/
+
+setReadonly();
+var urlObj = parent.urlObj;
+//从字典中取值
+var dicData = getDic("common/cpqDic","archiveType");
+//通过url传的参数对象
+var data = getParamObj();
+var id = data.id;
+//获取出上传文件的数据
+var resData = getAjaxData(urlObj.findByArchiveId+id);
+
+if(resData != ''){
+	var flag0 = false;
+	var flag1 = false;
+	var flag2 = false;
+	for(var i = 0;i<resData.length;i++){
+		var selfUploadId = resData[i].id;
+		//纸质档案
+		var paperfileid = resData[i].paperfileid;
+		var filedescribe = resData[i].filedescribe;
+		if(paperfileid){
+			flag0 = true;
+			$("#paperNo").val(paperfileid);
+			$("#paperDesc").val(filedescribe);
+		}
+		//电子档案
+		var resfileType = resData[i].fileType;
+		var resfileName = resData[i].filename;
+		var resfilePath = resData[i].filepath+'/'+resfileName;
+		var trStr;
+		// resfileType == 3 为影像接口上传的影像档案，页面不进行展示  @date 20190314
+		if(resfileType && resfileType != "3"){
+			flag1 = true;
+			trStr = '<tr>'+
+			'<td class="typeName" data-type="'+ resfileType +'">'+dicData[resfileType]+'</td>'+
+			'<td width="300px">'+resfileName+'</td>'+
+			'<td>'+
+			'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-look" onclick="view(\''+ resfileName +'\',\''+ resfilePath +'\',\''+ selfUploadId +'\')">预览</button>'+
+			'</td>'+
+			'</tr>'
+			$("#uploadCard").append(trStr);
+		}
+	}
+	if(!flag0){
+		$("#paperFile,.paperFile").hide();
+	}
+	if(!flag1){
+		$("#uploadBody").hide();
+		$(".electric").hide();
+	}
+
+}
+var jsonData = getAjaxData(parent.urlObj.getValUrl+data.id);
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  
+  loadDic("common/getDeptCodeName", "operorg","deptCodeName");
+//获取机构字典对象
+	var oprOrgDic = getDic(parent.deptCodeName.url,
+			parent.deptCodeName.type);
+	jsonData.operorg = oprOrgDic[jsonData.operorg];
+	jsonData.ownorg = oprOrgDic[jsonData.ownorg];
+//截取授权起始、结束日期的时分秒
+  var str1 = jsonData.startDate;
+  var str2 = jsonData.expireDate;
+  var startDate = str1.substring(0,str1.length-9);
+  var expireDate = str2.substring(0,str2.length-9);
+  jsonData.startDate = startDate;
+  jsonData.expireDate = expireDate;
+  form.val("setVal",jsonData);
+  setReadonly();
+  form.render("select");
+})
+$(function() {
+	loadDic("common/cpqDic", "cretType", "idType");//获取证件类型字典
+	loadDic("common/cpqDic","status", "archiveStatus");//获取授权状态字典
+	loadDic("common/cpqDic", "archiveType", "archiveType_cpq");//获取档案类型字典
+	loadDic("common/getDeptCodeName", "operorg","deptCodeName");
+	// 绑定按钮事件		
+	bindPageBtnEvent();
+});
+</script>
+</html>

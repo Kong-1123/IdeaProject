@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         <parent>
+         <artifactId>ent-queryFlowManager</artifactId>
+        <groupId>cn.com.dhcc</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+         </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ent-queryFlowManager-ansytask</artifactId>
+    <description>个人查询流程，异步查询处理模块。</description>
+    <properties>
+        <project.build.jdk>1.8</project.build.jdk>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <source>${project.build.jdk}</source>
+                    <target>${project.build.jdk}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+	<dependencies>
+		<dependency>
+			<groupId>cn.com.dhcc</groupId>
+			<artifactId>ent-queryApproveFlow-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.com.dhcc</groupId>
+			<artifactId>ent-queryFlowManager-service</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.com.dhcc</groupId>
+			<artifactId>person-queryPBOC-serviceWeb-encode</artifactId>
+			<version>1.0</version>
+		</dependency>
+	</dependencies>
+	<!--  
+	<groupId>cn.com.dhcc</groupId>
+	<version>1.0</version>
+	-->
+</project>

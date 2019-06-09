@@ -1,0 +1,15 @@
+{
+  "tabs": [
+      {
+         "name": "征信查询日志报送",
+         "eName":"LogReport",
+         "creUrl":"LogReport/createPage",
+         "updUrl":"LogReport/updatePage",
+         "detailUrl":"LogReport/detail",
+         "delUrl":"LogReport/delete?id=",
+         "getValUrl":"LogReport/findById",
+         "getPage":"LogReport/getPage",
+         "exportUrl":"LogReport/exportExcel" 
+      }
+   ]
+ }

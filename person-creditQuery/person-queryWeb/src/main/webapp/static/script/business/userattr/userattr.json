@@ -1,0 +1,40 @@
+{
+  "tabs": [
+   {
+      "name": "个人用户属性管理",
+      "eName":"peruserattr",
+      "creUrl":"userattr/createPage",
+      "updUrl":"userattr/updatePage",
+      "detailUrl":"userattr/detail",
+      "getValUrl":"userattr/findByUserName",
+      "delUrl":"userattr/deleteByUserName",
+      "creSubmitUrl":"userattr/create",
+      "updSubmitUrl":"userattr/update"
+   },
+   {
+      "name": "IP地址信息",
+      "eName":"IP",
+      "listUrl":"ipAndMac/ipList",
+      "creUrl":"ipAndMac/addIP",
+      "getPage":"ipAndMac/getIpPage?search_EQ_userName=",
+      "updUrl":"ipAndMac/updateIp",
+      "ipNum":"ipAndMac/getAddIpNum?userName=",
+      "addIpByUsername":"ipAndMac/addIpByUsername",
+      "getIpValue":"ipAndMac/findIpByUserName",
+      "unlockUrl":"ipAndMac/untieIp?id="
+
+   },
+   {
+      "name": "MAC地址信息",
+      "eName":"MAC",
+      "listUrl":"ipAndMac/macList",
+      "creUrl":"ipAndMac/addMac",
+      "getPage":"ipAndMac/getMacPage?userName=",
+      "updUrl":"ipAndMac/updateMac",
+      "macNum":"ipAndMac/getAddMacNum?userName=",
+      "addMacByUsername":"ipAndMac/addMacByUsername",
+      "getMacValue":"ipAndMac/findMacByUserName",
+      "unlockUrl":"ipAndMac/untieMac?id="
+   }
+   ]
+ }

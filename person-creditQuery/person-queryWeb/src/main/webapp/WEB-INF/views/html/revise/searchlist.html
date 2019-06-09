@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>授权档案管理新增</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/business/archive/archiveIncludeStyle.js"></script>
+<link rel="stylesheet" href="../static/style/business/archive.css">
+<style>
+	#form-wrap .formWrap li{
+		margin: 15px 30px !important;
+	}
+	.layui-layer-iframe .layui-layer-title{
+		height: 42px;
+	    line-height: 42px;
+	   	border-bottom: 1px solid #eee;
+	    background-color: #F8F8F8 !important;
+	}
+	#fileSubmit{
+		display: none;
+	}
+</style>
+</head>
+<body name="archive">
+<div id="form-wrap" class="layui-form">
+		<form id="create_form_id" action="archive/create">
+			<div class="modal-body selectmodal">
+				<ul class="formWrap clearfix">
+					<li>
+						<span class="formLabel">客户姓名:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="clientName" id="clientName"
+										class="validate[required] layui-input" 
+										placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">证件类型:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="cretType" class="validate[required] layui-input" ></select>
+					
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">证件号码:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="cretNo" id="cretNo"
+									class="validate[required] layui-input"
+									placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">授权起始日期:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="startDate" id="startDate"
+								  class="validate[required] layui-input date" 
+								  placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+						
+					<li>
+						<span class="formLabel">授权结束日期:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="expireDate" id="expireDate"
+									class="validate[required] layui-input date"
+									placeholder="请输入" />
+							</div>
+						</div>
+					</li>	
+					<!-- <li class="threeCols">
+						<span class="formLabel">备注:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<textarea name="remarks" class="validate[required,maxSize[256]] layui-textarea" placeholder="请输入"></textarea>
+							</div>
+						</div>
+					</li> -->
+					
+				</ul>
+				<p class="record">纸质文件</p>
+				<div class="layui-upload" style="display: block;">
+					
+						<ul class="formWrap clearfix">
+							<li>
+								<span class="formLabel">纸质文件编号:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" name="paperNo" id="paperNo"
+											class="layui-input"
+											placeholder="请输入" />
+									</div>
+								</div>
+							</li>
+							<li>
+								<span class="formLabel">纸质文件描述:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" name="paperDesc" id="paperDesc"
+											class="layui-input"
+											placeholder="请输入" />
+									</div>
+								</div>
+							</li>
+						</ul>
+					
+				</div>
+				<p class="record">电子文件1</p>
+				<div id="uploadBody" class="modal-body layui-upload" style="display: block;">
+					<div class="layui-upload-list">
+						  <div class="layui-upload-list">
+						    <table class="layui-table">
+						      <thead>
+						        <tr>
+							        <th>文件类型</th>
+							        <th>文件名</th>
+							        <th>大小</th>
+							        <th>操作</th>
+							    </tr>
+							  </thead>
+						      <tbody id="uploadCard">
+							    
+						      </tbody>
+						    </table>
+						  </div>
+						  
+					</div>
+				</div>
+				<p class="record">电子文件2</p>
+				<div class="modal-body layui-upload" style="display: block;">
+					<div class="layui-upload-list">
+						 <button type="button" class="layui-btn layui-btn-normal" id="createFile">新增档案文件</button> 
+						  <div class="layui-upload-list">
+						    <table class="layui-table">
+						      <thead>
+						        <tr>
+							        <th>文件类型</th>
+							        <th>文件名</th>
+							        <th>大小</th>
+							        <th>操作</th>
+							    </tr>
+							  </thead>
+						      <tbody id="uploadList">
+						      </tbody>
+						    </table>
+						  </div>
+						  
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal-footer">
+				<button type="button" class="layui_btn btn_submit clearfix" id="fileSubmit"><i class='DHCiconfont'>&#xe617;</i>保存1</button>
+				<button type="submit" class="layui_btn btn_submit clearfix" id="submitPage"><i class='DHCiconfont'>&#xe617;</i>保存</button>
+				<!-- <button type="reset" class="layui_btn btn_reset clearfix" id="resetPage"><i class='DHCiconfont'>&#xe609;</i>清 空</button> -->
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/business/archive/archiveIncludeScript.js"></script>
+<script type="text/javascript">
+
+var urlObj = parent.urlObj;
+
+//根据获取的后台参数动态生成需要上传的文件
+var jsonData = getAjaxData(urlObj.getArchiveType,null);
+//从字典中取值
+var dicData = getDic("common/cpqDic","archiveType");
+
+var number = jsonData.Num;
+var types = jsonData.Type;
+for(var i = 0;i<types.length;i++){
+	var type = types[i];
+	var trStr = '<tr>'+
+				'<td class="typeName" data-type="'+ types[i] +'">'+dicData[types[i]]+'</td>'+
+				'<td width="300px"></td>'+
+				'<td></td>'+
+				'<td>'+
+				'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-look">预览</button>'+
+				'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-select demo-select-1">选择文件</button>'+
+				'</td>'+
+				'</tr>'
+	$("#uploadCard").append(trStr);
+}
+
+//提交
+var resultId;
+function submitFun(submitUrl,data){
+	
+	if(($("#paperNo").val()!='') || ($("#uploadCard").find('tr td').eq(1).text()!=''&&$("#uploadCard").find('tr td').eq(2).text()!='')){
+		
+		ajaxFunc(submitUrl, function(result){
+			if ('00000' == result.code) {
+				resultId = result.msg;
+				$("#fileSubmit").click();
+				var paperData = {};
+				paperData.paperNo = data.paperNo;
+				paperData.paperDesc = data.paperDesc;
+				submitPaper(urlObj.savePaper,paperData);
+			} else {
+				layerMsg(result.msg);
+			}
+		}, function(result) {
+			layerMsg(result.msg);
+		}, data);
+	}else{
+		layerMsg('请上传纸质档案或电子档案');
+		//return false;
+	}
+		
+}
+
+function submitPaper(url,paperData){
+	ajaxFuncForJson(url, function(result){
+		if ('00000' == result.code) {
+			layerAlert(result.msg,function(){
+				reloadParentPage();
+			});
+		} else {
+			layerMsg(result.msg);
+		}
+	}, function(result) {
+		layerMsg(result.msg);
+	}, JSON.stringify(paperData));
+}
+
+//上传文件
+layui.use(["table","form","layer","upload"], function(){
+	var table = layui.table,
+		form = layui.form,
+		layer = layui.layer,
+		upload = layui.upload;
+	loadDic("common/cpqDic", "cretType", "certTypeID");
+	form.render('select'); 
+	
+//身份证、授权书上传
+	/*	var t;
+		$("#uploadCard").on("click",".demo-select",function(){
+			t = $(this);
+		})*/
+		var filesObj ={};
+		var uploadListIns1 = upload.render({
+		  elem: ".demo-select"
+		  // ,url: urlObj.upLoad+'?id='+resultId
+		  ,url: urlObj.upLoad
+		/* ,data: {
+			  id: resultId,
+			  fileType: function(){
+			  	return $(".typeName").val()
+			  }	  
+			}*/
+		  ,accept: 'file' //普通文件
+		  ,exts: 'pdf|png|jpg|gif' 
+		  ,multiple: true
+		  ,auto: false //选择文件后不自动上传
+		  // ,bindAction: '#submitPage' //指向一个按钮触发上传
+		  ,before: function(obj){
+		  	var item = this.item;
+		  	var fileType = item.parents("tr").find(".typeName").attr("data-type");
+		  	this.data.fileType = fileType;
+		  	this.data.id = resultId;
+		  }
+		  ,choose: function(obj){ 
+		  		  var item = this.item;
+			      //读取本地文件
+			      var f,files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+			      obj.preview(function(index, file, result){
+			      	var thisTr = item.parents("tr");
+			      
+					var num = file.num = thisTr.index();
+					//file.fileType = thisTr.find(".typeName").val();
+			      	if(filesObj["btn-"+num]){
+			      		delete files[filesObj["btn-"+num]];
+			      	}
+			      	filesObj["btn-"+num] = index;
+			      	console.log(files);
+			        thisTr.find('td').eq(1).html('').text(file.name);
+			        thisTr.find('td').eq(2).html('').text((file.size/1014).toFixed(1) +'kb');
+			        
+			       // 预览
+			        thisTr.on('click', '.demo-look', function(){
+			        	 var opt,name = file.name
+						 if(name.indexOf("pdf")<0){
+						 	
+							 var img ="<img style='max-height:100%;' id='imgLook' src='"+ result +"'/>";
+							 opt = {
+					        		  type: 1,
+					        		  title: "图片预览",
+					        		  maxmin: true,
+					        		  area: ['800px','500px'],
+					        		  skin: 'layui-layer-preview', //没有背景色
+					        		  shadeClose: true,
+					        		  content: img
+					        		}
+						 }else{
+							 opt = {
+					        		  type: 2,
+					        		  title: "文件预览",
+					        		  maxmin: true,
+					        		  area: ['800px','500px'],
+					        		  skin: 'layui-layer-preview', //没有背景色
+					        		  shadeClose: true,
+					        		  content: result
+					        		} 
+						 }
+					     parent.layer.open(opt); 
+			        }); 
+			      });
+			    }
+			    ,done: function(res, index, upload){
+			      if(res.code == 0){ //上传成功
+					delete this.files[index]; //删除文件队列已经上传成功的文件
+			      }
+			      this.error(index, upload);
+			    }
+			  });   
+//档案文件2
+
+	var uploadList = $('#uploadList')
+	  ,uploadListIns2 = upload.render({
+	    elem: '#createFile'
+	    ,url: urlObj.upLoad
+	    ,accept: 'file' //普通文件
+		,exts: 'pdf|png|jpg|gif'
+	    ,multiple: true
+	    ,auto: false
+	    // ,bindAction: '#submitPage'
+	    ,before: function(obj){
+		  	var item = this.item;
+		  	var fileType = 103;
+		  	this.data.fileType = fileType;
+		  	this.data.id = resultId;
+		  }
+	    ,choose: function(obj){   
+	      var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+	      //判断新增档案不能超过指定条数
+		  var arr = Object.keys(files);
+	      if(arr.length>number){
+	    	layerMsg("新增档案不能超过"+number+"条");
+	      	return false;
+	      }
+	      //读取本地文件
+	      obj.preview(function(index, file, result){
+	        var tr = $(['<tr id="upload-'+ index +'">'
+	          ,'<td class="typeName" data-type="'+ 103 +'">'+dicData[103]+'</td>'
+	          ,'<td width="300px">'+ file.name +'</td>'
+	          ,'<td>'+ (file.size/1014).toFixed(1) +'kb</td>'
+	          ,'<td>'
+	            ,'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>'
+	            ,'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-view">预览</button>'
+	          ,'</td>'
+	        ,'</tr>'].join(''));
+	        
+	        //删除
+	        tr.find('.demo-delete').on('click', function(){
+	          delete files[index]; //删除对应的文件
+	          tr.remove();
+	          uploadListIns2.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+	        });
+
+	        // 预览
+			tr.find('.demo-view').on('click', function(){
+			   var opt,name = file.name
+			   if(name.indexOf("pdf")<0){
+			   var img ="<img style='max-height:100%;' id='imgView' src='"+ result +"'/>";
+				  opt = {
+					 type: 1,
+					 title: "图片预览",
+					 maxmin: true,
+					 area: ['800px','500px'],
+					 skin: 'layui-layer-preview', //没有背景色
+					 shadeClose: true,
+					 content: img
+					}
+			   }else{
+				  opt = {
+					 type: 2,
+					 title: "文件预览",
+					 maxmin: true,
+					 area: ['800px','500px'],
+					 skin: 'layui-layer-preview', //没有背景色
+					 shadeClose: true,
+					 content: result
+					} 
+			    }
+			    parent.layer.open(opt); 
+			  });
+	        uploadList.append(tr);
+	      });
+	    }
+	  });
+	  $("#fileSubmit").on('click',function(){
+	  		uploadListIns1.upload();
+	  		uploadListIns2.upload();
+	  })
+})
+
+$(function() {
+	bindPageBtnEvent();
+});
+
+
+</script>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>异常查询文件导入信息管理列表</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/listIncludeStyle.js"></script>
+<style>
+	#orgTree li{
+		float: none;
+	}
+</style>
+</head>
+<body name="importCR">
+	<div class="main-list">
+			<div class="inquiry">
+				<form class="layui-form" action="">
+					<div class="list-top">
+						<div class="list-top_left">
+							<h5>筛选条件</h5>
+						</div>
+						<div class="list-top_right">
+							<ul>
+								<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon1.png"></a></li>
+								<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon2.png"></a></li>
+								<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon3.png"></a></li>
+							</ul>
+						</div>
+					</div>
+					<ul class="cons clearfix modal-body">
+						<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">客户姓名：</label>
+			                <div class="layui-input-block">
+			                	<input type="text" name="search_EQ_name" class="layui-input" />
+      						</div>
+			              </div>
+            			</li>
+            			<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">证件类型：</label>
+			                <div class="layui-input-block">
+			                	<select name="search_EQ_certType"></select>
+      						</div>
+			              </div>
+            			</li>
+            			<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">证件号码：</label>
+			                <div class="layui-input-block">
+        						<input type="text" name="search_EQ_certNo" class="layui-input"></input>
+      						</div>
+			              </div>
+            			</li>
+            			<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">查询原因：</label>
+			                <div class="layui-input-block">
+			                	<select name="search_EQ_queryReasonCode"></select>
+      						</div>
+			              </div>
+            			</li>
+            			<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">征信用户名：</label>
+			                <div class="layui-input-block">
+			                	<input name="search_EQ_userCode" class="layui-input"></input>
+      						</div>
+			              </div>
+            			</li>
+            			<li>
+							<div class="layui-form-item">
+								<label class="layui-form-label">查询日期范围：</label>
+								 <div class="layui-input-block">
+	       							 <input type="text" class="layui-input dateRange"  name="search_GTE_LTE_queryDate_DATE_RANGE" placeholder=" 请输入日期范围 ">
+	     						 </div>
+							</div>
+						</li>
+						<li>
+							<div class="layui-form-item">
+								<label class="layui-form-label">比对结果：</label>
+								 <div class="layui-input-block">
+	       							 <select class="layui-input"  name="search_EQ_compareFlag"></select>
+	     						 </div>
+							</div>
+						</li>
+					</ul>
+					<div class="btnWrap">
+						<button type="button" class="cx_btn searchBtn"><i class='DHCiconfont'>&#xe606;</i>查询</button><button type="reset" class="qk_btn resetBtn"><i class='DHCiconfont'>&#xe609;</i>清空</button>
+			        </div>
+				</form>
+			</div>	
+			<div class="clear"></div>
+		</div>
+		<!--表格部分-->
+		<div class="list-m">
+			<div class="list-top">
+				<div class="list-top_left">
+					<h5 style="background:url(../static/images/table/sx_icon2.png) 17px no-repeat">导入结果列表</h5>
+				</div>
+				<div class="btnWrap">
+					<ul>
+						<!-- 新增、编辑、详情、删除 为统一绑定的公共方法，其他需自定义 -->
+						<li>
+							<a class="createBtn"><i class='DHCiconfont'>&#xe61c;</i>导入</a>
+						</li>
+						<li>
+							<a class="exportBtn"><i class='DHCiconfont'>&#xe61c;</i>导出EXCEL</a>
+						</li>
+						<li>
+							<a class="illustrationBtn"><i class='DHCiconfont'>&#xe61c;</i>录入异常说明</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="datail" style="padding: 0px;margin-bottom: 0px;">
+				<table id="grid-data" lay-filter="grid-data"></table>
+			</div>
+		</div>
+</body>
+<script type="text/javascript" src="../static/script/listIncludeScript.js"></script>
+<script type="text/javascript" src="../static/script/business/importTwo/importTwo.js"></script>
+<script type="text/javascript">
+	// 用于存放查询条件，可设置默认查询条件
+	var searchData = null;
+	var listObj = getUrlList("../static/script/urlList/importAbnormal.json");
+	// 获取当前页面name
+	var pageName = $("body").attr("name");
+	// 获取当前页面url配置列表对象
+	var urlObj = returnOneUrlObj(pageName, listObj);
+	// 绑定公共方法传的参数对象
+	// 字典
+	var idTypeDic = {
+		url : "common/cpqDic",
+		type : "idType"
+	};
+	var qryReasonDic = {
+		url : "common/cpqDic",
+		type : "qryReason"
+	};
+	var compareDic = {
+		url : "common/cpqDic",
+		type : "compare"
+	};
+
+	var gridDicData = gridShowDic([idTypeDic,qryReasonDic,compareDic]);
+	//console.log(gridDicData)
+	layui.use(["table","form","layer"], function(){
+		var table = layui.table,
+			form = layui.form,
+			layer = layui.layer;
+		// 将url对象保存父页面
+		loadDic("common/cpqDic", "search_EQ_queryReasonCode", "qryReason");
+		loadDic("common/cpqDic", "search_EQ_certType", "idType");
+		loadDic("common/cpqDic", "search_EQ_compareFlag", "compare");
+		form.render('select'); 
+		var gridopt = {
+			urlObj:urlObj
+			,where:{EQ_type:2}
+			,cols : [[
+				 {
+					checkbox: true
+
+				 }, {
+					field : 'name',
+					title : '客户姓名',
+					width : 120,
+					event: 'detail',
+					templet: function(d){
+						// 查看详情入口
+						return "<a class='layui-link'>"+d.name+"</a>";
+					}
+				 }, {
+					field : 'certType',
+					title : '证件类型',
+					width : 80,
+					templet: function(d){
+						// 表格中字典转换
+						return gridDicData[idTypeDic.type][d.certType]+"";
+				    }
+				},{
+					field : 'certNo',
+					title : '证件号码',
+					width : 160,
+				}, {
+					field : 'queryReasonCode',
+					title : '查询原因',
+					width : 80,
+					templet: function(d){
+						// 表格中字典转换
+						return gridDicData[qryReasonDic.type][d.queryReasonCode]+"";
+					}
+				} , {
+					field : 'orgName',
+					title : '查询机构名称',
+					width : 160
+				} , {
+					field : 'userCode',
+					title : '征信用户名',
+					width : 100
+				} , {
+					field : 'userName',
+					title : '征信用户昵称',
+					width : 80
+				}, {
+					field : 'resultFlag',
+					title : '查询结果',
+					width : 80
+				}, {
+					field : 'queryDate',
+					title : '查询时间',
+					width : 160
+				}, {
+					field : 'compareFlag',
+					title : '比对结果',
+					width : 160,
+					templet: function(d){
+						// 表格中字典转换
+						return gridDicData[compareDic.type][d.compareFlag]+"";
+					}
+				}
+			]]
+		}
+	 	var returnObj =gridInit(form,table,gridopt);
+   
+		// 绑定页面点击事件（含初始化页签组件）
+		bindBtnEvent(returnObj,urlObj);
+		bindCustomBtnEvent(returnObj, urlObj);
+	});
+</script>
+</html>

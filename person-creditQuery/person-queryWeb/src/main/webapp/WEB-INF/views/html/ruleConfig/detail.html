@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>查询预警规则详情</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/business/archive/archiveIncludeStyle.js"></script>
+<link rel="stylesheet" href="../static/style/business/archive.css">
+<style>
+	#form-wrap .formWrap li{
+		margin: 15px 30px !important;
+	}
+	#form-wrap .formWrap li.textareaLi{
+		height: auto;
+	}
+	.layui-layer-title{
+		height: 42px;
+	    line-height: 42px;
+	   	border-bottom: 1px solid #eee;
+	    background-color: #F8F8F8 !important;
+	}
+	#createFileIe9{
+		float: right;
+		display: none;
+	}
+	.fileUpload{
+		display: none;
+		color: #333;
+		border-color: #fff;
+		background-color: #fff;
+	}
+</style>
+</head>
+<body name="ruleConfig">
+	<div id="form-wrap" class="layui-form" lay-filter="setVal">
+		<div class="modal-body selectmodal">
+			<form id="detail_form_id" action="ruleConfig/detail">
+				<ul class="formWrap clearfix">
+					<li>
+						<span class="formLabel">规则编号:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="ruleNum" class="validate[required] layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">规则名称:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="ruleName" class="validate[required] layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li class="threeCols textareaLi">
+						<span class="formLabel">规则说明:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<textarea name="ruleExpain" class="validate[required] layui-textarea" ></textarea>
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">操作人:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="operater" class="validate[required] layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">操作时间:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="operatrTime" class="validate[required] layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="checkbox" name="isUse" class="validate[required] layui-checkbox" title="是否启用" lay-skin="primary" />
+							</div>
+						</div>
+					</li>
+				</ul>
+				<p class="record paperFile">预警条件</p>
+				<div>
+						<ul class="formWrap clearfix">
+							<li>
+								<span class="formLabel">机构范围:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" id="deptCode" name="orgId" class="layui-input" />
+										<!-- <input type="text" class="orgTree validate[required] layui-input" readonly="readonly" /><input type="hidden" id="deptCode" name="orgId" class="noReset" /> -->
+									</div>
+								</div>
+							</li>
+							<li>
+								<!-- <span class="formLabel">纸质文件描述:</span> -->
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="checkbox" name="isIner" class="validate[required] layui-checkbox" title="是否辖内" lay-skin="primary" />
+									</div>
+								</div>
+							</li>
+							<li class="emptyCols"></li>
+							<li>
+								<span class="formLabel">用户范围:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" name="userScope" class="validate[required] layui-input" placeholder="请输入" />
+									</div>
+								</div>
+							</li>
+							<li>
+								<span class="formLabel">预警维度:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<select name="dimension" class="validate[required] layui-input" lay-filter="dimension">
+											<option value="机构">机构</option>
+											<option value="征信用户">征信用户</option>
+											<option value="内部用户">内部用户</option>
+											<option value="客户">客户</option>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li>
+								<span class="formLabel">预警指标:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<select name="index" class="validate[required] layui-input" lay-filter="index">
+										  <option value="查询次数">查询次数</option>
+								          <option value="查询成功次数">查询成功次数</option>
+								          <option value="查询失败次数">查询失败次数</option>
+								          <option value="查无此人次数">查无此人次数</option>
+								          <option value="异县查询次数">异县查询次数</option>
+								          <option value="异市查询次数">异市查询次数</option>
+								          <option value="异省查询次数">异省查询次数</option>
+								          <option value="查询间隔时间">查询间隔时间</option>
+								          <option value="触发规则次数">触发规则次数</option>
+								          <option value="非工作时间查询次数">非工作时间查询次数</option>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li>
+								<span class="formLabel">重置周期:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<select name="cycle" class="validate[required] layui-input" lay-filter="cycle">
+								          <option value="永不">永不</option>
+								          <option value="年">年</option>
+								          <option value="月">月</option>
+								          <option value="日">日</option>
+								          <option value="小时">小时</option>
+								          <option value="分钟">分钟</option>
+								          <option value="立即">立即</option>
+										</select>
+									</div>
+								</div>
+							</li>
+							<li>
+								<span class="formLabel">触发阈值:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" name="treshold" class="validate[required] layui-input" placeholder="请输入" />
+									</div>
+								</div>
+							</li>
+							<li>
+								<span class="formLabel">处理方式:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<select name="mode" class="validate[required] layui-input" lay-filter="cycle">
+								          <option value="用户锁定">用户锁定</option>
+								          <option value="阻断">阻断</option>
+								          <option value="预警">预警</option>
+								          <option value="等待">等待</option>
+										</select>
+									</div>
+								</div>
+							</li>
+						</ul>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="closePage" class="layui_btn btn_submit clearfix" ><i class='DHCiconfont'>&#xe605;</i>关闭</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/business/archive/archiveIncludeScript.js"></script>
+<script type="text/javascript">
+        
+var urlObj = parent.urlObj;
+var data = getParamObj();
+var jsonData = getAjaxData(urlObj.getValUrl,data);
+
+//获取表单中的数据
+layui.use(['form', 'layedit', 'laydate','upload'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,upload = layui.upload
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  var dicObj = getDic(parent.oprOrgDic.url, parent.oprOrgDic.type);
+  jsonData.orgId = dicObj[jsonData.orgId];
+  form.val("setVal",jsonData);
+  var operateObj = {"operater":parent.operater,"operatrTime":parent.operatrTime};
+  form.val("setVal",operateObj);
+  setReadonly();
+  form.render('select');
+  bindPageBtnEvent();
+})
+</script>
+</html>

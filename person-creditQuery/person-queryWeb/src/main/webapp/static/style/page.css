@@ -1,0 +1,95 @@
+@charset "utf-8";
+html {
+    width: auto;
+    height: 100%;
+    /*position: relative;*/
+    background-color: #fff;
+}
+/* 
+.grayTable  td {
+    width: 220px;
+}
+.grayTable  select {
+    width: 206px;
+    height: 28px;
+    line-height: 28px;
+    vertical-align: middle;
+    padding: 4px  0;
+}
+.grayTable  select.citySelect {
+    width: 67px;
+}
+.grayTable  select.investSelect {
+    width: 127px;
+}
+.grayTable textarea {
+    height: 80px;
+}
+.grayTable .star{
+    margin-left: 5px;
+    color: #FF6838;
+} */
+#form-wrap{    
+   /* height: 210px; */
+    overflow: auto;
+    padding: 20px 0px;
+    background: #fff;
+}
+.modal-body {
+    background: #fff;
+}
+
+.modal-footer {
+    width: 90%;
+    height: 35px;
+    padding: 15px 5%;
+    border-radius: 0;
+    position: fixed;
+    bottom: 0;
+    /*bottom: 42px;*/
+    left: 0;
+    margin-bottom: 0;
+    text-align: right;
+    border-top: 1px solid #ddd;
+    background-color: #fff;
+}
+.modal-footer.tabs-footer {
+    /*bottom: 42px;*/
+}
+#form-wrap .formWrap li input.disabled, #form-wrap .formWrap li select.disabled{
+    color: #ccc;
+    border-color : #dedede;
+    cursor: not-allowed;
+    background-color: #fff
+}
+#form-wrap .formWrap li textarea.disabled{
+    color: #ccc;
+    background-image: url(../images/form/linebg2.png);
+}
+
+/* input[type="radio"], input[type="checkbox"] {
+    width: 20px !important;
+    height: 20px !important;
+}
+.grayTable input.disabled,.grayTable textarea.disabled,.grayTable select.disabled{
+    border: 1px solid #999;
+    text-indent: 5px;
+    background: #eee;
+    color: #9a9a9a;
+}
+.grayTable .dToD input{
+    width: 94px;
+}
+错误字段红色高亮
+.grayTable td .errorEle{
+    color: #FF6838;
+}
+.modal-body .errText{
+    width: 600px;
+    color: #FF6838;
+    margin: 0 auto;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border: 1px solid #dedede;
+    border-radius: 3px;
+} */

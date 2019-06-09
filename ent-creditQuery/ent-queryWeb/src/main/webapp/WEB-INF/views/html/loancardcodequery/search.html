@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>企业中征码查询</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/pageIncludeStyle.js"></script>
+<style>
+	.modal-body{
+		width: 900px;
+    	margin: 0 auto;
+	}
+	.formTitle{
+		padding: 10px 10px;
+	    /* height: 35px; */
+	    /* line-height: 35px; */
+	    /* background: #3075C7; */
+	    color: #333;
+	    font-size: 16px;
+	    border-bottom: 1px solid #0553c7;
+	    font-weight: 600;
+	}
+</style>	
+</head>
+<body>
+	<div id="form-wrap" class="layui-form" lay-filter="setVal">
+		<form id="create_form_id" action="loancardcodequery/submitTOCredit">
+			<div class="modal-body selectmodal">
+				<p class="formTitle">查询条件（精确查询，请在下方选择任意一个条件输入）</p>
+				<ul class="formWrap clearfix">
+<!-- 					<li><span class="formLabel">机构信用代码：</span> -->
+<!-- 						<div class="layui-form-item"> -->
+<!-- 							<div class="layui-input-block"> -->
+<!-- 								<input type="text" name="creditcode" id="creditcode" -->
+<!-- 									class="validate[funcCall[checkCreditCode]] layui-input" -->
+<!-- 									placeholder="请输入" /> -->
+<!-- 							</div> -->
+<!-- 						</div></li> -->
+					<li><span class="formLabel">中征码：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="loancardno" id="loancardno"
+									class="validate[funcCall[checkLoanCardno]] layui-input"
+									placeholder="请输入" />
+							</div>
+						</div></li>
+
+					<li><span class="formLabel">组织机构代码：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="sdeporgcode" id="sdeporgcode"
+									class="validate[funcCall[isCorpNo]] layui-input"
+									placeholder="请输入" />
+							</div>
+						</div></li>
+
+
+					<li><span class="formLabel">登记注册类型:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="registertype" id="registertype" lay-filter="registertype" validateId="1"
+									class="layui-input"></select>
+							</div>
+						</div></li>
+
+					<li><span class="formLabel">登记注册号：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="registercode" id="registercode" validateId="1"
+									class="validate[funcCall[registercodevalidate]] layui-input"
+									placeholder="请输入" />
+							</div>
+						</div></li>
+					<li><span class="formLabel">纳税人识别号(国税)：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="sdepnationaltaxcode"
+									id="sdepnationaltaxcode"
+									class="validate[funcCall[sdepnationaltaxcodevalidate]] layui-input"
+									placeholder="请输入" />
+							</div>
+						</div></li>
+					<li><span class="formLabel">纳税人识别号(地税)：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="sdeplandtaxcode" id="sdeplandtaxcode"
+									class="validate[funcCall[sdeplandtaxcodevalidate]] layui-input"
+									placeholder="请输入" />
+							</div>
+						</div></li>
+				</ul>
+				<p class="formTitle">查询原因</p>
+				<ul class="formWrap clearfix">
+					<li><span class="formLabel">查询原因:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="queryreason" id="queryreason" class="validate[required] layui-input"></select>
+							</div>
+						</div></li>
+				</ul>
+				<!--查询类型，Aciont中用以判断进行不同的查询操作-->
+				<input type="hidden" name="searchType" value="1">
+				<!--查询结果页面判断用，以显示不同的列表-->
+				<input type="hidden" name="attribute" value="0">
+				<!--传输类型:信息服务使用-->
+				<input type="hidden" name="type" value="">
+				<input type="hidden" name="typecode" value="loacard">
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="layui_btn btn_submit clearfix"
+					id="submitPage">
+					<i class='DHCiconfont'>&#xe617;</i>提 交
+				</button>
+				<button type="reset" class="layui_btn btn_reset clearfix"
+					id="resetPage">
+					<i class='DHCiconfont'>&#xe609;</i>清 空
+				</button>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript" src="../static/script/business/loancardcode/loancardcode.js"></script>
+<script type="text/javascript">
+    var projectName = getProjectName(location.href);
+	layui.use(
+					[ 'form', 'layedit', 'laydate' ],
+					function() {
+						var form = layui.form, layer = layui.layer, layedit = layui.layedit, laydate = layui.laydate;
+						form.on('select(registertype)', function(data) {
+							if (data.value == '') {
+								$("#registercode").removeClass("validate[required]");
+							} else {
+								$("#registercode").addClass("validate[required]");
+							}
+						});
+						form.render("select");
+					})
+	$(function() {
+		loadDic("common/ceqDic", "registertype", "registertype_ceq");
+		loadDic("common/ceqDic", "queryreason", "queryreason_ceq");
+		bindPageBtnEvent();
+	});
+
+	function submitFun(submitUrl, data) {
+		var flag = validateAllNull(data);
+		if (flag) {
+			var url = projectName + "loancardcodequery/submitTOCreditValidate";
+			var rs1 = getAjaxData(url, data);
+			if (rs1.code == "00000000") {
+				window.location.href=submitUrl+"?"+paramObjToStr(data);
+			} else if (rs1.code == "00000001") {
+				window.hasSubmit = false;
+				$(".modal-footer button").attr("disabled", false);
+				layerMsg(rs1.msg);
+			}
+		} else {
+			window.hasSubmit = false;
+			$(".modal-footer button").attr("disabled", false);
+			layerMsg("请最少选择查询一个条件！");
+		}
+	}
+
+	function validateAllNull(data) {
+		if ((data.creditcode == null || data.creditcode == '')
+				&& (data.loancardno == null || data.loancardno == '')
+				&& (data.sdeporgcode == null || data.sdeporgcode == '')
+				&& (data.registertype == null || data.registertype == '')
+				&& (data.sdepnationaltaxcode == null || data.sdepnationaltaxcode == '')
+				&& (data.sdeplandtaxcode == null || data.sdeplandtaxcode == '')) {
+			return false;
+		}
+		return true;
+	}
+</script>
+</html>
+
+
+

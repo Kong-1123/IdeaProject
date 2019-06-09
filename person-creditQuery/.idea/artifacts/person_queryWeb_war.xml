@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="person-queryWeb:war">
+    <output-path>$PROJECT_DIR$/person-queryWeb/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>person-queryWeb</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="creditpersonqueryweb.war">
+      <element id="artifact" artifact-name="person-queryWeb:war exploded" />
+    </root>
+  </artifact>
+</component>

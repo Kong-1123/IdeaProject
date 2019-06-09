@@ -1,0 +1,19 @@
+{
+  "tabs": [
+   {
+      "name": "预警信息",
+      "eName":"alert",
+      "detailUrl":"alert/detail",
+      "searchUrl":"alert/search",
+      "getValUrl":"alert/findById",
+      "getPage":"alert/getPage",
+      "relieveReason":"alert/relieveReason",
+      "unLock":"alert/unLock",
+      "addLock":"alert/addLock",
+      "isUserLocked":"alert/isUserLocked",
+      "checked":"alert/checked",
+      "isChecked":"alert/isChecked",
+      "exportUrl" : "alert/exportLoad"
+   }
+   ]
+ }

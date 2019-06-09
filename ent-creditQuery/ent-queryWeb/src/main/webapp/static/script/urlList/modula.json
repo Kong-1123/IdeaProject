@@ -1,0 +1,14 @@
+{
+  "tabs": [
+   {
+      "name": "流程管理",
+      "eName":"modula",
+      "creUrl":"modula/createPage",
+      "updUrl":"modula/updatePage",
+      "detailUrl":"modula/detail",
+      "delUrl":"modula/delete?id=",
+      "searchUrl":"modula/search",
+      "getPage":"modula/getPage"
+   }
+   ]
+ }

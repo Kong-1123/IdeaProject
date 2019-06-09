@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>cn.com.dhcc</groupId>
+    <artifactId>person-creditQuery</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>person-creditQuery</name>
+    <description>个人征信二代查询前置工程，阐述个人征信二代查询所包含的所有子模块以及主体工程所依赖jar包。</description>
+    <properties>
+        <project.build.jdk>1.8</project.build.jdk>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <common.queryComponent.version>0.0.1-SNAPSHOT</common.queryComponent.version>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <source>${project.build.jdk}</source>
+                    <target>${project.build.jdk}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <modules>
+        <!--
+        <module>person-query-BO</module>
+        <module>person-queryConfig</module>
+        <module>person-queryControl</module>-->
+        <module>person-reportView</module>
+        <module>person-queryApproveFlow</module>
+        <module>person-queryStatistics</module>
+        <!--<module>person-queryUserRouter</module>
+        <module>person-queryPBOC</module>-->
+        <module>person-queryFlowManager</module>
+        <module>person-queryWeb</module>
+<!--    <module>person-businessMonitor</module>-->
+        <module>person-authorizeManager</module>
+        <module>person-queryAPI</module>
+        <!--
+        <module>person-queryCounter</module>
+        <module>person-reportAnalysis</module>
+        <module>person-reportStorage</module>
+        <module>person-reportStructured</module>
+        <module>person-reportReform</module>
+        -->
+    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>cn.com.dhcc</groupId>
+            <artifactId>common-queryComponent</artifactId>
+            <version>${common.queryComponent.version}</version>
+            <!--<exclusions>-->
+            <!--<exclusion>-->
+            <!--<groupId>javax.servlet</groupId>-->
+            <!--<artifactId>servlet-api</artifactId>-->
+            <!--</exclusion>-->
+            <!--</exclusions>-->
+        </dependency>
+        <dependency>
+            <groupId>cn.com.dhcc</groupId>
+            <artifactId>common-fileStorage</artifactId>
+            <version>${common.queryComponent.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
+<dependency>
+    <groupId>org.springframework.data</groupId>
+    <artifactId>spring-data-jpa</artifactId>
+    <version>2.1.8.RELEASE</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-web</artifactId>
+    <version>5.1.4.RELEASE</version>
+</dependency>
+
+        
+    </dependencies>
+    <dependencyManagement>
+
+    </dependencyManagement>
+</project>

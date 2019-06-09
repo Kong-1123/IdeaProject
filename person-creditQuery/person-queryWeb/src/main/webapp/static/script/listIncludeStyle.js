@@ -1,0 +1,9 @@
+//调用
+LoadMyFile([
+            "../static/style/iconfont/iconfont.css"
+            ,"../static/style/reset.css"
+            ,"../static/script/layui/css/layui.css"
+            ,"../static/script/layui/css/layui.cu.css"
+            ,"../static/style/tabs.css"   
+            ,"../static/style/list.css"
+        ]);

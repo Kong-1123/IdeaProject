@@ -1,0 +1,20 @@
+{
+  "tabs": [
+      {
+         "name": "监控界面",
+         "eName":"monitorinter",
+         "configUrl":"monitorinter/getQueryConfigParam",
+         "realtimeUrl":"monitorinter/realTimeQueryGauge",
+         "alllineUrl":"monitorinter/allLineOfDayPie",
+         "querystateUrl":"monitorinter/queryStatePie",
+         "onedayUrl":"monitorinter/oneDayQueryVoluLine",
+         "oneweekUrl":"monitorinter/oneWeekQueryVoluLine",
+         "instituUrl":"monitorinter/instituQueryVoluLine",
+         "creditInfoUrl":"monitorinter/creditInforQueryVoluLine",
+         "internalUserUrl":"monitorinter/internalUserQueryVoluLine",
+         "creditUserExUrl":"monitorinter/creditUserExcep",
+         "internalUserExUrl":"monitorinter/internalUserExcep",
+         "istopcodeUrl":"monitorinter/istopcode"
+      }
+   ]
+ }

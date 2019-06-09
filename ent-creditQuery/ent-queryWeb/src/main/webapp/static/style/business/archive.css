@@ -1,0 +1,31 @@
+.record{
+	padding: 10px 10px;
+    /* height: 35px; */
+    /* line-height: 35px; */
+    /* background: #3075C7; */
+    color: #333;
+    font-size: 16px;
+    border-bottom: 1px solid #0553c7;
+    font-weight: 600;
+}
+.modal-body{
+	display: block;
+    padding: 0 30px;
+}
+#createFile{
+	height: 30px;
+    line-height: 30px;
+    background: #2086ff;
+    float:right;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    padding: 0 10px;
+}
+.record span{
+	font-size:12px;
+	color:#FD971F;
+	margin-left:20px;
+}
+.layui-upload-list>.layui-upload-wrap{
+    float: right\9;
+}

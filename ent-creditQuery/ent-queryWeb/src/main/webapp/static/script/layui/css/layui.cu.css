@@ -1,0 +1,143 @@
+@charset "utf-8";
+/*layui自定义css*/
+.layui-input, .layui-select{
+    height: 32px;
+}
+.layui-textarea {
+    background: url(../../../images/form/linebg.png);
+    border: none;
+    line-height: 28px;
+    resize: none;
+}
+.layui-form-label {
+    padding: 5px 0 0 15px;
+}
+.layui-input-block{
+    margin-left: 10px;
+}
+.layui-table-view,.layui-table-view .layui-table{
+    width: 100% !important;
+}
+.layui-table-view .layui-table .layui-link{
+    color: #2086ff;
+    border-bottom: 1px solid #2086ff; 
+}
+.layui-table-view .layui-table .layui-link:hover{
+    color: #3075c7;
+    border-color: #3075c7; 
+}
+.layui-table .layui-table-cell {
+    text-align: left;
+}
+.layui-table .laytable-cell-checkbox{
+    text-align: center;
+}
+.layui-table .laytable-cell-1-button {
+    margin: 0 auto;
+}
+.layui-table .layui-btn {
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+    border-radius: 5px;
+    background-color: #3075c7;
+}
+.layui-table-page {
+    width: auto;
+    position: relative;
+    float: right;
+    padding: 7px 7px 0;
+    border-width: 1px 0 0;
+    height: 41px;
+    font-size: 12px;
+    margin-right: 20px;
+}
+
+.layui-table-header th{
+    border-right: 1px solid #e6e6e6 !important;
+}
+
+.layui-form-select .layui-input{
+    margin-left: 0px;
+    padding-right: 0px;
+}
+.layui-form-select{
+    /*margin-left: 10px;*/
+}
+
+/*layer弹出层*/
+body .layui-layer-open {
+    box-shadow: none;
+    background-color:transparent; 
+}
+.layui-layer-open .layui-layer-title {
+    height: 38px;
+    line-height: 38px;
+    padding-left: 0;
+    border-bottom: none;
+    background-color:transparent; 
+}
+.layui-layer-open .layui-layer-title span.title{
+    font-size: 16px;
+    color: #fefefe;
+    font-weight: bold;
+    display: inline-block;
+    float: left;
+    padding: 5px 10px 0 40px;
+    background-color: #3075C7;
+    position: relative;
+}
+.layui-layer-open .layui-layer-title span.titleBg{
+    display: inline-block;
+    width: 62px;
+    height: 39px;
+    background: url(../../../images/form/bg_title.png) no-repeat left top;  
+}
+.layui-layer-open .layui-layer-content{
+    border: 6px solid #3075C7;
+    border-radius: 0px 5px 5px 5px;
+}
+/* .layui-layer-setwin .layui-layer-close{
+    width: 30px;
+    height: 30px;
+    background: url(../../../images/form/close.png) no-repeat center center;  
+} */
+.layui-layer-open .layui-layer-setwin .layui-layer-close2 {
+    right: -15px;
+    top: -15px;
+}
+.layui-layer-page .layui-layer-content {
+    background-color: #fff;
+}
+
+.layui-layer-dialog{
+    border: 3px solid #3075c7;
+    border-radius: 5px;
+}
+.layui-layer-dialog .layui-layer-title{
+    height: 36px;
+    line-height: 36px;
+    padding: 0;
+    background-color: #3075c7;
+}
+.layui-layer-dialog .layui-layer-title span{
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 36px;
+    display: block;
+    height: 36px;
+    padding-left: 10px;
+}
+.layui-layer-dialog .layui-layer-title span .DHCiconfont{
+    color: #fff;
+    font-size: 28px;
+    float: left;
+}
+.layui-layer-dialog .layui-layer-btn .layui-layer-btn0{
+    border: 1px solid #3075c7;
+    background-color: #3075c7;
+}
+body .layui-laydate .layui-this {
+    background-color: #3075c7!important;
+}

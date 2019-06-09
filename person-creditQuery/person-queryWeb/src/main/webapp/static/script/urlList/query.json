@@ -1,0 +1,13 @@
+{
+  "tabs": [
+   {
+      "name": "查询统计管理",
+      "eName":"query",
+      "detailUrl":"query/detail",
+      "searchUrl":"query/search",
+      "getValUrl":"query/findById?id=",
+      "getPage":"query/getPage",
+       "queryByOrg":"query/findByAmountTo"
+   }
+   ]
+ }

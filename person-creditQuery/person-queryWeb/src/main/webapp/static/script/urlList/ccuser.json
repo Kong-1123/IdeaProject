@@ -1,0 +1,17 @@
+{
+  "tabs": [
+   {
+      "name": "中心一代用户",
+      "eName":"ccUser",
+      "creUrl":"ccUser/createPage",
+      "updUrl":"ccUser/updatePage",
+      "updatePwd":"ccUser/updatePwdPage",
+      "detailUrl":"ccUser/detail",
+      "delUrl":"ccUser/delete?id=",
+      "searchUrl":"ccUser/search",
+      "getValUrl":"ccUser/findById",
+      "getPage":"ccUser/getPage",
+      "test":"ccUser/test"
+   }
+   ]
+ }

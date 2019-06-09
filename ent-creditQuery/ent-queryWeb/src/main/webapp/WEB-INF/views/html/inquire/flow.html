@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>查询信用报告</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/pageIncludeStyle.js"></script>
+<script type="text/javascript" src="../static/script/md5.js"></script>
+<link rel="stylesheet" type="text/css" href="../static/style/admin.css">
+<link rel="stylesheet" type="text/css" href="../static/style/business/inquire/inquire.css">
+<style>
+	body{
+		overflow: hidden;
+	}
+	#inquireWrap{
+		width: 100%;
+		height: 100%;
+	}
+</style>
+</head>
+<body name="inquire">
+	<div class="step-body" id="myStep">
+			<div class="content_box">
+				<!-- <span class="step_next"><img src="../static/images/query/jd_next.png"></span> -->
+				<div class="step-header" style="width:80%">
+					<ul class="clearfix">
+						<li class="step_one"><span class="simg_1"></span>
+							<p>1.信息录入</p>
+						</li>
+						<li><span class="simg_2"></span>
+							<p>2.关联授权</p>
+						</li>
+						<li><span class="simg_3"></span>
+							<p>3.内部审批</p>
+						</li>
+						<li><span class="simg_4"></span>
+							<p>4.查询报告</p>
+						</li>
+					</ul>
+				</div>
+				<!-- <span class="step_prev"><img src="../static/images/query/jd_prev.png"></span> -->
+			</div>
+
+			<div class="step-content">
+				<iframe id="inquireWrap" src="" frameborder="0"></iframe>
+			</div>
+		</div>
+</body>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript" src="../static/script/jquery.step.js"></script>
+<script type="text/javascript" src="../static/script/business/inquire/inquire.js"></script>
+<script type="text/javascript" src="../static/script/md5.js"></script>
+
+<script type="text/javascript">
+	var projectName = getProjectName(location.href);
+	var listObj = getUrlList("../static/script/urlList/inquire.json");
+	// 获取当前页面name
+	var pageName = $("body").attr("name");
+	// 获取当前页面url配置列表对象
+	var urlObj = returnOneUrlObj(pageName, listObj);
+	var step = $("#myStep").step({
+					animate: true,
+					initStep: 1,
+					speed: 1000
+				});
+	var winH = $(window).height();
+	var lineH = $(".content_box").height();
+	$(".step-content").height(winH-lineH);
+	layui.use(['form', 'layedit', 'laydate', 'layer'], function(){
+	  var form = layui.form
+	  ,layer = layui.layer
+	  ,layedit = layui.layedit
+	  ,laydate = layui.laydate
+	  ,layer = layui.layer;
+	  var pre = "?pre=0";
+	   ajaxFunc(urlObj.preValUrl+pre,function(data){
+		   result =data;
+			if(result.resultCode == "10000"/*成功，进入下一步*/){
+				 $("#inquireWrap").attr("src",urlObj.reportUrl)
+			} else if (result.resultCode == "10013"/*弹出提示询问用户是否进行下一步*/){
+				confirmMsg1(result,urlObj.reportUrl);
+			} else{
+				if(result.resultCode =="01"){
+					layerAlert(result.resultMsg,function(){
+	        			var pName = getProjectName(location.href);
+	        			$(".layui-tab .layui-this .layui-tab-close",parent.document).click();
+	        		});
+					return;
+				}else{
+					layerAlert(result.resultMsg,function(){
+           			$(".layui-tab .layui-this .layui-tab-close",parent.document).click();				        				
+	        		});
+				}
+				 
+			}
+		});
+	})
+	$(function(){
+		
+	})
+	
+function showalert(){
+	if(result.resultCode =="00000"/*弹出提示，将用户踢出登陆*/){
+   	  alert(result.resultMsg);
+   	  var platFormUlr = sessionStorage.projectName;
+   	  window.location.href = platFormUlr + "/logout";
+	}
+}
+</script>
+</html>
+  

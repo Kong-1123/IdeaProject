@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ent-queryWeb:war">
+    <output-path>$PROJECT_DIR$/ent-creditQuery/ent-queryWeb/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>ent-queryWeb</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="creditenterprisequeryweb.war">
+      <element id="artifact" artifact-name="ent-queryWeb:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>征信查询日志报送配置新增</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/business/archive/archiveIncludeStyle.js"></script>
+<link rel="stylesheet" href="../static/style/business/archive.css">
+<style>
+	#form-wrap .formWrap li{
+		margin: 15px 30px !important;
+	}
+	#form-wrap .formWrap li.textareaLi{
+		height: auto;
+	}
+	.layui-layer-title{
+		height: 42px;
+	    line-height: 42px;
+	   	border-bottom: 1px solid #eee;
+	    background-color: #F8F8F8 !important;
+	}
+	#createFileIe9{
+		float: right;
+		display: none;
+	}
+	.fileUpload{
+		display: none;
+		color: #333;
+		border-color: #fff;
+		background-color: #fff;
+	}
+</style>
+</head>
+<body name="ruleConfig">
+<div id="form-wrap" class="layui-form" lay-filter="setVal">
+			<div class="modal-body selectmodal">
+			<form id="create_form_id" action="LogReport/create">
+				<ul class="formWrap clearfix">
+					<li>
+						<span class="formLabel">报送名称:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="reportName" class="validate[required] layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">机构:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" class="orgTree validate[required] layui-input" readonly="readonly" /><input type="hidden" id="deptCode" name="orgId" class="noReset" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="checkbox" name="isUse" class="validate[required] layui-checkbox" title="是否启用" lay-skin="primary" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">报送频率:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="reportRate" class="validate[required] layui-input" lay-filter="reportRate">
+						          <option value="实时">实时</option>
+						          <option value="按日">按日</option>
+						          <option value="按月">按月</option>
+								</select>
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">报送方式:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="reportType" class="validate[required] layui-input" lay-filter="reportType">
+						          <option selected="" value="webservice">webservice</option>
+						          <option value="http">http</option>
+						          <option value="文本文件">文本文件</option>
+						          <option value="excel">excel</option>
+								</select>
+							</div>
+						</div>
+					</li>
+					<li class="emptyCols"></li>
+					<li>
+						<span class="formLabel">操作人:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="operater" class="validate[required] layui-input noReset" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">操作时间:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="operatrTime" class="validate[required] layui-input noReset" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+				</ul>
+				<div class="modal-footer">
+					<button type="submit" class="layui_btn btn_submit clearfix" id="submitPage"><i class='DHCiconfont'>&#xe617;</i>保存</button>
+					<button type="button" class="layui_btn btn_reset clearfix" id="resetPage"><i class='DHCiconfont'>&#xe609;</i>清 空</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/business/archive/archiveIncludeScript.js"></script>
+
+<script type="text/javascript">
+//上传文件
+layui.use(["table","form","layer","upload"], function(){
+	var table = layui.table,
+		form = layui.form,
+		layer = layui.layer,
+		upload = layui.upload;
+        form.render('select');
+        var operateObj = {"operater":parent.operater,"operatrTime":parent.operatrTime};
+        form.val("setVal",operateObj);
+        setReadonly(['operater','operatrTime']);
+})
+
+
+$(function() {
+	bindPageBtnEvent();
+});
+
+
+</script>
+</html>

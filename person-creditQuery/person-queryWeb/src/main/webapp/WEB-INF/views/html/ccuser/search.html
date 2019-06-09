@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>系统项目按钮管理查询页面</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/pageIncludeStyle.js"></script>
+</head>
+<body>
+	<div id="form-wrap">
+		<form id="query_form_id" action="ccUser/getPage">
+			<div class="modal-body">
+				<table class="grayTable">
+					<tr>
+						<th align="right" class="thStyle">征信用户名称:</th>
+						<td><input type="text" name="search_LIKE_ccuser" class="" /></td>
+
+						<th align="right" class="thStyle">征信用户所属机构:</th>
+						<td><input type="text" name="search_LIKE_ccdept" class="" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" id="searchPage" class="btn-vip btn-blue" value="查询" />
+			    <input type="reset" id="resetPage" class="btn-vip btn-white" value="清空" />
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+</script>
+</html>
+

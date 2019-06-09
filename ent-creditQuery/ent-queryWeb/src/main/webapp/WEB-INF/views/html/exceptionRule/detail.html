@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>异常查询阻断详情</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/pageIncludeStyle.js"></script>
+<style>
+	#form-wrap .formWrap li{
+		margin: 5px 30px !important;
+	}
+	.threeCols{
+		height:110px !important;
+	}
+	.param1,.param2,.param3,.workDayBtn,.userSymbolBtn,.date1,.date2{
+		display:none;
+	}
+	.workDayBtn,.userSymbolBtn{
+		background: #3075C7;
+    	color: #FFFFFF;
+    	border: 1px solid #3075C7;
+    	margin-right:15px;
+	}
+	.modal-footer button{
+		float:right;
+	}
+</style>
+</head>
+<body>
+<div id="form-wrap" class="layui-form" lay-filter="setVal">
+		<form id="detail_form_id" action="exceptionRule/detail">
+			<div class="modal-body selectmodal">
+				<ul class="formWrap clearfix">
+					<li>
+						<span class="formLabel">规则编号:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="ruleCode" id="ruleCode" class="layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li class="twoCols">
+						<span class="formLabel">规则名称:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="ruleName" id="ruleName" class="layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li class="threeCols">
+						<span class="formLabel">规则描述:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<textarea name="ruleDescribe" id="ruleDesc" class="layui-textarea"" placeholder="请输入"></textarea>
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">页面管控:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="pageControl" id="pageControl" class="layui-select" lay-filter="pageControl"></select>
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">接口管控:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="interfaceControl" id="interfaceControl" class="layui-select" lay-filter="interfaceControl"></select>
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">是否锁用户:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="lockUser" id="lackUser" class="layui-select" lay-filter="lockUser"></select>
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">白名单是否受限:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="restrictWhite" id="restrictWhite" class="layui-select" lay-filter="restrictWhite"></select>
+							</div>
+						</div>
+					</li>
+					<li class="threeCols">
+						<span class="formLabel">备注:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<textarea name="comments" id="comments" class="layui-textarea"" placeholder="请输入" ></textarea>
+							</div>
+						</div>
+					</li>
+					
+					<li class="date1">
+						<span class="formLabel">开始时间:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" class="layui-input" name="ruleValue1" placeholder="请输入 "/>
+							</div>
+						</div>
+					</li>
+					<li class="date2">
+						<span class="formLabel">结束时间:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" class="layui-input" name="ruleValue2" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li class="param1">
+						<span class="formLabel">单位时间(秒):</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" class="layui-input" name="ruleValue1" placeholder="请输入 "/>
+							</div>
+						</div>
+					</li>
+					<li class="param2">
+						<span class="formLabel">可查询次数:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" class="layui-input" name="ruleValue2" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li class="param3">
+						<span class="formLabel">异地管控:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="ruleValue2" id="placesControl" class="layui-select" lay-filter="ruleValue2"></select>
+							</div>
+						</div>
+					</li>
+				</ul>
+				
+			</div>
+			
+			<div class="modal-footer">
+				<button type="button" id="closePage" class="layui_btn btn_submit clearfix" ><i class='DHCiconfont'>&#xe605;</i>关闭</button>
+				<button type="button" class="layui_btn workDayBtn">工作日管理</button>
+				<button type="button" class="layui_btn userSymbolBtn">客户标识</button>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript" src="../static/script/business/exceptionRule/exceptionRule.js"></script>
+
+<script type="text/javascript">
+	        
+var urlObj = parent.urlObj;
+var data = getParamObj();
+//获取后台返回的数据
+var jsonData = getAjaxData(parent.urlObj.getValUrl, data);
+//获取规则编码
+var ruleCode = jsonData.ruleCode;
+//根据规则编码的不同显示不同的表单
+if(ruleCode == "C0000" || ruleCode == "C0001"){
+	$(".param1").show();
+	$(".param1 span").text('可查询次数');
+}else if(ruleCode == "C0002"){
+	$(".workDayBtn").show();
+}else if(ruleCode == "C0003"){
+	$(".date1,.date2").show();
+	$(".param1,.param2,.param3").remove();
+}else if(ruleCode == "C0004"){
+	$(".userSymbolBtn").show();
+}else if(ruleCode == "C0005" || ruleCode == "C0006" || ruleCode == "C0007" || ruleCode == "C0008"){
+	$(".param1,.param2").show();
+	$(".date1,.date2,.param3").remove();
+}else if(ruleCode == "C0009"){
+	$(".param1,.param3").show();
+	$(".param1 span").text('异地可查询次数');
+}else if(ruleCode == "C0010"){
+	$(".param1").show();
+	$(".param1 span").text('异常查询次数');
+}
+/* 选择工作日按钮 */
+$(".modal-footer").delegate(".workDayBtn","click",function(){
+    openFull(layer,"选择工作日","/creditenterprisequeryweb/dateinfo/list");
+})
+function openFull(layer,title,url){
+    var layerOpt ={
+        type: 2  // 1：content为jquery对象，2：content为url。
+        ,title: title
+        ,area: ["600px", "400px"]
+        ,shade: [0.3, '#333']
+        ,closeBtn:1
+        ,resize: true
+        ,maxmin: true
+        ,content: url
+        ,zIndex : 19891014
+        ,success: function(layero, index){
+            layer.setTop(layero); // 置顶当前窗口
+            //获取当前窗口内容
+            var body = layer.getChildFrame('body', index);
+            //将提交按钮隐藏
+            body.contents().find(".buttonWrap").hide();
+        }
+  };
+  var index = layer.open(layerOpt);
+  layer.full(index);
+}
+
+layui.use(['form', 'layedit', 'laydate'], function(){
+	  var form = layui.form
+	  ,layer = layui.layer
+	  ,layedit = layui.layedit
+	  ,laydate = layui.laydate;
+	  loadDic("common/ceqDic", "lockUser", "whether_ceq"); //是否锁用户
+      loadDic("common/ceqDic", "pageControl", "whether_ceq");//页面管控
+      loadDic("common/ceqDic", "interfaceControl", "whether_ceq");//接口管控
+      loadDic("common/ceqDic", "restrictWhite", "whether_ceq");//白名单是否受限
+      loadDic("common/ceqDic", "ruleValue2", "placesControl");//异地管控--省 市 县
+	  
+	  form.val("setVal",jsonData);
+	  form.render("select");
+	})
+    $(function() {
+    	setReadonly();
+        bindPageBtnEvent();
+    });
+    
+</script>
+</html>

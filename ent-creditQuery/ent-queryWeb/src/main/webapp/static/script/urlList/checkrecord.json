@@ -1,0 +1,13 @@
+{
+  "tabs": [
+   {
+      "name": "企业复核请求管理",
+      "eName":"checkrecord",
+      "getPage":"checkinfo/getPage?pageType=1",
+      "detailUrl":"checkinfo/detail",
+      "getValUrl":"checkinfo/findById?id=",
+      "searchUrl":"checkinfo/search",
+	  "showArchive":"archive/detail"
+   }
+   ]
+ }

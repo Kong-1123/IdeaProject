@@ -1,0 +1,168 @@
+@charset "utf-8";
+/* CSS Document */
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{*+height:1%;}
+body{
+	font-family: "Microsoft YaHei";
+} 
+span{
+	color:#909090;
+	font-size: 14px; 
+	font-weight: normal;
+}
+#form-wrap .formWrap{
+    padding: 0 30px;
+    letter-spacing: 2px;
+    word-spacing: 4px;
+}
+#form-wrap .formWrap li{
+	width: 180px;
+	height: 60px;
+	float: left;
+	margin: 10px 40px;
+	list-style: none;
+	position: relative;
+}
+#form-wrap .formWrap li .layui-input-block{
+	width: 100%;
+}
+#form-wrap .formWrap li.twoCols{
+	width: 440px;
+}
+#form-wrap .formWrap li.threeCols{
+	width: 700px;
+}
+/* #form-wrap .formWrap li.emptyCols{
+	height: 60px;
+} */
+#form-wrap .formWrap li input,#form-wrap .formWrap li select{	
+	font-family: "Microsoft YaHei";
+	font-size: 14px;
+	border:none;
+	border-radius: 0;
+	border-bottom:1px solid #3075c7;
+	padding-left: 0px;
+	height: 24px;
+	height: 36px\9;
+	letter-spacing: 2px;
+}
+#form-wrap .formWrap li {
+	
+}
+#form-wrap .formWrap li input:hover,#form-wrap .formWrap li select:hover{
+	border-color:#333;
+}
+#form-wrap .formLabel{	font-family: "Microsoft YaHei";
+	border-left: 2px solid #3075c7;
+	padding-left: 5px;
+    display: inline-block;
+    font-size: 14px;
+    height: 14px;
+    line-height: 14px;
+    font-weight: bold;
+    color: #666;
+}
+#form-wrap .star{
+	font-size: 24px;
+	color: #f00;
+	position: absolute;
+    top: 0px;
+    left: -15px
+}
+#content{
+	background-color: #FFF;
+	border-radius: 4px;
+	padding: 40px;
+	margin: 0 auto;
+	max-width: 600px;
+	position: relative;
+	padding-bottom: 20px;
+	float: left;
+	margin-left: 200px;
+	margin-bottom: 500px;
+}
+.addBtn,.addItemBtn{
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	position: relative;
+	top: 5px;
+	padding: 0 5px;
+	background: #fff url(../images/dsfnrxx/icon_plus-bg.png) no-repeat	center center;
+}
+.delBtn{
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	position: relative;
+	top: 5px;
+	padding: 0 5px;
+	background: #fff url(../images/dsfnrxx/icon_plus-bg.png) no-repeat	center center;
+}
+.closeBtn{
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    cursor: pointer;
+	background: url(../images/dsfnrxx/icon_close-small.png) no-repeat	center center;
+}
+
+.layui_btn {
+    width: 120px;
+    height: 35px;
+    background: #f5f5f5;
+    display: inline-block;
+    text-align: center;
+    line-height: 35px;
+    color: #c7c7c7;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.layui_btn:hover{
+	opacity: 0.8;
+}
+.layui_btn i{
+	font-size: 24px;
+	float: left;
+	margin-left: 20px;
+}
+.btn_reset {
+	color: #2063b3;
+    background: #fff;
+    border: 1px solid #2063b3;
+}
+
+.btn_submit {
+    height: 34px;
+    background: #3075C7;
+    color: #FFFFFF;
+    border: 1px solid #3075C7;
+}
+
+
+/*点击加号增加一条*/
+.addItemWrap{
+    margin-top: 5px;
+}
+.addItemWrap li{
+	margin-right: 20px;
+	float: left;
+}
+.addItemWrap .closeBtn{
+    right: 0;
+    top: 50%;
+    margin-top: -7px;
+}
+.addItemWrap .layui-input{
+	padding-right: 20px;
+}
+#telAddItemWrap li{
+	max-width: 180px;
+}
+#addressAddItemWrap li {
+    max-width: 100%;
+    width: 100%;
+}

@@ -1,0 +1,110 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>查询</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/js/validate.js"></script>
+<script type="text/javascript"
+	src="../static/script/pageIncludeStyle.js"></script>
+</head>
+<body>
+	<div id="form-wrap">
+		<form id="query_form_id" action="operatelog/getPage">
+			<div class="modal-body">
+				<table class="grayTable">
+					<tr>
+						<th align="right" class="thStyle">用户名:</th>
+						<td><input type="text" name="search_LIKE_userName" /></td>
+					</tr>
+					<tr>
+						<th align="right" class="thStyle">操作日期:</th>
+						<td class="dToD"><input type="text"
+							name="search_GTE_createTime_DATE"
+							onfocus=" WdatePicker({dateFmt:'yyyy-MM-dd'})"
+							value="${GTE_createTime}"
+							onkeydown="if(event.keyCode==13){event.keyCode=0;return false}" 
+							class="validate[past[now],dateRange[grp1]]"/>
+							-- <input type="text" name="search_LTE_createTime_DATE"
+							onfocus=" WdatePicker({dateFmt:'yyyy-MM-dd'})"
+							value="${LTE_createTime}"
+							onkeydown="if(event.keyCode==13){event.keyCode=0;return false}" 
+							class="validate[past[now],dateRange[grp1]]"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" id="searchPage" class="btn-vip btn-blue"
+					value="查询" /> <input type="reset" id="resetPage"
+					class="btn-vip btn-white" value="清空" />
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/pageIncludeScript.js"></script>
+
+</html>
+ -->
+ <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>个人监管业务查询页面</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/pageIncludeStyle.js"></script>
+</head>
+<body>
+	<div id="form-wrap">
+		<form id="query_form_id" action="search/getPage">
+			<div class="modal-body">
+				<table class="grayTable">
+					<tr>
+						<th align="right" class="thStyle">用户名:</th>
+						<td><input type="text" name="search_LIKE_userName" /></td>
+						<th align="right" class="thStyle">操作日期:</th>
+						<td><select name="search_GTE_createTime_DATE"></select></td>
+					</tr>
+					<tr>
+						<th align="right" class="thStyle">预警原因:</th>
+						<td><select name="search_EQ_aleratReason"></select></td>
+						<th align="right" class="thStyle">所属机构:</th>
+						<td><select name="search_EQ_orgCode" ></select></td>
+					</tr>
+					<tr>
+						<th align="right" class="thStyle">起始日期:</th>
+						<td><input type="text" name="search_GTE_createTime_DATE"
+							onfocus=" WdatePicker({dateFmt:'yyyy-MM-dd'})"
+							onkeydown="if(event.keyCode==13){event.keyCode=0;return false}" 
+							class="validate[dateRange[grp1]]"/></td>
+							
+						<th align="right" class="thStyle">结束日期:</th>
+						<td><input type="text" name="search_LTE_createTime_DATE"
+							onfocus=" WdatePicker({dateFmt:'yyyy-MM-dd'})"
+							onkeydown="if(event.keyCode==13){event.keyCode=0;return false}" 
+							class="validate[dateRange[grp1]]"/></td>
+					</tr>
+					<tr>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" id="searchPage" class="btn-vip btn-blue"	value="查询" /> 
+				<input type="reset"  id="resetPage"  class="btn-vip btn-white"    value="清空" />
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+	$(function() {
+		// 绑定按钮事件		
+		bindPageBtnEvent();
+	});
+</script>
+</html>
+
+ 

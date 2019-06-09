@@ -1,0 +1,8 @@
+ {
+  "tabs": [
+   {"name": "客户三项标识",
+      "eName":"ceqCustomer",
+      "getPage":"ceqCustomer/getPage"
+  	}
+   ]
+ }

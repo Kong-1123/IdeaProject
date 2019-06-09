@@ -1,0 +1,10 @@
+{
+  "tabs": [
+   {
+      "name": "业务日志",
+      "eName":"operateLog",
+      "searchUrl":"operatelog/search",
+      "getPage":"operatelog/getPage"
+   }
+   ]
+ }

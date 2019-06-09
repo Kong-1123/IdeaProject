@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>授权信息维护修改</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/business/archive/archiveIncludeStyle.js"></script>
+<link rel="stylesheet" href="../static/style/business/archive.css">
+<style>
+	#form-wrap .formWrap li{
+		margin: 15px 30px !important;
+	}
+	.layui-layer-iframe .layui-layer-title{
+		height: 42px;
+	    line-height: 42px;
+	   	border-bottom: 1px solid #eee;
+	    /* background-color: #F8F8F8 !important; */
+	}
+	#createFileIe9{
+		float: right;
+		display: none;
+	}
+	.twoCols{
+		width:660px !important;
+	}
+	.fileUpload{
+		display: none;
+		color: #333;
+		border-color: #fff;
+		background-color: #fff;
+	}
+</style>
+</head>
+<body name="archive">
+<div id="form-wrap" class="layui-form" lay-filter="setVal">
+		<form id="create_form_id" action="archive/update">
+			<div class="modal-body selectmodal">
+				<ul class="formWrap clearfix">
+					<li class="twoCols">
+						<span class="formLabel">企业名称:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="enterpriseName" id="enterpriseName"
+										class="layui-input"
+										placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">中征码:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input  type="text" name="signCode" id="signCode"
+										class="validate[required,funcCall[orgLoanCard]] layui-input"
+										placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">组织机构代码:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input  type="text" name="orgInstCode" id="orgInstCode"
+										class="validate[maxSize[10],funcCall[checkCorpNo]] layui-input"
+										placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">统一社会信用代码:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input  type="text" name="uniformSocialCredCode" id="uniformSocialCredCode" data-type="07"
+										class="validate[funcCall[checkisCCode]] layui-input"
+										placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<!-- <li class="twoCols">
+						<span class="formLabel">机构信用代码:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input  type="text" name="orgCreditCode" id="orgCreditCode"
+										class="validate[funcCall[checkCreditCode]] layui-input"
+										placeholder="请输入" />
+							</div>
+						</div>
+					</li> -->
+					<li>
+						<span class="formLabel">授权起始日期:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="startDate" id="startDate"
+								  class="validate[required,dateRange[grp1]] date layui-input" 
+								  placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+						
+					<li>
+						<span class="formLabel">授权结束日期:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="expireDate" id="expireDate"
+									class="validate[required,dateRange[grp1]] date layui-input"
+									placeholder="请输入" />
+							</div>
+						</div>
+					</li>	
+				</ul>
+				<p class="record paperFile">纸质文件</p>
+				<div id="paperFile" class="layui-upload" style="display: block;">
+					
+						<ul class="formWrap clearfix">
+							<li>
+								<span class="formLabel">纸质文件编号:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" name="paperFileId" id="paperNo" maxlength="90"
+											class="layui-input"
+											placeholder="请输入" />
+									</div>
+								</div>
+							</li>
+							<li>
+								<span class="formLabel">纸质文件描述:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" name="fileDescribe" id="paperDesc" maxlength="450"
+											class="layui-input"
+											placeholder="请输入" />
+									</div>
+								</div>
+							</li>
+						</ul>
+					
+				</div>
+				<div class="electric">
+					<p class="record">电子文件1
+						<span>仅支持JPG、PNG、GIF、TIF、BMP、PDF格式的文件,且小于2MB</span>
+					</p>
+					<div id="uploadBody" class="modal-body layui-upload" style="display: block;">
+						<div class="layui-upload-list">
+							  <div class="layui-upload-list">
+							    <table class="layui-table">
+							      <thead>
+							        <tr>
+								        <th>文件类型</th>
+								        <th>文件名</th>
+								        <th>操作</th>
+								    </tr>
+								  </thead>
+							      <tbody id="uploadCard">
+								    
+							      </tbody>
+							    </table>
+							  </div>
+							  
+						</div>
+					</div>
+					<p class="record">电子文件2
+						<span>仅支持JPG、PNG、GIF、TIF、BMP、PDF格式的文件,且小于2MB</span>
+					</p>
+					<div class="modal-body layui-upload" style="display: block;">
+						<div class="layui-upload-list">
+							 <button type="button" class="layui-btn layui-btn-normal" id="createFile">新增档案文件</button> 
+							 <button type="button" class="layui-btn layui-btn-normal" id="createFileIe9">新增档案文件</button> 
+							  <div class="layui-upload-list">
+							    <table class="layui-table">
+							      <thead>
+							        <tr>
+								        <th>文件类型</th>
+								        <th>文件名</th>
+								        <th>操作</th>
+								    </tr>
+								  </thead>
+							      <tbody id="uploadList">
+							      </tbody>
+							    </table>
+							  </div>
+							  
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal-footer">
+				<button type="submit" class="layui_btn btn_submit clearfix" id="submitPage"><i class='DHCiconfont'>&#xe617;</i>保存</button>
+				<!-- <button type="reset" class="layui_btn btn_reset clearfix" id="resetPage"><i class='DHCiconfont'>&#xe609;</i>清 空</button> -->
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/business/archive/archiveIncludeScript.js"></script>
+<script type="text/javascript">
+
+var files;	        
+var uploadObj = {},urlObj = parent.urlObj;
+var data = getParamObj();
+var id = data.id;
+//从字典中取值
+var dicData = getDic("common/ceqDic","archiveidType_ceq");
+//根据获取的后台参数动态生成需要上传的文件
+var typeData = getAjaxData(urlObj.getArchiveType,null);
+var number = parseInt(typeData.Num);
+var types = typeData.Type;
+var archiveType = typeData.archiveType;
+//获取出上传文件的数据
+var resData = getAjaxData(urlObj.findByArchiveId+id),fileNameArr = [];
+var oneIsNull = true;
+$.each(resData,function(i,v){
+	fileNameArr.push(v.filename);
+	// 当档案类型只为电子档案或纸质档案时，新增只增加其他电子文件时，增加标识
+	if(archiveType !=1){
+		if(v.fileType && (v.fileType != 200)){
+			oneIsNull = false;
+		}
+	}
+})
+if(oneIsNull && (archiveType !=1)){
+	for(var i = 0;i<types.length;i++){
+		var type = types[i];
+		// 为电子档案返回数据添加常量type=0，标记为添加空文件上传控件
+		resData.push({type:0,fileType:type})
+	}
+}
+// 判断电子文件2添加标识
+var addItemFlag = true;
+
+$(".electric").on("change",".fileUpload",function(){
+	var t = $(this);
+	var tr = t.parents("tr");
+	// 获取文件
+	var file_name = t.val();
+	
+	// 把所以表单信息
+	// var fileType = t.parents("tr").find(".typeName").attr("data-type");
+	file_name = file_name.replace("C:\\fakepath\\","");
+	console.log(file_name);
+	tr.find(".fileTypeName").text(file_name);
+	tr.find(".demo-look").hide();
+})
+// 解决编辑电子文件后，无法预览问题，返回全部电子文件文件名
+function getFileNameList(){
+	var arr = [];
+	$("#uploadCard .fileTypeName,#uploadList .fileName").each(function(i,e){
+		var t = $(this);
+		arr.push(t.text());
+	});
+	return arr;
+}
+//判断返回的数据不为空则动态添加已有的数据，若为空，则和新增保持一致
+function file_type(resData,upload){
+	if(resData!=''){
+		for(var i = 0;i<resData.length;i++){
+			var selfUploadId = resData[i].id;
+			//纸质档案
+			var paperFileId = resData[i].paperFileId;
+			var fileDescribe = resData[i].fileDescribe;
+			if(paperFileId){
+				flag0 = true;
+				$("#paperNo").val(paperFileId);
+				$("#paperDesc").val(fileDescribe);
+				$("#paperNo").attr("data-id",resData[i].id);
+			}
+			//电子档案
+			var resfileType = resData[i].fileType;
+			var resfileName = resData[i].fileName;
+			var resfilePath = resData[i].filePath+'/'+resfileName;
+			var trStr;
+			if(resfileType!=null){
+				if(resfileType == 200){
+					trStr = '<tr>'+
+							'<td class="typeName" data-type="200">'+dicData[200]+'</td>'+
+							'<td width="300px" class="fileName getFile">'+resfileName+'</td>'+
+							'<td style="display:none" class="selfId" data-type="'+ selfUploadId +'"></td>'+
+							'<td>'+
+							'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-delete" onclick="cut(this)">删除</button>'+
+							'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-view" onclick="view(\''+ resfileName +'\',\''+ resfilePath +'\',\''+ selfUploadId +'\')">预览</button>'+
+							'</td>'+
+							'</tr>'
+					$("#uploadList").append(trStr);
+				}else{
+					if(resData[i].type == 0){
+						trStr = '<tr>'+
+							'<td class="typeName" data-type="'+ resfileType +'">'+dicData[resfileType]+'</td>'+
+							'<td class="fileTypeName" width="300px"></td>'+
+							'<td>'+
+							'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-look">预览</button>'+
+							'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-select demo-select'+ i +'">选择文件</button><input id="file'+ i +'" class="fileUpload" type="file" name="file">'+
+							'</td>'+
+							'</tr>';
+					}else{
+						trStr = '<tr>'+
+							'<td class="typeName" data-type="'+ resfileType +'">'+dicData[resfileType]+'</td>'+
+							'<td width="300px" class="fileTypeName">'+resfileName+'</td>'+
+							'<td style="display:none" class="selfId" data-type="'+ selfUploadId +'"></td>'+
+							'<td>'+
+							'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-look" onclick="view(\''+ resfileName +'\',\''+ resfilePath +'\',\''+ selfUploadId +'\')">预览</button>'+
+							'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-select demo-select'+ i +'">选择文件</button><input id="file'+ i +'" class="fileUpload" type="file" name="file">'+
+							'</td>'+
+							'</tr>';	
+					}
+					
+					$("#uploadCard").append(trStr);
+					var filesObj ={};
+					uploadObj["uploadListIns"+i] = upload.render({
+					  elem: ".demo-select"+i
+					  // ,url: urlObj.upLoad+'?id='+resultId
+					  ,url: urlObj.upLoad
+					  ,accept: 'file' //普通文件
+					  ,exts: 'pdf|png|jpg|gif|bmp|tif' 
+					  ,multiple: false
+					  ,auto: false //选择文件后不自动上传
+					  ,before: function(obj){
+					  	var item = this.item;
+					  	var fileType = item.parents("tr").find(".typeName").attr("data-type");
+					  	var selfId = item.parents("tr").find(".selfId").attr("data-type");
+					  	this.data.fileType = fileType;
+					  	this.data.id = id;
+					  	this.data.selfId = selfId;
+					  	this.data.fileNameList = getFileNameList();
+					  }
+					  ,choose: function(obj){ 
+					  		  var item = this.item;
+						      //读取本地文件
+						      var f,files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+						      obj.preview(function(index, file, result){
+						      	//判断所选文件是否存在
+						      	var fileNameArr = [];
+						    	$(".fileName").each(function(){
+						    		var name = $(this).html();
+						    		fileNameArr.push(name);
+						    	})
+						    	$(".fileTypeName").each(function(){
+						    		var name = $(this).html();
+						    		fileNameArr.push(name);
+						    	})
+						    	if(fileNameArr.in_array(file.name)){
+						    		layerMsg("此文件已存在");
+						    		delete files[index]; //删除对应的文件
+						    		return false;
+						    	}
+						      	var thisTr = item.parents("tr");
+						      
+								var num = file.num = thisTr.index();
+						      	if(filesObj["btn-"+num]){
+						      		delete files[filesObj["btn-"+num]];
+						      	}
+						      	filesObj["btn-"+num] = index;
+						        thisTr.find('td').eq(1).html('').text(file.name);
+						         // 预览
+						        thisTr.find('.demo-look').removeAttr("onclick");
+						        thisTr.off('click').on('click', '.demo-look', function(){
+						        	view(file.name,result,null,file);
+						        }); 
+						      });
+						    }
+					});
+				}
+				
+			}
+		}
+		
+		if(resData.length == 1 && !resData[0].fileType){
+			for(var i = 0;i<types.length;i++){
+				var type = types[i];
+				var trStr = '<tr>'+
+					'<td class="typeName" data-type="'+ type +'">'+dicData[type]+'</td>'+
+					'<td class="fileTypeName" width="300px"></td>'+
+					'<td>'+
+					'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-look">预览</button>'+
+					'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-select demo-select'+ i +'">选择文件</button><input id="file'+ i +'" class="fileUpload" type="file" name="file">'+
+					'</td>'+
+					'</tr>';
+				$("#uploadCard").append(trStr);
+				//身份证正反面、授权书上传
+				var filesObj ={};
+				uploadObj["uploadListIns"+i] = upload.render({
+				  elem: ".demo-select"+i
+				  // ,url: urlObj.upLoad+'?id='+resultId
+				  ,url: urlObj.upLoad
+				  ,accept: 'file' //普通文件
+				  ,exts: 'pdf|png|jpg|gif|bmp|tif' 
+				  ,multiple: false
+				  ,auto: false //选择文件后不自动上传
+				  ,before: function(obj){
+				  	var item = this.item;
+				  	var fileType = item.parents("tr").find(".typeName").attr("data-type");
+				  	var selfId = item.parents("tr").find(".selfId").attr("data-type");
+				  	this.data.fileType = fileType;
+				  	this.data.id = id;
+				  	this.data.selfId = selfId;
+				  	this.data.fileNameList = getFileNameList();
+				  }
+				  ,choose: function(obj){ 
+				  		  var item = this.item;
+					      //读取本地文件
+					      var f,files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+					      obj.preview(function(index, file, result){
+					    	//判断所选文件是否存在
+					    	var fileNameArr = [];
+					    	$(".fileName").each(function(){
+					    		var name = $(this).html();
+					    		fileNameArr.push(name);
+					    	})
+					    	$(".fileTypeName").each(function(){
+					    		var name = $(this).html();
+					    		fileNameArr.push(name);
+					    	})
+					    	if(fileNameArr.in_array(file.name)){
+					    		layerMsg("此文件已存在");
+					    		delete files[index]; //删除对应的文件
+					    		return false;
+					    	}
+					      	var thisTr = item.parents("tr");
+					      
+							var num = file.num = thisTr.index();
+					      	if(filesObj["btn-"+num]){
+					      		delete files[filesObj["btn-"+num]];
+					      	}
+					      	filesObj["btn-"+num] = index;
+					        thisTr.find('td').eq(1).html('').text(file.name);
+					         // 预览
+					        thisTr.find('.demo-look').removeAttr("onclick");
+					        thisTr.off('click').on('click', '.demo-look', function(){
+					        	view(file.name,result,null,file);
+					        }); 
+					      });
+					    }
+				});
+			}
+		}
+	}
+}
+function submitSavePaper(url, data){
+	ajaxFunc(url, function(result){
+		if ('00000000' == result.code) {
+			layerAlert(result.msg,function(){
+			reloadParentPage();
+			});
+		} else {
+			layerMsg(result.msg);
+			$(".modal-footer button").attr("disabled", false);
+			window.hasSubmit = false;
+		}
+	}, function(result) {
+		layerMsg(result.msg);
+	}, data);
+}
+
+//获取表单中的数据
+var jsonData = getAjaxData(urlObj.getValUrl+id);
+layui.use(['form', 'layedit', 'laydate','upload'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,upload = layui.upload
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  
+	/* 中征码回填时加载 */
+	$("#signCode").blur(function(){
+		if($("#signCode").val()!=null&&$("#signCode").val()!=''){
+			var index = layer.load(1);
+			var jsonData = getAjaxData("/creditenterprisequeryweb/loancardcodequery/autoCompleteInfo",{signCode:$("#signCode").val()});
+		   	 if(jsonData.code !="00000000"){
+		  		 layerMsg(jsonData.message);
+		  		 layer.close(index);
+		   	 } else {
+		   		 layer.close(index);
+		   		 $("#enterpriseName").val(jsonData.enterpriseName);
+		   		/*  $("#orgCreditCode").val(jsonData.orgCreditCode); */
+		   		 $("#orgInstCode").val(jsonData.orgInstCode);
+		   		 $("#uniformSocialCredCode").val(jsonData.uniformSocialCredCode);
+		   	 } 
+		}
+	})
+	/* 组织机构代码回填时加载 */
+	/* $("#corpNo").blur(function(){
+		if($("#corpNo").val()!=null&&$("#corpNo").val()!=''){
+			var index = layer.load(1);
+			var jsonData = getAjaxData("/creditenterprisequeryweb/loancardcodequery/autoCompleteInfo",{corpNo:$("#corpNo").val()});
+	        if(jsonData.code !="00000000"){
+		  		 layerMsg(jsonData.message);
+		  		 layer.close(index);
+		  	} else {
+		  		layer.close(index);
+		  		$("#enterpriseName").val(jsonData.enterpriseName);
+		  		$("#creditCode").val(jsonData.creditCode);
+		  		$("#signCode").val(jsonData.signCode);
+		  		$("#usCreditCode").val(jsonData.usCreditCode);
+		  	}
+		}
+	}) */
+	/* 机构信用代码回填加载 */
+	/* $("#creditCode").blur(function(){
+		if($("#creditCode").val()!=null&&$("#creditCode").val()!=''){
+			var index = layer.load(1);
+			var jsonData = getAjaxData("/creditenterprisequeryweb/loancardcodequery/autoCompleteInfo",{creditCode:$("#creditCode").val()});
+		   	if(jsonData.code !="00000000"){
+		  		 layerMsg(jsonData.message);
+		  		 layer.close(index);
+		  	} else {
+		  		layer.close(index);
+		  		$("#enterpriseName").val(jsonData.enterpriseName);
+		  		$("#corpNo").val(jsonData.corpNo);
+		  		$("#signCode").val(jsonData.signCode);
+		  		$("#usCreditCode").val(jsonData.usCreditCode);
+		  	}
+		}
+	}) */
+	/* 统一社会信用代码回填加载 */
+	/* $("#usCreditCode").blur(function(){
+		if($("#usCreditCode").val()!=null&&$("#usCreditCode").val()!=''){
+			var index = layer.load(1);
+			var jsonData = getAjaxData("/creditenterprisequeryweb/loancardcodequery/autoCompleteInfo",{usCreditCode:$("#usCreditCode").val()});
+		  	if(jsonData.code !="00000000"){
+		  		layerMsg(jsonData.message);
+		  		layer.close(index);
+		  	} else {
+		  		layer.close(index);
+		  		$("#enterpriseName").val(jsonData.enterpriseName);
+		  		$("#corpNo").val(jsonData.corpNo);
+		  		$("#signCode").val(jsonData.signCode);
+		  		$("#creditCode").val(jsonData.creditCode);
+		  	}
+		}
+	}) */
+  //截取授权起始、结束日期的时分秒
+  var str1 = jsonData.startDate;
+  var str2 = jsonData.expireDate;
+  var startDate = str1.substring(0,str1.length-9);
+  var expireDate = str2.substring(0,str2.length-9);
+  jsonData.startDate = startDate;
+  jsonData.expireDate = expireDate; 
+  form.val("setVal",jsonData);
+  /*	$('#uploadList').find('.demo-delete').on('click',function(){
+		var t = $(this);
+		cut(t);
+	});*/
+    //根据archiveType判断档案类型 1:电子档案，2：纸质档案,3:两者皆有
+	if(archiveType == 1){
+		file_type(resData,upload);
+		$(".paperFile").hide();
+		$("#paperFile").hide();
+	}else if(archiveType == 2){
+		$(".electric").hide();
+		$(".paperFile").show();
+		$("#paperFile").show();
+		file_type(resData,upload);
+	}else if(archiveType == 3){
+		$(".electric").show();
+		file_type(resData,upload);
+		$(".paperFile").show();
+		$("#paperFile").show();
+	}
+	// 根据浏览器不同显示不同选择文件按钮
+	if(BrowserType() == "IE8" || BrowserType() == "IE9"){
+    	var n2 = parseInt(number);
+    	// var n1 = fileNameArr.length-types.length;
+    	$("#createFileIe9,.fileUpload").show();
+    	$(".demo-select,#createFile").hide();
+    	$("#createFileIe9").on('click',function(){
+    		var n1 = $('#uploadList tr').length;
+    		if(n1<n2){
+    			var n3 = $(".fileUpload").length;
+    			addItem(n3+1);
+    			// n1++;
+    		}else{
+    			layerMsg("其他类型的电子文件数量不能超过"+number+"条");
+    		}
+    	})
+    	/*$('#uploadList').on('click','.demo-delete',function(){
+    		var t = $(this);
+    		cut(t);
+		});*/
+    }
+  //身份证、授权书上传
+  	 	/* var t;
+		$("#uploadCard").on("click",".demo-select",function(){
+			t = $(this);
+		}) */
+		/*var filesObj ={};
+			uploadListIns1 = upload.render({
+		  elem: ".demo-select1"
+		  // ,url: urlObj.upLoad+'?id='+resultId
+		  ,url: urlObj.upLoad
+		  ,accept: 'file' //普通文件
+		  ,exts: 'pdf|png|jpg|gif|bmp|tif' 
+		  ,multiple: false
+		  ,auto: false //选择文件后不自动上传
+		  ,before: function(obj){
+		  	var item = this.item;
+		  	var fileType = item.parents("tr").find(".typeName").attr("data-type");
+		  	var selfId = item.parents("tr").find(".selfId").attr("data-type");
+		  	this.data.fileType = fileType;
+		  	this.data.id = id;
+		  	this.data.selfId = selfId;
+		  }
+		  ,choose: function(obj){ 
+		  		  var item = this.item;
+			      //读取本地文件
+			      var f,files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+			      obj.preview(function(index, file, result){
+			      	var thisTr = item.parents("tr");
+			      
+					var num = file.num = thisTr.index();
+			      	if(filesObj["btn-"+num]){
+			      		delete files[filesObj["btn-"+num]];
+			      	}
+			      	filesObj["btn-"+num] = index;
+			        thisTr.find('td').eq(1).html('').text(file.name);
+			         // 预览
+			        thisTr.find('.demo-look').removeAttr("onclick");
+			        thisTr.off('click').on('click', '.demo-look', function(){
+			        	view(file.name,result,null,file);
+			        }); 
+			      });
+			    }
+			  });
+			uploadListIns2 = upload.render({
+			  elem: ".demo-select2"
+			  // ,url: urlObj.upLoad+'?id='+resultId
+			  ,url: urlObj.upLoad
+			  ,accept: 'file' //普通文件
+			  ,exts: 'pdf|png|jpg|gif|bmp|tif' 
+			  ,multiple: true
+			  ,auto: false //选择文件后不自动上传
+			  ,before: function(obj){
+			  	var item = this.item;
+			  	var fileType = item.parents("tr").find(".typeName").attr("data-type");
+			  	var selfId = item.parents("tr").find(".selfId").attr("data-type");
+			  	this.data.fileType = fileType;
+			  	this.data.id = id;
+			  	this.data.selfId = selfId;
+			  }
+			  ,choose: function(obj){ 
+			  		  var item = this.item;
+				      //读取本地文件
+				      var f,files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+				      obj.preview(function(index, file, result){
+				      	var thisTr = item.parents("tr");
+				      
+						var num = file.num = thisTr.index();
+				      	if(filesObj["btn-"+num]){
+				      		delete files[filesObj["btn-"+num]];
+				      	}
+				      	filesObj["btn-"+num] = index;
+				      	console.log(files);
+				        thisTr.find('td').eq(1).html('').text(file.name);
+				        // 预览
+				        thisTr.find('.demo-look').removeAttr("onclick");
+				        thisTr.off('click').on('click', '.demo-look', function(){
+				        	view(file.name,result,null,file);
+				        });
+				      });
+				    }
+				  });
+			uploadListIns3 = upload.render({
+			  elem: ".demo-select3"
+			  // ,url: urlObj.upLoad+'?id='+resultId
+			  ,url: urlObj.upLoad
+			  ,accept: 'file' //普通文件
+			  ,exts: 'pdf|png|jpg|gif|bmp|tif' 
+			  ,multiple: true
+			  ,auto: false //选择文件后不自动上传
+			  ,before: function(obj){
+			  	var item = this.item;
+			  	var fileType = item.parents("tr").find(".typeName").attr("data-type");
+			  	var selfId = item.parents("tr").find(".selfId").attr("data-type");
+			  	this.data.fileType = fileType;
+			  	this.data.id = id;
+			  	this.data.selfId = selfId;
+			  }
+			  ,choose: function(obj){ 
+			  		  var item = this.item;
+				      //读取本地文件
+				      var f,files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+				      obj.preview(function(index, file, result){
+				      	var thisTr = item.parents("tr");
+				      
+						var num = file.num = thisTr.index();
+				      	if(filesObj["btn-"+num]){
+				      		delete files[filesObj["btn-"+num]];
+				      	}
+				      	filesObj["btn-"+num] = index;
+				      	console.log(files);
+				        thisTr.find('td').eq(1).html('').text(file.name);
+				        // 预览
+				        thisTr.find('.demo-look').removeAttr("onclick");
+				        thisTr.off('click').on('click', '.demo-look', function(){
+				        	view(file.name,result,null,file);
+				        });
+				      });
+				    }
+				  });*/
+		//如果上传文件时没有选择要上传的文件，则文件名那一栏为空
+		$("#uploadCard input").each(function(){ 
+			$(this).on('change',function(){
+				var val = $(this).val();
+		      	console.log(val);
+		      	if(val == ""){
+		      		$(this).parents("tr").find(".fileTypeName").text('');
+		      	}
+			})
+		})
+//档案文件2
+		//原有行数
+		var uploadList = $('#uploadList');
+		uploadListInsOther = upload.render({
+	    elem: '#createFile'
+	    ,url: urlObj.upLoad
+	    ,accept: 'file' //普通文件
+		,exts: 'pdf|png|jpg|gif|bmp|tif'
+	    ,multiple: true
+	    ,auto: false
+	    ,before: function(obj){
+		  	var item = this.item;
+		  	var fileType = 200;
+		  	var selfId = item.parents("tr").find(".selfId").attr("data-type");
+		  	this.data.fileType = fileType;
+		  	this.data.id = id;
+		  	this.data.selfId = selfId;
+		  	this.data.fileNameList = getFileNameList();
+		  }
+	    ,choose: function(obj){
+	    	var arrlength,arr = [];
+	        var trLength =$("#uploadList").find('tr').length;
+	        if(trLength == number){  
+	       	   addItemFlag = false;  
+	        }
+	        if(addItemFlag){
+		    	  var files = this.files = obj.pushFile(); //将每次选择的文件追加到文件队列
+		    	  arr = Object.keys(files);
+		      // 判断新增档案不能超过指定条数
+		      // arrlength = trLength+arr.length;
+		      if(trLength+1 == number){
+		    	addItemFlag = false;
+		      }
+	        }else{
+	    	  layerMsg("其他类型的电子文件数量不能超过"+number+"条");
+	    	  return;
+	        }
+	      //读取本地文件
+	      obj.preview(function(index, file, result){
+	      	var fileNameArr = [];
+	    	$(".fileName").each(function(){
+	    		var name = $(this).html();
+	    		fileNameArr.push(name);
+	    	})
+	    	$(".fileTypeName").each(function(){
+	    		var name = $(this).html();
+	    		fileNameArr.push(name);
+	    	})
+	    	if(fileNameArr.in_array(file.name)){
+	    		layerMsg("此文件已存在");
+	    		delete files[index]; //删除对应的文件
+	    		addItemFlag = true;
+	    		return false;
+	    	}
+	    	var tr = $(['<tr id="upload-'+ index +'">'
+	          ,'<td class="typeName" data-type="200">'+dicData[200]+'</td>'
+	          ,'<td width="300px" class="fileName addFile">'+ file.name +'</td>'
+	          ,'<td>'
+	            ,'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-delete">删除</button>'
+	            ,'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-view">预览</button>'
+	          ,'</td>'
+	        ,'</tr>'].join(''));   
+
+	        if(trLength < number){
+		        uploadList.append(tr);	
+    			fileNameArr.push(file.name);
+			}    
+	        //删除
+	        tr.off('click').find('.demo-delete').on('click', function(){
+	        	layerConfirm('确认此项操作？',
+		        	     function() {
+		        			addItemFlag = true;
+			  			  	arr.remove(index);
+			  			  	var txt = tr.find(".fileName").text();
+		  			  		fileNameArr.removeByValue(txt);
+			  	          	delete files[index]; //删除对应的文件
+			  	          	tr.remove();
+			  	          	uploadListInsOther.config.elem.next()[0].value = ''; //清空 input file 值，以免删除后出现同名文件不可选
+		        	});
+	        });
+			 // 预览
+	        tr.find('.demo-view').removeAttr("onclick");
+	        tr.off('click').on('click', '.demo-view', function(){
+	        	view(file.name,result,null,file);
+	        });
+	      }); 
+	    }
+	  });
+})
+
+//提交
+function submitFun(submitUrl,data){
+	var uploadFile = function(data,resultId){
+			layui.layer.load(2);
+			if(BrowserType() == "IE8" || BrowserType() == "IE9"){
+				var str = "";
+				$("#uploadCard tr").each(function(){
+				    	var txt = $(this).find(".fileTypeName").text();
+						str = str+txt;
+				})
+				var paperData = {},
+				paperid = $("#paperNo").attr("data-id");
+				paperData.paperFileId = data.paperFileId;
+				paperData.fileDescribe = data.fileDescribe;
+				paperData.archiveId = resultId;
+				paperData.id = paperid;
+				//只上传纸质档案
+				if(str == ""){
+					if(paperData.paperFileId){
+						submitSavePaper(urlObj.savePaper,paperData);
+					}else{
+						layerMsg('请上传纸质档案或电子档案');
+						$(".modal-footer button").attr("disabled", false);
+						window.hasSubmit = false;
+					}
+				//只上传电子档案或电子纸质档案一起上传
+				}else{
+					var len = $(".fileUpload").length
+					var n = 0;
+					var fileUpload  = $(".fileUpload").filter(function(){
+						return Boolean($(this).val()) == true;
+					});
+					var size = fileUpload.length;
+					// 电子档案未作任何改变
+					if(size == 0){
+						if(paperData.paperfileid!=''){
+							submitSavePaper(urlObj.savePaper,paperData);	
+						}else{
+							layer.closeAll('loading');
+				        	layerAlert("操作成功！",function(){
+								reloadParentPage();
+							});
+						}
+						return false;
+					}
+		  			fileUpload.each(function(i,v){
+		  				var t = $(this); 				
+	  					var fileType = $(this).parents("tr").find(".typeName").attr("data-type");
+		  				var selfId = $(this).parents("tr").find(".selfId").attr("data-type");
+						var submitData = {
+							fileType:fileType,
+							id:resultId,
+							fileNameList:getFileNameList()
+						}
+						if(selfId){
+							submitData.selfId = selfId;
+						}
+						$.ajaxFileUpload({  //Jquery插件上传文件
+			                url: requestAddRandom(urlObj.upLoad),
+			                secureuri: false,//是否启用安全提交  默认为false
+			                fileElementId: t.attr("id"), //type="file"的id
+			                data:submitData,
+			                dataType: "text",  //返回值类型
+			                success: function (data){
+			                	n++;
+			                	if( n == size){
+									/* var paperData = {},
+										paperid = $("#paperNo").attr("data-id");
+								  		paperData.paperFileId = data.paperFileId;
+										paperData.fileDescribe = data.fileDescribe;
+										paperData.archiveId = resultId;
+										paperData.id = paperid; */
+	
+									//if(paperData.paperFileId!=''){
+										submitSavePaper(urlObj.savePaper,paperData);
+									//}
+									layer.closeAll('loading');
+									/*layerAlert("操作成功",function(){
+										reloadParentPage();
+									})*/
+			                	}else{
+			                		if( i == size - 1){
+				                		layer.closeAll('loading');
+							        	layerAlert("部分文件未上传成功，请稍后补充！",function(){
+											reloadParentPage();
+										});
+							        }
+			                	}
+			                }
+			            });
+			        })
+				}
+	  		}else{
+	  			for(var k in uploadObj){
+					uploadObj[k].upload();
+				}
+		  		uploadListInsOther.upload();
+
+		  		var paperData = {};
+		  		paperData.paperFileId = data.paperFileId;
+				paperData.fileDescribe = data.fileDescribe;
+				paperData.archiveId = resultId;
+				var paperid = $("#paperNo").attr("data-id");
+				if(paperid){
+				paperData.id = paperid;
+				}
+					submitSavePaper(urlObj.savePaper,paperData);
+				layer.closeAll('loading');
+				/*layerAlert("操作成功",function(){
+					reloadParentPage();
+				})*/
+	  		}
+		}
+	var paperIsOk = $("#paperNo").val()!='';
+/*	var electricIsOk = $("#uploadCard").find('tr td').eq(1).text()!=''&&$("#uploadCard").find('tr td').eq(4).text()!=''&&$("#uploadCard").find('tr td').eq(7).text()!='';
+	if(BrowserType() == "IE8" || BrowserType() == "IE9"){
+		electricIsOk = $("#file1").val()!=''&&$("#file2").val()!=''&&$("#file3").val()!='';
+    }
+	var fileNameArr=[];
+	if($("#uploadCard").find('tr td').eq(1).text()!=""){
+		fileNameArr.push($("#uploadCard").find('tr td').eq(1).text());
+	}
+	if($("#uploadCard").find('tr td').eq(4).text()!=""){
+		fileNameArr.push($("#uploadCard").find('tr td').eq(4).text());
+	}
+	if($("#uploadCard").find('tr td').eq(7).text()!=""){
+		fileNameArr.push($("#uploadCard").find('tr td').eq(7).text());
+	}*/
+	var electricIsOk = false;
+	var electricNum = 0;
+	$("#uploadCard tr").each(function(){
+		/* if(BrowserType() == "IE8" || BrowserType() == "IE9"){
+			var val = $(this).find(".fileUpload").val();
+			if(val != ""){
+				electricNum++;
+				electricIsOk = true;
+			}else{
+				return false
+			}
+	    }else{ */
+	    	var txt = $(this).find(".fileTypeName").text();
+			if(txt != ""){
+				electricNum++;
+				electricIsOk = true;
+			}else{
+				return false
+			}
+	    /* } */
+	})
+	//纸质档案和电子档案可以二选一，但电子档案中身份证和授权书必须都填
+	if((paperIsOk)||(electricIsOk)){
+		if(electricNum == $("#uploadCard tr").length || paperIsOk){
+			if(electricNum != $("#uploadCard tr").length && electricNum !=0){
+				layerMsg('电子文件1需全部上传,请检查！');
+				$(".modal-footer button").attr("disabled", false);
+				window.hasSubmit = false;
+				return;
+			}
+			if(!checkFileRepeatOrNonSupport($(".fileUpload"))){
+				return;
+			}
+			ajaxFunc(submitUrl, function(result){
+				if ('00000000' == result.code) {
+					resultId = result.msg;
+					uploadFile(data,resultId);
+					// var paperData = {};
+					// paperData.paperfileid = data.paperfileid;
+					// paperData.filedescribe = data.filedescribe;
+					// paperData.archiveid = resultId;
+					// var paperid = $("#paperNo").attr("data-id");
+					// paperData.id = paperid;
+// 					if(paperid){
+						// submitSavePaper(urlObj.savePaper,paperData);
+// 					}else{
+// 						layerAlert("操作成功",function(){
+// 							reloadParentPage();
+// 						});
+// 					}
+				} else {
+					layerMsg(result.msg);
+					$(".modal-footer button").attr("disabled", false);
+					window.hasSubmit = false;
+				}
+			}, function(result) {
+				layerMsg(result.msg);
+			}, data);
+		}else{
+			layerMsg('电子文件1需全部上传,请检查');
+			$(".modal-footer button").attr("disabled", false);
+			window.hasSubmit = false;
+		}
+	}else{
+		layerMsg('请上传纸质档案或电子档案');
+		$(".modal-footer button").attr("disabled", false);
+		window.hasSubmit = false;
+	}	
+}
+
+/* function submitPaper(url,paperData){
+	ajaxFuncForJson(url, function(result){
+		if ('00000000' == result.code) {
+			layerAlert(result.msg,function(){
+				reloadParentPage();
+			});
+		} else {
+			layerMsg(result.msg);
+			$(".modal-footer button").attr("disabled", false);
+			window.hasSubmit = false;
+		}
+	}, function(result) {
+		layerMsg(result.msg);
+	}, JSON.stringify(paperData));
+}
+ */
+    function init(data) {
+        if (data.queryNum != null && data.queryNum > 0) {
+            setReadonly([ "clientName", "cretType", "cretNo", "startDate",
+                    "expireDate" ]);
+        } else {
+        	setReadonly([ "clientName", "cretType", "cretNo"]);
+        }
+    }
+    $(function() {
+	//获取证件类型字典
+        bindPageBtnEvent();
+    });
+</script>
+</html>

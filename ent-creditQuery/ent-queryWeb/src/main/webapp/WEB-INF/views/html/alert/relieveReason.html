@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>解除预警信息原因</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/pageIncludeStyle.js"></script>
+</head>
+<body>
+	<div id="form-wrap" class="layui-form" lay-filter="setVal">
+		<form id="create_form_id"  action="alert/relieve">
+			<div class="modal-body selectmodal">
+				<ul class="formWrap clearfix">
+					<li class="twoCols">
+						<span class="formLabel">解除原因:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="hidden" name="id" class="layui-input" />
+								<textarea name="removeAlertReason" class="layui-textarea validate[required,maxSize[100]]" ></textarea>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="layui_btn btn_submit clearfix"><i class='DHCiconfont'>&#xe606;</i>提交</button>
+				<button type="reset" class="layui_btn btn_reset clearfix"><i class='DHCiconfont'>&#xe609;</i>清空</button>
+		    </div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+	var data = getParamObj(),
+		id=data.id,
+		locked = data.userStatus;
+	
+	layui.use(["form","layer"],function() {
+		var form = layui.form,
+		layer = layui.layer;
+		form.val("setVal", data);
+	})
+	
+	function submitMsg(result) {
+		var url,msg;
+		console.log(result);
+        if (locked =="1") {
+        	url = parent.urlObj.unLock;
+          	msg = "当前状态锁定，是否需要解锁？";
+        }else {
+          	url = parent.urlObj.addLock;
+        	msg = "当前状态启用，是否需要锁定？";
+        }
+		layer.confirm(msg, {
+            btn : [ '是', '否' ]//按钮
+        }, function(index) {
+           	  ajaxFunc(url,function(result){
+                if (result.code =="00000000") {
+		        	layerAlert(result.msg,function(){
+		        		reloadParentPage();
+		          });
+		        }else{
+		          layerMsg(result.msg);
+		          $(".disabled").attr("disabled",true);
+		        	return ;
+		        }
+              },function(result){
+                  layerMsg("error:"+JSON.stringify(result));
+              },{id:id});
+        }, function(index) {
+           	reloadParentPage();
+        }); 
+        
+      }
+	$(function() {
+		bindPageBtnEvent();
+	});
+	
+</script>
+</html>
+ 

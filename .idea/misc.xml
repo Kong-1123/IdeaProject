@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/ent-creditQuery/ent-queryAPI/ent-queryAPI-web" />
+    <file type="web" url="file://$PROJECT_DIR$/ent-creditQuery/ent-queryWeb" />
+    <file type="web" url="file://$PROJECT_DIR$/person-creditQuery/person-queryAPI/person-queryAPI-web" />
+    <file type="web" url="file://$PROJECT_DIR$/person-creditQuery/person-queryWeb" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/person-creditQuery/person-queryFlowManager/person-queryFlowManager-ansytask/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-queryFlowManager/person-queryFlowManager-service/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-queryStatistics/person-queryStatistics-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-queryApproveFlow/ent-queryApproveFlow-service/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-queryFlowManager/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-queryStatistics/ent-queryStatistics-service/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-queryStatistics/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-reportView/ent-reportView-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-queryAPI/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-queryFlowManager/person-queryFlowManager-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-reportView/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-queryAPI/ent-queryAPI-web/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-queryFlowManager/ent-queryFlowManager-service/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-queryAPI/ent-queryAPI-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-queryWeb/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-queryFlowManager/ent-queryFlowManager-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-authorizeManager/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-authorizeManager/person-authorizeManager-service/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-queryAPI/person-queryAPI-service/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-queryFlowManager/ent-queryFlowManager-ansytask/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-queryApproveFlow/ent-queryApproveFlow-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-queryStatistics/ent-queryStatistics-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-queryAPI/person-queryAPI-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-queryFlowManager/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-queryApproveFlow/person-queryApproveFlow-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-authorizeManager/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-queryAPI/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-queryAPI/ent-queryAPI-service/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-queryStatistics/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-queryApproveFlow/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-authorizeManager/ent-authorizeManager-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-queryAPI/person-queryAPI-web/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-reportView/ent-reportView-service/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-queryStatistics/person-queryStatistics-service/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-authorizeManager/ent-authorizeManager-service/pom.xml" />
+        <option value="$PROJECT_DIR$/ent-creditQuery/ent-queryApproveFlow/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-reportView/person-reportView-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-queryWeb/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-reportView/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-queryApproveFlow/person-queryApproveFlow-service/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-authorizeManager/person-authorizeManager-dao/pom.xml" />
+        <option value="$PROJECT_DIR$/person-creditQuery/person-reportView/person-reportView-service/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Error handlingJava</id>
+          </State>
+          <State>
+            <id>JVM languages</id>
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Angular</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>征信用户管理修改</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/pageIncludeStyle.js"></script>
+
+</head>
+<body>
+	<div id="form-wrap">
+		<form id="update_form_id" action="ccUser/updatePwd">
+			<div class="modal-body selectmodal">
+				<table class="grayTable">
+				<tr>
+						<th align="right" class="thStyle">征信用户名称:</th>
+						<td><input type="text" name="ccuser"
+							class="noReset" /></td>
+
+						<th align="right" class="thStyle">征信用户所属机构:</th>
+						<td><input type="text" name="ccdept"
+							class="noReset" /></td>
+					</tr>
+				<tr>
+						<th align="right" class="thStyle">征信用户密码:</th>
+						<td><input type="text" name="passwd"
+							class="validate[required,minSize[8],maxSize[20]]" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" class="btn-vip btn-blue" id="submitPage" value="提交" /> 
+				<input type="reset" class="btn-vip btn-white" id="resetPage" value="清空" />
+			</div>
+			<input type="hidden" name="id" class="noReset"/>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript" src="../static/script/business/ccuser/ccuser.js"></script>
+<script type="text/javascript">
+	$(function() {
+		var index =  $("#grid-data .active",parent.document).parents("tr").index();
+		var list = parent.gridData.list[index];
+		var ccuser = list.ccuser;
+		var ccdept = list.ccdept;
+		var id = list.id;
+		$("input[name=ccuser]").val(ccuser);
+		$("input[name=ccdept]").val(ccdept);
+		$("input[name=id]").val(id);
+		setReadonly(["ccuser","ccdept"]);
+		// 等支持 --- setReadonly(["archiveType"],true);
+		//loadDic("common/systemDic", "buttonGroup", "buttonGroup");
+		bindPageBtnEvent();
+	});
+</script>
+</html>

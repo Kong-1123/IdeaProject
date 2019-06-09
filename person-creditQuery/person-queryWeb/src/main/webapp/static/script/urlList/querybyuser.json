@@ -1,0 +1,13 @@
+{
+  "tabs": [
+     {
+        "name": "按用户统计",
+         "eName":"queryByUser",
+        "detailUrl":"queryByUser/detail",
+        "searchUrl":"queryByUser/search",
+        "getValUrl":"queryByUser/findById?id=",
+        "getPage":"queryByUser/getPage",
+        "queryByUser":"queryByUser/findByQueryUserSum"
+     }
+   ]
+}

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="x-ua-compatible" content="ie=10" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>工作日历管理</title>
+<link href="../static/script/layui/css/layui.css" rel="stylesheet" type="text/css" />
+<link href="../static/script/layui/css/layui.cu.css" rel="stylesheet" type="text/css" />
+<link href="../static/script/business/dateinfo/css/calendarAll.css" rel="stylesheet" type="text/css" />
+<link href="../static/script/business/dateinfo/css/skin.css" rel="stylesheet" type="text/css" />
+<link href="../static/script/business/dateinfo/css/fontSize12.css" rel="stylesheet" type="text/css" />
+<link href="../static/script/business/dateinfo/css/calendar.css" rel="stylesheet" type="text/css" />
+<link href="../static/script/business/dateinfo/css/static.css" rel="stylesheet" type="text/css" />
+<script src="../static/script/jquery-1.11.1.min.js"></script>
+<script src="../static/script/layer/layer.js"></script>
+<script src="../static/script/layer/layer.cu.js"></script>
+<script type="text/javascript" src="../static/script/business/dateinfo/calendar.js"></script>
+</head>
+<body unselectable="on" class="noselect" style="height: 98%;">
+	<!-- <div class="main" style="height: 98%;"> -->
+		<div class="pathBar" style="margin-bottom: 2px;">
+			<div class="pathBarPos"></div>
+		</div>
+		<div id="myrl" style="width: 820px; margin-top: 50px;margin-left: auto; margin-right: auto; height: 840px; ">
+			<form name=CLD>
+				<table class="biao" style="table-layout: fixed" width="800px">
+					<tbody>
+						<tr>
+							<td class="calTit" colSpan=7 style="height: 30px; padding-top: 3px; text-align: center;">
+							<div class="dateSelectWrap clearfix">	
+								<a href="#" title="上一年" id="nianjian" class="ymNaviBtn lsArrow"></a>
+								<a href="#" title="上一月" id="yuejian" class="ymNaviBtn lArrow"></a>
+								<div style="width: 200px; float: left;margin-left: 15px;">
+									<span id="dateSelectionRili" class="dateSelectionRili"> 
+										<span id="nian" class="topDateFont"></span>
+										<span class="topDateFont chinaFont">年</span>
+										<span id="yue" class="topDateFont"></span>
+										<span class="topDateFont chinaFont">月</span>
+										<span class="dateSelectionBtn cal_next chinaFont">▼</span>
+									</span> &nbsp;&nbsp;<font id=GZ class="topDateFont"></font>
+								</div> <!--新加导航功能-->
+								<div style="display: none;" id="dateSelectionDiv">
+									<div id="dateSelectionHeader"></div>
+									<div id="dateSelectionBody">
+										<div id="yearList">
+											<div id="yearListPrev" onclick="dateSelection.prevYearPage()"></div>
+											<div id="yearListContent"></div>
+											<div id="yearListNext" onclick="dateSelection.nextYearPage()"></div>
+										</div>
+										<div id="dateSeparator"></div>
+										<div id="monthList">
+											<div id="monthListContent">
+												<span id="SM0" class="month"
+													onclick="dateSelection.setMonth(0)">1</span><span id="SM1"
+													class="month" onclick="dateSelection.setMonth(1)">2</span><span
+													id="SM2" class="month" onclick="dateSelection.setMonth(2)">3</span><span
+													id="SM3" class="month" onclick="dateSelection.setMonth(3)">4</span><span
+													id="SM4" class="month" onclick="dateSelection.setMonth(4)">5</span><span
+													id="SM5" class="month" onclick="dateSelection.setMonth(5)">6</span><span
+													id="SM6" class="month" onclick="dateSelection.setMonth(6)">7</span><span
+													id="SM7" class="month" onclick="dateSelection.setMonth(7)">8</span><span
+													id="SM8" class="month" onclick="dateSelection.setMonth(8)">9</span><span
+													id="SM9" class="month" onclick="dateSelection.setMonth(9)">10</span><span
+													id="SM10" class="month"
+													onclick="dateSelection.setMonth(10)">11</span><span
+													id="SM11" class="month curr"
+													onclick="dateSelection.setMonth(11)">12</span>
+											</div>
+											<div style="clear: both;"></div>
+										</div>
+										<div id="dateSelectionBtn">
+											<div id="dateSelectionTodayBtn"
+												onclick="dateSelection.goToday()">今天</div>
+											<div id="dateSelectionOkBtn" onclick="dateSelection.go()">确定</div>
+											<div id="dateSelectionCancelBtn"
+												onclick="dateSelection.hide()">取消</div>
+										</div>
+									</div>
+									<div id="dateSelectionFooter"></div>
+								</div>  <a href="#" id="yuejia" title="下一月"
+								class="ymNaviBtn rArrow"></a> <a href="#" id="nianjia" title="下一年" class="ymNaviBtn rsArrow"
+								></a> <!--	<a id="jintian" href="#" title="今天" class="btn" style="float:right; margin-top:-2px; font-size:12px; text-align:center;">今天</a>-->
+							</div>
+							</td>
+						</tr>
+						<tr class="calWeekTit">
+							<td width="100" class="red">星期日</td>
+							<td width="100">星期一</td>
+							<td width="100">星期二</td>
+							<td width="100">星期三</td>
+							<td width="100">星期四</td>
+							<td width="100">星期五</td>
+							<td width="100" class="red">星期六</td>
+						</tr>
+				<script language="Javascript">
+                    var gNum;
+                    for (var i = 0; i < 6; i++) {
+                        document.write('<tr style="table-layout:fixed" align=center height="50" id="tt">');
+                        for (var j = 0; j < 7; j++) {
+                            gNum = i * 7 + j ;
+                            <!--onMouseOver="mOvr(this,' + gNum + ');"  onMouseOut="mOut(this);"-->
+                            document.write('<td  id="GD' + gNum + '" on="0" ><font id="SD' + gNum + '" style="font-size:22px;"  face="Arial"');
+                            if (j == 0)  document.write('color=red');
+                            if (j == 6)
+                                document.write('color=red');
+                            document.write('  TITLE="">  </font><br><font  id="LD' + gNum + '"  size=2  style="white-space:nowrap;overflow:hidden;cursor:default;">  </font></td>');
+                        }
+                        document.write('</tr>');
+                    }
+                </SCRIPT>
+					</tbody>
+				</TABLE>
+				<table class="biao" width="800px" style="margin-top: 10px;margin-bottom: 20px;">
+					<tr>
+						<td>
+							<div id="workday" class="cc">
+								<p id="setworkday">
+									<span>设为工作日（默认周一至周五）</span>:
+								</p>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id="holiday" class="cc">
+								<p id="setholiday">
+									<span>设为假日（默认周六周日和法定假日当天）</span>:
+								</p>
+							</div>
+						</td>
+					</tr>
+					<!--  <tr>
+              <td>
+                <div id="delete" class="cc">
+                    <p id="deleteSet"><span>删除日期设置</span>: </p>
+                </div>
+             </td> 
+            </tr>  -->
+				</table>
+				<p class="clearfix buttonWrap">
+					<input type=button value='提交' class="dateBtn btn-blue" onclick=h_submit()>
+					<input type=button value="重置" class="dateBtn btn-white" onclick=rebuild()>
+				</p>
+			</form>
+		</div>
+	<!-- </div> -->
+	<script language="Javascript">
+	$("td").click(function(){    //td点击事件；
+	    var val = $(this).attr("id")  //定义val值为点击的此td的id值；
+	})
+
+ 	function getProjectName(){   
+          var re = /(\w+):\/\/([^\:|\/]+)(\:\d*)?(.*\/)?(.*\/)([^#|\?|\n]+)?(#.*)?(\?.*)?/i;
+          var arr = location.href.match(re);
+          var name=arr[4];
+          // name=name.replace(/\//g,"");
+          return name;
+	}
+
+	// 数组去重
+	function removeDuplicatedItem(arr) {
+	    for (var i = 0; i < arr.length - 1; i++) {
+	        for (var j = i + 1; j < arr.length; j++) {
+	            if (arr[i] == arr[j]) {
+
+	                arr.splice(j, 1);//console.log(arr[j]);
+	                j--;
+	            }
+	        }
+	    }
+	    return arr;
+	}
+
+	//提交
+	function h_submit(){
+
+		hDays = removeDuplicatedItem(hDays) 
+
+		if(hDays.length==0){
+			layerMsg("提交数据为空！");
+			return false;
+		}
+		var dateInfoList = new Array();
+		var dateInfoVo;
+		hDays.forEach(function (value){
+			var obj = JSON.parse(value);
+			dateInfoVo = {
+					'ymd':obj.ymd,
+					'name':obj.name,
+					'isWorkDay':obj.isWorkDay
+			};
+		dateInfoList.push(dateInfoVo);
+		});
+		var name = getProjectName();
+		ajaxFuncForJson(name + "dateinfo/saveDate",function(data){
+			if('00000000' == data.code){
+				var title = "<span><i class='DHCiconfont DHC-gonggao'></i>消息</span>"
+				layer.alert(data.msg, {zIndex: layer.zIndex,closeBtn:2,title:title,icon: 1,cancel : function () {
+		           window.location.reload();
+		        }}, function () {
+		           window.location.reload();
+		        });
+			}else{
+				layerMsg(data.msg);
+			}
+		},function(data){
+			layerMsg("提交失败！"+data.msg);
+		},JSON.stringify(dateInfoList),false); 
+	}
+  	//重置
+	function rebuild(){
+		hDays=[];
+		window.location.reload();
+	}          
+
+	function ajaxFuncForJson(url,suc,err,data,noIcon){
+	     var json;
+	     if(data == undefined){
+	         data = null;
+	     }
+	     $.ajax({ 
+	         type:'post',url:url,contentType:"application/json",data:data,async:false,
+	         beforeSend:function(XMLHttpRequest){
+	           if(noIcon != true){
+	               layerLoading(); 
+	           }
+	         },success:function(data,textStatus){ 
+	           json = strToJson(data);
+	           if(suc!=undefined){
+	               suc(json);
+	           }
+	         },complete:function(XMLHttpRequest,textStatus){
+	           if(noIcon != true){
+	             //  layerCloseLoad();        
+	        	 // window.location.reload();
+	           }
+	         },error:function(data){ 
+	           json = strToJson(data);
+	           if(err != undefined){
+	               err(json);
+	           }
+	         } 
+	     }); 
+    }
+   
+function strToJson(data){
+    var json;
+    if(typeof data == "string"){
+      json = $.parseJSON(data);
+    }else{
+      json = data;
+    }
+    return json;
+}
+
+	$(function(){
+		$("#dateSelectionDiv").on("mouseleave",function(){
+			$(this).fadeOut(500);
+		})
+		$("#dateSelectionRili").click(function(){
+			var $div = $("#dateSelectionDiv");
+			if($div.is(':visible')){
+				$("#dateSelectionDiv").slideUp();
+			}else{
+				$("#dateSelectionDiv").slideDown();
+			}
+		});
+	})
+ 	</script>
+	<div id="details" style="margin-top: -1px;"></div>
+</body>
+</html>

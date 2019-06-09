@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>查询 </title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/pageIncludeStyle.js"></script>
+</head>
+<body>
+	<div id="form-wrap">
+		<form id="query_form_id" action="printflow/getPage">
+			<div class="modal-body">
+				<table class="grayTable">
+					<tr>
+						<th align="right" class="thStyle">用户名:</th>
+						<td><input type="text" name="search_LIKE_clientName" /></td>
+					</tr>
+					<tr>
+						<th align="right" class="thStyle">证件类型:</th>
+						<td><select name="search_LIKE_certType"></select>
+						</td>
+					</tr>
+					<tr>
+						<th align="right" class="thStyle">证件号码:</th>
+						<td><input type="text" name="search_LIKE_certNo" /></td>
+					</tr>
+					<tr>
+						<th align="right" class="thStyle">打印报告用户:</th>
+						<td><input type="text" name="search_LIKE_printUser" /></td>
+					</tr>
+					<tr>
+						<th align="right" class="thStyle">打印报告用户所属机构:</th>
+						<td><select name="search_LIKE_printUserDept" ></select></td>
+					</tr>
+					<tr>
+						<th align="right" class="thStyle">操作日期:</th>
+						<td class="dToD"><input type="text"
+							name="search_GTE_printDate_DATE"
+							onfocus=" WdatePicker({dateFmt:'yyyy-MM-dd'})"
+							value="${GTE_createTime}"
+							onkeydown="if(event.keyCode==13){event.keyCode=0;return false}" 
+							class="validate[dateRange[grp1],past[now]]" />
+							 -- <input type="text" name="search_LTE_printDate_DATE"
+							onfocus=" WdatePicker({dateFmt:'yyyy-MM-dd'})"
+							value="${LTE_createTime}"
+							onkeydown="if(event.keyCode==13){event.keyCode=0;return false}"
+							class="validate[dateRange[grp1],past[now]]" />
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" id="searchPage" class="btn-vip btn-blue" value="查询" /> <input type="reset" id="resetPage" class="btn-vip btn-white" value="清空" />
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+
+
+$(function() {
+	//获取数据字典
+	loadDic("common/cpqDic", "search_LIKE_certType", "certTypeID");
+	loadDic("common/getDeptCodeName", "search_LIKE_printUserDept", "deptCodeName");
+	
+	bindPageBtnEvent();
+});
+</script>
+</html>
+

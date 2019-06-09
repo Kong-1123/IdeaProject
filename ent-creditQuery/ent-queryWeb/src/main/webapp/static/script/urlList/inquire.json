@@ -1,0 +1,27 @@
+{
+  "tabs": [
+   {
+      "name": "个人信用报告管理",
+      "eName":"inquire",
+      "flowUrl":"inquire/flow",
+      "reportUrl":"inquire/report",
+      "checkUrl":"inquire/checkInfo",
+      "getValUrl":"inquire/findById?id=",
+      "revealUrl":"inquire/revealReport",
+      "sourceUrl":"inquire/isExisted",
+      "archiveList":"inquire/searchlist",
+      "getConfigUrl":"inquire/getReportversion",
+  	  "submitUrl":"inquire/dispatcher",
+      "preValUrl":"inquire/preValidate",
+      "versionUrl":"inquire/getgetReportversion",
+      "showReportUrl":"inquire/showReport",
+      "localReportUrl":"inquire/showLocalReport",
+      "findByArchiveId":"archive/findByArchiveId?archiveId=",
+      "getPictureFile":"archive/getPictureFile",
+      "validateFinger":"inquire/validateFinger",
+      "getloginType":"inquire/getloginType" ,
+      "isProMode":"inquire/isProMode" ,
+      "getCheckType":"inquire/getCheckType" 
+   }
+   ]
+ }

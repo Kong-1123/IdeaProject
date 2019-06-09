@@ -1,0 +1,17 @@
+{
+  "tabs": [
+   {
+      "name": "审批任务",
+      "eName":"checkinfo",
+      "detailUrl":"checkinfo/detail",
+      "getValUrl":"checkinfo/findById",
+      "getPage":"checkinfo/getPage",
+      "receiveTask":"checkinfo/receiveTask",
+	  "downLoad":"archive/downLoad",
+	  "downloadFile":"archive/downloadFile?id=",
+	  "getArchiveUrl":"archive/findById?id=",
+	  "findByArchiveId":"archive/findByArchiveId?archiveId=",
+	  "canDownloadFile":"archive/canDownloadFile"
+   }
+   ]
+ }

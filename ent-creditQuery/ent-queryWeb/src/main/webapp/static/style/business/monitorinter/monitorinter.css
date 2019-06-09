@@ -1,0 +1,195 @@
+/* 公共样式 */
+html{
+	background: #FAFAFA;
+}
+body{
+	height: 100%;
+	background: #FAFAFA;
+}
+.layui-fluid{
+	border: 1px solid transparent;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	min-width: 800px;
+	/*height: 96%;*/
+	/*height: 100vh;*/
+	/*height: 100%\9;*/
+	opacity: 0;
+}
+.mt10{
+	margin-top: 10px;
+}
+.mt20{
+	margin-top: 20px;
+}
+.mr0{
+	margin-right: 0px;
+}
+.mr10{
+	margin-right: 10px;
+}
+.layui-row>div{
+	height: 100%;
+	min-height: 250px;
+	background: #fff;
+	border-radius: 10px;
+	border:5px #FAFAFA solid;
+}
+.layui-row h3.common-head{
+	width: 98%;
+	/*height: 15%;*/
+	color: #444;
+	min-height: 40px;
+	/*height: 40px\9;*/
+	margin: 0 auto;
+	/*padding: 8px 0;*/
+	/*padding-top: 10px;*/
+	text-indent: 12px;
+	line-height: 40px; 
+	border-bottom: 1px solid #E6E6E6;
+}
+.layui-row div.common-cont{
+	height: 85%;
+	/*height: 240px\9;*/
+}
+/* 第一层 */
+.lay-one{
+	height: 31vh;
+	height: 260px\9;
+}
+/* 第二层 */
+/*.lay-two{
+	height: 31vh;
+	height: 260px\9;
+}*/
+/* 第三层 */
+.lay-three{
+	height: 34vh;
+	height: 280px\9;
+}
+.lay-three>div{
+	min-height: 280px;
+}
+/* 第三层左侧图表 */
+.layui-row>div.ec_two{
+	background:#FAFAFA;
+	border: none;
+}
+.lay-three .theday{
+	height: 30%;
+	background: #fff;
+	border-radius: 10px;
+	border: 5px solid #FAFAFA;
+}
+.lay-three .theday .sum-data{
+	color: #3175C8;
+	font-size: 28px;
+	padding: 10px 0 10px 0;
+	padding-top: 10px\9;
+	font-weight: bold;
+	text-align: center;
+}
+/* IE10+ */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)  {
+    .lay-three .theday .sum-data{
+		padding: 10px 0 10px 0;
+	}
+}
+.lay-three .theday p{
+	width: 98%;
+	color: #444;
+	margin: 0 auto;
+	padding-top: 8px;
+	text-align: center;
+	border-top: 1px solid #E6E6E6;
+}
+/* 根据屏幕的最大高度进行设置 */
+@media (max-device-height:1024px){
+	.lay-three .theday .sum-data{
+		padding: 8px 0 8px 0;
+	}
+	.lay-three .theday p{
+		padding-top: 5px;
+	}
+}
+
+.lay-three .realtime{
+	height: 63.5%;
+	background: #fff;
+	border-radius: 10px;
+	border: 5px solid #FAFAFA;
+}
+
+/* 第三层右侧图表 */
+.lay-three .exception-list{
+	position: relative;
+	overflow: hidden;
+}
+.dowebok{
+	color: #222;
+	margin-left: 15px;
+	padding-right: 15px;
+	position: relative;
+	overflow-y: auto;
+	position: relative;
+}
+.dowebok ul{
+ 	padding: 12px 0;
+}
+.dowebok ul li{
+ 	color: #A7A7A7;
+	padding: 1.5px 0;
+	/*line-height: 24px;*/
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.dowebok ul li:hover{
+ 	color: #F85C5D;
+}
+/* IE10+ */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)  {
+    .dowebok ul li{
+		padding: 3px 0;
+	}
+}
+
+/********** 全屏按钮样式的设置 **********/
+/* 全屏按钮 */
+.screenfull{
+	width: 20px;
+	height: 80px;
+	position: fixed;
+	right: 0px;
+	top: 28%;
+	color: #fff;
+	cursor: pointer;
+	font-size: 14px;
+	text-align: center;
+	writing-mode: vertical-lr;  /* 从左向右 从右向左是 writing-mode: vertical-rl; */  
+    writing-mode: tb-lr; 		/* IE浏览器的从左向右 从右向左是 writing-mode: tb-rl; */
+	background: rgba(0,0,0,0.7);
+	border-radius: 10px;
+}
+.screenfull>span{
+	display: block;
+	margin: 0 2px;
+	margin: 0 1px\9; /*针对IE9设置样式，同时对IE10也起作用*/
+}
+/* IE10+ */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)  {
+	.screenfull>span{ margin: 0 2px; }
+}
+/* Webkit内核兼容CSS选择器样式 放到这里 */ 
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+	.screenfull>span{ margin: 0; }
+} 
+/*Firefox*/ 
+@-moz-document url-prefix() { 
+	.screenfull>span{ margin: 2px; }
+}
+
+/*鼠标悬浮样式*/
+.screenfull:hover,.screenfull:active{
+	color: #FFA500;
+} 

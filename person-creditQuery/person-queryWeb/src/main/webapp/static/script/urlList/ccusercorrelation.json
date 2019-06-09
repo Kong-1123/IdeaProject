@@ -1,0 +1,16 @@
+{
+  "tabs": [
+   {
+      "name": "关联用户管理",
+      "eName":"ccUserCorrelation",
+      "creUrl":"ccUserCorrelation/correlation",
+      "delUrl":"ccUserCorrelation/delete?id=",
+      "getPage":"ccUserCorrelation/getPage",
+      "stop":"ccUserCorrelation/stop?id=",
+      "start":"ccUserCorrelation/start?id=",
+      "getUsers":"systemUser/getUsers",
+      "getCcUsers":"ccUser/getCcUsers",
+      "correlation":"ccUserCorrelation/createCorrelation"
+   }
+   ]
+ }

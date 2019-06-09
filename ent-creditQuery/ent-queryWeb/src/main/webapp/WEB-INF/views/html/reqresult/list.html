@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>企业审批请求列表</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/listIncludeStyle.js"></script>
+<style>
+	#orgTree li{
+		float: none;
+	}
+</style>
+</head>
+<body name="reqresult">
+	<div class="main-list">
+			<div class="inquiry">
+				<form class="layui-form" action="">
+					<div class="list-top">
+						<div class="list-top_left">
+						<h5>筛选条件</h5> </div>
+						<div class="list-top_right">
+							<ul>
+								<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon1.png"></a></li>
+								<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon2.png"></a></li>
+								<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon3.png"></a></li>
+							</ul>
+						</div>
+					</div>
+					<ul class="cons clearfix modal-body">
+						<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">企业名称:</label>
+			                <div class="layui-input-block">
+			                	<input type="text" name="search_EQ_enterpriseName" class="layui-input" />
+      						</div>
+			              </div>
+            			</li>
+            			<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">中征码:</label>
+			                <div class="layui-input-block">
+        						<input type="text" name="search_EQ_signCode" class="layui-input"></input>
+      						</div>
+			              </div>
+            			</li>
+            			<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">查询原因:</label>
+			                <div class="layui-input-block">
+			                	<select name="search_EQ_qryReason"></select>
+      						</div>
+			              </div>
+            			</li>
+            			<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">查询版式:</label>
+			                <div class="layui-input-block">
+			                	<select name="search_EQ_queryFormat"></select>
+      						</div>
+			              </div>
+            			</li>
+            			<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">审批状态:</label>
+			                <div class="layui-input-block">
+			                	<select name="search_EQ_status"></select>
+      						</div>
+			              </div>
+            			</li>
+            			<li>
+							<div class="layui-form-item">
+								<label class="layui-form-label">操作时间:</label>
+								 <div class="layui-input-block">
+	       							 <input type="text" class="layui-input dateRange"  name="search_GTE_LTE_operTime_DATE_RANGE" placeholder=" 请输入日期范围 ">
+	     						 </div>
+							</div>
+						</li>
+					</ul>
+					<div class="btnWrap">
+						<button type="button" class="cx_btn searchBtn"><i class='DHCiconfont'>&#xe606;</i>查询</button><button type="reset" class="qk_btn resetBtn"><i class='DHCiconfont'>&#xe609;</i>清空</button>
+			        </div>
+				</form>
+			</div>	
+			<div class="clear"></div>
+		</div>
+		<!--表格部分-->
+		<div class="list-m">
+			<div class="list-top">
+				<div class="list-top_left">
+					<h5 style="background:url(../static/images/table/sx_icon2.png) 17px no-repeat">审批结果列表</h5>
+				</div>
+				<div class="btnWrap">
+					<ul>
+						<!-- 新增、编辑、详情、删除 为统一绑定的公共方法，其他需自定义 -->
+						<li>
+							<a class="inquireReportBtn"><i class='DHCiconfont'>&#xe608;</i>查询信用报告</a>
+							<a class="applyAgainBtn"><i class='DHCiconfont'>&#xe608;</i>重新提交审批申请</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="datail" style="padding: 0px;margin-bottom: 0px;">
+				<table id="grid-data" lay-filter="grid-data"></table>
+			</div>
+		</div>
+</body>
+<script type="text/javascript" src="../static/script/listIncludeScript.js"></script>
+<script type="text/javascript" src="../static/script/business/reqresult/reqresult.js"></script>
+<script type="text/javascript">
+	// 用于存放查询条件，可设置默认查询条件
+	var searchData = null;
+	var listObj = getUrlList("../static/script/urlList/reqresult.json");
+	// 获取当前页面name
+	var pageName = $("body").attr("name");
+	// 获取当前页面url配置列表对象
+	var urlObj = returnOneUrlObj(pageName, listObj);
+	// 绑定公共方法传的参数对象
+	// 字典
+	var qryReasonDic = {
+		url : "common/ceqDic",
+		type : "qryReason_ceq"
+	};
+	var qryFormatDic = {
+		url : "common/ceqDic",
+		type : "qryFormat_ceq"
+	};
+	var qryTypeDic = {
+		url : "common/ceqDic",
+		type : "qryType_ceq"
+	};
+	var checkStatusDic = {
+		url : "common/ceqDic",
+		type : "checkStatus_ceq"
+	};
+	var deptNameDic = {
+			url : "common/getDeptCodeName",	
+			type : "deptCodeName"
+	};
+	var gridDicData = gridShowDic([qryReasonDic,qryFormatDic,qryTypeDic,checkStatusDic,deptNameDic]);
+	console.log(gridDicData)
+	layui.use(["table","form","layer"], function(){
+		var table = layui.table,
+			form = layui.form,
+			layer = layui.layer;
+		// 将url对象保存父页面
+		loadDic("common/ceqDic", "search_EQ_status", "checkStatus_ceq");
+		loadDic("common/ceqDic", "search_EQ_queryType", "qryType_ceq");
+		loadDic("common/ceqDic", "search_EQ_queryFormat","qryFormat_ceq");
+		loadDic("common/ceqDic", "search_EQ_qryReason", "qryReason_ceq");
+		form.render('select'); 
+		var gridopt = {
+			urlObj:urlObj
+			,searchData:searchData
+			,cols : [[
+				{
+					checkbox: true
+
+				}, {
+					field : 'enterpriseName',
+					title : '企业名称',
+					width : 280,
+					align : 'left',
+					event: 'detail',
+					templet: function(d){
+						// 查看详情入口
+						return "<a class='layui-link'>"+d.enterpriseName+"</a>";
+					}
+				}, {
+					field : 'signCode',
+					title : '中征码',
+					width : 180,
+					align : 'left'
+				}, {
+					field : 'qryReason',
+					title : '查询原因',
+					width : 120,
+					align : 'left',
+					templet: function(d){
+						// 表格中字典转换
+						return gridDicData[qryReasonDic.type][d.qryReason]+"";
+					}
+				}, {
+					field : 'queryFormat',
+					title : '查询版式',
+					width : 120,
+					align : 'left',
+					templet: function(d){
+						// 表格中字典转换
+						return gridDicData[qryFormatDic.type][d.queryFormat]+"";
+					}
+				},{
+					field : 'operTime',
+					title : '操作时间',
+					width : 180,
+					align : 'left'
+				},{
+					field : 'operator',
+					title : '审批提交人',
+					width : 120,
+					align : 'left'
+				}, {
+					field : 'operOrg',
+					title : '审批提交机构',
+					width : 120,
+					align : 'left',
+					templet: function(d){
+						// 表格中字典转换
+						return gridDicData[deptNameDic.type][d.operOrg]+"";
+					}
+				}, {
+					field : 'status',
+					title : '审批状态',
+					width : 120,
+					align : 'left',
+					templet: function(d){
+						// 表格中字典转换
+						return gridDicData[checkStatusDic.type][d.status]+"";
+					}
+				}
+			]]
+		}
+	 	var returnObj =gridInit(form,table,gridopt);
+   
+		// 绑定页面点击事件（含初始化页签组件）
+		bindBtnEvent(returnObj,urlObj);
+		bindCustomBtnEvent(returnObj, urlObj);
+	});
+</script>
+</html>

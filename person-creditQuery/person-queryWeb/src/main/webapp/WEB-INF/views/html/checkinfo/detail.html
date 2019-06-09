@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>审批任务详情</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/pageIncludeStyle.js"></script>
+</head>
+	<div id="form-wrap" class="layui-form" lay-filter="setVal">
+		<form id="detail_form_id">
+			<div class="modal-body selectmodal">
+				<ul class="formWrap clearfix">
+					<li>
+						<span class="formLabel">客户姓名：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name=clientName class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">证件类型：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="certType" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">证件号码：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="certNo" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">查询原因：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="qryReason" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">查询类型：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="queryType" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">查询版式：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="queryFormat" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">关联数据业务号：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="assocbsnssData" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">关联档案编号：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="archiveId" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">审批请求提交人：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="operator" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">所属机构：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" id="operOrg" name="operOrg" class="layui-input" />
+								<!-- <input type="text" name="orgTree" class="orgTree validate[required] layui-input" readonly="readonly" /><input type="hidden" id="deptCode" name="orgId" class="noReset" /> -->
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">操作时间：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="operTime" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">审批状态：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="status" class="layui-input" />
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="closePage" class="layui_btn btn_submit clearfix" ><i class='DHCiconfont'>&#xe605;</i>关闭</button>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+	// 通过url传的参数对象
+	var data = getParamObj();
+	var jsonData = getAjaxData(parent.urlObj.getValUrl,data);
+	layui.use(['form', 'layedit', 'laydate'], function(){
+	  var form = layui.form
+	  ,layer = layui.layer
+	  ,layedit = layui.layedit
+	  ,laydate = layui.laydate;
+		loadDic("common/getDeptCodeName","operOrg","deptCodeName");
+		loadDic("common/cpqDic", "status", "checkStatus");
+		loadDic("common/cpqDic", "queryType", "qryType");
+		loadDic("common/cpqDic", "queryFormat","qryFormat");
+		loadDic("common/cpqDic", "qryReason", "qryReason");
+		loadDic("common/cpqDic", "certType", "idType");
+	  var dicUrl = "common/cpqDic";
+	  var checkStatusDic = getDic(dicUrl,"checkStatus");
+	  jsonData.status = checkStatusDic[jsonData.status];
+	  var qryTypeDic = getDic(dicUrl,"qryType");
+	  jsonData.queryType = qryTypeDic[jsonData.queryType];
+	  var qryFormatDic = getDic(dicUrl,"qryFormat");
+	  jsonData.queryFormat = qryFormatDic[jsonData.queryFormat];
+	  var qryReasonDic = getDic(dicUrl,"qryReason");
+	  jsonData.qryreason = qryReasonDic[jsonData.qryReason];
+	  var idTypeDic = getDic(dicUrl,"idType");
+	  jsonData.certType = idTypeDic[jsonData.certType];
+	  // 获取机构字典对象
+	  var oprOrgDic = getDic(parent.deptNameDic.url, parent.deptNameDic.type);
+	  jsonData.operOrg = oprOrgDic[jsonData.operOrg];
+	  form.val("setVal",jsonData);
+
+	  setReadonly();
+	})
+	//关于表单数据操作全部写在init内
+	/*function init(json) {
+		var stopFlag = ""
+		if (json.stopFlag == 0) {
+			stopFlag = "已启用";
+		} else if (json.stopFlag == 1) {
+			stopFlag = "已停用";
+		}
+		$("input[name=stopFlag]").val(stopFlag);
+	};*/
+
+	$(function() {
+		// 绑定按钮事件		
+		bindPageBtnEvent();
+	});
+</script>
+</html>
+ 

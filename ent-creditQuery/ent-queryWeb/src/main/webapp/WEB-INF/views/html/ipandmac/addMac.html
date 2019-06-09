@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>个人用户属性管理新增</title>
+<link rel="stylesheet" href="../static/style/iconfont/iconfont.css">
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/pageIncludeStyle.js"></script>
+<style>
+	.grayTable td a{
+		cursor: pointer;
+		padding: 4px 6px;
+		color: #3F5994;
+		background-color: #fff;
+		border: 1px solid #3F5994;
+		border-radius: 3px;
+		-webkit-user-select:none; 
+		-moz-user-select:none; 
+		-ms-user-select:none; 
+		user-select:none;
+	}
+	.grayTable td a:hover{
+		color: #fff;
+		background-color: #3F5994;
+	}
+</style>
+</head>
+<body>
+	<div id="form-wrap">
+		<form id="create_form_id" action="ipAndMac/addMacByUsername">
+			<div class="modal-body selectmodal">
+				<table class="grayTable">
+					<tr>
+						<th align="right" class="thStyle">用户名:</th>
+						<td><input type="text" name="userName"
+							class="noReset" /></td>
+					</tr>
+					<tr>
+						<th align="right" class="thStyle">MAC地址1:</th>
+						<td><input type="text" name="mac" class="validate[required]" id="dep1"></input></td>
+						<th align="right" class="thStyle"></th>
+						<td>
+							<a id="addTr"><i class='iconfont'>&#xe6b9;</i></a>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<a id="removeTr"><i class='iconfont'>&#xe6fe;</i></a>
+						</td>
+					</tr>
+					
+				</table>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" class="btn-vip btn-blue" id="submitPage"
+					value="提交" /> <input type="reset" class="btn-vip btn-white"
+					id="resetPage" value="清空"></input>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+
+	function addTr(name,num){
+		var tr = '<tr><th align="right" class="thStyle">'+name+'地址'+num+':</th><td><input type="text" name="'+name+'" id="dep'+num+'"></input></td></tr>';
+		$(".grayTable").append(tr);
+	}
+
+	function submitFun(submitUrl,data){
+		var macArr = [];
+		$("input[name=mac]").each(function(i){
+			var t = $(this);
+			macArr.push(t.val());
+		})
+		data.mac = macArr+"";
+		ajaxFunc(submitUrl, function(result) {
+			submitMsg(result);
+		}, function(result) {
+			layerMsg("请求出错！");
+		}, data, false);
+	}
+
+	function submitMsg(result) {
+	    if (result.code == "00000") {
+	        layerAlert(result.msg, function () {
+	     	    reloadParentPage();
+	        });
+	    } else {
+	        layerMsg(result.msg);
+	        $(".disabled").attr("disabled", true);
+	        return;
+	    }
+	}
+
+	$(function() {
+		// 获取最大MAC输入框数量
+		var maxNum,num = 1,listObj =parent.listObj;
+		$.post(listObj.tabs[2].macNum+parent.userAttrCheckedUserId,function(data){
+			maxNum = strToJson(data);
+			maxNum = maxNum.num;
+		});
+
+		// 增加输入框
+		$("#addTr").on("click",function(){
+			if(num<maxNum){
+				num++;
+				addTr("mac",num);
+			}else{
+				layerMsg("已到最大条数限制！")
+			}
+		})
+
+		// 移除输入框
+		$("#removeTr").on("click",function(){
+			if(num>1){
+				num--;
+				$(".grayTable tr:last").remove();
+			}else{
+				layerMsg("至少输入一条信息！");
+			}
+		})
+
+		$("input[name=userName]").val(parent.userAttrCheckedUserId);
+		setReadonly(["userName"]);
+		bindPageBtnEvent();
+	});
+</script>
+</html>

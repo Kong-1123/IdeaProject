@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="../static/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+function getProjectName(url) {
+    var re = /(\w+):\/\/([^\:|\/]+)(\:\d*)?(.*\/)?(.*\/)([^#|\?|\n]+)?(#.*)?(\?.*)?/i;
+    var arr = url.match(re);
+    var name = arr[4];
+    // name=name.replace(/\//g,"");
+    return name;
+}
+function strToJson(e){var t;if(typeof e=="string"){t=e==""?{}:$.parseJSON(e)}else{t=e}return t}
+$(function() {
+	var pName = getProjectName(location.href);
+	var loginUrl = pName + "offlinequerysubmit/tryLogin?" + Math.random();
+	$.get(loginUrl, function(result) {
+		if(result.indexOf("00001")>0){
+			var obj = strToJson(result);
+			if(obj.code=="00001"){
+				top.layui.use(["layer"], function(){
+						var layer = parent.layui.layer;
+						parent.layerAlert("征信中心登陆失败，请查看!",function(){
+						$(".layui-tab .layui-this .layui-tab-close",parent.document).click();
+					})
+				})
+			}
+		}else{
+			window.location.href ="/shwebroot/simplequery/keyinfoquery/offlineQuerySubmit.jsp";
+		//	document.write(result);
+		}
+		});
+	})
+	
+</script>
+</html>

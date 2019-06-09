@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/ent-creditQuery" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-authorizeManager" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-authorizeManager/ent-authorizeManager-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-authorizeManager/ent-authorizeManager-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-queryAPI" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-queryAPI/ent-queryAPI-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-queryAPI/ent-queryAPI-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-queryAPI/ent-queryAPI-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-queryApproveFlow" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-queryApproveFlow/ent-queryApproveFlow-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-queryApproveFlow/ent-queryApproveFlow-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-queryFlowManager" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-queryFlowManager/ent-queryFlowManager-ansytask" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-queryFlowManager/ent-queryFlowManager-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-queryFlowManager/ent-queryFlowManager-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-queryStatistics" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-queryStatistics/ent-queryStatistics-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-queryStatistics/ent-queryStatistics-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-queryWeb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-reportView" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-reportView/ent-reportView-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ent-creditQuery/ent-reportView/ent-reportView-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-authorizeManager" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-authorizeManager/person-authorizeManager-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-authorizeManager/person-authorizeManager-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-queryAPI" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-queryAPI/person-queryAPI-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-queryAPI/person-queryAPI-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-queryAPI/person-queryAPI-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-queryApproveFlow" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-queryApproveFlow/person-queryApproveFlow-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-queryApproveFlow/person-queryApproveFlow-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-queryFlowManager" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-queryFlowManager/person-queryFlowManager-ansytask" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-queryFlowManager/person-queryFlowManager-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-queryFlowManager/person-queryFlowManager-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-queryStatistics" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-queryStatistics/person-queryStatistics-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-queryStatistics/person-queryStatistics-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-queryWeb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-reportView" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-reportView/person-reportView-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-creditQuery/person-reportView/person-reportView-service" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

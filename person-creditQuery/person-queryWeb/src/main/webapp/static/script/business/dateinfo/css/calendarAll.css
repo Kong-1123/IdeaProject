@@ -1,0 +1,123 @@
+@charset "utf-8";
+/* CSS Document */
+
+HTML{
+height:100%; width:100%;}
+BODY{
+margin:0px; word-wrap:break-word;  word-break:break-all; height:100%; width:100%;}
+IMG{
+border:0px;}
+A{
+text-decoration:none; color:#000000;}
+A:hover{
+text-decoration:none;}
+TABLE{
+cellpadding:0; cellspacing:0; margin-left:auto; margin-right:auto; border-collapse:collapse;} 
+.btn{
+width:auto; height:20px; line-height:22px; padding-left:7px; padding-right:7px; margin-top:2px; float:left; cursor:pointer; margin-left:5px; overflow:auto;}
+.btn:hover{
+text-decoration:none;}
+.btnActive{
+width:auto; height:20px; line-height:22px; padding-left:7px; padding-right:7px; margin-top:2px; float:left; cursor:pointer; margin-left:5px; overflow:auto;}
+.btn img{
+margin-right:4px; margin-top:3px; width:15px; height:15px; float:left;}
+.tableIcon{
+width:18px; height:18px;}
+.overFlowH{
+overflow:auto;}
+.tAC{
+text-align:center;}
+.W100XHYA{
+width:100%; overflow-x:hidden; overflow-y:auto;}
+.W1H1OFH{
+width:100%; height:100%; overflow:auto;}
+.W160{
+width:160px; overflow:auto;}
+.W85{
+width:90px; overflow:auto;}
+.W75{
+width:75px; overflow:auto;}
+.W70{
+width:70px; overflow:auto;}
+.W60{
+width:56px; overflow:auto;}
+.W50{
+width:50px; margin-left:auto; margin-right:auto;}
+.W35{
+width:35px; overflow:auto;}
+.LH25{
+line-height:25px;}
+.FLMR8{
+float:left; margin-right:8px;}
+.FLML8{
+float:left; margin-left:4px;}
+.ML5{
+margin-left:5px;}
+.H21{
+height:21px; overflow:auto;}
+.W200H22{
+width:190px; height:21px; line-height:22px; overflow:auto;}
+.W60H22{
+width:60px; height:21px; line-height:22px; overflow:auto;}
+.MarL15{
+margin-left:15px;}
+.W50OFH{
+width:40%; overflow:auto;}
+.H25BrdBtm{
+height:25px; line-height:25px;}
+
+/*main*/
+.mainLef{
+width:5px; height:26px; float:left;  overflow:auto;}
+.mainRig{
+width:5px; height:26px; float:left; overflow:auto;}
+.mainCen{
+height:26px; float:left; overflow:auto;}
+.mainCen SPAN{
+float:left; margin-top:2px;}
+.mainCen STRONG{
+line-height:27px; float:left; width:100px;}
+.mainCen A{
+float:right; line-height:27px;}
+.mainCen A:hover{
+text-decoration:underline;}
+.mainCont{
+height:105px; padding-left:5px; margin-bottom:5px; background-color:#FFFFFF; overflow:auto;}
+
+
+
+
+/*main*/
+.main{
+width:99%; margin-top:5px; height:100%; background-color:#FFFFFF; margin-left:auto; margin-right:auto; overflow:auto;}
+.bgMain{
+width:99%; margin-top:5px; height:100%; margin-left:auto; margin-right:auto; overflow:auto;}
+.indexMain{
+width:100%; margin-top:5px; height:100%; overflow:auto;}
+/
+
+.cadTit{
+width:260px; height:32px; overflow:auto;}
+.cadCont{
+width:258px; height:auto; background-color:#FFFFFF; overflow:auto;}
+.ymNaviss{
+width:256px; height:20px; line-height:20px; margin-top:1px; margin-left:auto; margin-right:auto; overflow:auto;}
+.ymNavis{
+width:160px; line-height:20px; margin-left:auto; margin-right:auto; overflow:auto;}
+.ymNavis SPAN{
+float:left; margin-left:3px; margin-right:3px; width:70px; text-align:center;}
+.ymNaviBtn{
+height:15px; width:15px; margin-top:2px; float:left; margin-left:3px; margin-right:3px; overflow:auto;}
+
+.cadTable{
+margin-bottom:1px; background-color:#FFFFFF; text-align:center;}
+.red{
+color:#FF0000;}
+.cadTable thead{
+height:20px; overflow:auto;}
+.cadTable tbody tr{
+height:18px;}
+.cadTable tbody td A{
+width:100%; height:100%; float:left;}
+.cadTable tbody td A:hover{
+background-color:#fdfdcf;}

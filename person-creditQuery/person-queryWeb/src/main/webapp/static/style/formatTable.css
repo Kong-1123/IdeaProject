@@ -1,0 +1,147 @@
+@charset "utf-8";
+/* *:active{
+	noOutline:expression(this.onFocus=this.blur());
+}
+*:focus,*:hover{
+	outline:0;
+} */
+a,img,input,select,textarea,button{outline:none;}
+a:active,img:active,input:active,select:active,textarea:active,button:active{noOutline:expression(this.onFocus=this.blur());}
+a:focus,img:focus,input:focus,select:focus,textarea:focus,button:focus{outline:0;}
+/* 容器居中 样式 */
+div.basepopopdiv{
+	left: 50%;
+	top: 50%;
+}
+/*basepopopdiv 样式*/
+div.base-wrap-xl{
+	margin-left: -490px;
+	margin-top: -210px;
+}
+div.base-wrap-l{
+	margin-left: -490px;
+	margin-top: -190px;
+}
+div.base-wrap-m{
+/* 	margin-left: -330px;
+margin-top: -160px; */
+}
+div.base-wrap-s{
+	margin-left: -200px;
+	margin-top: -180px;
+}
+div.base-wrap-xs{
+	margin-left: -175px;
+	margin-top: -110px;
+}
+/* modal-body 样式*/
+.wrap-xl{
+	width: 980px;
+	height: 340px;
+	*height: 380px;
+}
+.wrap-l{
+	width: 980px;
+	height: 240px;
+	*height: 280px;
+}
+.wrap-m{
+	/*width: 660px;*/
+	height: 200px;
+	*height: 280px;
+}
+.wrap-s{
+	width: 400px;
+	height: 240px;
+	*height: 280px;
+}
+.wrap-xs{
+	width: 350px;
+	height: 100px;
+	*height: 140px;
+}
+.wrap-s,.wrap-xs{
+	*width: 100%;
+}
+.wrap-xl input,.wrap-l input,.wrap-xl select,.wrap-l select,.wrap-xl textarea,.wrap-l textarea{
+	width: 150px;
+}
+.wrap-m input,.wrap-m select,.wrap-m textarea{
+	/*width: 180px;*/
+	width: 90%;
+}
+.wrap-s input,.wrap-s select,.wrap-s textarea{
+	width: 280px;
+}
+.wrap-xs input,.wrap-xs select,.wrap-xs textarea{
+	width: 260px;
+}
+.modal-body button,
+.modal-body input {
+	height: 28px;
+	line-height: 28px;
+  	*overflow: hidden;
+}
+/* 表内 select 样式 */
+.grayTable .wrap-select{
+	/*width: 22%;*/
+	height: 28px;
+	margin-bottom: 3px;
+}
+
+/* 表内th样式 */
+.grayTable .thStyle {
+    max-width: 80px;
+    width: 80px;
+    *max-width: 120px;
+    *width: 120px;
+}
+
+.grayTable input {
+	*overflow: hidden;
+	behavior: url(js/pie.htc);
+	border: 1px solid #666;
+	text-indent: 5px;
+}
+.grayTable textarea {
+	*overflow: hidden;
+	behavior: url(js/pie.htc);
+	border: 1px solid #666;
+	resize: none;
+}
+.modal .modal-father{
+	padding: 0px;
+}
+.modal-father .wrap-s{
+	width: 450px;
+}
+.modal-son input,.modal-son select{
+	width: 150px;
+}
+/* 表内input样式 */
+.grayTable input.inputRadio,.listTable input.inputCheckBox{
+	width: 15px;
+	height: 15px;
+	border: none;
+}
+/* 各种公告样式及单独的input、textarea */
+.aloneText{
+	height: 90%;
+	padding-top: 20px;
+	text-align: center;
+}
+#content_form_id .aloneText textarea{
+	width: 600px;
+	height: 90% !important;
+}
+.wrap-xl .aloneTwoCol,.wrap-l .aloneTwoCol{
+	width: 468px;
+}
+.wrap-m .aloneTwoCol {
+	width: 501px;
+	*width: 98%;
+}
+/* 设置内容最小高度，防止覆盖层过小 */
+.tabs{
+	min-height: 400px;
+}

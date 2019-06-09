@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>预警信息列表</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/pageIncludeStyle.js"></script>
+</head>
+<body>
+	<div id="form-wrap" class="layui-form" lay-filter="setVal">
+		<form id="detail_form_id">
+			<div class="modal-body selectmodal">
+				<ul class="formWrap clearfix">
+					<li>
+						<span class="formLabel">用户ID：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="userName" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">预警原因：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="aleratReason" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">所属机构：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" id="deptCode" name="orgCode" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">用户状态：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="userStatus" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">预警时间：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="alertDate" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">核实状态：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="checkStatus" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li class="threeCols">
+						<span class="formLabel">解除预警原因：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<textarea name="removeAlertReason" class="validate[maxSize[256]] layui-textarea"></textarea>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="closePage" class="layui_btn btn_submit clearfix" ><i class='DHCiconfont'>&#xe605;</i>关闭</button>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+	// 通过url传的参数对象
+	var data = getParamObj();
+	console.log(data);
+	var jsonData = getAjaxData(parent.urlObj.getValUrl,data);
+	layui.use(['form', 'layedit', 'laydate'], function(){
+	  var form = layui.form
+		  ,layer = layui.layer
+		  ,layedit = layui.layedit
+		  ,laydate = layui.laydate;
+	  var dicUrl = "common/ceqDic";
+	  
+	  var aleratReason = getDic(dicUrl,"alertReason");
+	  jsonData.aleratReason = aleratReason[jsonData.aleratReason];
+	  
+	  
+	  var userStatusDic = getDic(dicUrl,"userStat_ceq");
+	  jsonData.userStatus = userStatusDic[jsonData.userStatus];
+	  
+	  var userStatusDic = getDic(dicUrl,"checkStat_ceq");
+	  jsonData.checkStatus = userStatusDic[jsonData.checkStatus];
+	  
+	  // 获取机构字典对象
+	  var oprOrgDic = getDic(parent.oprOrg.url, parent.oprOrg.type);
+	  jsonData.orgCode = oprOrgDic[jsonData.orgCode];
+	  
+	  form.val("setVal",jsonData);
+
+	  setReadonly();
+	})
+
+	$(function() {
+		// 绑定按钮事件		
+		bindPageBtnEvent();
+	});
+</script>
+</html>

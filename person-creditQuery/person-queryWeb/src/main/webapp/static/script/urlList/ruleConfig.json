@@ -1,0 +1,15 @@
+{
+  "tabs": [
+      {
+         "name": "查询预警规则",
+         "eName":"ruleConfig",
+         "creUrl":"ruleConfig/createPage",
+         "updUrl":"ruleConfig/updatePage",
+         "detailUrl":"ruleConfig/detail",
+         "delUrl":"ruleConfig/delete?id=",
+         "getValUrl":"ruleConfig/findById",
+         "getPage":"ruleConfig/getPage",
+         "exportUrl":"ruleConfig/exportExcel" 
+      }
+   ]
+ }

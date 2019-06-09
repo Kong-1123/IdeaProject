@@ -1,0 +1,20 @@
+{
+  "tabs": [
+   {
+      "name": "本人查询记录",
+      "eName":"queryreq",
+      "flowUrl":"queryreq/flow",
+      "reportUrl":"queryreq/report",
+      "checkUrl":"queryreq/checkInfo",
+      "createUrl":"queryreq/create",
+      "detailUrl":"queryreq/detail",
+      "searchUrl":"queryreq/search",
+      "getValUrl":"queryreq/findById",
+      "revealUrl":"inquire/revealReport",
+      "getPage":" queryreq/getPage",
+      "sourceUrl":"queryreq/isExisted",
+      "exportUrl":"queryreq/exportLoad",
+      "list":"queryreq/list"
+   }
+   ]
+ }

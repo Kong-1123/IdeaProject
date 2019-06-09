@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>授权档案管理新增</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/pageIncludeStyle.js"></script>
+</head>
+<body>
+	<div id="form-wrap">
+		<form id="update_form_id" action="queryreq/updateRelevance">
+			<div class="modal-body selectmodal">
+				<table class="grayTable">
+					<tr>
+						<th align="right" class="thStyle">公司名称:</th>
+						<td><input type="text" name="enterpriseName"
+							class="validate[required,maxSize[100]]" /></td>
+
+						<!-- <th align="right" class="thStyle">机构信用代码:</th>
+						<td><input type="text" name="orgCreditCode"
+							class="validate[required]" /></td> -->
+					</tr>
+					<tr>
+						<th align="right" class="thStyle">中征码:</th>
+						<td><input type="text" name="signCode"
+							class="validate[required]" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" class="btn-vip btn-blue" id="submitPage"
+					value="提交" /> <input type="reset" class="btn-vip btn-white"
+					id="resetPage" value="清空"></input>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+	$(function() {
+		setReadonly(["enterpriseName","signCode"]);
+		/* setReadonly(["enterpriseName","orgCreditCode","signCode"]); */
+		bindPageBtnEvent();
+	});
+</script>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/listIncludeStyle.js"></script>
+</head>
+<script type="text/javascript" src="../static/script/listIncludeScript.js"></script>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+$(function() {
+    //  发送请求展开中征码查询页面
+   	    var Pname = getProjectName(location.href);
+	    var url = Pname + "loancardcodequery/login";
+        ajaxFunc(url, function(data){
+        	console.log(data);
+	    	result = data;
+	    	if(result.code == "00000"){
+	    		window.location.href = "getpage";
+	    	}else {
+	    		layerAlert(result.msg,function(){
+      			  window.location.href = "showPage"});
+	    	}
+	    });
+})
+</script>
+</html>

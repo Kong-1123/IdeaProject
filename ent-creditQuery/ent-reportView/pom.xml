@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>cn.com.dhcc</groupId>
+		<artifactId>ent-creditQuery</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>ent-reportView</artifactId>
+	<packaging>pom</packaging>
+	<name>ent-reportView</name>
+	<description>个人征信报告查询展示子工程，阐述包含的所有模块以及工程所依赖jar包。</description>
+	<properties>
+		<project.build.jdk>1.8</project.build.jdk>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<person.creditQuery.version>0.0.1-SNAPSHOT</person.creditQuery.version>
+		<jsoup.version>1.7.3</jsoup.version>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<source>${project.build.jdk}</source>
+					<target>${project.build.jdk}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<modules>
+		<module>ent-reportView-service</module>
+		<module>ent-reportView-dao</module>
+	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>cn.com.dhcc</groupId>
+			<artifactId>ent-query-BO</artifactId>
+			<version>${person.creditQuery.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cn.com.dhcc</groupId>
+			<artifactId>ent-queryConfig-service</artifactId>
+			<version>${person.creditQuery.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.47</version>
+		</dependency>
+
+	</dependencies>
+</project>

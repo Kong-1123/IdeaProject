@@ -1,0 +1,54 @@
+ {
+  "tabs": [
+   {"name": "未授权异常导入管理",
+      "eName":"importUA",
+      "creUrl":"importTwoAbnormal/uploadUAPage",
+      "upload":"importTwoAbnormal/uploadfile?type=1",
+      "getPage":"importTwoAbnormal/getPage",
+      "getValUrl":"importTwoAbnormal/findById",
+      "exportUrl":"importTwoAbnormal/exportExcel?type=1",
+      "detailUrl":"importTwoAbnormal/detailPage",
+      "illustrationPage":"importTwoAbnormal/illustrationPage"
+  	},
+  	 {"name": "跨地域异常导入管理",
+      "eName":"importCR",
+      "creUrl":"importTwoAbnormal/uploadCRPage",
+      "upload":"importTwoAbnormal/uploadfile?type=2",
+      "getPage":"importTwoAbnormal/getPage",
+      "getValUrl":"importTwoAbnormal/findById",
+      "exportUrl":"importTwoAbnormal/exportExcel?type=2",
+      "detailUrl":"importTwoAbnormal/detailPage",
+      "illustrationPage":"importTwoAbnormal/illustrationPage"
+  	},
+  	 {"name": "非工作时段异常导入管理",
+      "eName":"importNWT",
+      "creUrl":"importThreeAbnormal/uploadNWTPage",
+      "upload":"importThreeAbnormal/uploadfile?type=4",
+      "getPage":"importThreeAbnormal/getPage",
+      "getValUrl":"importThreeAbnormal/findById",
+      "exportUrl":"importThreeAbnormal/exportExcel?type=4",
+      "detailUrl":"importThreeAbnormal/detailPage",
+      "illustrationPage":"importThreeAbnormal/illustrationPage"
+  	},
+  	 {"name": "查询量异常导入管理",
+      "eName":"importQQ",
+      "creUrl":"importThreeAbnormal/uploadQQPage",
+      "upload":"importThreeAbnormal/uploadfile?type=3",
+      "getPage":"importThreeAbnormal/getPage",
+      "getValUrl":"importThreeAbnormal/findById",
+      "exportUrl":"importThreeAbnormal/exportExcel?type=3",
+      "detailUrl":"importThreeAbnormal/detailPage",
+      "illustrationPage":"importThreeAbnormal/illustrationPage"
+  	},
+  	 {"name": "睡眠用户异常导入管理",
+      "eName":"importSU",
+      "creUrl":"importThreeAbnormal/uploadSUPage",
+      "upload":"importThreeAbnormal/uploadfile?type=5",
+      "getPage":"importThreeAbnormal/getPage",
+      "getValUrl":"importThreeAbnormal/findById",
+      "exportUrl":"importThreeAbnormal/exportExcel?type=5",
+      "detailUrl":"importThreeAbnormal/detailPage",
+      "illustrationPage":"importThreeAbnormal/illustrationPage"
+  	}
+   ]
+ }

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>异常查询阻断列表</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/listIncludeStyle.js"></script>
+</head>
+<body name="exceptionRule">
+	<div class="main-list">
+			<div class="inquiry">
+				<form class="layui-form" action="">
+					<div class="list-top">
+						<div class="list-top_left">
+							<h5 style="background:url(../static/images/table/sx_icon1.png) 17px no-repeat">筛选条件</h5>
+						</div>
+						<div class="list-top_right">
+							<ul>
+								<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon1.png"></a></li>
+								<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon2.png"></a></li>
+								<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon3.png"></a></li>
+							</ul>
+						</div>
+					</div>
+					<ul class="cons modal-body clearfix">
+						<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">规则编码：</label>
+			                <div class="layui-input-block">
+			                	<input type="text" name="search_EQ_ruleCode" class="layui-input" maxlength="5"/>
+      						</div>
+			              </div>
+            			</li>
+						<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">规则名称：</label>
+			                <div class="layui-input-block">
+			                	<input type="text" name="search_LIKE_ruleName" class="layui-input" maxlength="200"/>
+      						</div>
+			              </div>
+            			</li>
+            			<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">页面管控：</label>
+			                <div class="layui-input-block">
+			                	<select  name="search_EQ_pageControl" >
+			                		<option value="">请选择</option>
+									<option value="0">是</option>
+									<option value="1">否</option>
+			                	</select>
+      						</div>
+			              </div>
+            			</li>
+            			<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">接口管控：</label>
+			                <div class="layui-input-block">
+			                	<select  name="search_EQ_interfaceControl" >
+			                		<option value="">请选择</option>
+									<option value="0">是</option>
+									<option value="1">否</option>
+			                	</select>
+      						</div>
+			              </div>
+            			</li>
+            			<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">是否锁用户：</label>
+			                <div class="layui-input-block">
+			                	<select  name="search_EQ_lockUser" >
+			                		<option value="">请选择</option>
+									<option value="0">是</option>
+									<option value="1">否</option>
+			                	</select>
+      						</div>
+			              </div>
+            			</li>
+            			<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">白名单是否受限：</label>
+			                <div class="layui-input-block">
+			                	<select  name="search_EQ_restrictWhite" >
+			                		<option value="">请选择</option>
+									<option value="0">是</option>
+									<option value="1">否</option>
+			                	</select>
+      						</div>
+			              </div>
+            			</li>
+            			<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">启停标志：</label>
+			                <div class="layui-input-block">
+        						<select name="search_EQ_stopFlag">
+        							<option value="">请选择</option>
+									<option value="0">已启用</option>
+									<option value="1">已停用</option>
+								</select>
+      						</div>
+			              </div>
+            			</li>
+					</ul>
+					<div class="btnWrap">
+						<button type="button" class="cx_btn searchBtn"><i class='DHCiconfont'>&#xe606;</i>查询</button><button type="reset" class="qk_btn resetBtn"><i class='DHCiconfont'>&#xe609;</i>清空</button>
+			        </div>
+				</form>
+			</div>	
+			<div class="clear"></div>
+		</div>
+		<!--表格部分-->
+		<div class="list-m">
+			<div class="list-top">
+				<div class="list-top_left">
+					<h5 style="background:url(../static/images/table/sx_icon2.png) 17px no-repeat">异常查询阻断列表</h5>
+				</div>
+				<div class="btnWrap">
+					<ul class="clearfix">
+						<!-- <li>
+							<a class="createBtn"><i class='DHCiconfont'>&#xe608;</i>新增</a>
+						</li> -->
+						<li>
+							<a class="updateBtn"><i class='DHCiconfont'>&#xe601;</i>编辑</a>
+						</li>
+						<!-- <li>
+							<a class="deleteBtn"><i class='DHCiconfont'>&#xe60a;</i>删除</a>
+						</li> -->
+					</ul>
+				</div>
+			</div>
+			<div class="datail" style="padding: 0px;margin-bottom: 0px;">
+				<table id="grid-data" lay-filter="grid-data"></table>
+			</div>
+		</div>
+</body>
+<script type="text/javascript" src="../static/script/listIncludeScript.js"></script>
+<script type="text/javascript" src="../static/script/business/exceptionRule/exceptionRule.js"></script>
+
+<script type="text/html" id="stopFlag">
+	 <input type="checkbox" name="stopFlag" value="{{d.id}}" lay-skin="switch" lay-text="启用|停用" lay-filter="stopFlag" {{ d.stopFlag == 0 ? 'checked' : "" }}>
+</script>
+
+<script type="text/javascript">
+	var searchData = null;
+	var listObj = getUrlList("../static/script/urlList/exceptionRule.json");
+	// 获取当前页面name
+	var pageName = $("body").attr("name");
+	// 获取当前页面url配置列表对象
+	var urlObj = returnOneUrlObj(pageName, listObj);
+	// 字典
+	var deptCodeName = {
+		url : "common/getDeptCodeName",
+		type : "deptCodeName"
+	};
+	var idTypeDic = {
+		url : "common/ceqDic",
+		type : "whether_ceq"
+	};
+	
+	var gridDicData = gridShowDic([deptCodeName,idTypeDic]);
+	
+	layui.use(["table","form","layer"], function(){
+		var table = layui.table,
+			form = layui.form,
+			layer = layui.layer;
+		form.render('select'); 
+		var gridopt = {
+			urlObj:urlObj
+			,where:{EQ_queryNum:0}
+			,cols : [[
+				{checkbox: true},{
+					field : 'ruleCode',
+					title : '规则编码',
+					width : 100,
+					event: 'detail',
+					templet: function(d){
+						// 表格中字典转换
+						return "<a class='layui-link'>"+d.ruleCode+"</a>";
+					}
+				},{
+					field : 'ruleName',
+					title : '规则名称',
+					width : 230,
+				},{
+					field : 'ruleDescribe',
+					title : '规则描述',
+					width : 180,
+				},{
+					field : 'pageControl',
+					title : '页面管控',
+					width : 120,
+					templet: function(d){
+						// 表格中字典转换
+						return d.pageControl?gridDicData[idTypeDic.type][d.pageControl]+"": "";
+					}
+				},{
+					field : 'interfaceControl',
+					title : '接口管控',
+					width : 120,
+					templet: function(d){
+						// 表格中字典转换
+						return d.interfaceControl?gridDicData[idTypeDic.type][d.interfaceControl]+"": "";
+					}
+				},{
+					field : 'lockUser',
+					title : '是否锁用户',
+					width : 120,
+					templet: function(d){
+						// 表格中字典转换
+						return d.lockUser?gridDicData[idTypeDic.type][d.lockUser]+"": "";
+					}
+				},{
+					field : 'restrictWhite',
+					title : '白名单是否受限',
+					width : 140,
+					templet: function(d){
+						// 表格中字典转换
+						return d.restrictWhite?gridDicData[idTypeDic.type][d.restrictWhite]+"": "";
+					}
+				}, {
+					field : 'comments',
+					title : '备注',
+					width : 100,
+
+				},{
+					field : 'stopFlag',
+					title : '启停标志',
+					width : 120,
+					templet: '#stopFlag'
+				}
+				]]
+			}
+	 	
+		var returnObj =gridInit(form,table,gridopt);
+		// 绑定页面点击事件（含初始化页签组件）
+		// returnObj.searchData = $("form").serializeJSON();
+		bindBtnEvent(returnObj,urlObj);
+		//bindCustomBtnEvent(returnObj, urlObj);
+	});
+</script>
+</html>

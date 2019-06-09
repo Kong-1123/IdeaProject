@@ -1,0 +1,16 @@
+{
+  "tabs": [
+   {
+      "name": "查询原因配置",
+      "eName":"queryReason",
+      "getPage":"queryReason/getPage",
+	  "searchUrl":"queryReason/search",
+      "getValUrl":"queryReason/findById",
+      "stopDelegationPolicy":"queryReason/stopDelegationPolicy",
+      "startDelegationPolicy":"queryReason/startDelegationPolicy",
+      "stopRecheckPolicy":"queryReason/stopRecheckPolicy",
+      "startRecheckPolicy":"queryReason/startRecheckPolicy"
+
+   }
+   ]
+ }

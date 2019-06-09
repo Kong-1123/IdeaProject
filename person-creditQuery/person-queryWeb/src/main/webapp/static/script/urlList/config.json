@@ -1,0 +1,13 @@
+{
+  "tabs": [
+   {
+      "name": "业务属性",
+      "eName":"config",
+      "updUrl":"config/updatePage",
+      "searchUrl":"config/search",
+      "getValUrl":"config/findById",
+      "getPage":"config/getPage",
+      "detailUrl":"config/detail"
+   }
+   ]
+ }

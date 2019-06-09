@@ -1,0 +1,17 @@
+{
+  "tabs": [
+   {
+      "name": "征信用户管理",
+      "eName":"creditUser",
+      "creUrl":"creditUser/createPage",
+      "updUrl":"creditUser/updatePage",
+      "updatePwd":"creditUser/updatePwdPage",
+      "detailUrl":"creditUser/detail",
+      "delUrl":"creditUser/delete?id=",
+      "searchUrl":"creditUser/search",
+      "getValUrl":"creditUser/findById",
+      "getPage":"creditUser/getPage",
+      "test":"creditUser/testCreditPassWord"
+   }
+   ]
+ }

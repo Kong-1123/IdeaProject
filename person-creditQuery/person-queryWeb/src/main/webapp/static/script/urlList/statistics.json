@@ -1,0 +1,10 @@
+{
+  "tabs": [
+   {
+      "queryByOrg" : "query/findByAmountTo",
+      "queryByUser" : "queryByUser/findByQueryUserSum",
+      "illegalUser" : "relevant/findByRelieve"
+      
+   }
+   ]
+ }

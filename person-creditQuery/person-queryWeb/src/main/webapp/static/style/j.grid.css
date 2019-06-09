@@ -1,0 +1,238 @@
+@charset "utf-8";
+/* CSS Document */
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+.clearfix{*+height:1%;}
+body {
+ font: 14px/1.43 "Helvetica Neue", Tahoma, "Microsoft YaHei", Arial;
+ color: #253443;
+ margin: 0 auto;
+ padding: 0;
+}
+table {
+ border-collapse: collapse;
+ border-spacing: 0;
+ background: #FFF;
+ font-size: 12px;
+ width: 100%;
+}
+thead {
+ display: table-header-group;
+ vertical-align: middle;
+ border-color: inherit;
+}
+tr {
+ display: table-row;
+ vertical-align: inherit;
+ border-color: inherit;
+}
+table thead tr {
+ background-color: #f9f9f9;
+}
+table thead tr th {
+ padding: 5px 8px;
+ font-weight: normal;
+ color: #999;
+ border-bottom: 1px solid #999;
+ /*vertical-align: bottom;*/
+ line-height: 20px;
+}
+table#grid-data{
+ table-layout:fixed;
+ display: inline-table;
+}
+table#grid-data thead tr th, table#grid-data tbody tr td {
+ overflow: hidden;
+ white-space:nowrap;
+ text-overflow:ellipsis;
+ -o-text-overflow:ellipsis;
+}
+tbody {
+ display: table-row-group;
+ vertical-align: middle;
+ border-color: inherit;
+}
+table tbody tr td {
+ color: #000;
+ padding: 8px;
+ border-top: 0px;
+ border-bottom: 1px solid #DDD;
+ vertical-align: middle;
+ line-height: 20px;
+}
+table tfoot tr td {
+ width: 100%;
+ background-color: #F4F4F4;
+ height: 20px;
+ padding: 8px 0px;
+ color: #000;
+}
+table tfoot tr td a {
+ display: inline-block;
+ cursor: pointer;
+ height:20px;
+ padding:0 10px;
+ float: right;
+}
+table tfoot tr td span {
+ display: inline-block;
+ height:20px;
+ padding:0 10px;
+ vertical-align: middle;
+ float: right;
+}
+table tfoot tr td span span{
+ padding:0 2px;
+ float: none;
+}
+table tfoot tr td input {
+    width: 30px;
+    height: 16px;
+    float: right;
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    text-align: center;
+}
+table tfoot tr td select {
+	width: 40px;
+    height: 20px;
+    float: right;
+    border: 1px solid #ccc;
+    vertical-align: middle;
+    text-align: center;
+}
+table tbody tr.mouseover td{
+ color: #3879D9;
+ background-color: #ededed;
+}
+.oddColor {
+ background-color: #f9f9f9;
+ color: #333;
+}
+/*--------------------------------------------*/
+table tfoot tr td a:hover {
+	color: #00f;
+}
+table tr input[type="checkbox"],table tr input[type="radio"]{
+	display: none;
+}
+table thead tr th label,table tbody tr td label{
+	display: inline-block;
+	vertical-align:middle;
+	width: 20px;
+	height: 20px;
+	background:url(../images/grid-checkbox.png) no-repeat; 
+	overflow: hidden;
+}
+table tbody tr td label#labelChk{
+    background-position: 0px 0px;
+}
+table thead tr th label:hover,table tbody tr td label#labelChk:hover{
+	background-position: -20px 0px;
+}
+table thead tr th label.active,table tbody tr td label#labelChk.active{
+	background-position: -40px 0px;
+}
+table tbody tr td label#labelRad{
+    background-position: -100px 0px;
+}
+table tbody tr td label#labelRad:hover{
+    background-position: -120px 0px;
+}
+table tbody tr td label#labelRad.active{
+    background-position: -140px 0px;
+}
+.hoverMsg{
+	width: auto;
+	max-width: 300px;
+	text-align: left;
+	display: none;
+	cursor:default;
+	padding: 5px;
+	border: 1px solid #3075c7;
+	background-color: #fff;
+	border-radius: 3px;
+	position: absolute;
+	word-wrap: break-word;
+    	white-space: normal;
+}
+
+.listWrap td div.stat{
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    color: #efefef;
+ }
+.listWrap .stat1{
+    background-color: #903DAF;
+ }
+.listWrap .stat2{
+    background-color: #EA4B35;
+ } 
+.listWrap .stat3{
+    background-color: #3075c7;
+ }
+.listWrap .stat4{
+    background-color: #E77D03;
+ }
+.listWrap .stat5{
+    background-color: #01BF9D;
+ }
+.listWrap .stat6{
+    background-color: #3075c7;
+ }
+.listWrap .stat7{
+    background-color: #e43983;
+ }
+.listWrap .stat8{
+    background-color: #22C026;
+ }
+ .listWrap .stat9{
+    background-color: #e43983;
+ }
+ .listWrap .stat10{
+    background-color: #d697ed;
+ }
+ #grid-data .buttonWrap{
+    text-align: center;
+ }
+ #grid-data .buttonWrap button{
+    height: 24px;
+    padding: 4px;
+    border-radius: 3px;
+    background-color: #fff;
+    margin-right: 15px;
+ }
+ #grid-data .buttonWrap button:hover{
+    color: #55f;
+    cursor: pointer;
+ }
+ #grid-data .buttonWrap button i{
+    padding: 4px 12px;
+    background: #fff no-repeat center center;
+ }
+ #grid-data .oddColor button,#grid-data .oddColor button i{
+    background-color: #f9f9f9;
+ }
+ #grid-data .mouseover button,#grid-data .mouseover button i{
+    background-color: #ededed;
+ }
+ #grid-data .buttonWrap button.stopFlag0 i, #grid-data .buttonWrap button.recordStopFlag0 i{
+    background-image:url(../images/button/stop.png); 
+ }
+ #grid-data .buttonWrap button.stopFlag1 i, #grid-data .buttonWrap button.recordStopFlag1 i{
+    background-image:url(../images/button/start.png); 
+ }
+ #grid-data .buttonWrap button.lockFlag0 i{
+    background-image:url(../images/button/lock.png); 
+ }
+ #grid-data .buttonWrap button.lockFlag1 i{
+    background-image:url(../images/button/unlock.png); 
+ } 
+ #grid-data .buttonWrap button.role i{
+    background-image:url(../images/button/role.png); 
+ } 
+ #grid-data .buttonWrap button.resetPwd i{
+    background-image:url(../images/button/password.png); 
+ }
+ 
+ 

@@ -1,0 +1,15 @@
+{
+  "tabs": [
+   {
+      "name": "特殊通道",
+      "eName":"greenChannel",
+      "creUrl":"greenChannel/createPage",
+      "detailUrl":"greenChannel/detail",
+      "searchUrl":"greenChannel/search",
+      "getValUrl":"greenChannel/findById",
+      "getPage":"greenChannel/getPage",
+      "stopGreen":"greenChannel/stopGreen",
+      "startGreen":"greenChannel/startGreen"
+   }
+   ]
+ }

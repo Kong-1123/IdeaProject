@@ -1,0 +1,65 @@
+@charset "utf-8";
+.layui-table .total{
+	font-weight: bold;
+}
+.datail .layui-table tbody tr:hover,
+.datail .layui-table thead tr,
+.datail .layui-table-click,
+.datail .layui-table-header,
+.datail .layui-table-hover,
+.datail .layui-table-mend,
+.datail .layui-table-patch,
+.datail .layui-table-tool,
+.datail .layui-table[lay-even] tr:nth-child(even) {
+	background-color: #fff;
+}
+.datail .layui-table{
+	table-layout:fixed;
+}
+.datail .layui-table td, .datail .layui-table th{
+	position: static;
+}
+.datail .layui-table tr td:first-child{
+	width:240px;
+}
+.datail .layui-table tr td {
+	background-color: #F5F8FD;
+}
+.datail .layui-table tr td .name,.datail .layui-table tr td .reason{
+	text-align: left;
+}
+.datail .layui-table tr td .reason{
+	padding-left: 20px;
+}
+.datail .layui-table .userTr td,.datail .layui-table .totalTr td {
+	background-color: #D8E4F4;
+}
+.datail .layui-table .totalTr td {
+	text-align: center;
+}
+.datail .layui-table .totalTr td div{
+	text-align: right;
+}
+.modal-body .month,.modal-body .year{
+	display: none;
+}
+.datail .layui-table thead tr{
+	color: #fff;
+	background-color: #3D6AC3;
+	text-align: center;
+}
+.datail .layui-table tbody tr:hover{
+	background-color: #D8E4F4;
+}
+.datail .layui-table tr th,.datail .layui-table tr td{
+	border: 1px solid #CFD3DD;
+	padding: 4px 15px;
+	text-align: right;
+}
+.datail .layui-table tr th{
+	text-align: center;
+}
+.datail .layui-table {
+	color: #333;
+	text-align: center;
+}

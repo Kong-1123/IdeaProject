@@ -1,0 +1,221 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>用户操作日志</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/listIncludeStyle.js"></script>
+</head>
+<body name="operatelog">
+	<div class="contentWrap">
+		<div class="btnWrap">
+			<button class="searchBtn">查询</button>
+		</div>
+		<div class="listWrap">
+			<table id="grid-data"></table>
+		</div>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/listIncludeScript.js"></script>
+<script type="text/javascript">
+	// 获取页面url配置文件列表对象
+	var listObj = getUrlList("../static/script/urlList/operateLog.json");
+	// 获取当前页面name
+	var pageName = $("body").attr("name");
+	// 获取当前页面url配置列表对象
+	var urlObj = returnOneUrlObj(pageName, listObj);
+	// 设置组件标识flagName
+	var flagName = "id";
+	// 设置查询框layer层index
+	var searchIndex = null,
+	// 设置查询框查询条件
+	searchData = {},
+	// 设置查询框查询成功返回对象
+	returnData = {};
+	// 设置提交返回comData和bizData对象
+	var comAndBiz = {};
+	// 设置设置全局字典对象，每次查询字典先查询此对象中是否存在
+	var globalDic = {};
+	// 获取字典对象,定义表格中需要回显的dicData
+
+	// 设置表格组件配置项
+	var gridOpt = {
+		id : "grid-data",
+		url : urlObj.getPage,
+		columns : [ {
+			field : 'ck',
+			checkbox : true,
+			width : 20,
+			align : 'center'
+		}, {
+			field : 'userName',
+			title : '用户名',
+			width : 50,
+			align : 'center'
+		}, {
+			field : 'ip',
+			title : 'IP',
+			width : 40,
+			align : 'left'
+		}, {
+			field : 'createTime',
+			title : '操作时间',
+			width : 40,
+			align : 'left'
+		}, {
+			field : 'actName',
+			title : '动作',
+			width : 40,
+			align : 'left'
+		} ],
+		pagination : true,
+		data : searchData,
+		returnData : returnData,
+		flagName : flagName
+	};
+	// 表单返回数据对象
+	var formData = {};
+	$(function() {
+		// 初始化表格组件
+		gridInit($("#grid-data"), gridOpt);
+		// 设置页签组件配置项
+		var obj = {
+			keyName : "id",
+			isNotLinkedBisic : true,
+			keyNameIsOnly : true,
+			pageName : pageName,
+			listObj : listObj,
+			urlObj : urlObj
+		};
+		// 绑定页面点击事件（含初始化页签组件）
+		bindBtnEvent(obj);
+	})
+</script>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>业务日志列表</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/listIncludeStyle.js"></script>
+</head>
+<body name="operatelog">
+	<div class="main-list">
+		<div class="inquiry">
+			<form class="layui-form" action="">
+				<div class="list-top">
+					<div class="list-top_left">
+						<h5>筛选条件</h5>
+					</div>
+					<div class="list-top_right">
+						<ul>
+							<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon1.png"></a></li>
+							<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon2.png"></a></li>
+							<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon3.png"></a></li>
+						</ul>
+					</div>
+				</div>
+				<ul class="cons clearfix modal-body">
+					<li>
+						<div class="layui-form-item">
+							<label class="layui-form-label">用户名：</label>
+							<div class="layui-input-block">
+								<input type="text" name="search_LIKE_userName" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+			            <div class="layui-form-item">
+			                <label class="layui-form-label">操作时间：</label>
+			                <div class="layui-input-block">
+			                	<input type="text" name="search_GTE_LTE_createTime_DATE_RANGE" class="layui-input dateRange"   placeholder="请选择日期 "/>
+      						</div>
+			              </div>
+            		</li>
+            		<li>
+			            <div class="layui-form-item">
+			                <label class="layui-form-label">操作类型：</label>
+			                <div class="layui-input-block">
+			                	<input type="text" name="search_LIKE_actName" class="layui-input" />
+      						</div>
+			              </div>
+            		</li>
+				</ul>
+				<div class="btnWrap">
+					<button type="button" class="cx_btn searchBtn">
+						<i class='DHCiconfont'>&#xe606;</i>查询
+					</button>
+					<button type="reset" class="qk_btn resetBtn">
+						<i class='DHCiconfont'>&#xe609;</i>清空
+					</button>
+				</div>
+			</form>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<!-- 表格部分 -->
+	<div class="list-m">
+		<div class="list-top">
+			<div class="list-top_left">
+				<h5
+					style="background: url(../static/images/table/sx_icon2.png) 17px no-repeat">业务日志列表</h5>
+			</div>
+			<div class="btnWrap">
+				<ul>
+					
+				</ul>
+			</div>
+		</div>
+		<div class="datail" style="padding: 0px; margin-bottom: 0px;">
+			<table id="grid-data" lay-filter="grid-data"></table>
+		</div>
+	</div>
+</body>
+
+<script type="text/javascript" src="../static/script/listIncludeScript.js"></script>
+<script type="text/javascript">
+	// 获取页面url配置文件列表对象
+	var listObj = getUrlList("../static/script/urlList/operateLog.json");
+	// 获取当前页面name
+	var pageName = $("body").attr("name");
+	// 获取当前页面url配置列表对象
+	var urlObj = returnOneUrlObj(pageName, listObj);
+	layui.use([ "table", "form", "layer" ], function(){
+		var table = layui.table,
+		form = layui.form,
+		layer = layui.layer;
+		
+		var gridopt = {
+			urlObj : urlObj
+				,cols : [[{
+					checkbox: true}, {
+						field : 'userName',
+						title : '用户名',
+						width : "120",
+				}, {
+					field : 'ip',
+					title : 'IP',
+					width : "150",
+				},  {
+					field : 'createTime',
+					title : '操作时间',
+					width : "170",
+				},{
+					field : 'actName',
+					title : '操作类型',
+					width : "150",
+				}]]
+			}
+		
+			var returnObj = gridInit(form,table,gridopt);
+			// 绑定页面点击事件（含初始化页签组件）
+			/* returnObj.searchData = $("form").serializeJSON(); */
+			bindBtnEvent(returnObj,urlObj);
+		});
+</script>
+</html>

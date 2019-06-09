@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>本人查询记录列表</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/listIncludeStyle.js"></script>
+</head>
+<body name="queryreq">
+	<div class="main-list">
+		<div class="inquiry">
+			<form class="layui-form" action="">
+				<div class="list-top">
+					<div class="list-top_left">
+						<h5
+							style="background: url(../static/images/table/sx_icon1.png) 17px no-repeat">筛选条件</h5>
+					</div>
+					<div class="list-top_right">
+						<ul>
+							<li><a href="javascript:void(0);"><img
+									src="../static/images/table/btn_icon1.png"></a></li>
+							<li><a href="javascript:void(0);"><img
+									src="../static/images/table/btn_icon2.png"></a></li>
+							<li><a href="javascript:void(0);"><img
+									src="../static/images/table/btn_icon3.png"></a></li>
+						</ul>
+					</div>
+				</div>
+				<ul class="cons clearfix">
+					<li>
+						<div class="layui-form-item">
+							<label class="layui-form-label">企业名称：</label>
+							<div class="layui-input-block">
+								<input type="text" name="search_EQ_enterpriseName"
+									class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="layui-form-item">
+							<label class="layui-form-label">中征码：</label>
+							<div class="layui-input-block">
+								<input type="text" name="search_EQ_signCode"
+									class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="layui-form-item">
+							<label class="layui-form-label">查询原因：</label>
+							<div class="layui-input-block">
+								<select type="text" name="search_EQ_qryReason"
+									class="layui-input"></select>
+							</div>
+						</div>
+					</li>
+<!-- 					<li> -->
+<!-- 						<div class="layui-form-item"> -->
+<!-- 							<label class="layui-form-label">查询类型：</label> -->
+<!-- 							<div class="layui-input-block"> -->
+<!-- 								<select type="text" name="search_EQ_queryType" -->
+<!-- 									class="layui-input"></select> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</li> -->
+					<li>
+						<div class="layui-form-item">
+							<label class="layui-form-label">报告来源：</label>
+							<div class="layui-input-block">
+								<select type="text" name="search_EQ_source" class="layui-input"></select>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="layui-form-item">
+							<label class="layui-form-label">查询结果：</label>
+							<div class="layui-input-block">
+								<select type="text" name="search_EQ_status"
+									class="layui-input"></select>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="layui-form-item">
+							<label class="layui-form-label">查询版式：</label>
+							<div class="layui-input-block">
+								<select type="text" name="search_EQ_queryFormat"
+									class="layui-input"></select>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="layui-form-item">
+							<label class="layui-form-label">查询时间：</label>
+							<div class="layui-input-block">
+								<input type="text" class="layui-input dateRange"
+									name="search_GTE_LTE_queryTime_DATE_RANGE" placeholder=" 请输入日期范围 ">
+							</div>
+						</div>
+					</li>
+				</ul>
+				<div class="btnWrap">
+					<button type="button" class="cx_btn searchBtn">
+						<i class='DHCiconfont'>&#xe606;</i>查询
+					</button>
+					<button type="reset" class="qk_btn resetBtn">
+						<i class='DHCiconfont'>&#xe609;</i>清空
+					</button>
+				</div>
+			</form>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<!--表格部分-->
+	<div class="list-m">
+		<div class="list-top">
+			<div class="list-top_left">
+				<h5
+					style="background: url(../static/images/table/sx_icon2.png) 17px no-repeat">本人查询记录列表</h5>
+			</div>
+			<div class="btnWrap">
+				<ul>
+					<li><a class="showReportBtn bj_btn"><i class='DHCiconfont'>&#xe601;</i>展示信用报告</a>
+					</li>
+					<li><a class="exportBtn bj_btn"><i class='DHCiconfont'>&#xe601;</i>导出</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="datail" style="padding: 0px; margin-bottom: 0px;">
+			<table id="grid-data" lay-filter="grid-data"></table>
+		</div>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/listIncludeScript.js"></script>
+<script type="text/javascript">
+	var listObj = getUrlList("../static/script/urlList/queryreq.json");
+	// 获取当前页面name
+	var pageName = $("body").attr("name");
+	// 获取当前页面url配置列表对象
+	var urlObj = returnOneUrlObj(pageName, listObj);
+	// 将url对象保存父页面
+	var qryReasonDic = {
+		url : "common/ceqDic",
+		type : "qryReason_ceq"
+	};
+	var qryTypeDic = {
+		url : "common/ceqDic",
+		type : "qryType_ceq"
+	};
+	var qryFormatDic = {
+		url : "common/ceqDic",
+		type : "qryFormat_ceq"
+	};
+	var reportSourceDic = {
+		url : "common/ceqDic",
+		type : "reportSource_ceq"
+	};
+	var qryStatusDic = {
+		url : "common/ceqDic",
+		type : "qryStatus_ceq"
+	};
+	// parent.urlObj = urlObj;
+	var gridDicData = gridShowDic([qryReasonDic, qryTypeDic,
+			qryFormatDic, reportSourceDic, qryStatusDic ]);
+	var tabObj;
+	// 字典
+	layui.use([ "table", "form", "layer" ], function() {
+		var table = layui.table, form = layui.form, layer = layui.layer;
+		loadDic("common/ceqDic", "search_EQ_qryReason", "qryReason_ceq");
+//		loadDic("common/ceqDic", "search_EQ_queryType", "qryType_ceq");
+		loadDic("common/ceqDic", "search_EQ_queryFormat", "qryFormat_ceq");
+		loadDic("common/ceqDic", "search_EQ_source", "reportSource_ceq");
+		loadDic("common/ceqDic", "search_EQ_resultType", "resultType_ceq");
+		loadDic("common/ceqDic", "search_EQ_status", "qryStatus_ceq");
+		form.render('select');
+		// 设置表格组件配置项
+		var gridopt = {
+			urlObj : urlObj,
+			cols : [ [ {
+				checkbox : true
+			}, {
+				field : 'enterpriseName',
+				title : '企业名称',
+				width : "280",
+				event : 'detail',
+				templet : function(d) {
+					// 表格中字典转换
+					return "<a class='layui-link'>" + d.enterpriseName + "</a>";
+				}
+			}, {
+				field : 'signCode',
+				title : '中征码',
+				width : "170"
+			}, {
+				field : 'qryReason',
+				title : '查询原因',
+				width : "120",
+				templet : function(d) {
+					// 表格中字典转换
+					return gridDicData[qryReasonDic.type][d.qryReason] + "";
+				}
+// 			}, {
+// 				field : 'queryType',
+// 				title : '查询类型',
+// 				width : "120",
+// 				templet : function(d) {
+// 					// 表格中字典转换
+// 					return gridDicData[qryTypeDic.type][d.queryType] + "";
+// 				}
+			}, {
+				field : 'queryFormat',
+				title : '查询版式',
+				width : "120",
+				templet : function(d) {
+					// 表格中字典转换
+					return gridDicData[qryFormatDic.type][d.queryFormat] + "";
+				}
+			}, {
+				field : 'status',
+				title : '查询结果',
+				width : "120",
+				templet : function(d) {
+					// 表格中字典转换
+					return gridDicData[qryStatusDic.type][d.status] + "";
+				}
+			}, {
+				field : 'source',
+				title : '报告来源',
+				width : "120",
+				templet : function(d) {
+					// 表格中字典转换
+					return gridDicData[reportSourceDic.type][d.source] + "";
+				}
+			}, {
+				field : 'operator',
+				title : '操作用户',
+				width : "120"
+			}, {
+				field : 'queryTime',
+				title : '查询时间',
+				width : "170"
+			} ] ]
+		}
+		var returnObj = gridInit(form, table, gridopt, urlObj);
+		// 绑定页面点击事件（含初始化页签组件）
+		bindBtnEvent(returnObj, urlObj);
+
+		$(".showReportBtn").bind("click", function() {
+			i = showReportBtn(returnObj, urlObj);
+		});
+		function showReportBtn(e, t) {
+			var i = e.table;
+			var n = [], a = i.checkStatus("grid");
+			var r = a.data;
+			var showReportUrl  = urlObj.revealUrl;
+			if (r.length == 1) {
+				statusUrl = 'getStatus?id=' + r[0].id;
+				ajaxFunc(statusUrl, function(data) {
+					result = data;
+					if ("00000000" == result.code) {
+						url = showReportUrl +'?creditId=' + r[0].creditId
+								+ '&recordId=' + r[0].id;
+						window.open(url);
+					} else {
+						layerMsg("此记录不存在信用报告，请选择其他记录查看信用报告");
+					}
+				})
+				console.log(r);
+
+			} else {
+				layerMsg("请选择1条进行操作！")
+			}
+		}
+
+	});
+</script>
+</html>

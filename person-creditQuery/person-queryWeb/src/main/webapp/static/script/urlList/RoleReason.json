@@ -1,0 +1,12 @@
+{
+  "tabs": [
+      {
+         "name": "角色管理",
+         "eName":"roleManage",
+         "getAllReason":"common/getAllReason?id=",
+         "getUserReason":"common/getUserReason?id=",
+         "RoleReasonList":"common/RoleReasonList",
+         "UserReasonSubmit":"common/saveUserReason?Ids=" 
+      }
+   ]
+ }

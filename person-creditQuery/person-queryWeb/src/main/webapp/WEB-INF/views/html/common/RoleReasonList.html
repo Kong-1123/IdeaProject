@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>查询原因权限</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/pageIncludeStyle.js"></script>
+</head>
+<body>
+	<div class="roleManage clearfix">
+		<div class="treeWrap leftTree">
+			<p>全部权限</p>
+			<ul id="srcTree" class="ztree"></ul>
+		</div>
+		<div class="btnWrap">
+			<button id="btnAllL">左侧全选</button>
+			<button id="btnadd" class="iconfont" onclick="addRole()"><i class='DHCiconfont'>&#xe6cc;</i></button>
+			<hr>
+    		<button id="btnAllR">右侧全选</button>
+    		<button id="btndel" class="iconfont" onclick="delRole()"><i class='DHCiconfont'>&#xe6cb;</i></button>
+		</div>
+		<div class="treeWrap rightTree">
+			<p>当前角色权限</p>
+			<ul id="tarTree" class="ztree"></ul>
+		</div>
+		<div class="modal-footer">
+			<!-- <input type="submit" class="btn-vip btn-blue" id="save" value="提交" /> -->
+			<button type="submit" class="layui_btn btn_submit clearfix" id="save"><i class='DHCiconfont'>&#xe617;</i>提 交</button>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+$(function(){
+	//获取通过url传的参数对象
+	var data = getParamObj();
+	// 加载权限树方法
+	roleReason(parent.urlObj,data.id,0);
+})
+</script>
+</html>

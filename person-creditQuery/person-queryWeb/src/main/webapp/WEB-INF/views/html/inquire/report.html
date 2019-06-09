@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>信息录入</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/pageIncludeStyle.js"></script>
+<link rel="stylesheet"
+	href="../static/style/business/inquire/inquire.css">
+</head>
+<body>
+	<div id="form-wrap" class="layui-form">
+		<form id="create_form_id" action="systemUser/create">
+			<div class="list-top">
+				<div class="list-top_left">
+					<h5>
+						<i class='DHCiconfont'>&#xe625;</i><span>信息录入</span>
+					</h5>
+				</div>
+			</div>
+			<div class="modal-body selectmodal">
+				<div class="paramWrap">
+					<ul class="formWrap clearfix">
+						<li><span class="formLabel">客户姓名：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="clientName"
+										class="validate[required,maxSize[128],custom[cnAndEn]] layui-input"
+										placeholder="请输入" />
+								</div>
+							</div></li>
+						<li></li>
+						<li><span class="formLabel">证件类型：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<select id="idType" name="certType" class="validate[required]"
+										validateId="1"></select>
+								</div>
+							</div></li>
+
+						<li><span class="formLabel">证件号码：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="certNo"
+										class="validate[required,funcCall[checkCard],maxSize[18]] layui-input"
+										validateId="1" placeholder="请输入" />
+								</div>
+							</div></li>
+						<li class="allCols"><span class="formLabel">关联业务数据：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="assocbsnssData"
+										class="validate[funcCall[checkCard],maxSize[30],custom[blank]] layui-input"
+										validateId="2" placeholder="请输入" />
+								</div>
+							</div></li>
+					</ul>
+				</div>
+				<div class="paramWrap secondParam">
+					<p>
+						<span>查询参数</span>
+					</p>
+					<ul class="formWrap clearfix">
+						<li><span class="formLabel">信用报告版本：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<select name="queryFormat" class="validate[required]"></select>
+								</div>
+							</div></li>
+						<li><span class="formLabel">信用报告封装类型：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<select name="resultType" class="validate[required]"></select>
+								</div>
+							</div></li>
+						<li><span class="formLabel">查询原因：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<select name="qryReason" class="validate[required]"></select>
+								</div>
+							</div></li>
+					</ul>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="layui_btn btn_submit clearfix"
+					id="submitPage">
+					<i class='DHCiconfont'>&#xe617;</i>下一步
+				</button>
+				<button type="reset" class="layui_btn btn_reset clearfix"
+					id="resetPage">
+					<i class='DHCiconfont'>&#xe609;</i>清 空
+				</button>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript"
+	src="../static/script/business/inquire/inquire.js"></script>
+<script type="text/javascript">
+function submitFun(url,data){
+		var submitData = data;
+		var pName = getProjectName(location.href);
+		var str = paramObjToStr(data);
+		var step = "?step=authorize";
+		var checkUrl = parent.urlObj.submitUrl+step;
+  		ajaxFunc(checkUrl,function(data){
+			var result = data;
+			var code = result.resultCode;
+			if(code != "10109" && code != "10198" && code !="10398" && code != "10999"){
+				parent.step.nextStep();
+				if(result.resultCode == "10399" || result.resultCode =="10201"){
+					   var submiturl = parent.urlObj.submitUrl;
+					    submiturl = submiturl+"?step=inquire&isNeedCheck=notNeedCheck";
+						ajaxFunc(submiturl,function(data2){
+							var result2 = data2;
+							if(result2.resultCode == "10310"){
+								alertMsg(result);
+								$(".modal-footer button").attr("disabled", false);
+						        window.hasSubmit = false;
+							} else if(result2.resultCode == "10401"){
+								confirmMsg(result2,parent.urlObj.localReportUrl+"?"+str,parent.urlObj.showReportUrl+"?"+str);
+							} else if(result2.resultCode == "10400"){
+								inquireReport(parent.urlObj.showReportUrl+"?"+str,result2);
+							}else{
+								layerMsg(result2.resultMsg);
+								$(".modal-footer button").attr("disabled", false);
+						        window.hasSubmit = false;
+							}
+						},function(data) {
+					          layerMsg("请求出错！");
+				        },submitData);
+				} else {
+					var submiturl = pName + result.url;
+					var checkUrl = "inquire/checkInfo";
+					if(checkUrl == result.url){
+						parent.step.nextStep();
+					}
+					$("#inquireWrap",parent.document).attr("src",submiturl+"?"+str);
+				}
+			} else {
+				layerMsg(result.resultMsg);
+				$(".modal-footer button").attr("disabled", false);
+		        window.hasSubmit = false;
+			}
+		},function(data) {
+	          layerMsg("请求出错！");
+        },submitData);
+	}
+	 layui.use(['form', 'layer'], function(){
+	     	form = layui.form;
+	     //加载数据字典
+			loadDic("common/cpqDic", "certType", "idType");
+			loadDic("common/cpqDic", "queryType", "qryType");
+			loadDic("common/cpqDic", "queryFormat","qryFormat");
+			loadDic("common/cpqDic", "qryReason", "qryReason");
+			loadDic("common/cpqDic", "resultType", "resultType");
+			loadDic("common/cpqDic", "queryFormat", "qryFormat");
+			loadDic("common/cpqDic", "resultType","resultType");
+			loadDic("common/cpqDic", "qryReason", "qryReason");
+			form.render("select");
+			//绑定相关事件
+			 bindPageBtnEvent();
+			
+		})
+</script>
+</html>

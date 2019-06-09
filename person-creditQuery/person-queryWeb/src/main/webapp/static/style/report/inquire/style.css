@@ -1,0 +1,273 @@
+BODY { font-family: "宋体"; font-size: 9pt; SCROLLBAR-FACE-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: 
+#ffffff; SCROLLBAR-3DLIGHT-COLOR: #a7a7a7; SCROLLBAR-ARROW-COLOR: #a7a7a7; SCROLLBAR-DARKSHADOW-COLOR: 
+#a7a7a7; buttonface: #666666 }
+
+.t12 {  font-size: 12px}
+
+
+.t14 {  font-size: 14px}
+.bac_y {  background-repeat: repeat-y}
+.bac_x {  background-repeat: repeat-x}
+.t12r {  font-size: 9pt; line-height: 24px}
+.9p {  font-size: 9pt}
+.bac_no {  background-repeat: no-repeat}
+.aa {  font-size: 12px; line-height: 33px}
+.line { border: 1px #999999 dotted; font-size: 12px} 
+.line1 { border: dotted; border-width: 0px 0px 1px; border-color: black black #CCCCCC} 
+.liner { border: dotted; border-width: 0px 1px 0px 0px; border-color: black #FFFFFF black black} 
+
+.bac_y {  background-repeat: repeat-y}
+.bac_x {  background-repeat: repeat-x}
+.t12 {  font-size: 12px}
+.t14 {  font-size: 14px}
+.d12 {  font-size: 12px; line-height: 19px}
+.t_bac1 {  background-color: #CCCC33}
+.article {
+	CLEAR: none; BORDER-RIGHT: #999999 1px; PADDING-RIGHT: 6px; BORDER-TOP: #000000 1px; PADDING-LEFT: 6px; SCROLLBAR-FACE-COLOR: #8C8E90; FLOAT: none; PADDING-BOTTOM: 3px; SCROLLBAR-HIGHLIGHT-COLOR: #333333; OVERFLOW: auto; BORDER-LEFT: #000000 1px; WIDTH: 550px; SCROLLBAR-3DLIGHT-COLOR: #ffffff; LINE-HEIGHT: 12px; SCROLLBAR-ARROW-COLOR: #000000; PADDING-TOP: 6px; SCROLLBAR-TRACK-COLOR: #f5f5f5; BORDER-BOTTOM: #000000 1px; SCROLLBAR-DARKSHADOW-COLOR: #8C8E90; HEIGHT: 270px; TEXT-ALIGN: left
+; clip:  rect(   )
+}
+.article1 {
+	CLEAR: none; BORDER-RIGHT: #999999 1px; PADDING-RIGHT: 6px; BORDER-TOP: #000000 1px; PADDING-LEFT: 6px; SCROLLBAR-FACE-COLOR: #8C8E90; FLOAT: none; PADDING-BOTTOM: 3px; SCROLLBAR-HIGHLIGHT-COLOR: #333333; OVERFLOW: auto; BORDER-LEFT: #000000 1px; WIDTH: 400px; SCROLLBAR-3DLIGHT-COLOR: #ffffff; LINE-HEIGHT: 12px; SCROLLBAR-ARROW-COLOR: #000000; PADDING-TOP: 6px; SCROLLBAR-TRACK-COLOR: #f5f5f5; BORDER-BOTTOM: #000000 1px; SCROLLBAR-DARKSHADOW-COLOR: #8C8E90; HEIGHT: 230px; TEXT-ALIGN: left
+; clip:  rect(   )
+}
+
+
+TD {
+	FONT-FAMILY: 宋体; FONT-SIZE: 10pt
+}
+.f9l15{
+    font-size:9pt;line-height:15pt
+}
+
+P {
+	FONT-FAMILY: 宋体; FONT-SIZE: 12px
+}
+INPUT {
+	FONT-FAMILY: 宋体; FONT-SIZE: 12px
+}
+SELECT {
+	FONT-FAMILY: 宋体; FONT-SIZE: 12px
+}
+DL {
+	FONT-FAMILY: 宋体; FONT-SIZE: 12px
+}
+LI {
+	FONT-FAMILY: 宋体; FONT-SIZE: 12px
+}
+.90V {
+	FONT-FAMILY: 宋体; FONT-SIZE: 9pt
+}
+.105V {
+	FONT-FAMILY: "宋体"; FONT-SIZE: 9pt
+}
+.liu105V {
+	color:#ffffff;FONT-FAMILY: 宋体; FONT-SIZE: 10.5pt
+}
+
+.f12 {
+	FONT-FAMILY: 宋体; FONT-SIZE: 12px
+}
+.f14 {
+	FONT-FAMILY: 宋体; FONT-SIZE: 14px
+}
+.f16 {
+	FONT-FAMILY: 宋体; FONT-SIZE: 16px
+}
+.f22 {
+	FONT-FAMILY: 宋体; FONT-SIZE: 22px
+}
+.f16a {
+	FONT-SIZE: 16px
+}
+.f12h13 {
+	FONT-FAMILY: 宋体; FONT-SIZE: 12px; LINE-HEIGHT: 130%
+}
+.f12h14 {
+	FONT-FAMILY: 宋体; FONT-SIZE: 12px; LINE-HEIGHT: 140%
+}
+.f12h15 {
+	FONT-FAMILY: 宋体; FONT-SIZE: 12px; LINE-HEIGHT: 150%
+}
+.f16h11 {
+	FONT-FAMILY: 宋体; FONT-SIZE: 16px; LINE-HEIGHT: 110%
+}
+.f16h12 {
+	FONT-FAMILY: 宋体; FONT-SIZE: 16px; LINE-HEIGHT: 120%
+}
+
+.fins {font-size:7px;}
+
+.cbgc0 {
+	BACKGROUND-COLOR: #94b5f2
+}
+.cbgc1 {
+	BACKGROUND-COLOR: #cbeaf9
+}
+.cbgc2 {
+	BACKGROUND-COLOR: #ffff80
+}
+.bgc0 {
+background-repeat: repeat-y}
+.bgcr {
+	BACKGROUND-COLOR: #ff0000
+}
+.bgcb {
+	BACKGROUND-COLOR: #0000ff
+}
+.bgck {
+	BACKGROUND-COLOR: #eeeeee
+}
+.bgcw {
+	BACKGROUND-COLOR: #ffffff
+}
+.bgcbk {
+	BACKGROUND-COLOR: #000000
+}
+.bg1 {
+	BACKGROUND-REPEAT: no-repeat
+}
+A:link {
+	 COLOR: #000000; TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+; color: #000000
+}
+A:active {
+	TEXT-DECORATION: none
+; color: #000000
+}
+A:hover {
+	COLOR: #0066CC; TEXT-DECORATION: underline
+}
+
+
+a.1top:link {
+	color: #001498; text-decoration: blink
+}
+a.1top:active {
+	color: #FF0000; text-decoration: none
+}
+a.1top:visited {
+	color: #001498; text-decoration: none
+}
+a.1top:hover {
+	color: #FFFFFF; text-decoration: none
+}
+
+A.lleft:visited {
+	COLOR: #333333; TEXT-DECORATION: none
+}
+A.lleft:link {
+	COLOR: #333333; TEXT-DECORATION: none
+}
+A.lleft:active {
+	COLOR: #0066FF;	TEXT-DECORATION: none
+}
+A.lleft:hover {
+	COLOR: #FF0000; TEXT-DECORATION: underline
+}
+A.aw:link {
+	COLOR: #CCFFFF; TEXT-DECORATION: underline
+}
+A.aw:visited {
+	COLOR: #CCFFCC; TEXT-DECORATION: none
+}
+A.aw:active {
+	TEXT-DECORATION: underline
+}
+A.aw:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.ab:link {
+	COLOR: #0000ff; TEXT-DECORATION: none
+}
+A.ab:visited {
+	COLOR: #0000ff; TEXT-DECORATION: none
+}
+A.ab:active {
+	TEXT-DECORATION: none
+}
+A.ab:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+
+A.abk:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.abk:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.abk:active {
+	TEXT-DECORATION: none
+}
+A.abk:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.abkul:link {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A.abkul:visited {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A.abkul:active {
+	TEXT-DECORATION: none
+}
+A.abkul:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.abk1:link {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A.abk1:visited {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A.abk1:active {
+	TEXT-DECORATION: none
+}
+A.abk1:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+A.abk2:link {
+	COLOR: #cc0000; FONT-WEIGHT: bold; TEXT-DECORATION: underline
+}
+A.abk2:visited {
+	COLOR: #cc0000; FONT-WEIGHT: bold; TEXT-DECORATION: underline
+}
+A.abk2:active {
+	FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+A.abk2:hover {
+	COLOR: #cc0000; FONT-WEIGHT: bold; TEXT-DECORATION: underline
+}
+
+}
+A.ar:link {
+	COLOR: #3366cc; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+A.ar:visited {
+	COLOR: #3366cc; FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+A.ar:active {
+	FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+A.ar:hover {
+	COLOR: #3366cc; FONT-WEIGHT: bold; TEXT-DECORATION: underline
+}
+
+
+
+
+a.c:hover {  color: #FF0000; text-decoration: underline}
+a.c:link {  text-decoration: none; color: #666666}
+a.c:active {  color: #FF0000; text-decoration: none}
+a.c:visited {  text-decoration: none; color: #666666}
+
+
+.text {  font-size: 12px; line-height: 18px}
+.text_15 {  font-size: 15px; line-height: 21px}
+.read {  font-size: 14px; line-height: 19px}
+.bac_c {  background-repeat: no-repeat; background-position: center}
+
+  .shadow_a { FONT-SIZE: 12px; FILTER: dropshadow(color=#000000,offx=1,offy=1); 
+  COLOR: #FFFFFF}.heiti {  font-family: "黑体"; font-size: 14px}

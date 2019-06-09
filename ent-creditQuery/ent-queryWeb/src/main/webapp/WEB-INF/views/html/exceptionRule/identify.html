@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>客户标识列表</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/listIncludeStyle.js"></script>
+
+</head>
+<body name="ceqCustomer">
+	<!-- <div class="main-list">
+			<div class="inquiry">
+				<form class="layui-form" action="">
+					<div class="list-top">
+						<div class="list-top_left">
+						<h5>筛选条件</h5> </div>
+						<div class="list-top_right">
+							<ul>
+								<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon1.png"></a></li>
+								<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon2.png"></a></li>
+								<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon3.png"></a></li>
+							</ul>
+						</div>
+					</div>
+					<ul class="cons clearfix modal-body">
+						<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">客户姓名：</label>
+			                <div class="layui-input-block">
+			                	<input type="text" name="search_EQ_clientName" class="layui-input" />
+      						</div>
+			              </div>
+            			</li>
+            			<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">证件类型：</label>
+			                <div class="layui-input-block">
+			                	<select name="search_EQ_clientType"></select>
+      						</div>
+			              </div>
+            			</li>
+            			<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">证件号码：</label>
+			                <div class="layui-input-block">
+        						<input type="text" name="search_EQ_clientNo" class="layui-input"></input>
+      						</div>
+			              </div>
+            			</li>
+					</ul>
+				</form>
+			</div>	
+			<div class="clear"></div>
+		</div> -->
+		<!--表格部分-->
+		<div class="list-m">
+			<div class="list-top">
+				<div class="list-top_left">
+					<h5 style="background:url(../static/images/table/sx_icon2.png) 17px no-repeat">客户标识列表</h5>
+				</div>
+				
+			</div>
+			<div class="datail" style="padding: 0px;margin-bottom: 0px;">
+				<table id="grid-data" lay-filter="grid-data"></table>
+			</div>
+		</div>
+</body>
+<script type="text/javascript" src="../static/script/listIncludeScript.js"></script>
+
+<script type="text/javascript">
+	// 用于存放查询条件，可设置默认查询条件
+	var searchData = null;
+	var listObj = getUrlList("../static/script/urlList/identify.json");
+	// 获取当前页面name
+	var pageName = $("body").attr("name");
+	// 获取当前页面url配置列表对象
+	var urlObj = returnOneUrlObj(pageName, listObj);
+	// 绑定公共方法传的参数对象
+// 	var idTypeDic = {
+// 		url : "common/ceqDic",
+// 		type : "idType"
+// 	};
+	
+// 	var gridDicData = gridShowDic([idTypeDic]);
+	layui.use(["table","form","layer"], function(){
+		var table = layui.table,
+			form = layui.form,
+			layer = layui.layer;
+		// 将url对象保存父页面
+// 		loadDic("common/ceqDic", "search_EQ_clientType", "idType");
+		form.render('select'); 
+		var gridopt = {
+			urlObj:urlObj
+			,searchData:searchData
+			,cols : [[
+				{
+					field : 'loancareCode',
+					title : '中征码',
+					width : '100%',
+					align : 'left'
+				}/* , {
+					field : 'cretType',
+					title : '证件类型',
+					width : 120,
+					align : 'left',
+					templet: function(d){
+						// 表格中字典转换
+						return gridDicData[idTypeDic.type][d.cretType]+"";
+					} 
+				}, {
+					field : 'cretId',
+					title : '证件号码',
+					width : 120,
+					align : 'left'
+				}*/
+			]]
+		}
+	 	var returnObj =gridInit(form,table,gridopt);
+   
+		// 绑定页面点击事件（含初始化页签组件）
+		//bindBtnEvent(returnObj,urlObj);
+		//bindCustomBtnEvent(returnObj, urlObj);
+	});
+</script>
+</html>

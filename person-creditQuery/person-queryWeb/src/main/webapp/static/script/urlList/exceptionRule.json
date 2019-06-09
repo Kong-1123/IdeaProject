@@ -1,0 +1,14 @@
+ {
+  "tabs": [
+   {"name": "异常查询阻断",
+      "eName":"exceptionRule",
+      "updUrl":"exceptionRule/updatePage",
+      "detailUrl":"exceptionRule/detail",
+      "getSymbolPage":"exceptionRule/identify",
+      "searchUrl":"exceptionRule/search",
+      "getValUrl":"exceptionRule/findById",
+      "getPage":"exceptionRule/getPage",
+      "startOrStop":"exceptionRule/stopFlag"
+  	}
+   ]
+ }

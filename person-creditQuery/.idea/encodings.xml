@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-authorizeManager" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-authorizeManager/person-authorizeManager-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-authorizeManager/person-authorizeManager-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-queryAPI" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-queryAPI/person-queryAPI-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-queryAPI/person-queryAPI-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-queryAPI/person-queryAPI-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-queryApproveFlow" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-queryApproveFlow/person-queryApproveFlow-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-queryApproveFlow/person-queryApproveFlow-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-queryFlowManager" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-queryFlowManager/person-queryFlowManager-ansytask" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-queryFlowManager/person-queryFlowManager-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-queryFlowManager/person-queryFlowManager-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-queryStatistics" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-queryStatistics/person-queryStatistics-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-queryStatistics/person-queryStatistics-service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-queryWeb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-reportView" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-reportView/person-reportView-dao" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/person-reportView/person-reportView-service" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

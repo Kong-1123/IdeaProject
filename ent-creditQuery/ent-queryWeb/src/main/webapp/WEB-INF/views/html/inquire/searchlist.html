@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>授权信息列表</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/listIncludeStyle.js"></script>
+<link rel="stylesheet" href="../static/style/business/inquire/inquire.css">
+</head>
+<body name="archive">
+		<div class="list-m">
+			<div class="list-top">
+				<div class="list-top_left">
+					<h5><i class='DHCiconfont'>&#xe639;</i><span>授权信息列表</span></h5>
+				</div>
+				<div class="btnWrap">
+					<ul>
+						<li>
+							<a class="addArchiveBtn"><i class='DHCiconfont'>&#xe608;</i>新增</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="datail" style="padding: 0px;margin-bottom: 120px;">
+				<table id="grid-data" lay-filter="grid-data"></table>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="layui_btn btn_submit clearfix" id="nextPage"><i class='DHCiconfont'>&#xe617;</i>下一步</button>
+			</div>
+		</div>
+</body>
+<script type="text/javascript" src="../static/script/listIncludeScript.js"></script>
+<script type="text/javascript" src="../static/script/business/archive/archive.js"></script>
+<script type="text/javascript" src="../static/script/business/inquire/inquire.js"></script>
+<script type="text/javascript">
+	var submitData = getParamObj();
+	var isNotNeedCheck = false;
+	var archiveIdInNotNeedCheck;
+	var listObj = getUrlList("../static/script/urlList/archive.json");
+	// 获取当前页面name
+	var pageName = $("body").attr("name");
+	// 获取当前页面url配置列表对象
+	var urlObj = returnOneUrlObj(pageName, listObj);
+	// 字典
+	var deptCodeName = {
+		url : "common/getDeptCodeName",
+		type : "deptCodeName"
+	};
+
+	var archiveTypeDic = {
+		url : "common/ceqDic",
+		type : "archiveType_ceq"
+	};
+	
+	var archiveStatusDic = {
+		url : "common/ceqDic",
+		type : "archiveStatus_ceq"
+	}
+	
+	var gridDicData = gridShowDic([deptCodeName,archiveTypeDic,archiveStatusDic]);
+	
+	layui.use(["table","form","layer"], function(){
+		var table = layui.table,
+			form = layui.form,
+			layer = layui.layer;
+		loadDic("common/ceqDic", "search_EQ_archiveType", "archiveType_ceq");
+		form.render('select'); 
+		var searchData = {};
+		searchData.search_EQ_signCode = submitData.signCode;
+/* 		searchData.search_EQ_creditCode = submitData.creditCode;
+		searchData.search_EQ_usCreditCode = submitData.usCreditCode;
+		searchData.search_EQ_corpNo = submitData.corpNo; */
+		searchData.search_EQ_status = "1";
+		searchData.search_GTE_expireDate_DATE = new Date().Format("yyyy-MM-dd");
+		searchData.search_LTE_startDate_DATE = new Date().Format("yyyy-MM-dd");
+		var gridopt = {
+			urlObj:urlObj
+			,where:searchData
+			,cols : [[
+				{checkbox: true},{
+					field : 'enterpriseName',
+					title : '企业名称',
+					width : 120,
+					event: 'detail',
+					templet: function(d){
+						//详情超链接
+						return "<a class='layui-link'>"+d.enterpriseName+"</a>";
+					}
+				},{
+					field : 'signCode',
+					title : '中征码',
+					width : 120,
+					
+				},{
+					field : 'archiveType',
+					title : '授权类型',
+					width : 120,
+					templet: function(d){
+						// 表格中字典转换
+						return gridDicData[archiveTypeDic.type][d.archiveType]+"";
+					}
+				},{
+					field : 'startDate',
+					title : '授权起始日',
+					width : 120,
+				},{
+					field : 'expireDate',
+					title : '授权到期日',
+					width : 120,
+				},{
+					field : 'status',
+					title : '授权状态',
+					width : 120,
+					templet: function(d){
+						// 表格中字典转换
+						return gridDicData[archiveStatusDic.type][d.status]+"";
+					}
+				}, {
+					field : 'creator',
+					title : '创建人',
+					width : 120,
+
+				},{
+					field : 'ownOrg',
+					title : '所属机构',
+					width : 120,
+					templet: function(d){
+						// 表格中字典转换
+						return gridDicData[deptCodeName.type][d.ownOrg]+"";
+					}
+				}, {
+					field : 'quantity',
+					title : '资料数',
+					width : 120,
+				}, {
+					field : 'queryNum',
+					title : '关联查询数量',
+					width : 120,
+				}
+				]]
+			}
+	 	$(".btnWrap .addArchiveBtn").bind("click", function() {
+	    	layerOpen(900, 500, urlObj.icon, urlObj.name + "-新增页",
+	    			urlObj.getCreatePage, 2, function() {
+					}, true);
+	    });
+		var returnObj =gridInit(form,table,gridopt);
+		// 绑定页面点击事件（含初始化页签组件）
+		// returnObj.searchData = $("form").serializeJSON();
+		/* returnObj.searchData = $("form").serializeJSON(); */
+		console.log(returnObj.searchData);
+		bindBtnEvent(returnObj,urlObj);
+		bindCustomBtnEvent(returnObj, urlObj);
+	});
+	
+	function bindCustomBtnEvent(returnObj, urlObj){
+	    $("#nextPage").on("click",function(){
+		    var table = returnObj.table;
+		    var checkStatus = table.checkStatus('grid');
+			var gridData = checkStatus.data;
+		    if(gridData.length != 1 ){
+		        layerAlert('请选择一条授权记录');
+		        return;
+		    }
+
+		    var archiveId = gridData[0].id;
+		    submitData.archiveId = archiveId;
+		    archiveIdInNotNeedCheck = archiveId;
+			var pName = getProjectName(location.href);
+			var str = paramObjToStr(submitData);
+			parent.step.nextStep();
+			var step = "?step=checkInfo";
+			var checkUrl = parent.urlObj.submitUrl+step;
+	  		ajaxFunc(checkUrl,function(data){
+				var result = data;
+				if(result.resultCode != "10209"){
+					//判断是否需要审批
+					if(result.resultCode == "10201"){
+						//不需要审批
+						isNotNeedCheck = true;
+					    var submiturl = pName + result.url;
+					    submiturl = submiturl+"?step=inquire&isNeedCheck=notNeedCheck";
+						ajaxFunc(submiturl,function(data2){
+							var result2 = data2;
+							if(result2.resultCode == "10310"){
+								alertMsg(result);
+								$(".modal-footer button").attr("disabled", false);
+						        window.hasSubmit = false;
+							} else if(result2.resultCode == "10401"){
+								confirmMsg(result2,parent.urlObj.localReportUrl,parent.urlObj.showReportUrl);
+							} else if(result2.resultCode == "10400"){
+								inquireReport(parent.urlObj.showReportUrl,result2);
+							}else{
+								layerMsg(result2.resultMsg);
+								$(".modal-footer button").attr("disabled", false);
+						        window.hasSubmit = false;
+							}
+						},function(data) {
+					          layerMsg("请求出错！");
+				        },submitData);
+					}else{
+					    var submiturl = pName + result.url;
+						$("#inquireWrap",parent.document).attr("src",submiturl+"?"+str);
+					}
+				} else{
+					alertMsg();
+				}
+			},function(data) {
+		          layerMsg("请求出错！");
+	        },submitData);
+		});
+	}
+	
+	Date.prototype.Format = function(fmt)   
+	{ //author: meizz   
+	  var o = {   
+	    "M+" : this.getMonth()+1,                 //月份   
+	    "d+" : this.getDate(),                    //日   
+	    "h+" : this.getHours(),                   //小时   
+	    "m+" : this.getMinutes(),                 //分   
+	    "s+" : this.getSeconds(),                 //秒   
+	    "q+" : Math.floor((this.getMonth()+3)/3), //季度   
+	    "S"  : this.getMilliseconds()             //毫秒   
+	  };   
+	  if(/(y+)/.test(fmt))   
+	    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+	  for(var k in o)   
+	    if(new RegExp("("+ k +")").test(fmt))   
+	  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+	  return fmt;   
+	} 
+</script>
+</html>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="person-authorizeManager-dao" />
+        <module name="person-authorizeManager-service" />
+        <module name="person-queryAPI-dao" />
+        <module name="person-queryAPI-service" />
+        <module name="person-queryAPI-web" />
+        <module name="person-queryApproveFlow-dao" />
+        <module name="person-queryApproveFlow-service" />
+        <module name="person-queryFlowManager-ansytask" />
+        <module name="person-queryFlowManager-dao" />
+        <module name="person-queryFlowManager-service" />
+        <module name="person-queryStatistics-dao" />
+        <module name="person-queryStatistics-service" />
+        <module name="person-queryWeb" />
+        <module name="person-reportView-dao" />
+        <module name="person-reportView-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="person-authorizeManager" target="1.8" />
+      <module name="person-authorizeManager-dao" target="1.8" />
+      <module name="person-authorizeManager-service" target="1.8" />
+      <module name="person-creditQuery" target="1.8" />
+      <module name="person-queryAPI" target="1.8" />
+      <module name="person-queryAPI-dao" target="1.8" />
+      <module name="person-queryAPI-service" target="1.8" />
+      <module name="person-queryAPI-web" target="1.8" />
+      <module name="person-queryApproveFlow" target="1.8" />
+      <module name="person-queryApproveFlow-dao" target="1.8" />
+      <module name="person-queryApproveFlow-service" target="1.8" />
+      <module name="person-queryFlowManager" target="1.8" />
+      <module name="person-queryFlowManager-ansytask" target="1.8" />
+      <module name="person-queryFlowManager-dao" target="1.8" />
+      <module name="person-queryFlowManager-service" target="1.8" />
+      <module name="person-queryStatistics" target="1.8" />
+      <module name="person-queryStatistics-dao" target="1.8" />
+      <module name="person-queryStatistics-service" target="1.8" />
+      <module name="person-queryWeb" target="1.8" />
+      <module name="person-reportView" target="1.8" />
+      <module name="person-reportView-dao" target="1.8" />
+      <module name="person-reportView-service" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

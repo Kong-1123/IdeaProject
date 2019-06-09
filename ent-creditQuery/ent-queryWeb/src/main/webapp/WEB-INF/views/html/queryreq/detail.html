@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>本人查询记录详情</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/pageIncludeStyle.js"></script>
+<style>
+	.twoCols{
+		width:700px !important;
+	}
+</style>
+</head>
+<body>
+	<div id="form-wrap" class="layui-form" lay-filter="setVal">
+		<form id="detail_form_id">
+			<div class="modal-body selectmodal">
+				<ul class="formWrap clearfix">
+					<li class="twoCols"><span class="formLabel">企业名称：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="enterpriseName" class="layui-input" />
+							</div>
+						</div></li>
+					<!-- <li class="twoCols"><span class="formLabel">机构信用代码：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="orgCreditCode" class="layui-input" />
+							</div>
+						</div></li> -->
+					<li><span class="formLabel">中征码：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="signCode" class="layui-input" />
+							</div>
+						</div></li>
+					
+					<li><span class="formLabel">组织机构代码：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="orgInstCode" class="layui-input" />
+							</div>
+						</div></li>
+					<li><span class="formLabel">统一社会信用代码：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="uniformSocialCredCode" class="layui-input" />
+							</div>
+						</div></li>
+					<li><span class="formLabel">查询原因：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="qryReason" class="layui-input"></select>
+							</div>
+						</div></li>
+					<li><span class="formLabel">查询版式：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="queryFormat" class="layui-input"></select>
+							</div>
+						</div></li>
+					<li><span class="formLabel">查询结果：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="status" class="layui-input"></select>
+							</div>
+						</div></li>
+					<li><span class="formLabel">报告来源：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="source" class="layui-input"></select>
+							</div>
+						</div></li>
+					<li><span class="formLabel">请求客户端IP：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="clientIp" class="layui-input" />
+							</div>
+						</div></li>
+					<li><span class="formLabel">操作用户：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="operator" class="layui-input" />
+							</div>
+						</div></li>
+					<li><span class="formLabel">操作机构：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="operOrg" class="layui-input"></select>
+							</div>
+						</div></li>
+					<li><span class="formLabel">查询时间：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="queryTime" class="layui-input" />
+							</div>
+						</div></li>
+					<li><span class="formLabel">查询要求时效：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="qtimeLimit" class="layui-input" />
+							</div>
+						</div></li>
+					<li><span class="formLabel">审批类型：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="checkWay" class="layui-input"></select>
+							</div>
+						</div></li>
+					<li><span class="formLabel">审批用户：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="rekUser" class="layui-input" />
+							</div>
+						</div></li>
+					<li><span class="formLabel">审批机构：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="rekOrg" class="layui-input"></select>
+							</div>
+						</div></li>
+					<li><span class="formLabel">审批时间：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="rekTime" class="layui-input" />
+							</div>
+						</div></li>
+					
+					<li><span class="formLabel">更新时间：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="updateTime" class="layui-input" />
+							</div>
+						</div></li>
+<!-- 					<li><span class="formLabel">查询类型：</span> -->
+<!-- 						<div class="layui-form-item"> -->
+<!-- 							<div class="layui-input-block"> -->
+<!-- 								<select name="queryType" class="layui-input"></select> -->
+<!-- 							</div> -->
+<!-- 						</div></li> -->
+					<li><span class="formLabel">关联业务数据：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="assocbsnssData" class="layui-input" />
+							</div>
+						</div></li>
+					<li class="twoCols"><span class="formLabel">错误信息：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="errorInfo" class="layui-input" />
+							</div>
+						</div></li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="closePage"
+					class="layui_btn btn_submit clearfix">
+					<i class='DHCiconfont'>&#xe605;</i>关闭
+				</button>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+	// 通过url传的参数对象
+	var data = getParamObj();
+	var jsonData = getAjaxData(parent.urlObj.getValUrl, data);
+	layui
+			.use(
+					[ 'form', 'layedit', 'laydate' ],
+					function() {
+						var form = layui.form, layer = layui.layer, layedit = layui.layedit, laydate = layui.laydate;
+						loadDic("common/ceqDic", "qryReason", "qryReason_ceq");
+// 						loadDic("common/ceqDic", "queryType", "qryType_ceq");
+						loadDic("common/ceqDic", "queryFormat", "qryFormat_ceq");
+						loadDic("common/ceqDic", "resultType", "resultType_ceq");
+						loadDic("common/ceqDic", "status", "qryStatus_ceq");
+						loadDic("common/ceqDic", "source", "reportSource_ceq");
+						loadDic("common/ceqDic", "checkWay", "checkType_ceq");
+						loadDic("common/getDeptCodeName", "operOrg",
+								"deptCodeName");
+						loadDic("common/getDeptCodeName", "rekOrg",
+								"deptCodeName");
+						form.render("select");
+						form.val("setVal", jsonData);
+						setReadonly();
+						form.render("select");
+					})
+	$(function() {
+		// 绑定按钮事件		
+		bindPageBtnEvent();
+	});
+</script>
+</html>
+

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>异常查询阻断详情</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/business/archive/archiveIncludeStyle.js"></script>
+<link rel="stylesheet" href="../static/style/business/archive.css">
+<style>
+	#form-wrap .formWrap li{
+		margin: 15px 30px !important;
+	}
+	.layui-layer-iframe .layui-layer-title{
+		height: 42px;
+	    line-height: 42px;
+	   	border-bottom: 1px solid #eee;
+	    background-color: #F8F8F8 !important;
+	}
+</style>
+</head>
+<body name="abnormal">
+<div id="form-wrap" class="layui-form" lay-filter="setVal">
+		<form id="create_form_id" action="archive/update">
+			<div class="modal-body selectmodal">
+				<ul class="formWrap clearfix">
+					<li>
+						<span class="formLabel">规则编号:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="ruleId" id="ruleId" class="layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">规则名称:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="ruleName" id="ruleName" class="layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">规则描述:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<textarea name="ruleDesc" id="ruleDesc" class="layui-input" placeholder="请输入"></textarea>
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">页面管控:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="" id="" class="layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">接口管控:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="" id="" class="layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">是否锁用户:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="" id="" class="layui-input" ></select>
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">白名单是否受限:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="" id="" class="layui-input" ></select>
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">备注:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<textarea name="" id="" class="layui-input" placeholder="请输入" ></textarea>
+							</div>
+						</div>
+					</li>	
+				</ul>
+				
+			</div>
+			
+			<div class="modal-footer">
+				<button type="submit" class="layui_btn btn_submit clearfix" id="submitPage"><i class='DHCiconfont'>&#xe617;</i>保存</button>
+				<!-- <button type="reset" class="layui_btn btn_reset clearfix" id="resetPage"><i class='DHCiconfont'>&#xe609;</i>清 空</button> -->
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/business/archive/archiveIncludeScript.js"></script>
+
+<script type="text/javascript">
+
+var files;	        
+var uploadObj = {},urlObj = parent.urlObj;
+var data = getParamObj();
+var id = data.id;
+//从字典中取值
+var dicData = getDic("common/cpqDic","archiveType");
+//根据获取的后台参数动态生成需要上传的文件
+var typeData = getAjaxData(urlObj.getArchiveType,null);
+var number = parseInt(typeData.Num);
+var types = typeData.Type;
+var archiveType = typeData.archiveType;
+//获取出上传文件的数据
+var resData = getAjaxData(urlObj.findByArchiveId+id),fileNameArr = [];
+
+
+    function init(data) {
+        if (data.queryNum != null && data.queryNum > 0) {
+            setReadonly([ "clientName", "cretType", "cretNo", "startDate",
+                    "expireDate" ]);
+        } else {
+        	setReadonly([ "clientName", "cretType", "cretNo"]);
+        }
+    }
+    $(function() {
+    	setReadonly(["ruleId"]);
+        loadDic("common/cpqDic", "cretType", "certTypeID");//获取证件类型字典
+        bindPageBtnEvent();
+    });
+</script>
+</html>

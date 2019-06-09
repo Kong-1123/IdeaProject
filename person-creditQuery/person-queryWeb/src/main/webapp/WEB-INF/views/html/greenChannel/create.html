@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>特殊通道新增</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/pageIncludeStyle.js"></script>
+</head>
+<body>
+	<div id="form-wrap" class="layui-form">
+		<form id="create_form_id" action="greenChannel/create">
+			<div class="modal-body selectmodal">
+				<ul class="formWrap clearfix">
+					<li><span class="formLabel">特权用户：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" onblur="checkUser()" name="userAuthorized"
+									id="userAuthorized"
+									class="validate[required,maxSize[50], layui-input"
+									placeholder="请输入" />
+							</div>
+						</div></li>
+
+					<li><span class="formLabel">所属机构:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" class="validate[required] layui-input"
+									id="deptName" name="deptName" readonly="readonly" class="noReset" />
+									<input type="hidden"  id="deptCode" name="orgId"  readonly="readonly" class="noReset"  />
+							</div>
+						</div></li>
+
+					<li><span class="formLabel">授权起始日期:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="beginTimeAuthorized" id="startDate"
+									class="dateTime validate[required] layui-input"
+									placeholder="请输入" />
+							</div>
+						</div></li>
+					<li><span class="formLabel">授权截止日期:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="endTimeAuthorized" id="endDate"
+									class="dateTime validate[required] layui-input"
+									placeholder="请输入" />
+							</div>
+						</div></li>
+
+					<li><span class="formLabel">查询原因:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="qryReason" class="validate[required] layui-input"></select>
+
+							</div>
+						</div></li>
+
+					<li><span class="formLabel">查询授权:</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<select name="authorizeType"
+									class="validate[required] layui-input"></select>
+
+							</div>
+						</div></li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="layui_btn btn_submit clearfix"
+					id="submitPage">
+					<i class='DHCiconfont'>&#xe617;</i>提 交
+				</button>
+				<button type="reset" class="layui_btn btn_reset clearfix"
+					id="resetPage">
+					<i class='DHCiconfont'>&#xe609;</i>清 空
+				</button>
+			</div>
+
+		</form>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+	layui.use([ 'form'],function() {
+		var form = layui.form;
+		loadDic("common/cpqDic", "orgId", "deptCodeName");
+		loadDic("common/cpqDic", "qryReason", "qryReason");
+		loadDic("common/cpqDic", "authorizeType", "authorizeType");
+		form.render("select");
+		bindPageBtnEvent();
+	});
+	function checkUser() {
+		// 特权用户
+		var userName = document.getElementById("userAuthorized").value;
+		if (userName != null && userName != '') {
+
+			console.log($("#checkUser").val());
+			var jsonData = getAjaxData(
+					"/creditpersonqueryweb/greenChannel/checkUser", {
+						userName : $("#userAuthorized").val()
+					});
+			console.log(jsonData);
+			if ('00000000' ==jsonData.code) {
+				var id = jsonData.objectData;
+				var deptCodeDic = parent.gridDicData['deptCodeName'];
+				var deptName = deptCodeDic[id]
+				$("#deptName").val(deptCodeDic[id]);
+				$("#deptCode").val(id);
+			} else{
+				var msg =jsonData.msg;
+				$("#deptName").val('');
+				$("#deptCode").val('');
+				layerMsg(msg);
+			}
+
+		}
+	}
+</script>
+</html>
+
+
+

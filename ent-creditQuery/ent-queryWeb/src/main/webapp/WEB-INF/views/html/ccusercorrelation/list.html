@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>分页列表</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/listIncludeStyle.js"></script>
+</head>
+<body name="ccUserCorrelation">
+	<div class="contentWrap">
+		<div class="btnWrap">
+			<button class="createBtn">新建关联</button>
+			<button class="delectBtn">删除关联</button>
+		</div>
+		<div class="listWrap">
+			<table id="grid-data"></table>
+		</div>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/listIncludeScript.js"></script>
+<script type="text/javascript"
+	src="../static/script/business/correlation/correlation.js"></script>
+<script type="text/javascript">
+	var pName = window.sessionStorage.projectName;
+	// 获取页面url配置文件列表对象
+	var listObj = getUrlList("../static/script/urlList/ccusercorrelation.json",["getUsers"],pName);
+	// 获取当前页面name
+	var pageName = $("body").attr("name");
+	// 获取当前页面url配置列表对象
+	var urlObj = returnOneUrlObj(pageName, listObj);
+	// 设置组件标识flagName
+	var flagName = "id";
+	// 设置查询框layer层index
+	var searchIndex = null,
+	// 设置查询框查询条件
+	searchData = {},
+	// 设置查询框查询成功返回对象
+	returnData = {};
+	// 设置提交返回comData和bizData对象
+	var comAndBiz = {};
+	// 设置设置全局字典对象，每次查询字典先查询此对象中是否存在
+	var globalDic = {};
+	// 获取字典对象,定义表格中需要回显的dicData
+	//所属机构名称
+	var deptName = {
+		url:'common/getDeptCodeName',
+		type : "deptCodeName"
+	};
+	// 设置表格组件配置项
+	var gridOpt = {
+		id : "grid-data",
+		url : urlObj.getPage,
+		columns : [ {
+			field : 'ck',
+			checkbox : true,
+			width : 20,
+			align : 'center'
+		}, {
+			field : 'userName',
+			title : '用户名',
+			width : 50,
+			align : 'center'
+		}, {
+			field : 'deptCode',
+			title : '用户所属机构',
+			width : 40,
+			align : 'left',
+			dic   : deptName
+		}, {
+			field : 'creditUser',
+			title : '征信用户名',
+			width : 40,
+			align : 'left'
+		}, {
+			field : 'creditdeptCode',
+			title : '征信用户所属机构',
+			width : 40,
+			align : 'left',
+		} , {
+			field : 'button',
+			title : '操作',
+			width : 80,
+			align : 'center'
+		}],
+		pagination : true,
+		data : searchData,
+		returnData : returnData,
+		flagName : flagName,
+		custom : {
+			name:"button",
+			content:{
+				obj:{
+					pageName : pageName,
+					listObj : listObj
+				},
+				stopFlag:{stop:{
+					name:"停用",value:0
+				},start:{
+					name:"启用",value:1
+				}}
+			}
+		}
+	};
+	// 表单返回数据对象
+	var formData = {};
+	$(function() {
+		// 初始化表格组件
+		gridInit($("#grid-data"), gridOpt);
+		// 设置页签组件配置项
+		var obj = {
+			keyName : "id",
+			isNotLinkedBisic : true,
+			keyNameIsOnly : true,
+			pageName : pageName,
+			listObj : listObj,
+			urlObj : urlObj
+		};
+		// 绑定页面点击事件（含初始化页签组件）
+		bindBtnEvent(obj);
+		bindCustomBtnEvent(obj);
+	})
+</script>
+</html>

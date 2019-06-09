@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>报告使用记录列表</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/listIncludeStyle.js"></script>
+</head>
+<body name="reportlog">
+	<div class="main-list">
+			<div class="inquiry">
+				<form class="layui-form" action="">
+					<div class="list-top">
+						<div class="list-top_left">
+							<h5        style="background:url(../static/images/table/sx_icon1.png) 17px no-repeat">筛选条件</h5>
+						</div>
+						<div class="list-top_right">
+							<ul>
+								<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon1.png"></a></li>
+								<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon2.png"></a></li>
+								<li><a href="javascript:void(0);"><img src="../static/images/table/btn_icon3.png"></a></li>
+							</ul>
+						</div>
+					</div>
+					<ul class="cons clearfix modal-body">
+						<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">企业名称：</label>
+			                <div class="layui-input-block">
+			                	<input type="text" name="search_EQ_enterpriseName" class="layui-input" />
+      						</div>
+			              </div>
+            			</li>
+            			<li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">中征码：</label>
+			                <div class="layui-input-block">
+								<input type="text" name="search_EQ_signCode" class="layui-input" />
+      						</div>
+			              </div>
+            			</li>
+					     <li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">操作用户：</label>
+			                <div class="layui-input-block">
+								<input type="text" name="search_EQ_operateUser" class="layui-input" />
+      						</div>
+			              </div>
+            			</li>
+					     <li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">操作机构：</label>
+			                <div class="layui-input-block">
+								<input type="text" class="orgTree layui-input" readonly="readonly" />
+			                	<input type="hidden" name="search_EQ_operateDept" />
+      						</div>
+			              </div>
+            			</li>  
+					     <li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">操作时间：</label>
+			                <div class="layui-input-block">
+								<input type="text" class="layui-input dateRange"  name="search_GTE_LTE_operateDate_DATE_RANGE" placeholder=" 请输入日期范围 ">
+      						</div>
+			              </div>
+            			</li>   
+					     <li>
+			              <div class="layui-form-item">
+			                <label class="layui-form-label">操作类型：</label>
+			                <div class="layui-input-block">
+								<select class="layui-input" name="search_EQ_operateType"></select>
+      						</div>
+			              </div>
+            			</li>          			          			
+					</ul>
+					<div class="btnWrap">
+						<button type="button" class="cx_btn searchBtn"><i class='DHCiconfont'>&#xe606;</i>查询</button><button type="reset" class="qk_btn resetBtn"><i class='DHCiconfont'>&#xe609;</i>清空</button>
+			        </div>
+				</form>
+			</div>	
+			<div class="clear"></div>
+		</div>
+		<!--表格部分-->
+		<div class="list-m">
+			<div class="list-top">
+				<div class="list-top_left">
+					<h5 style="background:url(../static/images/table/sx_icon2.png) 17px no-repeat">报告使用记录列表</h5>
+				</div>
+				<div class="btnWrap">
+					<ul>
+						<li><a class="exportBtn bj_btn"><i class='DHCiconfont'>&#xe601;</i>导出</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="datail" style="padding: 0px;margin-bottom: 0px;">
+				<table id="grid-data" lay-filter="grid-data"></table>
+			</div>
+		</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/listIncludeScript.js"></script>
+<script type="text/javascript">
+		// 获取页面url配置文件列表对象
+	var listObj = getUrlList("../static/script/urlList/reportlog.json");
+	// 获取当前页面name
+	var pageName = $("body").attr("name");
+	// 获取当前页面url配置列表对象
+	var urlObj = returnOneUrlObj(pageName, listObj);
+	// 设置查询框查询成功返回对象
+	returnData = {};
+	// 获取字典对象,定义表格中需要回显的dicData
+	var deptCodeNameDic = {
+			url : "common/getDeptCodeName",	
+			type : "deptCodeName"
+	};
+	var qryFormatDic = {
+			url : "common/ceqDic",
+			type : "qryFormat_ceq"
+	};
+	var operateTypeDic = {
+			url : "common/ceqDic",
+			type : "reportLogType_ceq"
+	};
+	var gridDicData = gridShowDic([deptCodeNameDic,qryFormatDic,operateTypeDic]);
+	layui.use(["table","form","layer"], function(){
+		var table = layui.table,
+			form = layui.form,
+			layer = layui.layer;
+		loadDic(operateTypeDic.url,"search_EQ_operateType",operateTypeDic.type);
+		form.render('select');
+		var gridopt = {
+			urlObj:urlObj
+			,cols : [[
+				{checkbox: true},{
+					field : 'enterpriseName',
+					title : '企业名称',
+					width : 280,
+					event: 'detail',
+					templet: function(d){
+						// 表格中字典转换
+						return "<a class='layui-link'>"+d.enterpriseName+"</a>";
+					}
+				}, {
+					field : 'signCode',
+					title : '中征码',
+					width : 170
+				}, {
+					field : 'operateDate',
+					title : '操作时间',
+					width : 170
+				}, {
+					field : 'operateUser',
+					title : '操作用户',
+					width : 120
+				}, {
+					field : 'operateDept',
+					title : '操作机构',
+					width : 120,
+					templet: function(d){
+						return gridDicData[deptCodeNameDic.type][d.operateDept];
+					}
+				}, {
+					field : 'queryFormat',
+					title : '查询版式',
+					width : 120,
+					templet: function(d){
+						return gridDicData[qryFormatDic.type][d.queryFormat];
+					}
+				}, {
+					field : 'queryUser',
+					title : '查询用户',
+					width : 120
+				}, {
+					field : 'queryUserDept',
+					title : '查询机构',
+					width : 150,
+					templet: function(d){
+						return gridDicData[deptCodeNameDic.type][d.queryUserDept];
+					}
+				},{
+						field : 'operateType',
+						title : '操作类型',
+						width : 150,
+						templet: function(d){
+							return gridDicData[operateTypeDic.type][d.operateType];
+						}
+				}
+			]]
+		}
+	 	var returnObj =gridInit(form,table,gridopt);
+		// 绑定页面点击事件（含初始化页签组件）
+		console.log(urlObj);
+		bindBtnEvent(returnObj,urlObj);
+	});
+	// 表单返回数据对象
+	var formData = {};
+	$(function() {
+		
+	})
+	</script>
+</html>

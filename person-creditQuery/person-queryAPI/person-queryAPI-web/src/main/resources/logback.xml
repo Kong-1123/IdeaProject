@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="rollingFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>../logs/creditpersonwebservice/creditpersonwebservice.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>../logs/creditpersonwebservice/creditpersonwebservice.%d{yyyy-MM-dd}.log
+			</fileNamePattern>
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<!-- project default level -->
+	<!-- <logger name="cn.com.dhcc.query.creditpersonqueryweb" level="debug" /> -->
+	<logger name="cn.com.dhcc.query.creditpersonwebservice" level="info" />
+
+	<!--log4jdbc -->
+	<logger name="jdbc.sqltiming" level="info" />
+	
+	<!-- <root level="debug"> -->
+	<root level="info">
+		<appender-ref ref="console" />
+		<appender-ref ref="rollingFile" />
+	</root>
+	
+	<logger name="org.springframework.amqp.rabbit.listener.BlockingQueueConsumer" level="WARN" />  
+    <logger name="org.springframework.core.task.SimpleAsyncTaskExecutor" level="WARN" />  
+</configuration>

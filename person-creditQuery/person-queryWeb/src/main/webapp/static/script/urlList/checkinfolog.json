@@ -1,0 +1,21 @@
+{
+  "tabs": [
+   {
+      "name": "审批记录",
+      "eName":"checkinfolog",
+      "detailUrl":"checkinfolog/detail",
+      "searchUrl":"checkinfolog/search",
+      "getValUrl":"checkinfolog/findById",
+      "getPage":"checkinfolog/getPage",
+      "reSubCheckTask":"checkinfolog/reSubCheckTask",
+      "checkCanQuery":"checkinfolog/checkCanQuery",
+	  "downLoad":"archive/downLoad",
+	  "downloadFile":"archive/downloadFile?id=",
+	  "getArchiveUrl":"archive/findById?id=",
+	  "canDownloadFile":"archive/canDownloadFile",
+	  "getArchiveValUrl":"archive/findById",
+      "findByArchiveId":"archive/findByArchiveId?archiveId=",
+      "getPictureFile":"archive/getPictureFile" 
+   }
+   ]
+ }

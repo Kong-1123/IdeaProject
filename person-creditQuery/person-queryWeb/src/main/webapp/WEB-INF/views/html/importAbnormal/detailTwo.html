@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>异常查询文件导入信息管理详情</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/pageIncludeStyle.js"></script>
+</head>
+<body>
+	<div id="form-wrap" class="layui-form" lay-filter="setVal">
+		<form id="detail_form_id">
+			<div class="modal-body selectmodal">
+				<ul class="formWrap clearfix">
+					<li>
+						<span class="formLabel">客户姓名：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="name" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">证件类型：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="certType" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">证件号码：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="certNo" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">查询原因：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="queryReasonCode" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">查询版式：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="queryFormatCode" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">查询日期：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="queryDate" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">顶级查询机构代码：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="topOrgCode" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">顶级查询机构名称：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="topOrgName" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">查询机构代码：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="orgCode" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">查询机构名称：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="orgName" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">征信用户名：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="userCode" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">征信用户昵称：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="userName" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">查询结果：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="resultFlag" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">信用报告编号：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="repNo" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">导入用户：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="importUser" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">导入时间：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="importTime" class="layui-input" />
+							</div>
+						</div>
+					</li>
+					<li class="threeCols">
+						<span class="formLabel">异常说明：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<textarea name="illustration" class="layui-textarea"></textarea>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="closePage" class="layui_btn btn_submit clearfix" ><i class='DHCiconfont'>&#xe605;</i>关闭</button>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+	// 通过url传的参数对象
+	var data = getParamObj();
+	var jsonData = getAjaxData(parent.urlObj.getValUrl,data);
+	layui.use(['form', 'layedit', 'laydate'], function(){
+	  var form = layui.form
+	  ,layer = layui.layer
+	  ,layedit = layui.layedit
+	  ,laydate = layui.laydate;
+		//loadDic("common/cpqDic", "aleratReason", "alertReason");
+		//loadDic("common/cpqDic", "alertStatus", "alertStat");
+		//loadDic("common/cpqDic", "userStatus", "userStat");
+		//loadDic("common/cpqDic", "checkStatus", "checkStat");
+	  var dicUrl = "common/cpqDic";
+	  var certTypeDic = getDic(dicUrl,"idType");
+	  jsonData.certType = certTypeDic[jsonData.certType];
+	  var queryReasonDic = getDic(dicUrl,"qryReason");
+	  jsonData.queryReasonCode = queryReasonDic[jsonData.queryReasonCode];
+	  var queryFormatDic = getDic(dicUrl,"qryFormat");
+	  jsonData.queryFormatCode = queryFormatDic[jsonData.queryFormatCode];
+	  // 获取机构字典对象
+	  //var oprOrgDic = getDic(parent.oprOrg.url, parent.oprOrg.type);
+	  //jsonData.orgCode = oprOrgDic[jsonData.orgCode];
+	  form.val("setVal",jsonData);
+
+	  setReadonly();
+	})
+
+	$(function() {
+		// 绑定按钮事件		
+		bindPageBtnEvent();
+	});
+</script>
+</html>

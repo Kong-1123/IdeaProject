@@ -1,0 +1,19 @@
+{
+  "tabs": [
+   {
+      "name": "审批处理",
+      "eName":"checkinfotask",
+      "detailUrl":"checkinfotask/detail",
+      "getValUrl":"checkinfotask/findById",
+      "getPage":"checkinfotask/getPage",
+      "searchUrl":"checkinfotask/search",
+      "checkinfoPass":"checkinfotask/checkPass",
+      "backTask":"checkinfotask/backTask",
+      "checkRefusal":"checkinfotask/checkRefusal",
+	  "findByArchiveId":"archive/findByArchiveId?archiveId=",
+      "getArchiveValUrl":"archive/findById",
+	  "viewArchiveUrl":"checkinfotask/selectArchive",
+      "getPictureFile":"archive/getPictureFile" 
+   }
+   ]
+ }

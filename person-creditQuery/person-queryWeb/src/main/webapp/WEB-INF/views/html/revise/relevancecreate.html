@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>授权档案管理新增</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/pageIncludeStyle.js"></script>
+</head>
+<body>
+	<div id="form-wrap">
+		<form id="update_form_id" action="queryreq/updateRelevance">
+			<div class="modal-body selectmodal">
+				<table class="grayTable">
+					<tr>
+						<th align="right" class="thStyle">客户姓名:</th>
+						<td><input type="text" name="clientName"
+						class="validate[required,maxSize[32],minSize[2],custom[cnAndEn]]"/></td>
+
+						<th align="right" class="thStyle">证件类型:</th>
+						<td><select id="idType" name="certType" class="validate[required]" validateId="1"></select></td>
+					</tr>
+					<tr>
+						<th align="right" class="thStyle">证件号码:</th>
+						<td><input type="text" name="certNo" class="validate[required,funcCall[checkCard]]" validateId="1"/></td>
+						<th align="right" class="thStyle">关联业务数据:</th>
+						<td><input type="text" name="assocbsnssData"
+							class="validate[required,maxSize[40]]" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" class="btn-vip btn-blue" id="submitPage"
+					value="提交" /> <input type="reset" class="btn-vip btn-white"
+					id="resetPage" value="清空"></input>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+	$(function() {
+		setReadonly(["clientName","certType","certNo"]);
+		loadDic("common/cpqDic", "certType", "certTypeID");//获取证件类型字典
+		//loadDic("common/cpqDic", "archiveType", "archiveType");
+		bindPageBtnEvent();
+	});
+</script>
+</html>

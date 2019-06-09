@@ -1,0 +1,53 @@
+<html>
+<head>
+  <title>areatest</title>
+</head>
+
+<script language="javascript" src="action.js">
+  //使用说明:
+  //  如果省、市、县中某个级别必填写，不必设置默认option项(value="");
+  //  否则，设置默认option项(<option value="">-请选择-</option>);
+</script>
+
+<script>
+  //测试数据准备
+  new Area("100000", "山东", 1);
+  new Area("101000", "济南市", 2);
+  new Area("101010", "市辖区", 3);
+  new Area("101020", "历下区", 3);
+  new Area("102000", "青岛市", 2);
+  new Area("102010", "市南区", 3);
+  new Area("102020", "市北区", 3);
+
+  new Area("200000", "海南", 1);
+  new Area("201000", "海口市", 2);
+  new Area("201020", "龙华区", 3);
+  new Area("202000", "三亚市", 2);
+  new Area("202010", "市辖区", 3);
+
+  new Area("300000", "天津市", 1);
+</script>
+
+<body>
+  省：
+  <select name="prov" onclick="javascript: provTOtown('prov', 'town', 'country');" onchange="javascript: provTOtown('prov', 'town', 'country');" style="width:80px">
+    <option value="">-请选择-</option>
+  </select>
+  <p/>
+  市：
+  <select name="town" onclick="javascript: townTOcountry('town', 'country');" onchange="javascript: townTOcountry('town', 'country');" style="width:80px">
+  </select>
+  <p/>
+  县：
+  <select name="country" style="width:80px">
+    <option value="">-请选择-</option>
+  </select>
+</body>
+</html>
+
+<script>
+  //添加省编码
+  setProv("prov");
+  //初始化进行省到市的关联
+  provTOtown("prov", "town", "country");
+</script>

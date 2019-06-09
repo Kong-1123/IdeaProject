@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>流程管理修改</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/pageIncludeStyle.js"></script>
+</head>
+<body>
+	<div id="form-wrap">
+		<form id="update_form_id" action="modula/update">
+			<div class="modal-body selectmodal">
+				<table class="grayTable">
+					<tr>
+						<th align="right" class="thStyle">流程名称:</th>
+						<td><input type="text" name="modulaName"
+							class="validate[required]" /></td>
+					</tr>
+					<tr>
+						<th align="right" class="thStyle">序号:</th>
+						<td><input type="text" name="sortNum"
+							class="validate[required]" /></td>
+					</tr>
+					<tr>
+						<th align="right" class="thStyle">URL地址:</th>
+						<td><input type="text" name="urlAddress"
+							class="validate[required]" /></td>
+					</tr>
+				</table>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" class="btn-vip btn-blue" id="submitPage"
+					value="提交" /> <input type="reset" class="btn-vip btn-white"
+					id="resetPage" value="清空"></input>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+	$(function() {
+		// 等支持 --- setReadonly(["archiveType"],true);
+		//loadDic("common/systemDic", "buttonGroup", "buttonGroup");
+		bindPageBtnEvent();
+	});
+</script>
+</html>

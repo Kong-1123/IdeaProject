@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>信用报告查询列表</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/listIncludeStyle.js"></script>
+</head>
+<body name="revise">
+	<div class="contentWrap">
+		<div class="btnWrap">
+			<button class="updateBtn">补录</button>
+		</div>
+		<div class="listWrap">
+			<table id="grid-data"></table>
+		</div>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/listIncludeScript.js"></script>
+<script type="text/javascript">
+	// 获取页面url配置文件列表对象
+	var listObj = getUrlList("../static/script/urlList/revise.json");
+	console.log(listObj);
+	// 获取当前页面name
+	var pageName = $("body").attr("name");
+	// 获取当前页面url配置列表对象
+	var urlObj = returnOneUrlObj(pageName, listObj);
+	// 设置组件标识flagName
+	var flagName = "id";
+	// 设置查询框layer层index
+	var searchIndex = null,
+	// 设置查询框查询条件
+	searchData = {},
+	// 设置查询框查询成功返回对象
+	returnData = {};
+	// 设置提交返回comData和bizData对象
+	var comAndBiz = {};
+	// 设置设置全局字典对象，每次查询字典先查询此对象中是否存在
+	var globalDic = {};
+	// 获取字典对象,定义表格中需要回显的dicData
+	var buttonGroupDic = {
+	};
+	var qryReasonDic ={
+			url : "common/ceqDic",
+			type : "qryReason_ceq"
+		};
+	var qryTypeDic ={
+			url : "common/ceqDic",
+			type : "qryType_ceq"
+		};
+	var qryFormatDic ={
+			url : "common/ceqDic",
+			type : "qryFormat_ceq"
+		};
+	var reportSourceDic	={
+			url : "common/ceqDic",
+			type : "reportSource_ceq"
+		};
+	var qryStatusDic ={
+			url : "common/ceqDic",
+			type : "qryStatus_ceq"
+		};
+	
+	// 设置表格组件配置项
+	var gridOpt = {
+		id : "grid-data",
+		url : urlObj.relevanceRevise,
+		columns : [ {
+			field : 'ck',
+			checkbox : true,
+			width : 20,
+			align : 'center'
+		}, {
+			field : 'companyName',
+			title : '企业名称',
+			width : 40,
+			align : 'left'
+		}/*,{
+			field : 'creditCode',
+			title : '机构信用代码',
+			width : 40,
+			align : 'left'
+		}*/,{
+			field : 'loancardCode',
+			title : '中征码',
+			width : 40,
+			align : 'left'
+		},{
+			field : 'qryReason',
+			title : '查询原因',
+			width : 40,
+			align : 'left',
+			dic : qryReasonDic
+		},{
+			field : 'queryType',
+			title : '查询类型',
+			width : 40,
+			align : 'left',
+			dic : qryTypeDic
+		},{
+			field : 'queryFormat',
+			title : '查询版式',
+			width : 40,
+			align : 'left',
+			dic : qryFormatDic
+		},{
+			field : 'status',
+			title : '查询结果',
+			width : 40,
+			align : 'left',
+			dic : qryStatusDic,
+		}, {
+			field : 'source',
+			title : '报告来源',
+			width : 40,
+			align : 'left',
+			dic : reportSourceDic
+		},{
+			field : 'operOrg',
+			title : '操作机构',
+			width : 40,
+			align : 'left'
+		},{
+			field : 'operator',
+			title : '操作用户',
+			width : 40,
+			align : 'left'
+		}],
+		pagination : true,
+		data : searchData,
+		returnData : returnData,
+		flagName : flagName
+	};
+	// 表单返回数据对象
+	var formData = {};
+	$(function() {
+		// 初始化表格组件
+		gridInit($("#grid-data"), gridOpt);
+		// 设置页签组件配置项
+		 var obj = {
+			keyName : "id",
+			isNotLinkedBisic : true,
+			keyNameIsOnly : true,
+			pageName : pageName,
+			listObj : listObj,
+			urlObj : urlObj,
+		}; 
+		// 绑定页面点击事件（含初始化页签组件）
+		bindBtnEvent(obj);
+	})
+</script>
+</html>

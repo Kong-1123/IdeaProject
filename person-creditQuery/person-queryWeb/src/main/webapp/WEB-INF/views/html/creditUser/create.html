@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>征信用户管理新增</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/pageIncludeStyle.js"></script>
+</head>
+<body>
+	<div id="form-wrap" class="layui-form">
+		<form id="create_form_id" action="creditUser/create">
+			<div class="modal-body selectmodal">
+				<ul class="formWrap clearfix">
+					<li><span class="formLabel">征信用户名称：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="creditName" id="id" class="validate[required,maxSize[32],custom[onlyLetterSp]] layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">征信用户账号：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="creditUser"  class="validate[required,maxSize[14]] layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					
+					<li >
+						<span class="formLabel">征信机构：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+							<input type="text" name="creditOrgCode"  class="validate[required] layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">征信用户密码：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="password" name="creditPassword" class="validate[maxSize[20],minSize[8],required] layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">MAC：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="password" id="machineNetwork" name="machineNetwork" class="validate[maxSize[1000]] layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">DISK：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="password" id="machineDisk" name="machineDisk" class="validate[maxSize[1000]] layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">CPU：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="password" id="machineCPU" name="machineCPU" class="validate[maxSize[1000]] layui-input" placeholder="请输入" />
+							</div>
+						</div>
+					</li>
+				
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="layui_btn btn_submit clearfix" id="testBtn"><i class='DHCiconfont'>&#xe617;</i>认证</button>
+				<button type="submit" class="layui_btn btn_submit clearfix" id="submitPage"><i class='DHCiconfont'>&#xe617;</i>提 交</button>
+				<button type="reset" class="layui_btn btn_reset clearfix" id="resetPage"><i class='DHCiconfont'>&#xe609;</i>清 空</button>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript"
+	src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript" src="../static/script/business/creditUser/creditUser.js"></script>
+<script type="text/javascript" src="../static/script/business/creditUser/PassGuardCtrl.js"></script>
+<script type="text/javascript">
+	var pgeditor = new pge(
+			{
+				pgePath : "http://www.baidu.com/download/",//控件下载目录，可以指定绝对路径，如"http://www.baidu.com/download/"
+				pgeId : "_ocx_password",//控件id
+				pgeEdittype : 0,//控件显示类型,0(星号),1(明文)
+				pgeEreg1 : "[\\s\\S]*",//输入过程中字符类型限制，如"[0-9]*"表示只能输入数字
+				pgeEreg2 : "[\\s\\S]{8,16}",//输入完毕后字符类型判断条件，与pgeditor.pwdValid()方法对应
+				pgeMaxlength : 16,//允许最大输入长度
+				pgeTabindex : 2,//tab键顺序
+				/* pgeCertX : "B0562CFB493AA394CB56DBF14679657CB174E2908335AF92667AEDD6B0B9859A",
+				pgeCertY : "56D4276D65985F40B95066507D9AB955D6E737D8FE05EE1947964DEB80CCBFFC", */
+				pgeCertX : "BA15C7E63D4BABAB6A8F1D249EDB223C773E0318344156234C877AF1F866E0CE",
+				pgeCertY : "D17E4B54288E0BF7731D2B632AC051E426C578A1E24BE953EB002885CED6719E",
+				pgeClass : "input input_passIcon",//控件css样式
+				pgeInstallClass : "input input_passIcon",//针对安装或升级的css样式
+				pgeOnkeydown : "FormSubmitSM2()",//回车键响应函数，需焦点在控件中才能响应
+				tabCallback : "message_LOGIN_IMMEDIATELY",//火狐tab键回调函数,设置要跳转到的对象ID
+				//pgeOnfocus:"pgeFocus()",//监控光标切入密码控件框
+				//pgeOnblur:"pgeBlur()",//监控光标切出密码控件框
+				//windows10 edge&Chrome42+相关
+				pgeWindowID : "password" + new Date().getTime() + 1,
+				pgeRZRandNum : "60824760916616613705176072321129",
+				pgeRZDataB : "O/5xtxQks+t4Wdg06I/5ze2jMb+n06BG/kXZqp/oSEg="
+			});
+	window.pgeCtrl = pgeditor;
+	var i = 0;
+	//密码控件获得焦点时，提示一下
+	//function pgeFocus(){
+	/* pgeditor.pwdGetEById("tishi").innerHTML = ("获得焦点"+(i++)); */
+	//}
+	//密码控件失去焦点时获得密码强度，并展示出来
+	//function pgeBlur(){
+	/* pgeditor.pwdGetEById("tishi").innerHTML = ("失去焦点"+(i++));
+	//显示密码强度
+	GetLevel(); */
+	//} 
+	/* window.onload = function(){
+	   pgeditor.pwdGetEById("login").focus(); 
+	   pgeditor.pgInitialize(); 
+	   pgeditor.setLicense(); 
+	  pgeditor.pwdGetEById("lic").value = (pgeditor.setLicense()); 
+	}  */
+	
+	pgeditor.generate();
+</script>
+<script type="text/javascript">
+	$(function() {
+		
+		
+		var pwdResult = pgeditor.pwdResultSM(); //不加这一行获取的信息就只有一半  不知道为什么
+		var machineNetwork = pgeditor.machineNetworkSM();//获取网卡信息密文
+		var machineDisk = pgeditor.machineDiskSM();//获取硬盘信息密文	
+		var machineCPU = pgeditor.machineCPUSM();//获取CPU信息密文
+		$("#machineNetwork").val(machineNetwork);
+		$("#machineDisk").val(machineDisk);
+		$("#machineCPU").val(machineCPU);
+		
+		bindPageBtnEvent();
+		bindCustomBtnEvent(parent.urlObj);
+// 		$('#submitPage').attr('disabled','disabled');
+	});
+</script>
+</html>
+
+ 
+ 

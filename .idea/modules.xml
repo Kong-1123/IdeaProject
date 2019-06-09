@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ent-authorizeManager.iml" filepath="$PROJECT_DIR$/ent-authorizeManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-authorizeManager-dao.iml" filepath="$PROJECT_DIR$/ent-authorizeManager-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-authorizeManager-service.iml" filepath="$PROJECT_DIR$/ent-authorizeManager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-creditQuery.iml" filepath="$PROJECT_DIR$/ent-creditQuery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-queryAPI.iml" filepath="$PROJECT_DIR$/ent-queryAPI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-queryAPI-dao.iml" filepath="$PROJECT_DIR$/ent-queryAPI-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-queryAPI-service.iml" filepath="$PROJECT_DIR$/ent-queryAPI-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-queryAPI-web.iml" filepath="$PROJECT_DIR$/ent-queryAPI-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-queryApproveFlow.iml" filepath="$PROJECT_DIR$/ent-queryApproveFlow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-queryApproveFlow-dao.iml" filepath="$PROJECT_DIR$/ent-queryApproveFlow-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-queryApproveFlow-service.iml" filepath="$PROJECT_DIR$/ent-queryApproveFlow-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-queryFlowManager.iml" filepath="$PROJECT_DIR$/ent-queryFlowManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-queryFlowManager-ansytask.iml" filepath="$PROJECT_DIR$/ent-queryFlowManager-ansytask.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-queryFlowManager-dao.iml" filepath="$PROJECT_DIR$/ent-queryFlowManager-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-queryFlowManager-service.iml" filepath="$PROJECT_DIR$/ent-queryFlowManager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-queryStatistics.iml" filepath="$PROJECT_DIR$/ent-queryStatistics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-queryStatistics-dao.iml" filepath="$PROJECT_DIR$/ent-queryStatistics-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-queryStatistics-service.iml" filepath="$PROJECT_DIR$/ent-queryStatistics-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-queryWeb.iml" filepath="$PROJECT_DIR$/ent-queryWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-reportView.iml" filepath="$PROJECT_DIR$/ent-reportView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-reportView-dao.iml" filepath="$PROJECT_DIR$/ent-reportView-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ent-reportView-service.iml" filepath="$PROJECT_DIR$/ent-reportView-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-authorizeManager.iml" filepath="$PROJECT_DIR$/person-authorizeManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-authorizeManager-dao.iml" filepath="$PROJECT_DIR$/person-authorizeManager-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-authorizeManager-service.iml" filepath="$PROJECT_DIR$/person-authorizeManager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-creditQuery.iml" filepath="$PROJECT_DIR$/person-creditQuery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-queryAPI.iml" filepath="$PROJECT_DIR$/person-queryAPI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-queryAPI-dao.iml" filepath="$PROJECT_DIR$/person-queryAPI-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-queryAPI-service.iml" filepath="$PROJECT_DIR$/person-queryAPI-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-queryAPI-web.iml" filepath="$PROJECT_DIR$/person-queryAPI-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-queryApproveFlow.iml" filepath="$PROJECT_DIR$/person-queryApproveFlow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-queryApproveFlow-dao.iml" filepath="$PROJECT_DIR$/person-queryApproveFlow-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-queryApproveFlow-service.iml" filepath="$PROJECT_DIR$/person-queryApproveFlow-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-queryFlowManager.iml" filepath="$PROJECT_DIR$/person-queryFlowManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-queryFlowManager-ansytask.iml" filepath="$PROJECT_DIR$/person-queryFlowManager-ansytask.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-queryFlowManager-dao.iml" filepath="$PROJECT_DIR$/person-queryFlowManager-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-queryFlowManager-service.iml" filepath="$PROJECT_DIR$/person-queryFlowManager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-queryStatistics.iml" filepath="$PROJECT_DIR$/person-queryStatistics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-queryStatistics-dao.iml" filepath="$PROJECT_DIR$/person-queryStatistics-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-queryStatistics-service.iml" filepath="$PROJECT_DIR$/person-queryStatistics-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-queryWeb.iml" filepath="$PROJECT_DIR$/person-queryWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-reportView.iml" filepath="$PROJECT_DIR$/person-reportView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-reportView-dao.iml" filepath="$PROJECT_DIR$/person-reportView-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/person-reportView-service.iml" filepath="$PROJECT_DIR$/person-reportView-service.iml" />
+    </modules>
+  </component>
+</project>

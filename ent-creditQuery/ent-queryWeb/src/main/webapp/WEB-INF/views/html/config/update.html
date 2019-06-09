@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>修改参数</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/pageIncludeStyle.js"></script>
+<style>
+
+</style>
+</head>
+<body>
+	<div id="form-wrap" class="layui-form" lay-filter="setVal">
+		<form id="update_form_id" action="config/update">
+			<div class="modal-body selectmodal">
+				<ul class="formWrap clearfix">
+					<li class="twoCols"><span class="formLabel">参数名称：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="configName" class="noReset layui-input" readonly="readonly" />
+							</div>
+						</div>
+					</li>
+					<li class="emptyCols"></li>
+					<li>
+						<span class="formLabel">参数值：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="configValue" class="validate[required,maxSize[512]] layui-input" />
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="formLabel">修改人：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="updateUser" class="layui-input noReset" />
+							</div>
+						</div>
+					</li>
+					
+					<li>
+						<span class="formLabel">修改时间：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<input type="text" name="updateTime" class="layui-input noReset" />
+							</div>
+						</div>
+					</li>
+					<li class="threeCols">
+						<span class="formLabel">参数描述：</span>
+						<div class="layui-form-item">
+							<div class="layui-input-block">
+								<textarea name="configDesc" class="validate[maxSize[256]] layui-textarea noReset" placeholder="请输入"></textarea>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="layui_btn btn_submit clearfix"
+					id="submitPage">
+					<i class='DHCiconfont'>&#xe617;</i>提 交
+				</button>
+				<button type="button" class="layui_btn btn_reset clearfix"
+					id="resetPage">
+					<i class='DHCiconfont'>&#xe609;</i>清 空
+				</button>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+//通过url传的参数对象
+	var data = getParamObj();
+	console.log(data);
+	var projectName = getProjectName(location.href);
+	var jsonData = getAjaxData(parent.urlObj.getValUrl, data);
+	layui.use([ 'form', 'layedit', 'laydate' ],function() {
+		var form = layui.form,
+		layer = layui.layer, 
+		layedit = layui.layedit,
+		laydate = layui.laydate;
+						
+		// 获取菜单map
+		/* dicObj = getAjaxData(projectName +"config/getMap", "");
+		jsonData.menuTree = dicObj[jsonData.parentId]; */
+						
+		form.val("setVal", jsonData);
+		setReadonly(["configName","configDesc","updateUser","updateTime"]);
+	})
+	$(function() {
+		bindPageBtnEvent();
+	});
+</script>
+</html>

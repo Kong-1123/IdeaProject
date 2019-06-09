@@ -1,0 +1,217 @@
+	.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+	.clearfix{*+height:1%;}
+	a,a:focus,a:active,input,input:focus,input:active{
+		outline:0 none;
+		noOutline:expression(this.onFocus=this.blur());
+		star:expression(this.onFocus=this.blur());
+	}
+	input {
+	 	filter:chroma(color=#000000); 
+	}
+	#reportWrap{
+		width: 100%;
+        height: 100%;
+		margin: 0 auto;
+    	display: none;
+    }
+    .buttonWrap1{
+    	width: 140px;
+    	height: auto;
+    	position: fixed;
+    	/*right: 0px;*/
+    	right: -80px;
+    	z-index: 99;
+    	top: 50%;
+    	margin-top: -160px;
+    	background-color: #eee;
+    	*position: absolute;
+    	*margin: 0; 
+    	*top: 200px;
+    }
+    .buttonWrap1 ul{
+		list-style: none;
+		padding: 0;
+    }
+    .buttonWrap1 ul li{
+		height: 60px;
+        letter-spacing : 12px;
+		border-bottom: 2px solid #ddd;
+		background: #eee no-repeat 15px center;
+    }
+    .buttonWrap1 ul li.btnClose{
+        background-image: url(../../../images/report/reveal/close.png);
+    } 
+    .buttonWrap1 ul li.btnPrint{
+        height: 70px;
+		background-image: url(../../../images/report/reveal/print.png);
+    }    
+    .buttonWrap1 ul li.btnSave{
+    	height: 70px;
+		background-image: url(../../../images/report/reveal/save.png);
+    }    
+    .buttonWrap1 ul li.btnTop{
+        height: 70px;
+        background-image: url(../../../images/report/reveal/top.png);
+    }    
+    .buttonWrap1 ul li.btnBottom{
+        border-bottom: none;
+        background-image: url(../../../images/report/reveal/bottom.png);
+    }
+    .buttonWrap1 ul li.btnClose:hover{
+        background-image: url(../../../images/report/reveal/close_hover.png);
+    }  
+    .buttonWrap1 ul li.btnPrint:hover{
+		background-image: url(../../../images/report/reveal/print_hover.png);
+    }    
+    .buttonWrap1 ul li.btnSave:hover{
+		background-image: url(../../../images/report/reveal/save_hover.png);
+    }    
+    .buttonWrap1 ul li.btnTop:hover{
+		background-image: url(../../../images/report/reveal/top_hover.png);
+    }
+    .buttonWrap1 ul li.btnBottom:hover{
+        border-bottom: none;
+        background-image: url(../../../images/report/reveal/bottom_hover.png);
+    }
+    .buttonWrap1 p{
+    	width: 10px;
+		height: 10px;
+		text-indent: 9999px;
+		overflow: hidden;
+		background: #fff url(../../../images/report/reveal/radius.png) no-repeat left top;
+    } 
+    .buttonWrap1 p.radiusDown{   
+		background-position: left bottom;
+    }
+    .buttonWrap2{
+    	width: 100%;
+    	text-align: center;
+    	border-top: 2px solid #ddd;
+    }
+    .buttonWrap2 input{
+      display:block;
+      width:100px;
+      height:30px;
+      line-height:30px;
+      border:1px solid #333;
+      background-color:#fff;
+      color:#333;
+      font-size:16px;
+      font-family: "宋体";
+    }
+    .buttonWrap2 .btnHover{
+      color:#79BBCB;
+      border-color:#79BBCB;
+    }
+    .buttonWrap2 .btnClick{
+      font-weight:bold;
+    }
+    .buttonWrap2 #footertable{
+      border-top: 1px solid #aaa;
+    }
+    .buttonWrap1,.buttonWrap2{
+		display: none;
+	}
+    a.btn{
+    	width: 100%;
+    	height: 60px;
+    	font-size: 18px;
+    	font-weight: bold;
+        font-family: "Microsoft Yahei";
+    	line-height: 60px;
+    	color: #333;
+		text-decoration: none;
+		text-align: left;
+		text-indent: 60px;
+		display: block;
+		cursor: pointer;
+		*position: absolute;
+		*z-index: 99;
+     }
+     a.btn:hover{
+     	color: #3F5994;
+     }
+    .popupBg{
+		background-color: #000;
+		opacity: 0.3;
+		filter:alpha(opacity=30);
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 100;
+		display: none;
+		*position: absolute;
+    }
+    .popup{
+    	font-size: 14px;
+    	position: fixed;
+    	width: 300px;
+    	height: 200px;
+    	border: 2px solid #007AFF;
+    	margin: -100px 0 0 -150px;
+    	top: 50%;
+    	left: 50%;
+		z-index: 101;
+		display: none;
+		*position: absolute;
+    }
+    .popupHead{
+    	width: 100%;
+    	height: 40px;
+    	text-indent: 10px;
+    	line-height: 40px;
+    	color: #fff;
+    	background-color: #007AFF;
+    }
+    .popupHead span{
+		float: left;
+    }
+    .popupHead a{
+    	display: block;
+    	width: 30px;
+		height: 30px;
+		float: right;
+    	margin: 4px 4px 0 0;
+    	text-indent: -9999px;
+		background: #fff url(../../../images/report/reveal/close.jpg) no-repeat top center;
+		overflow: hidden;
+    }
+    .popupHead a:hover{    	
+		background-image: url(../../../images/report/reveal/close_hover.jpg);
+    }
+    .popupContent{
+    	width: 100%;
+    	height: 160px;
+    	overflow: hidden;
+    	background: #fff url(../../../images/report/reveal/error.jpg) no-repeat 60px center;
+    }
+    .popupContent2{
+    	width: 100%;
+    	height: 160px;
+    	overflow: hidden;
+    	background: #fff no-repeat 60px center;
+    }
+    .popupContent3{
+    	width: 100%;
+    	height: 160px;
+    	overflow: hidden;
+    	background: #fff no-repeat 60px center;
+    }
+    .popupContent p{
+    	color: #007AFF;
+    	margin: 70px 0 0 120px;
+    	width: 100px;
+    }
+    .popupContent2 p{
+    	color: #007AFF;
+    	margin: 70px 0 0 100px;
+    	width: 100px;
+    }
+    .popupContent3 p{
+    	color: #007AFF;
+    	margin: 70px 0 0 100px;
+    	width: 100px;
+    }
+    .popupBg{
+        display: none;
+    }

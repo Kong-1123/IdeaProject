@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>查询信用报告</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/pageIncludeStyle.js"></script>
+<script type="text/javascript" src="../static/script/md5.js"></script>
+<link rel="stylesheet" href="../static/style/business/inquire/inquire.css">
+<style>
+	.loginBtn{
+	    padding-bottom: 20px;
+	}
+	.login-box-warp .loginBtn .loginBtn0 {
+		background-image: url(../static/images/login/button_icon0.png);
+	}
+	.login-box-warp .loginBtn .loginBtn1 {
+		background-image: url(../static/images/login/button_icon1.png);
+	}
+	.confirmTypeWrap{
+		display: none;
+	}
+	.confirmTypeWrap li{
+	    padding-top: 18px;
+	}
+	.confirmTypeWrap .changeType{
+		padding: 10px 32px;
+		margin-left: 15px;
+		background: #fff no-repeat center center;
+	} 
+	.confirmTypeWrap .changeType00{
+		background-image: url(../static/images/login/icon0.png);
+	}
+	.confirmTypeWrap .changeType01{
+		background-image: url(../static/images/login/icon1.png);
+	}
+	#form-wrap .formWrap .confirmTypeWrap ul{
+		padding-left: 100px;
+	}
+	#form-wrap .formWrap .confirmTypeWrap li{
+		margin: 0;
+	    width: 30px;
+	    height: 30px;
+	    padding: 0;
+	    margin-right: 20px;
+	}
+	.confirmTypeWrap li.active .changeType00,.confirmTypeWrap li:hover .changeType00{
+		background-image: url(../static/images/login/icon0_on.png);
+	}
+	.confirmTypeWrap li.active .changeType01,.confirmTypeWrap li:hover .changeType01{
+		background-image: url(../static/images/login/icon1_on.png);
+	}
+	#form-wrap .confirmTypeWrap,#form-wrap .confirmType{
+		display: none;
+	}
+	#form-wrap .formWrap li.confirmType1 #printBtn{
+		float: none;
+		margin-left: 80px;
+		height: 32px;
+		line-height: 32px;
+	}
+	#form-wrap .formWrap li.confirmType1 #printBtn.printSuccess{
+		background-color: #25AE88;
+	}
+	#form-wrap .formWrap li.confirmType1 #printBtn.printError{
+		background-color: #D75A4A;
+	}
+</style>
+</head>
+<body>
+<div id="form-wrap" class="layui-form" lay-filter="setVal">
+		<form id="update_form_id" action="systemUser/update">
+			<div class="list-top">
+				<div class="list-top_left">					<h5><i class='DHCiconfont'>&#xe635;</i><span>内部审批</span></h5>
+				</div>
+			</div>
+			<div class="modal-body selectmodal">
+				<div class="paramWrap">
+					<ul class="formWrap clearfix">
+						<li>
+							<span class="formLabel">企业名称：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="enterpriseName" class="validate[required] layui-input" placeholder="请输入" />
+								</div>
+							</div>
+						</li>
+						<li>
+							<span class="formLabel">中征码：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="signCode" class="layui-input" validateId="1" placeholder="请输入" />
+								</div>
+							</div>
+						</li>
+						
+<!-- 						<li> -->
+<!-- 							<span class="formLabel">机构信用代码：</span> -->
+<!-- 							<div class="layui-form-item"> -->
+<!-- 								<div class="layui-input-block"> -->
+<!-- 									<input type="text" name="creditCode" class="layui-input" validateId="1" placeholder="请输入" /> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</li> -->
+						<li>
+							<span class="formLabel">统一社会信用代码：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="uniformSocialCredCode" class="layui-input" validateId="1" placeholder="请输入" />
+								</div>
+							</div>
+						</li>
+						<li>
+							<span class="formLabel">组织机构代码：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="orgInstCode" class="layui-input" validateId="1" placeholder="请输入" />
+								</div>
+							</div>
+						</li>
+						<li>
+							<span class="formLabel">关联业务数据：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="assocbsnssData" class="layui-input" placeholder="请输入" />
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="paramWrap secondParam">
+					<p><span>二代参数</span></p>
+					<ul class="formWrap clearfix">
+						<li>
+							<span class="formLabel">查询版式：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<!-- <select name="queryFormat"></select> -->
+									<input type="text" name="queryFormat" class="layui-input" />
+								</div>
+							</div>
+						</li>
+						<li>
+							<span class="formLabel">查询原因：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<!-- <select name="qryReason"></select> -->
+									<input type="text" name="qryReason" class="layui-input" />
+								</div>
+							</div>
+						</li>
+						<li>
+							<span class="formLabel">查询结果类型：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<!-- <select name="resultType"></select> -->
+									<input type="text" name="resultType" class="layui-input" />
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="paramWrap secondParam">
+					<p><span>审批方式</span></p>
+					<ul class="formWrap clearfix">
+						<li>
+							<span class="formLabel">审批类型：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="radio" checked="" id="checkWay1" lay-filter="radio" name="checkWay" value="0" title="同步"></input>
+									<input type="radio" id="checkWay2" lay-filter="radio" name="checkWay" value="1"  title="异步"></input>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="paramWrap secondParam" id="checkBody">
+					<p><span>审批信息</span></p>
+					<ul class="formWrap clearfix">
+						<li>
+							<span class="formLabel">审批用户：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="rekUser" id="rekUser" class="validate[required] layui-input" placeholder="请输入" />
+								</div>
+							</div>
+						</li>
+						<li class="confirmTypeWrap">
+							<span class="formLabel">认证方式</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<ul class="clearfix">
+										<li class="active">
+											<a class="changeType changeType00"></a>
+										</li>										
+										<li>
+											<a class="changeType changeType01"></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li class="pwdType confirmType confirmType0">
+							<span class="formLabel">审批用户密码：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="password" name="rekPasword" id="rekPasword" class="validate[required] [maxSize[64]] layui-input" placeholder="请输入" />
+								</div>
+							</div>
+						</li>
+						<li class="fingerType confirmType confirmType1">
+							<span class="formLabel">指纹认证：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="button" id="printBtn" class="layui_btn btn_submit layui-input" value="指纹认证"/>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="paramWrap" id="paperBody">
+					<ul class="formWrap clearfix paperFile">
+						<li class="twoCols">
+							<span class="formLabel">纸质文件编号：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" id="paperNo" name="paperFileId" class="layui-input" placeholder="请输入" />
+								</div>
+							</div>
+						</li>
+						<li class="twoCols">
+							<span class="formLabel">纸质文件描述：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" id="paperDesc" name="fileDescribe" class="layui-input" placeholder="请输入" />
+								</div>
+							</div>
+						</li>
+					</ul>
+				<div id="uploadBody" class="modal-body layui-upload" style="display: block;">
+					<div class="layui-upload-list electric">
+						  <div class="layui-upload-list">
+						    <table class="layui-table">
+						      <thead>
+						        <tr>
+							        <th>文件类型</th>
+							        <th>文件名</th>
+							        <th>操作</th>
+							    </tr>
+							  </thead>
+						      <tbody id="uploadCard">
+							    
+						      </tbody>
+						    </table>
+						  </div>  
+					</div>
+				</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="layui_btn btn_submit clearfix" id="submitPage"><i class='DHCiconfont'>&#xe617;</i>下一步</button>
+				</div>
+			</div>
+		</form>
+	</div>
+<object classid="CLSID:59E775E0-ED0C-442D-A930-3F6364789086" codebase="BocBFpOcx.ocx" id="obj" height=0 width=0></object>
+</body>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript" src="../static/script/business/inquire/inquire.js"></script>
+<script type="text/javascript">
+
+function getFinger(){
+	var fpStr = "";
+	for(var i = 1; i < 5 ; i++){
+		if(obj.DeviceReadVer(i) != -1){
+			fpStr = obj.DeviceGetFeature(i, 20, 1);
+		}
+	}
+	return fpStr;
+}
+$(function(){
+	var arr = ["PASSWORD", "FINGER"];
+	var loginType = getAjaxData(parent.urlObj.getloginType);
+	// var arr = loginType.verificationMode;
+	if(arr.length>1){
+		$(".confirmTypeWrap").show()
+		
+		if(arr[0] == "FINGER"){
+			$(".fingerType").show();
+		}else{
+			$(".pwdType").show();
+		}
+		
+		$(".confirmTypeWrap li").on("click",function(){
+			var index = $(this).index();
+			$(".confirmType"+index).show().siblings(".confirmType").hide();
+			$(this).addClass("active").siblings("li").removeClass("active");
+		})
+	}else{
+		
+		if(arr.in_array("FINGER")){
+			$(".fingerType").show();
+		}else{
+			$(".pwdType").show();
+		}
+		
+	}
+
+	$("#printBtn").on("click",function(){
+		var rekUser=$("#rekUser").val();
+		if(rekUser =='' ||rekUser==undefined ||rekUser==null){
+			layerMsg("审批用户不能为空!!!");
+			return;
+		}
+		var fingerPrint = getFinger();
+		var data = {"fingerPrint":fingerPrint,"rekUser":rekUser};
+		if(fingerPrint != -1){
+			var result = getAjaxData(parent.urlObj.validateFinger,data);
+			if(result.resultCode == "00000000"){
+				$(this).addClass("printSuccess").val("认证成功").off("click");
+				if($(this).hasClass("printError")){
+					$(this).removeClass("printError");
+				}
+			} else {
+				layerMsg(result.resultMsg);
+				$(this).addClass("printError").val("重新认证");
+			}
+		} else {
+			layerMsg("请重新进行指纹认证!!!");
+		}
+	})
+})
+//预览方法
+function view(name,result,id){
+	 //获取预览流路径
+	 if(id){
+	 	var result = parent.urlObj.getPictureFile + "?id=" + id;
+	 }
+ 	var flag = false;
+ 	var version = BrowserType(); 
+ 	if(version.indexOf("IE")==0){
+ 		flag = true;
+ 		
+ 	}
+ 	if(flag && name.indexOf("pdf") > 0){
+ 		layerAlert("对不起,您还没有安装PDF阅读器软件,为了方便预览PDF文档,请安装！"); 
+ 		return;
+ 	}
+     var opt;
+	 if(name.indexOf("pdf")<0){
+		 var img ="<img style='max-height:100%;' id='imgLook' src='"+ result +"'/>";
+		 opt = {
+	     		  type: 1,
+	     		  title: "图片预览",
+	     		  maxmin: true,
+	     		  area: ['800px','500px'],
+	     		  skin: 'layui-layer-preview', //没有背景色
+	     		  shadeClose: true,
+	     		  content: img
+	     		}
+	 }else{
+		 opt = {
+	     		  type: 2,
+	     		  title: "文件预览",
+	     		  maxmin: true,
+	     		  area: ['800px','500px'],
+	     		  skin: 'layui-layer-preview', //没有背景色
+	     		  shadeClose: true,
+	     		  content: result
+	     		} 
+	 }
+   	 parent.layer.open(opt);  
+}
+/*function view(name,id){
+	 //获取预览流路径
+	 var result =parent.urlObj.getPictureFile + "?id=" + id
+    var opt;
+	 if(name.indexOf("pdf")<0){
+		 var img ="<img style='max-height:100%;' id='imgLook' src='"+ result +"'/>";
+		 opt = {
+	     		  type: 1,
+	     		  title: "图片预览",
+	     		  maxmin: true,
+	     		  area: ['800px','500px'],
+	     		  skin: 'layui-layer-preview', //没有背景色
+	     		  shadeClose: true,
+	     		  content: img
+	     		}
+	 }else{
+		 opt = {
+	     		  type: 2,
+	     		  title: "文件预览",
+	     		  maxmin: true,
+	     		  area: ['800px','500px'],
+	     		  skin: 'layui-layer-preview', //没有背景色
+	     		  shadeClose: true,
+	     		  content: result
+	     		} 
+	 }
+  	 parent.layer.open(opt);  
+}*/
+
+	var data = getParamObj();
+	var pName = getProjectName(location.href);
+	var id = data.archiveId;
+    var jsonData = data;
+   	layui.use(['form', 'layedit', 'laydate','layer'], function(){
+   		showCreditOneOrTwo();
+  	  var form = layui.form
+  	  ,layer = layui.layer
+  	  ,layedit = layui.layedit
+  	  ,laydate = layui.laydate;
+			//绑定radio监听
+			ajaxFunc(parent.urlObj.getCheckType,function(data){
+			if(data == 3){
+				$('#checkWay1').next().show();
+				$('#checkWay2').next().show();
+			}else if(data == 2){
+				$('#checkWay1').next().hide();
+				$('#checkWay2').next().show();
+				$('#checkWay2').attr('checked','checked');
+				$("#uploadBody").hide();
+				$("#paperBody").hide();
+				$("#checkBody").hide();
+			}else{
+				$('#checkWay1').next().show();
+				$('#checkWay2').next().hide();
+			}
+			
+		}, function(data) {
+				layerMsg("请求出错！");
+		})
+	  form.on('radio(radio)', function(data){
+	  		if(data.elem["id"] == "checkWay2"){
+				$("#uploadBody").hide();
+				$("#paperBody").hide();
+				$("#checkBody").hide();
+				
+			}else{
+				$("#uploadBody").show();
+				$("#paperBody").show();
+				$("#checkBody").show();
+			}
+	  	});
+	  var dicUrl = "common/ceqDic";
+  	  var qryFormatDic = getDic(dicUrl,"qryFormat_ceq");
+  	  jsonData.queryFormat = qryFormatDic[jsonData.queryFormat];
+  	  var qryReasonDic = getDic(dicUrl,"qryReason_ceq");
+  	  jsonData.qryReason = qryReasonDic[jsonData.qryReason];
+  	  var resultTypeDic = getDic(dicUrl,"resultType_ceq");
+  	  jsonData.resultType = resultTypeDic[jsonData.resultType];
+  	  console.log(jsonData);
+  	  form.val("setVal",jsonData);
+  	  setReadonly(["rekUser","rekPasword","checkWay"],true);
+  	});
+   	
+	function submitFun(url,data){
+		if(!$(".fingerType").is(':hidden')){
+			if(!$("#printBtn").hasClass("printSuccess")){
+				layerMsg("请先进行指纹认证!!!");
+				$(".modal-footer button").attr("disabled", false);
+		        window.hasSubmit = false;
+				return;
+			}
+		}
+		var submitData = getParamObj();
+		submitData.rekUser=$("#rekUser").val();
+		var pwd = $("#rekPasword").val();
+		pwd=hex_md5(pwd);
+		submitData.rekPasword=pwd;
+		submitData.checkWay = $("input:radio:checked").val();
+		submitData.autharchiveId = data.archiveId;
+		var step = "?step=inquire";
+		if($("#printBtn").hasClass("printSuccess")){
+			step = step + "&fingerFlag=fingerFlag"
+		}
+		var checkUrl = parent.urlObj.submitUrl+step;
+		ajaxFunc(checkUrl,function(data){
+			var result = data;
+			if(result.resultCode == "10310"){
+				alertMsg(result);
+				$(".modal-footer button").attr("disabled", false);
+		        window.hasSubmit = false;
+			} else if(result.resultCode == "10401"){
+				submitData.checkId = result.checkId;
+				confirmMsg(result,parent.urlObj.localReportUrl,parent.urlObj.showReportUrl);
+			} else if(result.resultCode == "10400"){
+				inquireReport(parent.urlObj.showReportUrl,result);
+			}else if(result.resultCode =="00000"/*弹出提示，将用户踢出登陆*/){
+	        	  alert(result.resultMsg);
+	        	  var platFormUlr = sessionStorage.projectName;
+	        	  window.location.href = platFormUlr + "/logout";
+            } else{
+				layerMsg(result.resultMsg);
+				$(".modal-footer button").attr("disabled", false);
+		        window.hasSubmit = false;
+			}
+		},function(data) {
+	          layerMsg("请求出错！");
+        },submitData);
+	}
+	
+	if (id != "") {
+		//获取出上传文件的数据
+		var resData = getAjaxData(parent.urlObj.findByArchiveId+id);
+		 var dicData = getDic("common/ceqDic","archiveidType_ceq");
+		//纸质档案
+		if(resData != ''){
+			var flag0 = false;
+			var flag1 = false;
+			var flag2 = false;
+			for(var i = 0;i<resData.length;i++){
+				var selfUploadId = resData[i].id;
+				//纸质档案
+				var paperFileId = resData[i].paperFileId;
+				var fileDescribe = resData[i].fileDescribe;
+				if(paperFileId){
+					flag0 = true;
+					$("#paperNo").val(paperFileId);
+					$("#paperDesc").val(fileDescribe);
+				}
+				//电子档案
+				var resfileType = resData[i].fileType;
+				var resfileName = resData[i].fileName;
+				var resfilePath = resData[i].filepath+'/'+resfileName;
+				var trStr;
+				if(resfileType){
+					flag1 = true;
+					trStr = '<tr>'+
+					'<td class="typeName" data-type="'+ resfileType +'">'+dicData[resfileType]+'</td>'+
+					'<td width="300px">'+resfileName+'</td>'+
+					'<td>'+
+					'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-look" onclick="view(\''+ resfileName +'\',\''+ resfilePath +'\',\''+ selfUploadId +'\')">预览</button>'+
+					'</td>'+
+					'</tr>'
+					$("#uploadCard").append(trStr);
+				}
+			}
+			if(!flag0){
+				$("#paperFile,.paperFile").hide();
+			}
+			if(!flag1){
+				$("#uploadBody").hide();
+				$(".electric").hide();
+			}
+
+		} else {
+			$("#paperFile,.paperFile").hide();
+			$("#uploadBody").hide();
+			$(".electric").hide();
+		}
+	} else {
+		$("#paperFile,.paperFile").hide();
+		$("#uploadBody").hide();
+		$(".electric").hide();
+	}
+</script>
+</html>

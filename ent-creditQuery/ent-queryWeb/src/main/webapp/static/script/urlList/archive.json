@@ -1,0 +1,33 @@
+{
+  "tabs": [
+   {
+      "name": "授权信息维护",
+      "eName":"archive",
+      "creUrl":"archive/createPage",
+      "updUrl":"archive/updatePage",
+      "detailUrl":"archive/detail",
+      "delUrl":"archive/delete?id=",
+      "searchUrl":"archive/search",
+      "getValUrl":"archive/findById?id=",
+      "savePaper":"archive/savePaper",
+      "flowUrl":"queryreq/flow",
+      "upLoad":"archive/uploadfile",
+      "previewPdf":"archive/previewArchiveFile4NotUploaded",
+      "reviseupload":"archive/reviseupload",
+      "reviseuploadfile":"archive/reviseuploadfile",
+      "revisesavePaper":"archive/revisesavePaper",
+      "uploadRepairs":"archive/uploadrepairs?id=",
+      "downloadFile":"archive/downloadFile?id=",
+      "downLoad":"archive/downLoad",
+      "revisecreate":"archive/revisecreate",
+      "findByArchiveId":"archive/findByArchiveId?archiveId=",
+      "deleteArchiveFile":"archive/deleteArchiveFile?id=",
+      "getPage":"archive/getPage",
+      "exportUrl":"archive/exportLoad",
+      "canDownloadFile":"archive/canDownloadFile",
+      "getArchiveType":"archive/getArchiveType",
+      "getPictureFile":"archive/getPictureFile",
+      "getCreatePage" : "archive/createArchive"
+   }
+   ]
+ }

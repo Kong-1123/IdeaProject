@@ -1,0 +1,240 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/***
+ * uimaker
+ * http://www.uimaker.com
+ * e-mail: admin@uimaker.com
+ */
+
+/*font{border-color:#c0c0c0}
+/*tip确认框*/
+a:active{
+	noOutline:expression(this.onFocus=this.blur());
+}
+a:focus,a:hover{
+	outline:0;
+}
+.tip {
+	width: 400px;
+	height: 260px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -130px 0px 0px -200px;
+	background: #fcfdfd;
+	box-shadow: 1px 8px 10px 1px #9b9b9b;
+	border-radius: 1px;
+	display: none;
+	z-index: 111111;
+}
+
+.tiptop {
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	background-color: #3075c7;
+	cursor: pointer;
+}
+
+.tiptop span {
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	float: left;
+	text-indent: 20px;
+}
+
+.tiptop a {
+	display: block;
+	background: url(../images/close.png) no-repeat;
+	width: 24px;
+	height: 24px;
+	float: right;
+	margin-right: 7px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+.tiptop a:hover {
+	background: url(../images/close.png) no-repeat;
+}
+
+.tipinfo {
+	padding-top: 30px;
+	margin-left: 65px;
+	height: 95px;
+}
+
+.tipinfo span {
+	width: 95px;
+	height: 95px;
+	float: left;
+}
+
+.tipright {
+	float: left;
+	padding-top: 15px;
+	padding-left: 10px;
+}
+
+.tipright p {
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 35px;
+}
+
+.tipright cite {
+	color: #858686;
+	font-family: inherit;
+}
+
+.tipbtn {
+	width: 100%;
+	margin-top: 25px;
+	padding-top: 20px;
+	margin: 0px;
+	text-align: center;
+	border-top: 1px solid #e2e2e2;
+}
+.tipbtn input.sure{
+	margin: 0px auto;
+}
+
+.btn-vip{
+	width: 96px;
+	height: 35px;
+	line-height: 35px;
+	font-size: 14px;
+	border-radius: 3px;
+	cursor: pointer;
+	font-weight: normal;
+	background-color:#fff;
+}
+.btn-blue{
+	color: #3075c7;
+	border:1px solid #3075c7;
+}
+.btn-blue:hover{
+	color: #fff;
+	background-color:#3075c7;
+}
+.btn-white{
+	color: #666;
+	border:1px solid #666;
+}
+.btn-white:hover{
+	color: #3075c7;
+	border:1px solid #3075c7;
+}
+/*
+查找框
+*/
+.search {
+	width: 400px;
+	height: 260px;
+	position: absolute;
+	background: #fcfdfd;
+	box-shadow: 1px 8px 10px 1px #9b9b9b;
+	border-radius: 1px;
+	display: none;
+	z-index: 11111;
+	top: 10%;
+	left: 30%;
+	font-size: 14px;
+}
+
+.searchtop {
+	height: 40px;
+	line-height: 40px;
+	background: url(../image/tip/tcbg.gif) repeat-x;
+	cursor: pointer;
+}
+
+.searchtop span {
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	float: left;
+}
+
+.searchtop a {
+	display: block;
+	background: url(../image/tip/close.png) no-repeat;
+	width: 22px;
+	height: 22px;
+	float: right;
+	margin-right: 7px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+.searchtop a:hover {
+	background: url(../image/tip/close1.png) no-repeat;
+}
+
+.searchbody .table {
+	width: 400px;
+}
+
+.searchbody .c1 {
+	height: 40px;
+	width: 30%;
+	text-align: right;
+	font-size: 14px;
+}
+
+.searchbody .c2 {
+	height: 40px;
+	width: 70%;
+}
+
+.searchbody input {
+	height: 28px;
+	width: 70%;
+	font-size: 14px;
+}
+
+.searchbody #search {
+	width: 80px;
+	height: 35px;
+	line-height: 35px;
+	color: #fff;
+	background: url(../image/tip/btnbg1.png) repeat-x;
+	font-size: 14px;
+	font-weight: bold;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.searchbody #cancel {
+	width: 80px;
+	height: 35px;
+	line-height: 35px;
+	color: #fff;
+	background: url(../image/tip/btnbg2.png) repeat-x;
+	color: #000;
+	font-weight: normal;
+	border-radius: 3px;
+	cursor: pointer;
+}
+/** #tabs_ul **/
+#tabs_ul{
+	border: none;
+	border-bottom: 1px solid #e2e2e2;
+}
+#tabs_ul li a{
+	font-size: 14px;
+	color: #666;
+}
+#tabs_ul li a:hover,#tabs_ul .act a{
+	color:#f10180;
+}
+
+/** #tabs_button0 **/
+#tabs_button0{
+	text-align: center;
+	margin: 0px auto;
+	border-top: 1px solid #e2e2e2;
+	padding-top: 10px;
+	padding-bottom: 10px; 
+}

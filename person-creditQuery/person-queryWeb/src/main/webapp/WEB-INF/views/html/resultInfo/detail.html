@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>辖内查询记录详情</title>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript"
+	src="../static/script/business/archive/archiveIncludeStyle.js"></script>
+<link rel="stylesheet" href="../static/style/business/archive.css">
+<style>
+#form-wrap .formWrap li {
+	margin: 15px 30px !important;
+}
+</style>
+</head>
+<body>
+	<div id="form-wrap">
+		<form id="detail_form_id">
+			<p class="record">查询信息</p>
+			<div class="modal-body selectmodal">
+				<div class="layui-form" lay-filter="setVal_01">
+					<ul class="formWrap clearfix">
+						<li><span class="formLabel">客户姓名：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="customerName" class="layui-input" />
+								</div>
+							</div></li>
+						<li><span class="formLabel">证件类型：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<select name="certType" class="layui-input"></select>
+								</div>
+							</div></li>
+						<li><span class="formLabel">证件号码：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="certNo" class="layui-input" />
+								</div>
+							</div></li>
+						<li><span class="formLabel">查询原因：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<select name="qryReason" class="layui-input"></select>
+								</div>
+							</div></li>
+						<li><span class="formLabel">查询类型：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<select name="queryType" class="layui-input"></select>
+								</div>
+							</div></li>
+						<li><span class="formLabel">查询版式：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<select name="queryFormat" class="layui-input"></select>
+								</div>
+							</div></li>
+						<li><span class="formLabel">查询结果：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<select name="status" class="layui-input"></select>
+								</div>
+							</div></li>
+						<li><span class="formLabel">报告来源：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<select name="source" class="layui-input"></select>
+								</div>
+							</div></li>
+						<li><span class="formLabel">请求客户端IP：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="clientIp" class="layui-input" />
+								</div>
+							</div></li>
+						<li><span class="formLabel">操作用户：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="operator" class="layui-input" />
+								</div>
+							</div></li>
+						<li><span class="formLabel">操作机构：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<select name="operOrg" class="layui-input"></select>
+								</div>
+							</div></li>
+						<li><span class="formLabel">查询时间：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="queryTime" class="layui-input" />
+								</div>
+							</div></li>
+						<li><span class="formLabel">关联业务数据：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="assocbsnssData" class="layui-input" />
+								</div>
+							</div></li>
+						<li><span class="formLabel">查询要求时效：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="qtimeLimit" class="layui-input" />
+								</div>
+							</div></li>
+						
+						<li><span class="formLabel">操作时间：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="updateTime" class="layui-input" />
+								</div>
+							</div></li>
+						<li class="twoCols"><span class="formLabel">错误信息：</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="errorInfo" class="layui-input" />
+								</div>
+							</div></li>
+					</ul>
+					<p class="record">审批信息</p>
+					<div class="layui-upload" style="display: block;">
+
+						<ul class="formWrap clearfix">
+							<li><span class="formLabel">审批用户：</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" name="rekUser" class="layui-input" />
+									</div>
+								</div></li>
+							<li><span class="formLabel">审批类型：</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<select name="checkWay" class="layui-input"></select>
+									</div>
+								</div></li>
+							<li><span class="formLabel">审批机构：</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<select name="rekOrg" class="layui-input"></select>
+									</div>
+								</div></li>
+							<li><span class="formLabel">审批时间：</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" name="rekTime" class="layui-input" />
+									</div>
+								</div></li>
+						</ul>
+
+					</div>
+				</div>
+				<p class="record archiveInfo">授权信息</p>
+				<div class="layui-upload archiveInfo" style="display: block;">
+					<div class="layui-form" lay-filter="setVal_02">
+						<ul class="formWrap clearfix">
+							<li><span class="formLabel">授权起始日期:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" name="startDate" class="layui-input" />
+									</div>
+								</div></li>
+							<li><span class="formLabel">授权到期日期:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" name="expireDate" class="layui-input" />
+									</div>
+								</div></li>
+							<li><span class="formLabel">创建人:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" name="creator" class="layui-input" />
+									</div>
+								</div></li>
+							<li><span class="formLabel">所属机构:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" name="ownorg" class="layui-input" />
+									</div>
+								</div></li>
+							<li><span class="formLabel">创建时间:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" name="creatTime" class="layui-input" />
+									</div>
+								</div></li>
+							<li><span class="formLabel">操作用户:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" name="operator" class="layui-input" />
+									</div>
+								</div></li>
+							<li><span class="formLabel">操作机构:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" name="operorg" class="layui-input" />
+									</div>
+								</div></li>
+							<li><span class="formLabel">操作时间:</span>
+								<div class="layui-form-item">
+									<div class="layui-input-block">
+										<input type="text" name="operTime" class="layui-input" />
+									</div>
+								</div></li>
+
+						</ul>
+					</div>
+				</div>
+
+				<p class="record archiveInfo paperFile">纸质文件</p>
+				<div class="layui-upload archiveInfo" id="paperFile" style="display: block;">
+
+					<ul class="formWrap clearfix">
+						<li><span class="formLabel">纸质文件编号:</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="paperNo" id="paperNo"
+										class="layui-input" placeholder="请输入" />
+								</div>
+							</div></li>
+						<li><span class="formLabel">纸质文件描述:</span>
+							<div class="layui-form-item">
+								<div class="layui-input-block">
+									<input type="text" name="paperDesc" id="paperDesc"
+										class="layui-input" placeholder="请输入" />
+								</div>
+							</div></li>
+					</ul>
+
+				</div>
+
+				<p class="record archiveInfo electric">电子文件</p>
+				<div id="uploadBody" class="modal-body layui-upload archiveInfo"
+					style="display: block;">
+					<div class="layui-upload-list">
+						<div class="layui-upload-list">
+							<table class="layui-table">
+								<thead>
+									<tr>
+										<th>文件类型</th>
+										<th>文件名</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody id="uploadCard">
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" id="closePage"
+					class="layui_btn btn_submit clearfix">
+					<i class='DHCiconfont'>&#xe605;</i>关闭
+				</button>
+			</div>
+		</form>
+	</div>
+</body>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+<script type="text/javascript">
+//预览方法
+function view(name,result,id){
+	 //获取预览流路径
+	 if(id){
+	 	var result = parent.urlObj.getPictureFile + "?id=" + id;
+	 }
+ 	var flag = false;
+ 	var version = BrowserType(); 
+ 	if(version.indexOf("IE")==0){
+ 		flag = true;
+ 		
+ 	}
+ 	if(flag && name.indexOf("pdf") > 0){
+ 		layerAlert("对不起,您还没有安装PDF阅读器软件,为了方便预览PDF文档,请安装！"); 
+ 		return;
+ 	}
+     var opt;
+	 if(name.indexOf("pdf")<0){
+		 var img ="<img style='max-height:100%;' id='imgLook' src='"+ result +"'/>";
+		 opt = {
+	     		  type: 1,
+	     		  title: "图片预览",
+	     		  maxmin: true,
+	     		  area: ['800px','500px'],
+	     		  skin: 'layui-layer-preview', //没有背景色
+	     		  shadeClose: true,
+	     		  content: img
+	     		}
+	 }else{
+		 opt = {
+	     		  type: 2,
+	     		  title: "文件预览",
+	     		  maxmin: true,
+	     		  area: ['800px','500px'],
+	     		  skin: 'layui-layer-preview', //没有背景色
+	     		  shadeClose: true,
+	     		  content: result
+	     		} 
+	 }
+   	 parent.layer.open(opt);  
+}
+/*function view(name,id){
+	 //获取预览流路径
+	 var result =parent.urlObj.getPictureFile + "?id=" + id
+     var opt;
+	 if(name.indexOf("pdf")<0){
+		 var img ="<img style='max-height:100%;' id='imgLook' src='"+ result +"'/>";
+		 opt = {
+	     		  type: 1,
+	     		  title: "图片预览",
+	     		  maxmin: true,
+	     		  area: ['800px','500px'],
+	     		  skin: 'layui-layer-preview', //没有背景色
+	     		  shadeClose: true,
+	     		  content: img
+	     		}
+	 }else{
+		 opt = {
+	     		  type: 2,
+	     		  title: "文件预览",
+	     		  maxmin: true,
+	     		  area: ['800px','500px'],
+	     		  skin: 'layui-layer-preview', //没有背景色
+	     		  shadeClose: true,
+	     		  content: result
+	     		} 
+	 }
+   	 parent.layer.open(opt);  
+}*/
+
+	// 通过url传的参数对象
+	var data = getParamObj();
+	//从字典中取值
+	var dicData = getDic("common/cpqDic","archiveType");
+	var jsonData1 = getAjaxData(parent.urlObj.getValUrl, data);
+	var id = jsonData1.autharchiveId;
+	var jsonData2 = getAjaxData(parent.urlObj.getArchiveValUrl,{id:id});
+	layui.use([ 'form', 'layedit', 'laydate' ],function() {
+		var form = layui.form, layer = layui.layer, layedit = layui.layedit, laydate = layui.laydate;
+		var dicUrl = "common/cpqDic";
+		loadDic(dicUrl, "certType", "idType");
+		loadDic(dicUrl, "qryReason", "qryReason");
+		loadDic(dicUrl, "queryType", "qryType");
+		loadDic(dicUrl, "queryFormat", "qryFormat");
+		loadDic(dicUrl, "resultType", "resultType");
+		loadDic(dicUrl, "status", "qryStatus");
+		loadDic(dicUrl, "source", "reportSource");
+		loadDic(dicUrl, "checkWay", "checkType");
+		loadDic("common/getDeptCodeName", "operOrg",
+				"deptCodeName");
+		loadDic("common/getDeptCodeName", "rekOrg",
+				"deptCodeName");
+		// 获取机构字典对象
+		var oprOrgDic = getDic(parent.deptNameDic.url,
+				parent.deptNameDic.type);
+		//截取授权起始、结束日期的时分秒
+		if(null != jsonData2 ){
+			jsonData2.operorg = oprOrgDic[jsonData2.operorg];
+			var orgDic = getDic(parent.deptNameDic.url,
+					parent.deptNameDic.type);
+			jsonData2.ownorg = orgDic[jsonData2.ownorg];
+			  var str1 = jsonData2.startDate;
+			  var str2 = jsonData2.expireDate;
+			  var startDate = str1.substring(0,str1.length-9);
+			  var expireDate = str2.substring(0,str2.length-9);
+			  jsonData2.startDate = startDate;
+			  jsonData2.expireDate = expireDate;
+			  form.val("setVal_02", jsonData2);
+		}
+		form.render("select");
+		form.val("setVal_01", jsonData1);
+		setReadonly();
+		form.render("select");
+	})
+	if (id != "") {
+		
+		//获取出上传文件的数据
+		var resData = getAjaxData(parent.urlObj.findByArchiveId + id);
+		if (resData != '') {
+			var flag0 = false;
+			var flag1 = false;
+			var flag2 = false;
+			for (var i = 0; i < resData.length; i++) {
+				var selfUploadId = resData[i].id;
+				//纸质档案
+				var paperfileid = resData[i].paperfileid;
+				var filedescribe = resData[i].filedescribe;
+				if(paperfileid){
+					flag0 = true;
+					$("#paperNo").val(paperfileid);
+					$("#paperDesc").val(filedescribe);
+				}
+				//电子档案
+				var resfileType = resData[i].fileType;
+				var resfileName = resData[i].filename;
+				var resfilePath = resData[i].filepath+'/'+resfileName;
+				var trStr;
+				if(resfileType){
+					flag1 = true;
+					trStr = '<tr>'+
+					'<td class="typeName" data-type="'+ resfileType +'">'+dicData[resfileType]+'</td>'+
+					'<td width="300px">'+resfileName+'</td>'+
+					'<td>'+
+					'<button type="button" class="layui-btn layui-btn-xs layui-btn-danger demo-look" onclick="view(\''+ resfileName +'\',\''+ resfilePath +'\',\''+ selfUploadId +'\')">预览</button>'+
+					'</td>'+
+					'</tr>'
+					$("#uploadCard").append(trStr);
+				}
+			}
+			if(!flag0){
+				$("#paperFile,.paperFile").hide();
+			}
+			if(!flag1){
+				$("#uploadBody").hide();
+				$(".electric").hide();
+			}
+		} else {
+			$(".archiveInfo").hide();
+		}
+	} else {
+		$(".archiveInfo").hide();
+	}
+
+	$(function() {
+		// 绑定按钮事件		
+		bindPageBtnEvent();
+	});
+</script>
+</html>
+

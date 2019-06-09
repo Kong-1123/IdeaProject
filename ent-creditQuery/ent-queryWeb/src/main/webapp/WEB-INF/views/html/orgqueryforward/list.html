@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="../static/script/autoload.js"></script>
+<script type="text/javascript" src="../static/script/listIncludeStyle.js"></script>
+</head>
+<script type="text/javascript" src="../static/script/listIncludeScript.js"></script>
+<script type="text/javascript" src="../static/script/pageIncludeScript.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+		var Pname = getProjectName(location.href);
+		var loginUrl = Pname + "orgqueryforward/tryLogin?" + Math.random();
+		$.get(loginUrl, function(result) {
+			if(result.indexOf("00001")>0){
+				var obj = strToJson(result);
+				if(obj.code=="00001"){
+					top.layui.use(["layer"], function(){
+							var layer = parent.layui.layer;
+							parent.layerAlert("征信中心登陆失败，请查看!",function(){
+							$(".layui-tab .layui-this .layui-tab-close",parent.document).click();
+						})
+					})
+				}
+			}else{
+				//document.write(result);
+				window.location.href = "/shwebroot/orgqueryForward.do";
+			}
+		});
+	})
+</script>
+</html>

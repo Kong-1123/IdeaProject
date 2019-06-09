@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>打印附件</title>
+<style type="text/css">
+	html,body,div{
+		height:98%;
+		margin:0;
+	}
+
+</style>
+</head>
+<body>
+	<div id="reportWrap">
+		<iframe id="printattchIframe" src="" width="100%" height="100%"
+			frameborder="no" border="0" marginwidth="0" marginheight="0"
+			allowtransparency="yes" scroll="auto"></iframe>
+	</div>
+<script type="text/javascript" src="../static/script/jquery-1.11.1.min.js"></script>
+	
+<script type="text/javascript">
+
+function getProjectName(url) {
+    var re = /(\w+):\/\/([^\:|\/]+)(\:\d*)?(.*\/)?(.*\/)([^#|\?|\n]+)?(#.*)?(\?.*)?/i;
+    var arr = url.match(re);
+    var name = arr[4];
+    // name=name.replace(/\//g,"");
+    return name;
+}
+
+		var url = parent.printattchUrl;
+		var printattchObj = parent.printattchObj;
+		var projectName = getProjectName(location.href);
+		// document.body.style.backgroundImage = "url('"+projectName+"common/getImage')";
+		var printattchIframe = $("#printattchIframe");
+		printattchIframe.attr("src",url).load(function(){
+			printattchIframe.contents().find("html").css("background-image","url('"+projectName+"common/getImage')");
+			// printattchIframe[0].contentWindow.document.body.style.backgroundImage = "url('"+projectName+"common/getImage')";
+		});
+		
+		
+</script>
+</body>
+</html>
