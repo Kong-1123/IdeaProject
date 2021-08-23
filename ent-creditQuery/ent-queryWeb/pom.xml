@@ -19,7 +19,7 @@
 		<!-- 个人征信查询系统版本 -->
 		<ent.creditQuery.version>0.0.1-SNAPSHOT</ent.creditQuery.version>
 		<poi.version>3.17</poi.version>
-		<jsoup.version>1.7.3</jsoup.version>
+		<jsoup.version>1.14.2</jsoup.version>
 	</properties>
 	<!-- 配置文件 -->
     <profiles>
